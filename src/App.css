@@ -1,32 +1,479 @@
+body > #root > div {
+  height: 100vh;
+}
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  grid-template-rows: 100px 1fr;
+  /* background-color: #f2e3ea; */
+}
+.page{
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+/* start Header component */
+.header {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  font-family: ivystyle-tw, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 36px;
+  color: #432fc5;
+  /* background-color: #EFEEE8; */
+}
+/* end Header component */
+
+/* start SubHeader Component */
+.subheader{
+  padding-top: 15px;
+  font-family: nobel, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 28px;
+}
+/* end SubHeader Component */
+
+/* start LoginPage component */
+.loginPage{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+/* end LoginPage component */
+
+/* start Login component */
+.login{
+  margin-top: 25px;
+  margin-left: 50px;
+  margin-right: 50px;
+  max-width: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.loginForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-row-gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-style: none;
+  /* border-color: #343148; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loginLegend{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-family: objektiv-mk1, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 28px;
+  color: #343148;
+  text-align: left;
+}
+
+.email{
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  text-align: left;
+  padding-left: 0px;
+  font-family: ivystyle-tw, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  color: #343148;
+}
+.pwd{
+  grid-column: 1 / 4;
+  grid-row: 3 / 4;
+  text-align: left;
+  padding-left: 0px;
+  font-family: ivystyle-tw, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  color: #343148;
+}
+
+#email{
+  width: 100%;
+  height: 25px;
+}
+#password{
+  width: 100%;
+  height: 25px;
+}
+
+/* end Login component */
+
+/* start Required component */
+.required{
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 12px;
+  margin-right: 10px;
+}
+/* end Required component */
+
+/* start SignUp component */
+.signup{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.signupHeader{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding-top: 20px;
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 28px;
+  color: #343148;
+  align-self: center;
+}
+.signupText{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  padding-top: 5px;
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 14px; 
+  color: #343148;
+  align-self: start;
+}
+
+
+/* end SignUp component */
+
+/* start buttonBox */
+.buttonBox{
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.loginButton{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  color: #f2edd7;
+  background-color: rgb(146, 27, 78);
+  height: 40px;
+  width: 75%;
+  margin-left: 0px;
+  margin-right: 0px;
+  align-self: center; 
+  justify-self: center;
+  font-family: objektiv-mk1, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 10px;
+}
+.signupButton{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  color: #f2edd7;
+  background-color: #343148;
+  height: 40px;
+  width: 75%;
+  margin-left: 20px;
+  margin-right: 20px;
+  align-self: center; 
+  justify-self: center;
+}
+/* end buttonBox */
+/* start Navbar component */
+.menu{
+  position: absolute;
+  top: 2.7vmin;
+  left: 2.8vmin;
+  z-index: 1003;
+  outline: none;
+  width: 23px;
+  padding: 10px;
+}
+.menu-icon-line{
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #a5acbc;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  transition: transform 0.3s;
+  transform: translateZ(0);
+}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  max-height: 100%;
+  background-color: #F7CAC9;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.navbar a:hover, .dropdown:hover {
+  background-color: #C62168;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: rgb(253, 245, 170);
+  /* background-color: #E8B5CE; */
+}
+
+.show {
+  display: block;
+}
+
+/* end Navbar component */
+
+/* start newUserPage component */
+.newUserPage{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 1fr 100px;
+}
+
+.newUserHeader{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-family: objektiv-mk1, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+.newUserForm{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* background-color: #EFEEE8; */
+}
+.newUserRequired{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  text-align: right;
+}
+.firstName{
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  text-align: justify;
+}
+#firstName{
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  height: 25px;
+  width: 100%;
+}
+.lastName{
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  text-align: justify;
+}
+#lastName{
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  height: 25px;
+  width: 100%;
+}
+.newUserEmail{
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+  text-align: justify;
+}
+
+#newUserEmail{
+  grid-column: 2 / 3;
+  grid-row: 7 / 8;
+  height: 25px;
+  width: 100%;
+}
+
+.newUserPassword{
+  grid-column: 2 / 3; 
+  grid-row: 8 / 9;
+  text-align: justify;
+}
+
+#newUserPassword{
+  grid-column: 2 / 3; 
+  grid-row: 9 / 10;
+  height: 25px;
+  width: 100%;
+}
+.newUserButton{
+  grid-column: 2 / 3;
+  grid-row: 10 / 11;
+  color: #f2edd7;
+  background-color: #343148;
+  height: 40px;
+  width: 100%;
+}
+/* end NewUserPage component */
+
+/* start classDataPage Component */
+.classDataPage{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 75px 100px 1fr 1fr;
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+}
+.classDataPageHeader{
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  font-family: nobel, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+}
+.classDataSubHeader{
+  font-size: 22px;
+  font-family: nobel, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+.classDataText{
+  font-size: 12px;
+  margin-bottom: 20px;
+  padding-top: 0px;
+}
+.gradeLevel{
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin-top: 15px;
+  margin-left: 25px;
+  margin-right: 0px;
+  border-left: 5px solid #277273;
+  border-top: 5px solid #277273;
+  border-right: 2.5px solid #277273;
+  border-bottom: none;
+  background-color: #C6E2DA;
+}
+.subject{
+  grid-column: 2 / 3;
+  grid-row: 2 / 5;
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-right: 25px;
+  border-left: 2.5px solid #277273;
+  border-top: 5px solid #277273;
+  border-right: 5px solid #277273;
+  border-bottom: 5px solid #277273;
+  background-color: #C6E2DA;
+}
+.subjectButtons{
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+.mathButton{
+  height: 40px;
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #343148;
+  background-color: #EFEEE8;
+}
+.readingButton{
+  height: 40px;
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #343148;
+  background-color: #EFEEE8;
+}
+/* end classDataPage Component */
+
+/* start DropMenu component */
+.dropMenuContainer{
+  grid-column: 1 / 2;
+  grid-row: 3 / 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr 1fr 1fr 1fr;
+  margin-left: 25px;
+  margin-right: 0px;
+  padding-top: 15px;
+  border-left: 5px solid #277273;
+  border-top: none;
+  border-right: 2.5px solid #277273;
+  border-bottom: 5px solid #277273;
+  background-color: #C6E2DA;
+}
+.mainDropMenuButton{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  margin-top: 0px;
+  color: #343148;
+  background-color: #EFEEE8;
+  height: 40px;
+  width: 300px;
+  justify-self: center;
+  align-self: end;
+}
+.dropMenu{
+  grid-column: 2 / 3;
+  grid-row: 2 / 6;
+  display: grid;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #f9f9f9;
+}
+.grades{
+  width: 300px;
+  height: 40px;
+  background-color: #f9f9f9;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* end DropMenu component */
