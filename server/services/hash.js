@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcrypt");
 
 function hash(word, err, done){
     bcrypt.hash(word, null, null, function(hashErr, hashedWord){

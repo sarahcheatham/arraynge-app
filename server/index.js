@@ -4,9 +4,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-// const userRoutes = require('./routes/UserRoutes');
-// const sessionRoutes = require('./routes/SessionRoutes');
-// const authenticationRoutes = require('./routes/AuthenticationRoutes');
+const userRoutes = require('./routes/UserRoutes');
+const sessionRoutes = require('./routes/SessionRoutes');
+const authenticationRoutes = require('./routes/AuthenticationRoutes');
 
 mongoose.set("debug", true);
 
@@ -32,6 +32,9 @@ function startWebServer(){
     //not secure
     app.use(express.static('public'));
     app.use(bodyParser.json());
+    app.use(userRoutes);
+    app.use(sessionRoutes);
+    app.use(authenticationRoutes);
     
     const port = process.env.PORT || 3001;
 

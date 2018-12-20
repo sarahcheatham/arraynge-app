@@ -24,3 +24,4 @@ function authentication(req, res, next){
         return res.send("Invalid credintals")
     });
 }
+exports.authentication = authentication;

@@ -1,69 +1,70 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
+import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import Required from './Required';
 import Star from './Star';
 
-export default class SignIn extends Component {
+class SignIn extends Component {
     constructor(props){
         super(props);
         this.state = {
-            email: "",
-            password: "",
-            isLoggedIn: false
+            username: "",
+            password: ""
         };
     }
 
-    validateForm(){
-        let isLoggedIn = this.state.isLoggedIn;
-        if(isLoggedIn === true){
-            console.log(true)
-            return this.state.email.length > 0 && this.state.password.length > 0;
-        } console.log(false)
-    };
-
-    handleChange = (event)=>{
-        return event.target.id === 'email' ? this.setState({email: event.target.value}) : this.setState({password: event.target.value})
-    };
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.onSignIn({
+            username: this.state.username,
+            password: this.state.password
+        });
+    }
 
     render(){
         
         return(
             <div className="login">
-                <form className="loginForm" onSubmit={this.handleSubmit}>
+                <form className="loginForm" onSubmit={this.handleSubmit.bind(this)}>
                     <legend className="loginLegend">Sign In</legend>
                     <Required className='required'/>
                     <label className="email">
                         Email Address<Star/><br/>
-                        <input
-                            autoFocus
+                        <FormControl
                             type="email"
+                            name="username"
+                            onChange={e=>{
+                                this.setState({[e.target.name]: e.target.value});
+                            }}
+                            placeholder="Enter Username"
+                            value={this.state.username}
                             id="email"
-                            value={this.state.email}
-                            onChange={this.handleChange}
                         />
                     </label>
                     <label className="pwd">
                         Password<Star/> <br/>
-                        <input
+                        <FormControl
                             type="password"
-                            id="password"
+                            name="password"
+                            onChange={e=>{
+                                this.setState({[e.target.name]: e.target.value});
+                            }}
+                            placeholder="Enter Password"
                             value={this.state.password}
-                            onChange={this.handleChange}
+                            id="password"
                         />
                     </label>
-                    {/* <span className="box">
-                        <span className="overlay">
-                        </span>
-                        <LoginButton onClick={(e)=>{this.handleLoginClick(e)}} onSubmit={this.validateForm} className="loginButton"/>
-                        {/* <button
-                        disabled={!this.validateForm()}
-                        type="submit"
-                        className="loginButton"
-                        >
-                            LOGIN
-                        </button> */}
-                    {/* </span> */}
+                    <button type="submit" className="signinButton">
+                        Sign In
+                    </button>
                 </form>
             </div>
         );
     }
 }
+
+SignIn.propTypes ={
+    onSignIn: PropTypes.func.isRequired
+};
+
+export default SignIn;
