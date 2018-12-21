@@ -88,11 +88,6 @@ class App extends Component {
           render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
         />
       </Switch>
-      // <SignUpSignInPage 
-      //   error={this.state.signUpSignInError} 
-      //   onSignUp={this.handleSignUp}
-      //   onSignIn={this.handleSignIn} 
-      // />
     );
   }
 
@@ -100,14 +95,10 @@ class App extends Component {
     return(
       <div className="page">
         <Switch>
-          {/* <Route exact path="/" render={() => <h1>I am protected!</h1>} /> */}
-          <Route path="/signup" component={NewUserDataPage}/>
+          <Route exact path="/" render={() => <h1>I am protected!</h1>} />
+          {/* <Route path="/signup" component={NewUserDataPage}/> */}
           <Route path="/classdata" component={ClassDataPage}/>
           <Route exact path="/secret" component={Secret}/>
-          <Route
-            path='/'
-            render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
-          />
         </Switch>
       </div>
     )
@@ -124,16 +115,16 @@ class App extends Component {
       return (
         <BrowserRouter>
           <div className="App">
+            <Header/>
+            <Navbar/>
             <TopNavbar
               showNavItems={this.state.authenticated} 
               onSignOut={this.handleSignOut}
             />
-            <Header/>
-            <Navbar/>
-            {whatToShow}
-            {/* <div className="page">
+            {/* {whatToShow} */}
+            <div className="page">
               {whatToShow}
-             </div> */}
+             </div>
           </div>
         </BrowserRouter>
       ); 

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import SideNav from './SideNav';
+// import SideNav from './SideNav';
 
 export default class Navbar extends Component{
     state = {
@@ -29,7 +29,7 @@ export default class Navbar extends Component{
                 </a> 
                 <div className="dropdown">
                     <div className={className} id="myDropdown">
-                        <SideNav/>
+                        {/* <SideNav/> */}
                         {/* <a>Log In</a>
                         <a>Sign Up</a> */}
                     </div>
