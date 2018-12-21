@@ -6,14 +6,16 @@ import Navbar from './components/Navbar';
 import SignUpSignInPage from './components/SignUpSignInPage';
 import NewUserDataPage from './components/NewUserDataPage';
 import ClassDataPage from './components/ClassDataPage';
+import Secret from './components/Secret';
+import TopNavbar from './components/TopNavbar';
 
 class App extends Component {
   constructor(){
     super();
-    this.state={
+    this.state = {
       signUpSignInError: "",
       authenticated: localStorage.getItem("token") || false
-    }
+    };
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
@@ -21,6 +23,7 @@ class App extends Component {
 
   handleSignUp(credentials){
     const { username, password, confirmPassword } = credentials;
+    console.log(credentials)
     if(!username.trim() || !password.trim()){
       this.setState({
         signUpSignInError: "Must provide all fields."
@@ -44,7 +47,8 @@ class App extends Component {
   }
 
   handleSignIn(credentials) {
-    // Handle Sign Up
+    // Handle Sign In
+    console.log(credentials)
     const { username, password } = credentials;
     if (!username.trim() || !password.trim() ) {
       this.setState({
@@ -76,23 +80,34 @@ class App extends Component {
     });
   }
 
-  renderSignUpSignIn(){
-    return(
-      <SignUpSignInPage
-        error={this.state.signUpSignInError}
-        onSignUp={this.handleSignUp}
-        onSignIn={this.handleSignIn}
-      />
-    )
+  renderSignUpSignIn() {
+    return (
+      <Switch>
+        <Route
+          path='/'
+          render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
+        />
+      </Switch>
+      // <SignUpSignInPage 
+      //   error={this.state.signUpSignInError} 
+      //   onSignUp={this.handleSignUp}
+      //   onSignIn={this.handleSignIn} 
+      // />
+    );
   }
 
   renderApp(){
     return(
       <div className="page">
         <Switch>
+          {/* <Route exact path="/" render={() => <h1>I am protected!</h1>} /> */}
           <Route path="/signup" component={NewUserDataPage}/>
           <Route path="/classdata" component={ClassDataPage}/>
-          <Route path='/' component={SignUpSignInPage}/>
+          <Route exact path="/secret" component={Secret}/>
+          <Route
+            path='/'
+            render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
+          />
         </Switch>
       </div>
     )
@@ -100,6 +115,7 @@ class App extends Component {
  
   render() {
     let whatToShow = "";
+    console.log()
     if(this.state.authenticated){
       whatToShow = this.renderApp();
     } else {
@@ -108,11 +124,16 @@ class App extends Component {
       return (
         <BrowserRouter>
           <div className="App">
+            <TopNavbar
+              showNavItems={this.state.authenticated} 
+              onSignOut={this.handleSignOut}
+            />
             <Header/>
             <Navbar/>
-            <div className="page">
+            {whatToShow}
+            {/* <div className="page">
               {whatToShow}
-             </div>
+             </div> */}
           </div>
         </BrowserRouter>
       ); 

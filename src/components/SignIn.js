@@ -4,17 +4,18 @@ import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
 import Required from './Required';
 import Star from './Star';
 
+//this is the old login component
 class SignIn extends Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             username: "",
             password: ""
         };
     }
 
-    handleSubmit(e){
-        e.preventDefault();
+    handleSubmit(event){
+        event.preventDefault();
         this.props.onSignIn({
             username: this.state.username,
             password: this.state.password
@@ -22,7 +23,7 @@ class SignIn extends Component {
     }
 
     render(){
-        
+        console.log('PROPS: ', this.props)
         return(
             <div className="login">
                 <form className="loginForm" onSubmit={this.handleSubmit.bind(this)}>
@@ -54,9 +55,9 @@ class SignIn extends Component {
                             id="password"
                         />
                     </label>
-                    <button type="submit" className="signinButton">
+                    <Button type="submit" className="signinButton">
                         Sign In
-                    </button>
+                    </Button>
                 </form>
             </div>
         );

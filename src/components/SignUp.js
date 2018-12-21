@@ -16,9 +16,9 @@ class SignUp extends Component{
         };
     }
 
-    handleSubmit(e){
-        console.log('FORM: ', e)
-        e.preventDefault();
+    handleSubmit(event){
+        console.log('FORM: ', event)
+        event.preventDefault();
         this.props.onSignUp({
             username: this.state.username,
             password: this.state.password,
@@ -33,7 +33,7 @@ class SignUp extends Component{
                 <form className="signupForm" onSubmit={this.handleSubmit.bind(this)}>
                     <legend className="signupLegend">Sign Up</legend>
                     <Required className='required'/>
-                    <label className="email">
+                    <label className="signupemail">
                         Email Address<Star/><br/>
                         <FormControl
                             type="email"
@@ -43,9 +43,10 @@ class SignUp extends Component{
                             }}
                             placeholder="Enter Username"
                             value={this.state.username}
+                            id="email2"
                         />
                     </label>
-                    <label className="pwd">
+                    <label className="signuppwd">
                         Password<Star/> <br/>
                         <FormControl
                             type="password"
@@ -54,7 +55,8 @@ class SignUp extends Component{
                                 this.setState({[e.target.name]: e.target.value});
                             }}
                             placeholder="Enter Password"
-                            value={this.state.password}   
+                            value={this.state.password} 
+                            id="pwd2"  
                         />
                     </label>
                     <label className="confirmpwd">
@@ -67,11 +69,12 @@ class SignUp extends Component{
                             }}
                             placeholder="Confirm Password"
                             value={this.state.confirmPassword}
+                            id="pwd3"
                         />
                     </label>
-                    <button type="submit" className="signupButton">
+                    <Button type="submit" className="signupButton">
                         Sign Up
-                    </button>
+                    </Button>
                 </form>
             </div>
         );
