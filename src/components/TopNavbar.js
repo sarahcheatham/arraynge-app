@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const TopNavbar = (props) => {
   return (
-    <Navbar inverse collapseOnSelect>
+    <Navbar inverse collapseOnSelect className="navie">
       <Navbar.Collapse>
         <Nav pullRight>
           <NavItem onClick={props.onSignOut}>Sign Out</NavItem>

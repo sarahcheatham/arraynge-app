@@ -9,6 +9,7 @@ import ClassDataPage from './components/ClassDataPage';
 import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
 
+
 class App extends Component {
   constructor(){
     super();
@@ -87,6 +88,7 @@ class App extends Component {
           path='/'
           render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
         />
+        <Route path="/signup" component={NewUserDataPage}/>
       </Switch>
     );
   }
@@ -96,7 +98,7 @@ class App extends Component {
       <div className="page">
         <Switch>
           <Route exact path="/" render={() => <h1>I am protected!</h1>} />
-          {/* <Route path="/signup" component={NewUserDataPage}/> */}
+          <Route path="/signup" component={NewUserDataPage}/>
           <Route path="/classdata" component={ClassDataPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>
@@ -121,7 +123,6 @@ class App extends Component {
               showNavItems={this.state.authenticated} 
               onSignOut={this.handleSignOut}
             />
-            {/* {whatToShow} */}
             <div className="page">
               {whatToShow}
              </div>

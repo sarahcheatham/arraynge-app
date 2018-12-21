@@ -2,8 +2,6 @@ import React, {Component} from "react";
 import PropTypes from 'prop-types';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-// import SignInButton from './SignInButton';
-// import SignUpButton from './SignUpButton';
 import { Alert } from 'react-bootstrap';
 
 class SignUpSignInPage extends Component{
@@ -18,8 +16,8 @@ class SignUpSignInPage extends Component{
         return(
             <div className="loginPage">
                 {this.props.error && this.renderError()}
-                <SignUp onSignUp={this.props.onSignUp} />
                 <SignIn onSignIn={this.props.onSignIn} />
+                <SignUp onSignUp={this.props.onSignUp} />
             </div>
         )
     }

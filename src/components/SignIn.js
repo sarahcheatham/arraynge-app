@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
-import Required from './Required';
+import { FormControl, Button } from 'react-bootstrap';
+// import Required from './Required';
 import Star from './Star';
 
 //this is the old login component
@@ -27,8 +27,8 @@ class SignIn extends Component {
         return(
             <div className="login">
                 <form className="loginForm" onSubmit={this.handleSubmit.bind(this)}>
-                    <legend className="loginLegend">Sign In</legend>
-                    <Required className='required'/>
+                    <legend className="loginLegend">SIGN IN</legend>
+                    {/* <Required className='required'/> */}
                     <label className="email">
                         Email Address<Star/><br/>
                         <FormControl
@@ -56,7 +56,7 @@ class SignIn extends Component {
                         />
                     </label>
                     <Button type="submit" className="signinButton">
-                        Sign In
+                        SIGN IN
                     </Button>
                 </form>
             </div>
