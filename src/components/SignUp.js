@@ -11,7 +11,9 @@ class SignUp extends Component{
         this.state = {
             username: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            firstName: "",
+            lastName: ""
         };
     }
 
@@ -21,7 +23,9 @@ class SignUp extends Component{
         this.props.onSignUp({
             username: this.state.username,
             password: this.state.password,
-            confirmPassword: this.state.confirmPassword
+            confirmPassword: this.state.confirmPassword,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName
         });
     }
 
@@ -32,6 +36,32 @@ class SignUp extends Component{
                 <form className="signupForm" onSubmit={this.handleSubmit.bind(this)}>
                     <legend className="signupLegend">CREATE AN ACCOUNT</legend>
                     {/* <Required className='required'/> */}
+                    <label className="userFirstName">
+                        First Name<Star/><br/>
+                        <FormControl
+                            type="text"
+                            name="firstName"
+                            onChange={e=>{
+                                this.setState({[e.target.name]: e.target.value});
+                            }}
+                            placeholder="Enter First Name"
+                            value={this.state.firstName}
+                            id="firstName"
+                        />
+                    </label>
+                    <label className="userLastName">
+                        Last Name<Star/><br/>
+                        <FormControl
+                            type="text"
+                            name="lastName"
+                            onChange={e=>{
+                                this.setState({[e.target.name]: e.target.value});
+                            }}
+                            placeholder="Enter Last Name"
+                            value={this.state.lastName}
+                            id="lastName"
+                        />
+                    </label>
                     <label className="signupemail">
                         Email Address<Star/><br/>
                         <FormControl

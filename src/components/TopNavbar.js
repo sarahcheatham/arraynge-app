@@ -8,7 +8,7 @@ const TopNavbar = (props) => {
     <Navbar inverse collapseOnSelect className="navie">
       <Navbar.Collapse>
         <Nav pullRight>
-          <NavItem onClick={props.onSignOut}>Sign Out</NavItem>
+          <NavItem onClick={props.onSignOut} className="signoutButton">Sign Out</NavItem>
         </Nav>
         <Nav pullRight>
           <Link to="/secret"><Navbar.Text>Secret</Navbar.Text></Link>

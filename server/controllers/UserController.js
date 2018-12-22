@@ -3,7 +3,7 @@ const tokenForUser = require("../services/token").tokenForUser;
 const hash = require("../services/hash").hash;
 
 function create(req, res, next) {
-  const { username, password } = req.body;
+  const { firstName, lastName, username, password } = req.body;
   const u = username;
   // If no username or password was supplied return an error
   if (!username || !password) {
@@ -19,17 +19,17 @@ function create(req, res, next) {
       return res.status(422).json({ error: "Username is in use" });
     }
     console.log("This username is free to use");
-    saveUser(username,password,(token) => {
+    saveUser(firstName, lastName, username,password,(token) => {
       res.json(token);
     });
   })
   .catch(err => next(err));
 }
 
-function saveUser(username,password,done) {
+function saveUser(firstName, lastName, username,password,done) {
   hash(password, null,function (hashedPassword) {
     // Create a new user with the supplied username, and the hashed password
-    const user = new User({ username, password: hashedPassword });
+    const user = new User({ firstName, lastName, username, password: hashedPassword });
     console.log("Saving the user");
     user.save()
       .then(u => {
