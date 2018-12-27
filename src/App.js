@@ -9,6 +9,7 @@ import ClassDataPage from './components/ClassDataPage';
 import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
 import WelcomePage from './components/WelcomePage';
+import MyArrayngementsPage from './components/MyArrayngementsPage';
 
 
 class App extends Component {
@@ -105,6 +106,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={()=> <WelcomePage/>}/>
           <Route path="/classdata" component={ClassDataPage}/>
+          <Route path="/myarrayngements" component={MyArrayngementsPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>
       </div>

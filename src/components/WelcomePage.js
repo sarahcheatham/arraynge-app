@@ -45,7 +45,11 @@ class WelcomePage extends Component{
                         <p className='welcometext'>OR</p>
                     </Row>
                     <Row>
-                        <Button className="viewarrbutton">VIEW ARRAYNGEMENTS</Button>
+                        <Button className="viewarrbutton">
+                            <Link to={'/myarrayngements'} style={styles}>
+                                VIEW ARRAYNGEMENTS
+                            </Link>
+                        </Button>
                     </Row>
                 </Col>
             </Grid>

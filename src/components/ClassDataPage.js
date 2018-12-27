@@ -36,7 +36,7 @@ export default class ClassDataPage extends Component{
                     <p className="classDataText">Choose the subject that you would like to arraynge</p>
                     <div className="subjectButtons">
                         <ClassDataButton className="mathButton" text="MATH" onClick={(e)=>{this.handleSubjectClick(e)}}/>
-                        <ClassDataButton className="readingButton" text="READING"/>
+                        <ClassDataButton className="readingButton" text="READING" onClick={(e)=>{this.handleSubjectClick(e)}}/>
                     </div>
                 </span>
             </div>
