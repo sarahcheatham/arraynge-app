@@ -46,6 +46,9 @@ function startWebServer(){
   app.get("/api/secret", function (req, res) {
     res.send(`The current user is ${req.user.username}`);
   });
+  app.get("/api/welcome", function(req, res){
+    res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
+  })
 
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
   app.get('*', function(req, res) {

@@ -8,6 +8,7 @@ import NewUserDataPage from './components/NewUserDataPage';
 import ClassDataPage from './components/ClassDataPage';
 import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
+import WelcomePage from './components/WelcomePage';
 
 
 class App extends Component {
@@ -48,7 +49,6 @@ class App extends Component {
   }
 
   handleSignIn(credentials) {
-    // Handle Sign In
     console.log(credentials)
     const { username, password } = credentials;
     if (!username.trim() || !password.trim() ) {
@@ -96,7 +96,8 @@ class App extends Component {
     return(
       <div className="page">
         <Switch>
-          <Route exact path="/" render={() => <h1>I am protected!</h1>} />
+          <Route exact path="/" render={()=> <WelcomePage/>}/>
+          {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
           <Route path="/classdata" component={ClassDataPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>
