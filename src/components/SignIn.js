@@ -23,7 +23,7 @@ class SignIn extends Component {
     }
 
     render(){
-        console.log('PROPS: ', this.props)
+        // console.log('PROPS: ', this.props)
         return(
             <div className="login">
                 <form className="loginForm" onSubmit={this.handleSubmit.bind(this)}>

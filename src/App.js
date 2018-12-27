@@ -27,7 +27,7 @@ class App extends Component {
     console.log(credentials)
     if(!username.trim() || !password.trim()){
       this.setState({
-        signUpSignInError: "Must provide all fields."
+        signUpSignInError: "Must Provide All Fields"
       });
     } else {
       fetch("/api/users", {
@@ -88,7 +88,6 @@ class App extends Component {
           path='/'
           render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
         />
-        <Route path="/signup" component={NewUserDataPage}/>
       </Switch>
     );
   }
@@ -98,7 +97,6 @@ class App extends Component {
       <div className="page">
         <Switch>
           <Route exact path="/" render={() => <h1>I am protected!</h1>} />
-          <Route path="/signup" component={NewUserDataPage}/>
           <Route path="/classdata" component={ClassDataPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>

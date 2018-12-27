@@ -13,12 +13,20 @@ class SignUp extends Component{
             password: "",
             confirmPassword: "",
             firstName: "",
-            lastName: ""
+            lastName: "",
+            checkPasswordsMatch: null
         };
     }
+    // checkPasswordsMatch(value){
+    //     let match = this.state.password === this.state.confirmPassword;
+    //     if(!match){
+    //         this.setState({checkPasswordsMatch: false})
+    //     }
+    //     this.setState({checkPasswordsMatch: true})
+    // }
 
     handleSubmit(event){
-        console.log('FORM: ', event)
+        // console.log('FORM: ', event)
         event.preventDefault();
         this.props.onSignUp({
             username: this.state.username,
@@ -26,11 +34,11 @@ class SignUp extends Component{
             confirmPassword: this.state.confirmPassword,
             firstName: this.state.firstName,
             lastName: this.state.lastName
-        });
+        });  
     }
 
     render(){
-        console.log('PROPS: ', this.props)
+        // console.log('PROPS: ', this.props)
         return(
             <div className="signup">
                 <form className="signupForm" onSubmit={this.handleSubmit.bind(this)}>
