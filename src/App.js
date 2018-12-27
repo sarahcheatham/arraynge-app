@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import SignUpSignInPage from './components/SignUpSignInPage';
-import NewUserDataPage from './components/NewUserDataPage';
 import ClassDataPage from './components/ClassDataPage';
 import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
@@ -81,12 +81,19 @@ class App extends Component {
     });
   }
 
+  renderError(){
+    return(
+        <Alert bsStyle="warning">
+            <strong className="signupsigninerr">{this.props.err}</strong>
+        </Alert>
+    )
+  }
   renderSignUpSignIn() {
     return (
       <Switch>
         <Route
           path='/'
-          render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} />}
+          render={(props)=> <SignUpSignInPage {...props} err={this.state.signUpSignInError} onSignUp={this.handleSignUp} onSignIn={this.handleSignIn} error={this.renderError}/>}
         />
       </Switch>
     );
@@ -97,7 +104,6 @@ class App extends Component {
       <div className="page">
         <Switch>
           <Route exact path="/" render={()=> <WelcomePage/>}/>
-          {/* <Route exact path="/" render={() => <h1>Welcome!</h1>} /> */}
           <Route path="/classdata" component={ClassDataPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>

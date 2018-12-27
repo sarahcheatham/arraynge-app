@@ -1,11 +1,14 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
+import SubHeader from './SubHeader';
+import { Grid, Col, Row, FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class WelcomePage extends Component{
     constructor(){
         super();
         this.state={
-            name: ""
+            welcomeMessage: ""
         };
     }
     componentDidMount(){
@@ -13,15 +16,39 @@ class WelcomePage extends Component{
             return res.text();
         }).then((data)=>{
             this.setState({
-                name: data
+                welcomeMessage: data
             });
         });
     }
     render(){
+        const styles = {
+            color: 'white',
+            textDecoration: 'none'
+        }
         return(
-            <div>
-                {this.state.name}
-            </div>
+            <Grid className="welcomepage">
+                <Col>
+                    <Row>
+                        <SubHeader text={this.state.welcomeMessage}/>
+                    </Row>
+                    <Row>
+                        <p className='welcometext'>What would you like to do?</p>
+                    </Row>
+                    <Row>
+                        <Button className="newarrbutton">
+                            <Link to={'/classdata'} style={styles}>
+                                CREATE A NEW ARRAYNGEMENT
+                            </Link>
+                        </Button>
+                    </Row>
+                    <Row>
+                        <p className='welcometext'>OR</p>
+                    </Row>
+                    <Row>
+                        <Button className="viewarrbutton">VIEW ARRAYNGEMENTS</Button>
+                    </Row>
+                </Col>
+            </Grid>
         )
     }
 }

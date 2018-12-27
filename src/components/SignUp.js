@@ -14,7 +14,6 @@ class SignUp extends Component{
             confirmPassword: "",
             firstName: "",
             lastName: "",
-            checkPasswordsMatch: null
         };
     }
     // checkPasswordsMatch(value){

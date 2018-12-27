@@ -8,7 +8,7 @@ import { Alert } from 'react-bootstrap';
 class SignUpSignInPage extends Component{
     renderError(){
         return(
-            <Alert bsStyle="danger">
+            <Alert bsStyle="warning">
                 <strong className="signupsigninerr">{this.props.err}</strong>
             </Alert>
         )
@@ -16,8 +16,8 @@ class SignUpSignInPage extends Component{
     render(){
         return(
             <div className="loginPage">
-                <SignIn onSignIn={this.props.onSignIn} />
-                <SignUp onSignUp={this.props.onSignUp} />
+                <SignIn onSignIn={this.props.onSignIn} err={this.renderError}/>
+                <SignUp onSignUp={this.props.onSignUp} err={this.renderError}/>
                 {this.props.err && this.renderError()}
             </div>
         )

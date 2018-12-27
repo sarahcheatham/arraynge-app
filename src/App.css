@@ -50,6 +50,8 @@ body > #root > div {
   display: flex;
   justify-content: center;
   align-content: flex-start;
+  background-color: #FCF8E5;
+  color: rgb(134, 129, 66);
 }
 /* end SignUpSignInPage component */
 
@@ -361,6 +363,36 @@ body > #root > div {
 
 /* end Navbar component */
 
+/* start WelcomePage component */
+.newarrbutton{
+  color: #f2edd7;
+  background-color: #D13076;
+  height: 50px;
+  width: 25%;
+  align-self: center; 
+  justify-self: center;
+  margin-top: 20px;
+}
+
+.viewarrbutton{
+  color: #f2edd7;
+  background-color: #0C4C8A;
+  height: 50px;
+  width: 25%;
+  align-self: center; 
+  justify-self: center;
+  margin-top: 20px;
+}
+.welcometext{
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 18px; 
+  color: #343148;
+  align-self: start;
+}
+/* end WelcomePage component */
+
 /* start classDataPage Component */
 .classDataPage{
   display: grid;
@@ -396,11 +428,6 @@ body > #root > div {
   margin-top: 15px;
   margin-left: 25px;
   margin-right: 0px;
-  border-left: 5px solid #277273;
-  border-top: 5px solid #277273;
-  border-right: 2.5px solid #277273;
-  border-bottom: none;
-  background-color: #C6E2DA;
 }
 .subject{
   grid-column: 2 / 3;
@@ -408,11 +435,6 @@ body > #root > div {
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 25px;
-  border-left: 2.5px solid #277273;
-  border-top: 5px solid #277273;
-  border-right: 5px solid #277273;
-  border-bottom: 5px solid #277273;
-  background-color: #C6E2DA;
 }
 .subjectButtons{
   display: flex;
@@ -448,11 +470,6 @@ body > #root > div {
   margin-left: 25px;
   margin-right: 0px;
   padding-top: 15px;
-  border-left: 5px solid #277273;
-  border-top: none;
-  border-right: 2.5px solid #277273;
-  border-bottom: 5px solid #277273;
-  background-color: #C6E2DA;
 }
 .mainDropMenuButton{
   grid-column: 2 / 3;
@@ -483,4 +500,3 @@ body > #root > div {
 ul {
   list-style: none;
 }
-
