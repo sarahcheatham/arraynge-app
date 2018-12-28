@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import SubHeader from './SubHeader';
-import { Grid, Col, Row, FormControl, Button } from 'react-bootstrap';
+import { Grid, Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 class WelcomePage extends Component{

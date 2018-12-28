@@ -12,6 +12,9 @@ body > #root > div {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
+ul {
+  list-style: none;
+}
 /* start Header component */
 .header {
   grid-column: 2 / 3;
@@ -366,7 +369,8 @@ body > #root > div {
 /* start WelcomePage component */
 .newarrbutton{
   color: #f2edd7;
-  background-color: #D13076;
+  /* background-color: #D13076; */
+  background-color: #C16278;
   height: 50px;
   width: 25%;
   align-self: center; 
@@ -376,7 +380,8 @@ body > #root > div {
 
 .viewarrbutton{
   color: #f2edd7;
-  background-color: #0C4C8A;
+  /* background-color: #0C4C8A; */
+  background-color: #4F6871;
   height: 50px;
   width: 25%;
   align-self: center; 
@@ -497,6 +502,59 @@ body > #root > div {
 
 
 /* end DropMenu component */
-ul {
-  list-style: none;
+
+/* start StudentDataPage component */
+.studentdatapage{
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
 }
+#formInlineStudent{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  width: 300px;
+  height: 20px;
+  margin-left: 25px;
+}
+#formInlineBoyScore{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  width: 100px;
+  height: 20px;
+}
+#formInlineEoyGoal{
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+  width: 100px;
+  height: 20px;
+}
+#formInlineMoyScore{
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+  width: 100px;
+  height: 20px;
+}
+#formInlineEoyScore{
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
+  width: 100px;
+  height: 20px;
+}
+.studentdatalabels{
+  display: flex;
+}
+.studentdatainputs{
+  display: flex;
+  margin-right: 35px;
+}
+.studentdataname{
+  display: flex;
+  margin-left: 25px;
+}
+
+/* end StudentDataPage component */

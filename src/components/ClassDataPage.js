@@ -3,7 +3,7 @@ import DropMenu from './DropMenu';
 import SubHeader from './SubHeader';
 import ClassDataButton from './ClassDataButton';
 
-export default class ClassDataPage extends Component{
+class ClassDataPage extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -43,3 +43,4 @@ export default class ClassDataPage extends Component{
         )
     }
 }
+export default ClassDataPage;
