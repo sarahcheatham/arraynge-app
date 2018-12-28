@@ -2,9 +2,6 @@ import React, {Component} from "react";
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
 class StudentForm extends Component{
-    // constructor(props){
-    //     super(props);
-    // }
     render(){
         return(
             <form>
