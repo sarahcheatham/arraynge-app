@@ -19,7 +19,7 @@ class StudentDataPage extends Component{
             studentComponents.push(sc)
         }
         return(
-            <div>
+            <div className="studentdatacontainer">
                 <form>
                     <h2 className="subjectheader">MATH</h2>
                     <h2 className="studentdatasubheader">ENTER STUDENT DATA</h2>

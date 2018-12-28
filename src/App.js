@@ -58,7 +58,6 @@ class App extends Component {
         signUpSignInError: "Must Provide All Fields"
       });
     } else {
-
       fetch("/api/sessions", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
