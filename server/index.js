@@ -8,8 +8,9 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/UserRoutes");
 const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
-const studentRoutes = require("./routes/StudentRoutes");
-const classRoutes = require("./routes/ClassRoutes");
+// const studentRoutes = require("./routes/StudentRoutes");
+// const classRoutes = require("./routes/ClassRoutes");
+const arrayngmentRoutes = require("./routes/ArrayngementRoutes");
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
@@ -42,8 +43,9 @@ function startWebServer(){
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
   //secure
-  app.use(classRoutes);
-  app.use(studentRoutes);
+  // app.use(classRoutes);
+  // app.use(studentRoutes);
+  app.use(arrayngmentRoutes)
 
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
@@ -54,8 +56,11 @@ function startWebServer(){
   app.get("/api/welcome", function(req, res){
     res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
   })
-  app.get("/api/studentdata", function(req, res){
-    res.send(`${req.student}`)
+  // app.get("/api/studentdata", function(req, res){
+  //   res.send(`${req.student}`)
+  // })
+  app.get("/api/arrayngements", function(req, res){
+    res.send(req.arrayngements)
   })
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
 
