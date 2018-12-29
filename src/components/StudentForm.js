@@ -9,10 +9,10 @@ class StudentForm extends Component{
         super();
         this.state = {
             studentName: '',
-            BOYscore: null,
-            EOYgoal: null,
-            MOYscore: null,
-            EOYscore: null
+            BOYscore: '',
+            EOYgoal: '',
+            MOYscore: '',
+            EOYscore: ''
         };
     }
 

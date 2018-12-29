@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/UserRoutes");
 const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
+const studentRoutes = require("./routes/StudentRoutes");
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
@@ -40,6 +41,7 @@ function startWebServer(){
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
   //secure
+  app.use(studentRoutes);
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
   });
@@ -49,8 +51,11 @@ function startWebServer(){
   app.get("/api/welcome", function(req, res){
     res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
   })
-
+  app.get("/api/studentdata", function(req, res){
+    res.send(`${req.student}`)
+  })
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
+
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
   });

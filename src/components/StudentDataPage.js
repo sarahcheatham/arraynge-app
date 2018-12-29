@@ -7,7 +7,7 @@ class StudentDataPage extends Component{
     constructor(){
         super();
         this.state = {
-            numberofstudents: null
+            numberofstudents: ''
         };
     }
 
@@ -15,7 +15,7 @@ class StudentDataPage extends Component{
         let studentComponents = [];
 
         for(let i = 0; i < this.state.numberofstudents; i++){
-            let sc = <StudentForm/>
+            let sc = <StudentForm key={i}/>
             studentComponents.push(sc)
         }
         return(
