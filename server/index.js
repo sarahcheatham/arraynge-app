@@ -9,6 +9,7 @@ const userRoutes = require("./routes/UserRoutes");
 const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
+const classRoutes = require("./routes/ClassRoutes");
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
@@ -41,7 +42,9 @@ function startWebServer(){
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
   //secure
+  app.use(classRoutes);
   app.use(studentRoutes);
+
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
   });
