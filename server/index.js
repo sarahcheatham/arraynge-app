@@ -27,8 +27,6 @@ mongoose.connect(process.env.mongodburi).then(
    }
 );
 
-
-
 function startWebServer(){
 
   const app = express();
@@ -55,16 +53,16 @@ function startWebServer(){
   });
   app.get("/api/welcome", function(req, res){
     res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
-  })
-  // app.get("/api/studentdata", function(req, res){
-  //   res.send(`${req.student}`)
-  // })
+  });
   app.get("/api/classdata", function(req, res){
+    res.send(`${req.classdata.gradelevel} ${req.classdata.subject}`)
+  });
+  app.get("/api/studentdata", function(req, res){
     res.send(req.body)
-  })
+  });
   app.get("/api/arrayngements", function(req, res){
     res.send(req.body)
-  })
+  });
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
 
   app.get('*', function(req, res) {

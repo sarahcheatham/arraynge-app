@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 // import PropTypes from 'prop-types';
 import SubHeader from './SubHeader';
-import ClassDataButton from './ClassDataButton';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -45,9 +44,9 @@ class ClassDataPage extends Component{
 
     subjectClick(event){
         event.preventDefault();
-        console.log(event.target.innerHTML.toLowerCase())
+        console.log(event.target.innerHTML.toUpperCase())
         this.setState({
-            subject: event.target.innerHTML.toLowerCase()
+            subject: event.target.innerHTML.toUpperCase()
         })
     }
 
@@ -135,11 +134,11 @@ class ClassDataPage extends Component{
                         </Button>
                     </div>
                 </span>
-                <Button type="submit" className="classdatabutton" onClick={this.handleSubmit}>
-                    <Link to={'/studentdata'} style={styles}>
+                <Link to={'/studentdata'} style={styles} className="classdatabutton">
+                    <Button type="submit" className="classdatabutton" onClick={this.handleSubmit}>
                         SAVE
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
             </form>
         )
     }
