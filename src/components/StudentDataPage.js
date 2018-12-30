@@ -10,8 +10,9 @@ class StudentDataPage extends Component{
             numberofstudents: "",
             data: [],
             gradelevel: "",
-            subject: ""
+            subject: "",
         };
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
 
     componentDidMount(){
@@ -26,11 +27,40 @@ class StudentDataPage extends Component{
         
     }
 
+    handleFormSubmit(event){
+
+        this.setState({
+            name: event.name,
+            score: event.score
+            // score: [
+            //    {BOYscore: event.BOYscore},
+            //    {EOYgoal: event.EOYgoal},
+            //    {MOYscore: event.MOYscore},
+            //    {EOYscore: event.EOYscore}
+            // ]
+        });
+        const name = this.state.name;
+        console.log(name)
+        const score = this.state.score;
+        let options = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ name, score })
+        }
+        fetch("/api/studentdata", options).then((res)=>{
+            return res.json()
+        }).then((studentdata)=>{
+            console.log(studentdata)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     render(){
         let studentComponents = [];
 
         for(let i = 0; i < this.state.numberofstudents; i++){
-            let sc = <StudentForm key={i}/>
+            let sc = <StudentForm key={i} onFormSubmit={this.handleFormSubmit}/>
             studentComponents.push(sc)
         }
         return(
@@ -47,7 +77,7 @@ class StudentDataPage extends Component{
                                 this.setState({[e.target.name]: e.target.value});
                             }}
                             value={this.state.numberofstudents}
-                            />
+                        />
                     </FormGroup>
                 </form>
                 {studentComponents}

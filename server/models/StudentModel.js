@@ -18,8 +18,7 @@ const scoreSchema = new Schema({
 
 const studentSchema = new Schema({
     name:{
-        type: String,
-        required: true
+        type: String
     },
     score: [scoreSchema]
 });

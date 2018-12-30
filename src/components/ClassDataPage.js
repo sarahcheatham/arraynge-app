@@ -124,12 +124,9 @@ class ClassDataPage extends Component{
                     <p className="classDataText">Choose the subject that you would like to arraynge</p>
                     <div className="subjectButtons">
                         <Button type="button" className="mathButton" onClick={this.subjectClick}>
-                            {/* <Link to={'/studentdata'} style={styles} onClick={this.subjectClick}> */}
                             MATH
-                            {/* </Link> */}
                         </Button>
                         <Button type="button" className="readingButton" onClick={this.subjectClick}>
-                            {/* <Link to={'/studentdata'} style={styles} > */}
                             READING
                         </Button>
                     </div>

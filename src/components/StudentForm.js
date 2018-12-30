@@ -8,27 +8,32 @@ class StudentForm extends Component{
     constructor(){
         super();
         this.state = {
-            studentName: '',
-            BOYscore: '',
-            EOYgoal: '',
-            MOYscore: '',
-            EOYscore: ''
+            name: '',
+            score: [
+                {BOYscore: ''},
+                {EOYgoal: ''},
+                {MOYscore: ''},
+                {EOYscore: ''}
+            ]
         };
     }
 
     handleSubmit(event){
-        this.setState({
-            studentName: this.state.studentName,
-            BOYscore: this.state.BOYscore,
-            EOYgoal: this.state.EOYgoal,
-            MOYscore: this.state.MOYscore,
-            EOYscore: this.state.EOYscore
+        event.preventDefault();
+        this.props.onFormSubmit({
+            name: this.state.name,
+            score:[
+                {BOYscore: this.state.BOYscore},
+                {EOYgoal: this.state.EOYgoal},
+                {MOYscore: this.state.MOYscore},
+                {EOYscore: this.state.EOYscore}
+            ]
         })
     }
 
     render(){
         return(
-            <form>
+            <form onSubmit={this.handleSubmit.bind(this)}>
                 <FormGroup className="studentdatapage">
                     <FormGroup controlId='formInlineStudent'>
                         <ControlLabel className="studentdataname">Student First Name:</ControlLabel>{' '}
@@ -36,11 +41,11 @@ class StudentForm extends Component{
                             type="text" 
                             placeholder="Jane Doe" 
                             className="studentdatainputs" 
-                            name="studentName" 
+                            name="name" 
                             onChange={e=>{
                                 this.setState({[e.target.name]: e.target.value});
                             }}
-                            value={this.state.studentName}
+                            value={this.state.name}
                         />
                     </FormGroup>{' '}
                     <FormGroup controlId="formInlineBoyScore">
@@ -104,4 +109,7 @@ class StudentForm extends Component{
         )
     }
 }
+StudentForm.propTypes ={
+    onFormSubmit: PropTypes.func.isRequired
+};
 export default StudentForm;
