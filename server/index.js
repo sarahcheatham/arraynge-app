@@ -8,8 +8,8 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/UserRoutes");
 const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
-// const studentRoutes = require("./routes/StudentRoutes");
-// const classRoutes = require("./routes/ClassRoutes");
+const studentRoutes = require("./routes/StudentRoutes");
+const classdataRoutes = require("./routes/ClassDataRoutes");
 const arrayngmentRoutes = require("./routes/ArrayngementRoutes");
 
 mongoose.set("debug", true);
@@ -43,8 +43,8 @@ function startWebServer(){
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
   //secure
-  // app.use(classRoutes);
-  // app.use(studentRoutes);
+  app.use(classdataRoutes);
+  app.use(studentRoutes);
   app.use(arrayngmentRoutes)
 
   app.get("/api/canigetthis", function (req, res) {
@@ -59,8 +59,11 @@ function startWebServer(){
   // app.get("/api/studentdata", function(req, res){
   //   res.send(`${req.student}`)
   // })
+  app.get("/api/classdata", function(req, res){
+    res.send(req.body)
+  })
   app.get("/api/arrayngements", function(req, res){
-    res.send(req.arrayngements)
+    res.send(req.body)
   })
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
 

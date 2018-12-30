@@ -1,14 +1,18 @@
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
-export default class DropMenu extends Component{
+class DropMenu extends Component{
     constructor(){
         super();
 
         this.state={
             showMenu: false,
+            gradelevel: ""
         }
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
+        this.gradeLevelClick = this.gradeLevelClick.bind(this);
     }
 
     showMenu(event){
@@ -26,12 +30,20 @@ export default class DropMenu extends Component{
         }
     }
 
+    gradeLevelClick(event){
+        event.preventDefault();
+        console.log(event.target.innerHTML)
+        this.setState({
+            gradelevel: event.target.innerHTML
+        })
+    }
+
     render(){
         return(
-            <div className={this.props.className}>
-                <button onClick={this.showMenu} className='mainDropMenuButton'>
+            <form className={this.props.className}>
+                <Button onClick={this.showMenu} className='mainDropMenuButton'>
                     SHOW GRADE LEVELS
-                </button>
+                </Button>
 
                 {
                     this.state.showMenu 
@@ -43,22 +55,27 @@ export default class DropMenu extends Component{
                                 this.dropdownMenu = element;
                             }}
                         >
-                            <button className='grades'>Kindergarten</button>
-                            <button className='grades'>First Grade</button>
-                            <button className='grades'>Second Grade</button>
-                            <button className='grades'>Third Grade</button>
-                            <button className='grades'>Fourth Grade</button>
-                            <button className='grades'>Fifth Grade</button>
-                            <button className='grades'>Six Grade</button>
-                            <button className='grades'>Seventh Grade</button>
-                            <button className='grades'>Eigth Grade</button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Kindergarten</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>First Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Second Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Third Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Fourth Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Fifth Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Six Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Seventh Grade</Button>
+                            <Button className='grades' onClick={this.gradeLevelClick}>Eigth Grade</Button>
                         </div>
                     ) 
                     : (
                         null
                     )
                 }
-            </div>
+            </form>
         );
     }
 }
+// DropMenu.propTypes ={
+//     onGradeLevelClick: PropTypes.func.isRequired
+// };
+
+export default DropMenu;

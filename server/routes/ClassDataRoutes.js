@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { list, show, create, update, remove } = require("../controllers/ClassController");
+const { list, show, create, update, remove } = require("../controllers/ClassDataController");
 
 router.get("/api/classdata", list);
 router.get("/api/classdata/:id", show);

@@ -1,20 +1,20 @@
-const ClassModel = require("../models/ClassModel");
+const ClassDataModel = require("../models/ClassDataModel");
 
 module.exports.list = (req, res)=>{
-    ClassModel.find({}).exec().then((classesdata)=>{
+    ClassDataModel.find({}).exec().then((classesdata)=>{
         return res.json(classesdata)
     })
 }
 
 module.exports.show = (req, res)=>{
-    ClassModel.findById(req.params.id).exec().then((classdata)=>{
+    ClassDataModel.findById(req.params.id).exec().then((classdata)=>{
         return res.json(classdata)
     })
 }
 
 module.exports.create = (req, res)=>{
-    const c = new ClassModel({
-        grade: req.body.grade,
+    const c = new ClassDataModel({
+        gradelevel: req.body.gradelevel,
         subject: req.body.subject
     });
     c.save().then(savedClass =>{

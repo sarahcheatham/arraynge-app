@@ -409,7 +409,7 @@ ul {
 .classDataPage{
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 75px 100px 1fr 1fr;
+  grid-template-rows: 75px 100px 1fr 1fr 1fr;
   font-family: acumin-pro, sans-serif;
   font-style: normal;
   font-weight: 100;
@@ -469,6 +469,15 @@ ul {
   margin-bottom: 20px;
   color: #343148;
   background-color: #EFEEE8;
+}
+.classdatabutton{
+  grid-column: 2 / 3;
+  width: 50%;
+  height: 50px;
+  border-radius: 5px;
+  justify-self: center;
+  margin-top: 50px;
+  margin-right: 30px;
 }
 /* end classDataPage Component */
 

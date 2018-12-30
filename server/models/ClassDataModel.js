@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const classSchema = new Schema({
-    grade: {
+const classDataSchema = new Schema({
+    gradelevel: {
         type: String
     },
     subject: {
@@ -10,4 +10,4 @@ const classSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model("Class", classSchema);
+module.exports = mongoose.model("Classdata", classDataSchema);
