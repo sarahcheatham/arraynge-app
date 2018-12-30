@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-class MyArrayngementsPage extends Component{
+class ArrayngementsPage extends Component{
     render(){
         return(
             <div>
                 My Arrayngements
             </div>
-        )
+        );
     }
 }
 
-export default MyArrayngementsPage;
+export default ArrayngementsPage;

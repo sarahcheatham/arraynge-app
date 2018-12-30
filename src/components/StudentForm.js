@@ -3,7 +3,6 @@ import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Image1 from '../images/content-save.png';
 
-
 class StudentForm extends Component{
     constructor(){
         super();
@@ -109,7 +108,9 @@ class StudentForm extends Component{
         )
     }
 }
-StudentForm.propTypes ={
-    onFormSubmit: PropTypes.func.isRequired
-};
+
+// StudentForm.propTypes ={
+//     onFormSubmit: PropTypes.func.isRequired
+// };
+
 export default StudentForm;

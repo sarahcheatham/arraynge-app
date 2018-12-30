@@ -24,24 +24,18 @@ class StudentDataPage extends Component{
             this.setState({gradelevel: item.gradelevel, subject: item.subject})
             })
         })
-        
     }
 
-    handleFormSubmit(event){
-
+    handleFormSubmit(studentdata){
+        console.log(studentdata)
         this.setState({
-            name: event.name,
-            score: event.score
-            // score: [
-            //    {BOYscore: event.BOYscore},
-            //    {EOYgoal: event.EOYgoal},
-            //    {MOYscore: event.MOYscore},
-            //    {EOYscore: event.EOYscore}
-            // ]
+            name: studentdata.name,
+            score: studentdata.score
         });
-        const name = this.state.name;
-        console.log(name)
-        const score = this.state.score;
+        const name = studentdata.name;
+        const score = studentdata.score;
+        // const name = this.state.name;
+        // const score = this.state.score;
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -49,8 +43,8 @@ class StudentDataPage extends Component{
         }
         fetch("/api/studentdata", options).then((res)=>{
             return res.json()
-        }).then((studentdata)=>{
-            console.log(studentdata)
+        }).then((res)=>{
+            console.log(res)
         }).catch((err)=>{
             console.log(err)
         })
