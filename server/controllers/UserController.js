@@ -11,7 +11,7 @@ function create(req, res, next) {
     .json({ error: "You must provide an username and password" });
   }
   console.log("Look for a user with the username",username);
-  User.findOne({ username: u}).exec()
+  User.findOne({ username: u }).exec()
   .then((existingUser) => {
       // If the user exist return an error on sign up
     if (existingUser) {
@@ -39,4 +39,19 @@ function saveUser(firstName, lastName, username,password,done) {
   });
 }
 
+function list(req, res, next){
+  User.find({}).exec().then((users)=>{
+    return res.json(users)
+  })
+}
+
+function show(req, res, next){
+  User.findById(req.params.id).exec().then((user)=>{
+    return res.json(user)
+})
+}
+
 exports.create = create;
+exports.list = list;
+exports.show = show;
+

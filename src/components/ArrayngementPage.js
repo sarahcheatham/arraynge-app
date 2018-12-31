@@ -21,7 +21,7 @@ class ArrayngementPage extends Component{
     render(){
         const students = this.state.students.slice();
         const student = students.map((student, index)=>{
-            return <li><div className="student">{student.name}</div></li>
+            return <li key={index}><div className="student">{student.name}</div></li>
         })
         return(
             <div className="arrayngementpage">

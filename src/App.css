@@ -617,6 +617,9 @@ ul {
 #formNumberOfStudents{
   color: #343148;
 }
+.continuebutton{
+  margin-bottom: 50px;
+}
 /* end StudentDataPage component */
 
 /* start ArrayngementPage component */
@@ -624,6 +627,7 @@ ul {
   display: grid;
   grid-template-columns: 225px 1fr;
   grid-template-rows: 75px 1fr;
+  background-color: #F9F6EF;
   /* margin-right: 20px; */
 }
 .studentlist{ 

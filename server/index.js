@@ -48,6 +48,9 @@ function startWebServer(){
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
   });
+  app.get("/api/users/:id", function (req, res){
+    res.send(`${req.user.userId}`)
+  })
   app.get("/api/secret", function (req, res) {
     res.send(`The current user is ${req.user.username}`);
   });
