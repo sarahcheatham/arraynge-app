@@ -60,9 +60,9 @@ function startWebServer(){
   app.get("/api/studentdata", function(req, res){
     res.send(req.body)
   });
-  app.get("/api/arrayngements", function(req, res){
-    res.send(req.body)
-  });
+  // app.get("/api/arrayngement", function(req, res){
+  //   res.send(`${req.student}`)
+  // });
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
 
   app.get('*', function(req, res) {

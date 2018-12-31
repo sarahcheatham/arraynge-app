@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import StudentForm from './StudentForm';
-import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 class StudentDataPage extends Component{
@@ -34,8 +35,6 @@ class StudentDataPage extends Component{
         });
         const name = studentdata.name;
         const score = studentdata.score;
-        // const name = this.state.name;
-        // const score = this.state.score;
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -51,8 +50,17 @@ class StudentDataPage extends Component{
     }
 
     render(){
+        let whatToShow = '';
+        const styles = {
+            color: 'black',
+            textDecoration: 'none'
+        }
+        if(this.state.numberofstudents !== ''){
+            whatToShow = <Button><Link to={'/arrayngement'} style={styles} className="continuebutton">Continue</Link></Button>;
+        } else {
+            whatToShow = '';
+        }
         let studentComponents = [];
-
         for(let i = 0; i < this.state.numberofstudents; i++){
             let sc = <StudentForm key={i} onFormSubmit={this.handleFormSubmit}/>
             studentComponents.push(sc)
@@ -75,6 +83,7 @@ class StudentDataPage extends Component{
                     </FormGroup>
                 </form>
                 {studentComponents}
+                {whatToShow}
             </div>
         )
     }

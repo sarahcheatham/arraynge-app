@@ -618,3 +618,58 @@ ul {
   color: #343148;
 }
 /* end StudentDataPage component */
+
+/* start ArrayngementPage component */
+.arrayngementpage{
+  display: grid;
+  grid-template-columns: 225px 1fr;
+  grid-template-rows: 75px 1fr;
+  /* margin-right: 20px; */
+}
+.studentlist{ 
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+.student{
+  display: flex;
+  padding-left: 35px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  background-color: #EEE1D0;
+}
+.inputbar{
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 75px;
+  background-color: #D7E1DF;
+}
+.studentlabel{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 50px;
+  font-family: nobel, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+}
+.arrayngementsubject{
+  grid-column: 5 / 6;
+  grid-row: 1 / 2;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 30px;
+  font-family: nobel, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  color: #627277
+}
+
+/* end ArrayngementPage component */

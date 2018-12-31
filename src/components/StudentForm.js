@@ -101,16 +101,15 @@ class StudentForm extends Component{
                             alt="save" 
                             id="saveimage"
                         />
-                        {/* <i class="material-icons">save</i> */}
                     </Button>
                 </FormGroup>
             </form>
-        )
+        );
     }
 }
 
-// StudentForm.propTypes ={
-//     onFormSubmit: PropTypes.func.isRequired
-// };
+StudentForm.propTypes ={
+    onFormSubmit: PropTypes.func.isRequired
+};
 
 export default StudentForm;
