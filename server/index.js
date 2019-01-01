@@ -60,9 +60,9 @@ function startWebServer(){
   app.get("/api/classdata", function(req, res){
     res.send(`${req.classdata.gradelevel} ${req.classdata.subject}`)
   });
-  app.get("/api/studentdata", function(req, res){
-    res.send(req.body)
-  });
+  // app.get("/api/studentdata", function(req, res){
+  //   res.send(req.body)
+  // });
   // app.get("/api/arrayngement", function(req, res){
   //   res.send(`${req.student}`)
   // });

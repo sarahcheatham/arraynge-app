@@ -6,20 +6,27 @@ class ArrayngementPage extends Component{
         super();
         this.state={
             data: [],
-            students: []
+            users: []
         };
     }
+    // componentDidMount(){
+    //     fetch("/api/users").then((res)=>{
+    //         return res.json()
+    //     }).then((users)=>{
+    //         console.log(users)
+    //     })
+    // }
 
     componentDidMount(){
         fetch("/api/studentdata").then((res)=>{
             return res.json()
         }).then((data)=>{
-            this.setState({data: data, students: data.slice()});
+            this.setState({data: data});
         });
     }
    
     render(){
-        const students = this.state.students.slice();
+        const students = this.state.data.slice();
         const student = students.map((student, index)=>{
             return <li key={index}><div className="student">{student.name}</div></li>
         })

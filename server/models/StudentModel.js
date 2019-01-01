@@ -16,13 +16,6 @@ const scoreSchema = new Schema({
     }
 });
 
-// const studentSchema = new Schema({
-//     name:{
-//         type: String
-//     },
-//     score: [scoreSchema]
-// });
-
 const studentSchema = new Schema({
     userId: {
         type: String

@@ -1,17 +1,14 @@
 const StudentModel = require("../models/StudentModel");
-const UserModel = require("../models/UserModel");
+
 
 module.exports.list = (req, res)=>{
-    const userId = UserModel.find().exec().then((userId)=>{
-        return res.json(userId)
-    })
-    StudentModel.find({userId}).exec().then((students)=>{
+    StudentModel.find({}).exec().then((students)=>{
         return res.json(students)
     })
 }
 
 module.exports.show = (req, res)=>{
-    StudentModel.findById(user.id).exec().then((student)=>{
+    StudentModel.findById(req.params.id).exec().then((student)=>{
         return res.json(student)
     })
 }
