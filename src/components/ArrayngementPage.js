@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { DropdownButton, MenuItem } from 'react-bootstrap';
+import ArrayngementDropMenu from "./ArrayngementDropMenu";
 
 class ArrayngementPage extends Component{
     constructor(){
@@ -7,8 +7,10 @@ class ArrayngementPage extends Component{
         this.state={
             students: [],
             classdata: [],
-            userId: ""
+            userId: "",
+            sortBy: ""
         };
+        this.handleSortBy = this.handleSortBy.bind(this);
     }
 
     componentDidMount(){
@@ -28,17 +30,42 @@ class ArrayngementPage extends Component{
             this.setState({students: students});
         });
     }
-   
-    render(){
+
+    handleSortBy(sortBy){
+        console.log(sortBy)
+        this.setState({
+            sortBy: sortBy.sortBy
+        });
+        const typeOfScore = sortBy;
         const students = this.state.students.slice();
-        const rightStudentsCheck = (students) =>{
+        const relevantStudentsCheck = (students)=>{
             if(students !== null){
                 return students.userId === this.state.userId
             }
         }
-        const rightStudents = students.filter(rightStudentsCheck);
-        console.log(rightStudents)
-        const student = rightStudents.map((student, index)=>{
+        const relevantStudents = students.filter(relevantStudentsCheck);
+        const getStudents = relevantStudents.map((student, index)=>{
+            const studentArr = [];
+            const name = student.name;
+            const boyScore = student.score[0].BOYscore;
+            studentArr.push(name, boyScore);
+            const sortByBoy = studentArr.sort((a, b)=>{
+                console.log(b)
+            })
+            return sortByBoy
+        })
+        console.log(getStudents)
+    }
+   
+    render(){
+        const students = this.state.students.slice();
+        const relevantStudentsCheck = (students) =>{
+            if(students !== null){
+                return students.userId === this.state.userId
+            }
+        }
+        const relevantStudents = students.filter(relevantStudentsCheck);
+        const student = relevantStudents.map((student, index)=>{
             return <li key={index}><div className="student">{student.name}</div></li>
         })
         const classdata = this.state.classdata.slice();
@@ -50,6 +77,7 @@ class ArrayngementPage extends Component{
             <div className="arrayngementpage">
                 <span className="inputbar">
                     <p className="studentlabel">STUDENTS:</p>
+                    <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
                     <p className="arrayngementsubject">{currentSubject}</p>
                 </span>
                 <div>

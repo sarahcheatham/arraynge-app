@@ -13,7 +13,7 @@ class WelcomePage extends Component{
     }
     componentDidMount(){
         fetch("/api/welcome").then((res)=>{
-            return res.text()
+            return res.text();
         }).then((welcomeMessage)=>{
             this.setState({
                 welcomeMessage: welcomeMessage
