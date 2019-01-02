@@ -12,6 +12,7 @@ class StudentDataPage extends Component{
             data: [],
             gradelevel: "",
             subject: "",
+            userId: ""
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
@@ -22,7 +23,7 @@ class StudentDataPage extends Component{
         .then(data => {
             this.setState({ data })
             data.map((item, index)=>{
-            this.setState({gradelevel: item.gradelevel, subject: item.subject})
+                this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
             })
         })
     }
@@ -31,14 +32,16 @@ class StudentDataPage extends Component{
         console.log(studentdata)
         this.setState({
             name: studentdata.name,
-            score: studentdata.score
+            score: studentdata.score,
+            userId: studentdata.userId
         });
         const name = studentdata.name;
         const score = studentdata.score;
+        const userId = studentdata.userId;
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ name, score })
+            body: JSON.stringify({ userId, name, score })
         }
         fetch("/api/studentdata", options).then((res)=>{
             return res.json()

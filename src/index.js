@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
+import store from "./store";
+import { Provider } from 'react-redux';
 
 const oldFetch = window.fetch;
 window.fetch = (url, settings = {}) => {
@@ -15,7 +17,7 @@ window.fetch = (url, settings = {}) => {
 
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}><App /></Provider>,
   document.getElementById("root")
 );
 // import React from 'react';
