@@ -7,6 +7,7 @@ class StudentForm extends Component{
     constructor(){
         super();
         this.state = {
+            userId: '',
             name: '',
             score: [
                 {BOYscore: ''},
@@ -17,9 +18,18 @@ class StudentForm extends Component{
         };
     }
 
+    componentDidMount(){
+        fetch("/api/hey").then((res)=>{
+            return res.text()
+        }).then((userId)=>{
+            this.setState({userId: userId})
+        });
+    }
+
     handleSubmit(event){
         event.preventDefault();
         this.props.onFormSubmit({
+            userId: this.state.userId,
             name: this.state.name,
             score:[
                 {BOYscore: this.state.BOYscore},

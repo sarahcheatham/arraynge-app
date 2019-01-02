@@ -15,7 +15,7 @@ module.exports.show = (req, res)=>{
 
 module.exports.create = (req, res)=>{
     const s = new StudentModel({
-        userId: req.params.id,
+        userId: req.body.userId,
         name: req.body.name,
         score: req.body.score
     });

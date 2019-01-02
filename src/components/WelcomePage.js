@@ -13,13 +13,14 @@ class WelcomePage extends Component{
     }
     componentDidMount(){
         fetch("/api/welcome").then((res)=>{
-            return res.text();
-        }).then((data)=>{
+            return res.text()
+        }).then((welcomeMessage)=>{
             this.setState({
-                welcomeMessage: data
+                welcomeMessage: welcomeMessage
             });
         });
     }
+
     render(){
         const styles = {
             color: 'white',

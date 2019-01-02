@@ -8,6 +8,7 @@ class ClassDataPage extends Component{
     constructor(props){
         super(props);
         this.state = {
+            userId: "",
             showMenu: false,
             gradelevel: "",
             subject: ""
@@ -17,6 +18,14 @@ class ClassDataPage extends Component{
         this.gradeLevelClick = this.gradeLevelClick.bind(this);
         this.subjectClick = this.subjectClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this)
+    };
+
+    componentDidMount(){
+        fetch("/api/hey").then((res)=>{
+            return res.text()
+        }).then((userId)=>{
+            this.setState({userId: userId})
+        });
     }
 
     showMenu(event){
@@ -51,12 +60,13 @@ class ClassDataPage extends Component{
     }
 
     handleSubmit(){
+        const userId = this.state.userId;
         const gradelevel = this.state.gradelevel;
         const subject = this.state.subject;
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({gradelevel, subject})
+            body: JSON.stringify({gradelevel, subject, userId})
         }
         fetch("/api/classdata", options).then((res)=>{
             return res.json();

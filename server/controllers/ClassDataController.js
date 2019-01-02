@@ -14,6 +14,7 @@ module.exports.show = (req, res)=>{
 
 module.exports.create = (req, res)=>{
     const c = new ClassDataModel({
+        userId: req.body.userId,
         gradelevel: req.body.gradelevel,
         subject: req.body.subject
     });

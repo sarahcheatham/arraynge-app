@@ -51,8 +51,11 @@ function startWebServer(){
   app.get("/api/users/:id", function (req, res){
     res.send(`${req.user.userId}`)
   })
+  app.get("/api/hey", function (req, res){
+    res.send(`${req.user._id}`)
+  })
   app.get("/api/secret", function (req, res) {
-    res.send(`The current user is ${req.user.username}`);
+    res.send(`the current user is : ${req.user.username} user id: ${req.user._id}`)
   });
   app.get("/api/welcome", function(req, res){
     res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
@@ -60,9 +63,9 @@ function startWebServer(){
   app.get("/api/classdata", function(req, res){
     res.send(`${req.classdata.gradelevel} ${req.classdata.subject}`)
   });
-  // app.get("/api/studentdata", function(req, res){
-  //   res.send(req.body)
-  // });
+  app.get("/api/studentdata", function(req, res){
+    res.send(req.body)
+  });
   // app.get("/api/arrayngement", function(req, res){
   //   res.send(`${req.student}`)
   // });
