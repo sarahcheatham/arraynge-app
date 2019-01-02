@@ -31,33 +31,19 @@ class ArrayngementPage extends Component{
         });
     }
 
-    handleSortBy(sortBy){
-        console.log(sortBy)
+    handleSortBy(event){
+        console.log(event)
         this.setState({
-            sortBy: sortBy.sortBy
+            sortBy: event.sortBy
         });
-        const typeOfScore = sortBy;
-        const students = this.state.students.slice();
-        const relevantStudentsCheck = (students)=>{
-            if(students !== null){
-                return students.userId === this.state.userId
-            }
-        }
-        const relevantStudents = students.filter(relevantStudentsCheck);
-        const getStudents = relevantStudents.map((student, index)=>{
-            const studentArr = [];
-            const name = student.name;
-            const boyScore = student.score[0].BOYscore;
-            studentArr.push(name, boyScore);
-            const sortByBoy = studentArr.sort((a, b)=>{
-                console.log(b)
-            })
-            return sortByBoy
-        })
-        console.log(getStudents)
+        const sortBy = event.sortBy;
     }
-   
     render(){
+        const classdata = this.state.classdata.slice();
+        const subject = classdata.map((item, index)=>{
+            return item.subject
+        })
+        const currentSubject = subject.pop();
         const students = this.state.students.slice();
         const relevantStudentsCheck = (students) =>{
             if(students !== null){
@@ -65,14 +51,18 @@ class ArrayngementPage extends Component{
             }
         }
         const relevantStudents = students.filter(relevantStudentsCheck);
-        const student = relevantStudents.map((student, index)=>{
+        
+        if(this.state.sortBy === "BOY score"){
+            const sortStudentsBoy = relevantStudents.sort((a, b)=>{
+                return b.score[0].BOYscore - a.score[0].BOYscore
+            })
+            let student = sortStudentsBoy.map((student, index)=>{
+                return <li key={index}><div className="student">{student.name}</div></li>
+            })
+        } 
+        let student = relevantStudents.map((student, index)=>{
             return <li key={index}><div className="student">{student.name}</div></li>
         })
-        const classdata = this.state.classdata.slice();
-        const subject = classdata.map((item, index)=>{
-            return item.subject
-        })
-        const currentSubject = subject.pop();
         return(
             <div className="arrayngementpage">
                 <span className="inputbar">
