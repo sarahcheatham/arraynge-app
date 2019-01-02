@@ -98,7 +98,6 @@ class ClassDataPage extends Component{
                     <p className="classDataSubHeader">GRADE LEVEL</p>
                     <p className="classDataText">Choose the grade level that you would like to arraynge</p>
                 </span>
-                {/* <DropMenu className="dropMenuContainer"/> */}
                 <div className="dropMenuContainer">
                     <Button onClick={this.showMenu} className='mainDropMenuButton'>
                         {whatToShow}
