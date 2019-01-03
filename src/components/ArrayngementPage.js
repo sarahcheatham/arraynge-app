@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import ArrayngementDropMenu from "./ArrayngementDropMenu";
+import StudentSquare from "./StudentSquare";
 
 class ArrayngementPage extends Component{
     constructor(){
@@ -32,12 +33,11 @@ class ArrayngementPage extends Component{
     }
 
     handleSortBy(event){
-        console.log(event)
         this.setState({
             sortBy: event.sortBy
         });
-        const sortBy = event.sortBy;
     }
+    
     render(){
         const classdata = this.state.classdata.slice();
         const subject = classdata.map((item, index)=>{
@@ -52,11 +52,12 @@ class ArrayngementPage extends Component{
         }
         const relevantStudents = students.filter(relevantStudentsCheck);
         const studentArr = relevantStudents.slice();
+        let student = null;
         if(this.state.sortBy === "BOY score"){
             const sortStudentsBoy = studentArr.sort((a, b)=>{
                 return b.score[0].BOYscore - a.score[0].BOYscore
             });
-            let student = sortStudentsBoy.map((student, index)=>{
+            student = sortStudentsBoy.map((student, index)=>{
                 return <li key={index}><div className="student">{student.name}</div></li>
             })
         }
@@ -64,7 +65,7 @@ class ArrayngementPage extends Component{
              const sortStudentsMoy = studentArr.sort((a, b)=>{
                  return b.score[2].MOYscore - a.score[2].MOYscore
              })
-             let student = sortStudentsMoy.map((student, index)=>{
+             student = sortStudentsMoy.map((student, index)=>{
                  return <li key={index}><div className="student">{student.name}</div></li>
              })
         }
@@ -72,7 +73,7 @@ class ArrayngementPage extends Component{
             const sortStudentsEoy = studentArr.sort((a, b)=>{
                 return b.score[3].EOYscore - a.score[3].EOYscore
             })
-            let student = sortStudentsEoy.map((student, index)=>{
+            student = sortStudentsEoy.map((student, index)=>{
                 return <li key={index}><div className="student">{student.name}</div></li>
             })
         }
@@ -80,12 +81,12 @@ class ArrayngementPage extends Component{
             const sortStudentsEoyGoal = studentArr.sort((a, b)=>{
                 return b.score[1].EOYgoal - a.score[1].EOYgoal
             })
-            let student = sortStudentsEoyGoal.map((student, index)=>{
+            student = sortStudentsEoyGoal.map((student, index)=>{
                 return <li key={index}><div className="student">{student.name}</div></li>
             })
         }
-        let student = studentArr.map((student, index)=>{
-            return <li key={index}><div className="student">{student.name}</div></li>
+        student = studentArr.map((student, index)=>{
+            return <li key={index}><span className="student"><StudentSquare/>{student.name}</span></li>
         })
         
         return(

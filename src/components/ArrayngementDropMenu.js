@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
-import { FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { ControlLabel, Button } from 'react-bootstrap';
 
 class ArrayngementDropMenu extends Component{
     constructor(){

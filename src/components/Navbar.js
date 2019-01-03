@@ -19,7 +19,7 @@ export default class Navbar extends Component{
     }
     
     render(){
-        const className = this.state.navClicked ? 'dropdown-content show' : 'dropdown-content';
+        // const className = this.state.navClicked ? 'dropdown-content show' : 'dropdown-content';
         return(
             <div className="navbar">
                 {/* <a className="menu" onClick={this.handleClick}>
