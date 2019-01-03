@@ -17,6 +17,8 @@ module.exports.create = (req, res)=>{
     const s = new StudentModel({
         userId: req.body.userId,
         name: req.body.name,
+        gradelevel: req.body.gradelevel,
+        subject: req.body.subject,
         score: req.body.score
     });
     s.save().then(savedStudent =>{

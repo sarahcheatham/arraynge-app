@@ -21,6 +21,7 @@ class StudentDataPage extends Component{
         fetch("/api/classdata")
         .then(res=> res.json())
         .then(data => {
+            console.log(data)
             this.setState({ data })
             data.map((item, index)=>{
                 this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
@@ -38,10 +39,12 @@ class StudentDataPage extends Component{
         const name = studentdata.name;
         const score = studentdata.score;
         const userId = studentdata.userId;
+        const gradelevel = this.state.gradelevel;
+        const subject = this.state.subject;
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ userId, name, score })
+            body: JSON.stringify({ userId, name, gradelevel, subject, score })
         }
         fetch("/api/studentdata", options).then((res)=>{
             return res.json()

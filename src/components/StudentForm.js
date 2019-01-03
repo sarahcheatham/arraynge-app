@@ -7,6 +7,7 @@ class StudentForm extends Component{
     constructor(){
         super();
         this.state = {
+            classdata: [],
             userId: '',
             name: '',
             score: [

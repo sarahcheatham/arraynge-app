@@ -1,5 +1,86 @@
 [
     {   
+        "subject": "math",
+        "gradeLevel": "kindergarten",
+        "score": [
+            {"BOYscore": 140},
+            {"MOYscore": 152},
+            {"EOYscore": 159}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "first grade",
+        "score": [
+            {"BOYscore": 162},
+            {"MOYscore": 174},
+            {"EOYscore": 181}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "second grade",
+        "score": [
+            {"BOYscore": 177},
+            {"MOYscore": 186},
+            {"EOYscore": 192}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "third grade",
+        "score": [
+            {"BOYscore": 190},
+            {"MOYscore": 198},
+            {"EOYscore": 203}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "fourth grade",
+        "score": [
+            {"BOYscore": 202},
+            {"MOYscore": 209},
+            {"EOYscore": 214}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "fifth grade",
+        "score": [
+            {"BOYscore": 211},
+            {"MOYscore": 217},
+            {"EOYscore": 221}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "sixth grade",
+        "score": [
+            {"BOYscore": 218},
+            {"MOYscore": 222},
+            {"EOYscore": 225}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "seventh grade",
+        "score": [
+            {"BOYscore": 223},
+            {"MOYscore": 226},
+            {"EOYscore": 229}
+        ]
+    },
+    {   
+        "subject": "math",
+        "gradeLevel": "eigth grade",
+        "score": [
+            {"BOYscore": 226},
+            {"MOYscore": 229},
+            {"EOYscore": 231}
+        ]
+    },
+    {   
         "subject": "reading",
         "gradeLevel": "kindergarten",
         "score": [

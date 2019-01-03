@@ -23,6 +23,12 @@ const studentSchema = new Schema({
     name:{
         type: String
     },
+    gradelevel: {
+        type: String
+    },
+    subject:{
+        type: String
+    },
     score: [scoreSchema]
 });
 
