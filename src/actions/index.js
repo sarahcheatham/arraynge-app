@@ -1,4 +1,4 @@
-// import fetch from 'isomorphic-fetch'
+
 export function setCurrentGradeLevel(gradelevel){
     return {
         type: "SET_GRADE_LEVEL",
@@ -55,7 +55,7 @@ export function createClassData(classdata){
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(classdata)
-        }).then(()=> dispatch(loadClassData));
+        }).then(()=> dispatch(loadClassData()));
     }
 }
 

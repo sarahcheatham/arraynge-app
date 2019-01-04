@@ -28,8 +28,13 @@ function classdata(state = [],action) {
     }
     return state;
 }
-   
 
+
+const rootReducer = combineReducers({
+    currentUserId, currentGradeLevel, currentSubject, classdata
+});
+
+export default rootReducer;
 // export function classdata(state = [], action){
 //     console.log('REDUCER: ', action)
 //     switch(action.type){
@@ -62,8 +67,3 @@ function classdata(state = [],action) {
 // function users(state = [], action){
 //     return state;
 // }
-const rootReducer = combineReducers({
-    currentUserId, currentGradeLevel, currentSubject, classdata
-});
-
-export default rootReducer;

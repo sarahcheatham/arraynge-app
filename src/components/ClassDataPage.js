@@ -1,11 +1,7 @@
 import React, {Component} from "react";
-// import PropTypes from 'prop-types';
 import SubHeader from './SubHeader';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import { loadClassData, createClassData } from '../actions';
-import { connect } from "react-redux";
-import { loadUserId } from '../actions';
 
 class ClassDataPage extends Component{
     constructor(props){
@@ -27,6 +23,7 @@ class ClassDataPage extends Component{
 
     componentDidMount(){
         this.props.loadUserId();
+        this.props.loadClassData();
     }
 
     showMenu(event){
@@ -55,44 +52,25 @@ class ClassDataPage extends Component{
 
     subjectClick(event){
         event.preventDefault();
-        const classdata = {subject: event.target.value};
+        const subject = {subject: event.target.value};
         this.props.setSubject(event.target.value)
+        const userId = {userId: this.props.userId};
         this.setState({
-            classdata: Object.assign(this.state.classdata, classdata),
+            classdata: Object.assign(this.state.classdata, subject, userId),
         })
     }
 
     handleSubmit(event){
-        console.log(event);
         event.preventDefault();
-        const classdata = {userId: this.props.userId};
+        const data = {
+            userId: this.props.userId,
+            gradelevel: this.props.gradelevel,
+            subject: this.props.subject
+        }
         this.setState({
-            classdata: Object.assign(this.state.classdata, classdata)
+            classdata: Object.assign(this.state.classdata, data)
         })
-        this.props.createClassData(this.state.classdata)
-        // const userId = this.state.userId;
-        // const gradelevel = this.state.gradelevel;
-        // const subject = this.state.subject;
-        // const data = {
-        //     userId,
-        //     gradelevel,
-        //     subject
-        // }
-        // this.props.createClassData();
-        // let options = {
-        //     method: "POST",
-        //     headers: {"Content-Type": "application/json"},
-            // body: JSON.stringify({gradelevel, subject, userId})
-        // }
-        // fetch("/api/classdata", options).then((res)=>{
-        //     return res.json();
-        // }).then((data)=>{
-        //     console.log(data)
-        // }).catch((err)=> {
-        //     console.log(err)
-        // })
-        // this.props.postData(data)
-        // this.props.createClassData();
+        this.props.createClassData(this.state.classdata) 
     }
     
     render(){
@@ -101,26 +79,7 @@ class ClassDataPage extends Component{
             textDecoration: 'none'
         }
         let whatToShow = "SHOW GRADE LEVELS";
-        // if(this.props.c){
-        //     whatToShow = this.state.grade;
-        // } else {
-        //     whatToShow = "SHOW GRADE LEVELS";
-        // }
-        // if(this.props.currentGradeLevel ===""){
-        //     whatToShow = this.state.gradelevel;
-        //     whatToShow = this.props.currentGradeLevel;
-        //     console.log('here')
-        //     if(this.state.showMenu === true){
-        //         whatToShow = "SHOW GRADE LEVELS"
-        //     }
-        // }
         return(
-            // <form className="classDataPage" onSubmit={(e)=>{
-            //     e.preventDefault();
-            //     if(this.props.createClassData){
-            //         this.props.createClassData(this.state.classdata)
-            //     }
-            // }}>
             <form className="classDataPage">
                 <div className="classDataPageHeader">
                     <SubHeader text="ENTER CLASS DATA"/>
@@ -129,7 +88,6 @@ class ClassDataPage extends Component{
                     <p className="classDataSubHeader">GRADE LEVEL</p>
                     <p className="classDataText">Choose the grade level that you would like to arraynge</p>
                 </span>
-                {/* <DropMenu className="dropMenuContainer"/> */}
                 <div className="dropMenuContainer">
                     <Button onClick={this.showMenu} className='mainDropMenuButton'>
                         {whatToShow}
@@ -172,66 +130,18 @@ class ClassDataPage extends Component{
                         </Button>
                     </div>
                 </span>
-                <Link to={'/studentdata'} style={styles} className="classdatabutton">
                     <Button type="submit" className="classdatabutton" onClick={this.handleSubmit}>
-                    {/* <Button type="submit" className="classdatabutton"> */}
                         SAVE
                     </Button>
-                </Link>
+                    <Link to={'/studentdata'} style={styles} className="classdatabutton">
+                        <Button type="submit" className="classdatabutton">
+                            CONTINUE
+                        </Button>
+                    </Link>
             </form>
         )
     }
 }
-function mapStateToProps(state) {
-    return {
-      gradelevel: state.currentGradeLevel,
-      subject: state.currentSubject,
-      userId: state.currentUserId
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        loadUserId() {
-            dispatch(loadUserId());
-        }
-    };
-}
    
-// function mapDispatchToProps (dispatch){
-//     return{
-//         loadClassData(){
-//             dispatch(loadClassData())
-//         }
-//     }
-// }
+export default ClassDataPage;
 
-// function mapStateToProps(state) {
-//     return {
-//       classdata: state.classdata
-//     };
-// }
-// function mapStateToProps(state) {
-//     return {
-//       classdata: state.classdata
-//     };
-// }
-
-// function mapDispatchToProps(dispatch){
-//     return {
-//         loadClassData(){
-//             dispatch(loadClassData())
-//         },
-//         createClassData(classdata){
-//             dispatch(createClassData(classdata))
-//         }
-//     }
-// }
-// ClassDataPage.propTypes = {
-//     onGradeLevelClick: PropTypes.func.isRequired,
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(ClassDataPage);
-// export default (ClassDataPage);
-
-const ClassDataPageContainer= connect(mapStateToProps, mapDispatchToProps)(ClassDataPage);
-export default ClassDataPageContainer

@@ -105,8 +105,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={()=> <WelcomePage/>}/>
           <Route path="/studentdata" component={StudentDataPage}/>
-          {/* <Route path="/classdata" component={ClassDataPageContainer}/> */}
-          <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId}/>}/>
+          <Route path="/classdata" component={ClassDataPageContainer}/>
+          {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
           <Route path="/arrayngement" component={ArrayngementPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>
