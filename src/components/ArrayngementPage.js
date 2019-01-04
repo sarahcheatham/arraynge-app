@@ -33,17 +33,14 @@ class ArrayngementPage extends Component{
     }
 
     handleSortBy(event){
+        console.log(event)
         this.setState({
             sortBy: event.sortBy
         });
+
     }
-    
+
     render(){
-        const classdata = this.state.classdata.slice();
-        const subject = classdata.map((item, index)=>{
-            return item.subject
-        })
-        const currentSubject = subject.pop();
         const students = this.state.students.slice();
         const relevantStudentsCheck = (students) =>{
             if(students !== null){
@@ -53,12 +50,13 @@ class ArrayngementPage extends Component{
         const relevantStudents = students.filter(relevantStudentsCheck);
         const studentArr = relevantStudents.slice();
         let student = null;
+        let colorToShow = "blankSquare";
         if(this.state.sortBy === "BOY score"){
             const sortStudentsBoy = studentArr.sort((a, b)=>{
                 return b.score[0].BOYscore - a.score[0].BOYscore
             });
             student = sortStudentsBoy.map((student, index)=>{
-                return <li key={index}><div className="student">{student.name}</div></li>
+                return <li key={index}><div className="student"><StudentSquare className={colorToShow}/>{student.name}</div></li>
             })
         }
         if(this.state.sortBy === "MOY score"){
@@ -66,7 +64,7 @@ class ArrayngementPage extends Component{
                  return b.score[2].MOYscore - a.score[2].MOYscore
              })
              student = sortStudentsMoy.map((student, index)=>{
-                 return <li key={index}><div className="student">{student.name}</div></li>
+                 return <li key={index}><div className="student"><StudentSquare className={colorToShow}/>{student.name}</div></li>
              })
         }
         if(this.state.sortBy === "EOY score"){
@@ -74,7 +72,7 @@ class ArrayngementPage extends Component{
                 return b.score[3].EOYscore - a.score[3].EOYscore
             })
             student = sortStudentsEoy.map((student, index)=>{
-                return <li key={index}><div className="student">{student.name}</div></li>
+                return <li key={index}><div className="student"><StudentSquare className={colorToShow}/>{student.name}</div></li>
             })
         }
         if(this.state.sortBy === "EOY goal"){
@@ -82,11 +80,11 @@ class ArrayngementPage extends Component{
                 return b.score[1].EOYgoal - a.score[1].EOYgoal
             })
             student = sortStudentsEoyGoal.map((student, index)=>{
-                return <li key={index}><div className="student">{student.name}</div></li>
+                return <li key={index}><div className="student"><StudentSquare className={colorToShow}/>{student.name}</div></li>
             })
         }
         student = studentArr.map((student, index)=>{
-            return <li key={index}><span className="student"><StudentSquare/>{student.name}</span></li>
+            return <li key={index}><span className="student"><StudentSquare className={colorToShow}/>{student.name}</span></li>
         })
         
         return(
@@ -94,7 +92,7 @@ class ArrayngementPage extends Component{
                 <span className="inputbar">
                     <p className="studentlabel">STUDENTS:</p>
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
-                    <p className="arrayngementsubject">{currentSubject}</p>
+                    <p className="arrayngementsubject">subject</p>
                 </span>
                 <div>
                     <ul className="studentlist">

@@ -5,13 +5,12 @@ import { Alert } from 'react-bootstrap';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import SignUpSignInPage from './components/SignUpSignInPage';
-import ClassDataPage from './components/ClassDataPage';
+import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
 import WelcomePage from './components/WelcomePage';
 import ArrayngementPage from './components/ArrayngementPage';
 import StudentDataPage from './components/StudentDataPage';
-
 
 class App extends Component {
   constructor(){
@@ -106,7 +105,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={()=> <WelcomePage/>}/>
           <Route path="/studentdata" component={StudentDataPage}/>
-          <Route path="/classdata" component={ClassDataPage}/>
+          {/* <Route path="/classdata" component={ClassDataPageContainer}/> */}
+          <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId}/>}/>
           <Route path="/arrayngement" component={ArrayngementPage}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>

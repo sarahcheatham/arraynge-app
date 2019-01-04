@@ -3,15 +3,20 @@ import React, {Component} from "react";
 import SubHeader from './SubHeader';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+// import { loadClassData, createClassData } from '../actions';
+import { connect } from "react-redux";
+import { loadUserId } from '../actions';
 
 class ClassDataPage extends Component{
     constructor(props){
         super(props);
         this.state = {
-            userId: "",
             showMenu: false,
-            gradelevel: "",
-            subject: ""
+            classdata: {
+                userId: "",
+                gradelevel: "",
+                subject: ""
+            }
         }
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
@@ -21,11 +26,7 @@ class ClassDataPage extends Component{
     };
 
     componentDidMount(){
-        fetch("/api/hey").then((res)=>{
-            return res.text()
-        }).then((userId)=>{
-            this.setState({userId: userId})
-        });
+        this.props.loadUserId();
     }
 
     showMenu(event){
@@ -45,36 +46,53 @@ class ClassDataPage extends Component{
 
     gradeLevelClick(event){
         event.preventDefault();
-        console.log(event.target.innerHTML)
+        const classdata = {gradelevel: event.target.value};
+        this.props.setGradeLevel(event.target.value)
         this.setState({
-            gradelevel: event.target.innerHTML
+            classdata: Object.assign(this.state.classdata, classdata)
         })
     }
 
     subjectClick(event){
         event.preventDefault();
-        console.log(event.target.innerHTML.toUpperCase())
+        const classdata = {subject: event.target.value};
+        this.props.setSubject(event.target.value)
         this.setState({
-            subject: event.target.innerHTML.toUpperCase()
+            classdata: Object.assign(this.state.classdata, classdata),
         })
     }
 
-    handleSubmit(){
-        const userId = this.state.userId;
-        const gradelevel = this.state.gradelevel;
-        const subject = this.state.subject;
-        let options = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({gradelevel, subject, userId})
-        }
-        fetch("/api/classdata", options).then((res)=>{
-            return res.json();
-        }).then((data)=>{
-            console.log(data)
-        }).catch((err)=> {
-            console.log(err)
+    handleSubmit(event){
+        console.log(event);
+        event.preventDefault();
+        const classdata = {userId: this.props.userId};
+        this.setState({
+            classdata: Object.assign(this.state.classdata, classdata)
         })
+        this.props.createClassData(this.state.classdata)
+        // const userId = this.state.userId;
+        // const gradelevel = this.state.gradelevel;
+        // const subject = this.state.subject;
+        // const data = {
+        //     userId,
+        //     gradelevel,
+        //     subject
+        // }
+        // this.props.createClassData();
+        // let options = {
+        //     method: "POST",
+        //     headers: {"Content-Type": "application/json"},
+            // body: JSON.stringify({gradelevel, subject, userId})
+        // }
+        // fetch("/api/classdata", options).then((res)=>{
+        //     return res.json();
+        // }).then((data)=>{
+        //     console.log(data)
+        // }).catch((err)=> {
+        //     console.log(err)
+        // })
+        // this.props.postData(data)
+        // this.props.createClassData();
     }
     
     render(){
@@ -83,13 +101,26 @@ class ClassDataPage extends Component{
             textDecoration: 'none'
         }
         let whatToShow = "SHOW GRADE LEVELS";
-        if(this.state.gradelevel !==""){
-            whatToShow = this.state.gradelevel;
-            if(this.state.showMenu === true){
-                whatToShow = "SHOW GRADE LEVELS"
-            }
-        }
+        // if(this.props.c){
+        //     whatToShow = this.state.grade;
+        // } else {
+        //     whatToShow = "SHOW GRADE LEVELS";
+        // }
+        // if(this.props.currentGradeLevel ===""){
+        //     whatToShow = this.state.gradelevel;
+        //     whatToShow = this.props.currentGradeLevel;
+        //     console.log('here')
+        //     if(this.state.showMenu === true){
+        //         whatToShow = "SHOW GRADE LEVELS"
+        //     }
+        // }
         return(
+            // <form className="classDataPage" onSubmit={(e)=>{
+            //     e.preventDefault();
+            //     if(this.props.createClassData){
+            //         this.props.createClassData(this.state.classdata)
+            //     }
+            // }}>
             <form className="classDataPage">
                 <div className="classDataPageHeader">
                     <SubHeader text="ENTER CLASS DATA"/>
@@ -113,15 +144,15 @@ class ClassDataPage extends Component{
                                     this.dropdownMenu = element;
                                 }}
                             >
-                                <Button className='grades' onClick={this.gradeLevelClick}>Kindergarten</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>First Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Second Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Third Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Fourth Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Fifth Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Six Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Seventh Grade</Button>
-                                <Button className='grades' onClick={this.gradeLevelClick}>Eigth Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Kindergarten">Kindergarten</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="First Grade">First Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Second Grade">Second Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Third Grade">Third Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Fourth Grade">Fourth Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Fifth Grade">Fifth Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Sixth Grade">Sixth Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Seventh Grade">Seventh Grade</Button>
+                                <Button className='grades' onClick={this.gradeLevelClick} value="Eigth Grade">Eigth Grade</Button>
                             </div>
                         ) 
                         : (
@@ -133,16 +164,17 @@ class ClassDataPage extends Component{
                     <p className="classDataSubHeader">SUBJECT</p>
                     <p className="classDataText">Choose the subject that you would like to arraynge</p>
                     <div className="subjectButtons">
-                        <Button type="button" className="mathButton" onClick={this.subjectClick}>
+                        <Button type="button" className="mathButton" onClick={this.subjectClick} value="MATH">
                             MATH
                         </Button>
-                        <Button type="button" className="readingButton" onClick={this.subjectClick}>
+                        <Button type="button" className="readingButton" onClick={this.subjectClick} value="READING">
                             READING
                         </Button>
                     </div>
                 </span>
                 <Link to={'/studentdata'} style={styles} className="classdatabutton">
                     <Button type="submit" className="classdatabutton" onClick={this.handleSubmit}>
+                    {/* <Button type="submit" className="classdatabutton"> */}
                         SAVE
                     </Button>
                 </Link>
@@ -150,8 +182,56 @@ class ClassDataPage extends Component{
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+      gradelevel: state.currentGradeLevel,
+      subject: state.currentSubject,
+      userId: state.currentUserId
+    };
+}
 
+function mapDispatchToProps(dispatch) {
+    return {
+        loadUserId() {
+            dispatch(loadUserId());
+        }
+    };
+}
+   
+// function mapDispatchToProps (dispatch){
+//     return{
+//         loadClassData(){
+//             dispatch(loadClassData())
+//         }
+//     }
+// }
+
+// function mapStateToProps(state) {
+//     return {
+//       classdata: state.classdata
+//     };
+// }
+// function mapStateToProps(state) {
+//     return {
+//       classdata: state.classdata
+//     };
+// }
+
+// function mapDispatchToProps(dispatch){
+//     return {
+//         loadClassData(){
+//             dispatch(loadClassData())
+//         },
+//         createClassData(classdata){
+//             dispatch(createClassData(classdata))
+//         }
+//     }
+// }
 // ClassDataPage.propTypes = {
 //     onGradeLevelClick: PropTypes.func.isRequired,
 // }
-export default ClassDataPage;
+// export default connect(mapStateToProps, mapDispatchToProps)(ClassDataPage);
+// export default (ClassDataPage);
+
+const ClassDataPageContainer= connect(mapStateToProps, mapDispatchToProps)(ClassDataPage);
+export default ClassDataPageContainer

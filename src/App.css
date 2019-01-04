@@ -656,8 +656,8 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 75px;
-  background-color: #ECEDBC;
-  /* background-color: #E9EABB; */
+  /* background-color: #ECEDBC; */
+  background-color: #D7E1DF;
 }
 .studentlabel{
   grid-column: 1 / 2;
@@ -735,12 +735,52 @@ ul {
 /* end DropMenu component */
 
 /* start StudentSquare component */
-.blanksquare{
+.blankSquare{
   content: "";
   display: inline-block;
   width: 20px;
   height: 20px;
   margin-right: 10px;
   background-color: #D7E1DF;
+}
+.blueSquare{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #2667B1;
+}
+.greenSquare{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #8FAD57;
+}
+.yellowSquare{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #F4C14B;
+}
+.orangeSquare{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #EF7E31;
+}
+.redSquare{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #DF4C36;
 }
 /* end StudentSquare component */
