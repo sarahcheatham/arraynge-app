@@ -78,7 +78,8 @@ class ClassDataPage extends Component{
             color: 'black',
             textDecoration: 'none'
         }
-        let whatToShow = "SHOW GRADE LEVELS";
+        let whatToShow = "";
+        this.props.gradelevel === "" ? whatToShow = "SHOW GRADE LEVELS" : whatToShow = this.props.gradelevel
         return(
             <form className="classDataPage">
                 <div className="classDataPageHeader">
@@ -134,7 +135,7 @@ class ClassDataPage extends Component{
                         SAVE
                     </Button>
                     <Link to={'/studentdata'} style={styles} className="classdatabutton">
-                        <Button type="submit" className="classdatabutton">
+                        <Button type="submit" className="classdatacontinuebutton">
                             CONTINUE
                         </Button>
                     </Link>

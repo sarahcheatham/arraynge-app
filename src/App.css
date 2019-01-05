@@ -472,7 +472,16 @@ ul {
 }
 .classdatabutton{
   grid-column: 2 / 3;
-  width: 50%;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  justify-self: center;
+  margin-top: 25px;
+  margin-right: 10px;
+}
+.classdatacontinuebutton{
+  grid-column: 2 / 3;
+  width: 100px;
   height: 50px;
   border-radius: 5px;
   justify-self: center;
