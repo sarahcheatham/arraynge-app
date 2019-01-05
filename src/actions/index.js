@@ -59,6 +59,40 @@ export function createClassData(classdata){
     }
 }
 
+export function loadStudentData(){
+    return function(dispatch){
+        fetch("/api/studentdata")
+        .then((res)=>{
+            return res.json();
+        }).then((students)=>{
+            dispatch(studentDataLoaded(students))
+        });
+    };
+}
+
+export function studentDataLoaded(students){
+    return {
+        type: "STUDENT_DATA_LOADED",
+        value: students
+    }
+}
+
+export function createStudentData(students){
+    return function (dispatch){
+        fetch("/api/studentdata", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(students)
+        }).then(()=> dispatch(loadStudentData()));
+    }
+}
+
+export function setStudentName(studentName){
+    return {
+        type: "SET_SUBJECT",
+        value: studentName
+    }
+}
 // export function createClassData(classdata){
 //     console.log("ACTION",classdata)
 //     return function (dispatch){

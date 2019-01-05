@@ -10,7 +10,8 @@ import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
 import WelcomePage from './components/WelcomePage';
 import ArrayngementPage from './components/ArrayngementPage';
-import StudentDataPage from './components/StudentDataPage';
+// import StudentDataPage from './components/StudentDataPage';
+import StudentDataPageContainer from "./containers/StudentDataPageContainer";
 
 class App extends Component {
   constructor(){
@@ -104,7 +105,7 @@ class App extends Component {
       <div className="page">
         <Switch>
           <Route exact path="/" render={()=> <WelcomePage/>}/>
-          <Route path="/studentdata" component={StudentDataPage}/>
+          <Route path="/studentdata" component={StudentDataPageContainer}/>
           <Route path="/classdata" component={ClassDataPageContainer}/>
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
           <Route path="/arrayngement" component={ArrayngementPage}/>
@@ -128,7 +129,7 @@ class App extends Component {
             <Header/>
             <Navbar/>
             <TopNavbar
-              showNavItems={this.state.authenticated} 
+              showNavItems={this.state.authenticated === true} 
               onSignOut={this.handleSignOut}
             />
             <div className="page">

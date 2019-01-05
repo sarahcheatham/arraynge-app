@@ -1,21 +1,21 @@
 import { combineReducers } from 'redux';
 import state from '../state';
 
-function currentUserId(state="", action){
+function userId(state="", action){
     if(action.type === "SET_USER_ID"){
         return action.value
     }
     return state;
 }
 
-function currentGradeLevel(state="", action){
+function gradelevel(state="", action){
     if(action.type === "SET_GRADE_LEVEL"){
         return action.value
     }
     return state;
 }
 
-function currentSubject(state="", action){
+function subject(state="", action){
     if(action.type === "SET_SUBJECT"){
         return action.value
     }
@@ -26,12 +26,26 @@ function classdata(state = [],action) {
     if (action.type === "CLASS_DATA_LOADED") {
         return action.value;
     }
+    // return [...state];
     return state;
 }
 
+function students(state = [], action){
+    if(action.type === "STUDENT_DATA_LOADED"){
+        return action.value;
+    }
+    return state;
+}
+
+function studentName(state=[], action){
+    if(action.type === "SET_STUDENT_NAME"){
+        return action.value;
+    }
+    return state;
+}
 
 const rootReducer = combineReducers({
-    currentUserId, currentGradeLevel, currentSubject, classdata
+    userId, gradelevel, subject, classdata, students, studentName
 });
 
 export default rootReducer;

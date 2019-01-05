@@ -4,10 +4,10 @@ import { loadUserId, loadClassData, createClassData, setCurrentGradeLevel, setCu
 
 function mapStateToProps(state) {
   return {
-    gradelevel: state.currentGradeLevel,
-    subject: state.currentSubject,
-    userId: state.currentUserId,
-    classdata: state.currentClassdata
+    gradelevel: state.gradelevel,
+    subject: state.subject,
+    userId: state.userId,
+    classdata: state.classdata
   };
 }
 

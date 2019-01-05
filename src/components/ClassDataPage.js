@@ -18,12 +18,13 @@ class ClassDataPage extends Component{
         this.closeMenu = this.closeMenu.bind(this);
         this.gradeLevelClick = this.gradeLevelClick.bind(this);
         this.subjectClick = this.subjectClick.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     componentDidMount(){
         this.props.loadUserId();
         this.props.loadClassData();
+        console.log(this.props.classdata)
     }
 
     showMenu(event){
@@ -43,10 +44,10 @@ class ClassDataPage extends Component{
 
     gradeLevelClick(event){
         event.preventDefault();
-        const classdata = {gradelevel: event.target.value};
+        const gradelevel = {gradelevel: event.target.value};
         this.props.setGradeLevel(event.target.value)
         this.setState({
-            classdata: Object.assign(this.state.classdata, classdata)
+            classdata: Object.assign(this.state.classdata, gradelevel)
         })
     }
 
@@ -74,6 +75,7 @@ class ClassDataPage extends Component{
     }
     
     render(){
+        console.log(this.props.classdata)
         const styles = {
             color: 'black',
             textDecoration: 'none'

@@ -20,18 +20,20 @@ class StudentForm extends Component{
     }
 
     componentDidMount(){
-        fetch("/api/hey").then((res)=>{
-            return res.text()
-        }).then((userId)=>{
-            this.setState({userId: userId})
-        });
+        this.props.loadUserId();
+        // fetch("/api/hey").then((res)=>{
+        //     return res.text()
+        // }).then((userId)=>{
+        //     this.setState({userId: userId})
+        // });
     }
 
     handleSubmit(event){
         event.preventDefault();
+        // this.props.createStudentData()
         this.props.onFormSubmit({
             userId: this.state.userId,
-            name: this.state.name,
+            name: this.props.studentName,
             score:[
                 {BOYscore: this.state.BOYscore},
                 {EOYgoal: this.state.EOYgoal},
@@ -51,11 +53,11 @@ class StudentForm extends Component{
                             type="text" 
                             placeholder="Jane Doe" 
                             className="studentdatainputs" 
-                            name="name" 
+                            name="studentName" 
                             onChange={e=>{
-                                this.setState({[e.target.name]: e.target.value});
+                                this.props.setStudentName({[e.target.name]: e.target.value});
                             }}
-                            value={this.state.name}
+                            value={this.props.studentName}
                         />
                     </FormGroup>{' '}
                     <FormGroup controlId="formInlineBoyScore">

@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const TopNavbar = (props) => {
+  console.log(props)
   return (
     <Navbar inverse collapseOnSelect className="navie">
       <Navbar.Collapse>
@@ -11,7 +12,8 @@ const TopNavbar = (props) => {
           <NavItem onClick={props.onSignOut} className="signoutButton">Sign Out</NavItem>
         </Nav>
         <Nav pullRight>
-          <Link to="/secret" className="secret"><Navbar.Text>Secret</Navbar.Text></Link>
+          <NavItem><Link to="/secret" className="secret">Secret</Link></NavItem>
+          {/* <Navbar.Text><Link to="/secret" className="secret">Secret</Link></Navbar.Text> */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

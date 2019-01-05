@@ -1,35 +1,49 @@
 import React, {Component} from "react";
-import StudentForm from './StudentForm';
+import StudentFormContainer from '../containers/StudentFormContainer';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 class StudentDataPage extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             numberofstudents: "",
-            data: [],
+            classdata: [],
+            userId: "",
             gradelevel: "",
-            subject: "",
-            userId: ""
+            subject: ""
+            // data: [],
+            // gradelevel: "",
+            // subject: "",
+            // userId: ""
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
     }
 
     componentDidMount(){
-        fetch("/api/classdata")
-        .then(res=> res.json())
-        .then(data => {
-            console.log(data)
-            this.setState({ data })
-            data.map((item, index)=>{
-                this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
-            })
-        })
+        this.props.loadUserId();
+        this.props.loadClassData();
+        // this.props.loadStudentData();
+        // this.props.mapStateToProps();
+        // console.log("*************" + this.props.classdata)
+        // fetch("/api/classdata")
+        // .then(res=> res.json())
+        // .then(data => {
+        //     console.log(data)
+        //     this.setState({ data })
+        //     data.map((item, index)=>{
+        //         this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
+        //     })
+        // })
     }
 
     handleFormSubmit(studentdata){
+        // event.preventDefault();
+        // const studentdata = {
+        //     userId: this.props.userId,
+    
+        // }
         console.log(studentdata)
         this.setState({
             name: studentdata.name,
@@ -38,7 +52,7 @@ class StudentDataPage extends Component{
         });
         const name = studentdata.name;
         const score = studentdata.score;
-        const userId = studentdata.userId;
+        const userId = this.props.userId;
         const gradelevel = this.state.gradelevel;
         const subject = this.state.subject;
         let options = {
@@ -56,6 +70,7 @@ class StudentDataPage extends Component{
     }
 
     render(){
+        console.log(this.props.userId, this.props.classdata, this.props.students)
         let whatToShow = '';
         const styles = {
             color: 'black',
@@ -68,7 +83,7 @@ class StudentDataPage extends Component{
         }
         let studentComponents = [];
         for(let i = 0; i < this.state.numberofstudents; i++){
-            let sc = <StudentForm key={i} onFormSubmit={this.handleFormSubmit}/>
+            let sc = <StudentFormContainer key={i} onFormSubmit={this.handleFormSubmit}/>
             studentComponents.push(sc)
         }
         return(
