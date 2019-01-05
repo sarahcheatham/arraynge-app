@@ -47,7 +47,7 @@ class ArrayngementPage extends Component{
     handleSortBy(event){
         console.log(event)
         this.setState({
-            sortBy: event.sortBy,
+            sortBy: event.sortBy
         });
     }
 
