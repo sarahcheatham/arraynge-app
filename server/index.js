@@ -55,7 +55,7 @@ function startWebServer(){
     res.send(`${req.user._id}`)
   })
   app.get("/api/secret", function (req, res) {
-    res.send(`the current user is : ${req.user.username} user id: ${req.user._id}`)
+    res.send(`${req.user.firstName} ${req.user.lastName}'s Class List`)
   });
   app.get("/api/welcome", function(req, res){
     res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
