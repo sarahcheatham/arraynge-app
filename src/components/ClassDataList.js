@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+// import PropTypes from 'prop-types';
 import SubHeader from './SubHeader';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,8 +11,8 @@ class ClassDataList extends Component{
             userId: "",
             classdata: [],
             header: "",
-            clickedGradeLevel: "",
-            clickedSubject: ""
+            gradelevel: "",
+            subject: ""
         }
         this.handleClick = this.handleClick.bind(this);
     }
@@ -37,7 +38,20 @@ class ClassDataList extends Component{
         const buttonText = event.target.innerHTML.split(" ");
         const gradelevel = buttonText[0];
         const subject = buttonText[1];
-        this.setState({clickedGradeLevel: gradelevel, clickedSubject: subject})
+        const userId = this.state.userId;
+        this.setState({gradelevel: gradelevel, subject: subject})
+        let options = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ userId, gradelevel, subject })
+        }
+        fetch("/api/classdata", options).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
  
     render(){
@@ -51,17 +65,21 @@ class ClassDataList extends Component{
             return rightUserId !== undefined
         }
         const usersClassList = rightUserId.filter(rightUserCheck)
-       
         return(
             <div>
                 <SubHeader text={this.state.header} className="classDataListHeader"/>
                 <ul className="usersclassList">
                     {usersClassList.map((item, index)=>{
-                        return (<li key={index}><button className="usersclasslistbutton" onClick={this.handleClick}>{item.gradelevel.toUpperCase()}{" "}{item.subject}</button></li>)
+                        return (<li key={index}><Link to={"/secret"}><button className="usersclasslistbutton" onClick={this.handleClick}>{item.gradelevel.toUpperCase()}{" "}{item.subject}</button></Link></li>)
                     })}
                 </ul>
             </div>
         )
     }
 }
+
+// ClassDataList.propTypes ={
+//     onStudentListView: PropTypes.func.isRequired
+// };
+
 export default ClassDataList

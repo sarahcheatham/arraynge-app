@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+// import PropTypes from 'prop-types';
 import SubHeader from './SubHeader';
 import ClassDataList from './ClassDataList';
 import { Button } from 'react-bootstrap';
@@ -71,7 +72,7 @@ class ClassDataPage extends Component{
         this.setState({
             classdata: Object.assign(this.state.classdata, data)
         })
-        this.props.createClassData(this.state.classdata) 
+        this.props.createClassData(this.state.classdata)
     }
     
     render(){
@@ -83,7 +84,7 @@ class ClassDataPage extends Component{
         this.props.gradelevel === "" ? whatToShow = "SHOW GRADE LEVELS" : whatToShow = this.props.gradelevel
         return(
             <div className="classDataPage">
-                <ClassDataList className="classdatalist"/>
+                <ClassDataList className="classdatalist" renderStudentList={this.props.renderStudentList}/>
                 <form>
                     <div className="classDataPageHeader">
                         <SubHeader text="CREATE A NEW CLASS" className="classDataPageHeader"/>
@@ -149,6 +150,7 @@ class ClassDataPage extends Component{
         )
     }
 }
-   
+
+
 export default ClassDataPage;
 
