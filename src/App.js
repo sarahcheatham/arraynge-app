@@ -17,7 +17,10 @@ class App extends Component {
     super();
     this.state = {
       signUpSignInError: "",
-      authenticated: localStorage.getItem("token") || false
+      authenticated: localStorage.getItem("token") || false,
+      userId: "",
+      subject: "",
+      gradelevel: ""
     };
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleSignOut = this.handleSignOut.bind(this);

@@ -34,7 +34,7 @@ ul {
   font-family: nobel, sans-serif;
   font-style: normal;
   font-weight: 100;
-  font-size: 28px;
+  font-size: 24px;
 }
 /* end SubHeader Component */
 
@@ -406,17 +406,21 @@ ul {
 /* end WelcomePage component */
 
 /* start classDataPage Component */
+
 .classDataPage{
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 75px 100px 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 45% 45%;
+  grid-template-rows: 50px 250px 100px 1fr 1fr;
+  grid-column-gap: 50px;
   font-family: acumin-pro, sans-serif;
   font-style: normal;
   font-weight: 100;
 }
+
 .classDataPageHeader{
-  grid-column: 1 / 3;
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
+  margin-top: 25px;
   font-family: nobel, sans-serif;
   font-style: normal;
   font-weight: 300;
@@ -435,15 +439,15 @@ ul {
   padding-top: 0px;
 }
 .gradeLevel{
-  grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
   margin-top: 15px;
-  margin-left: 25px;
-  margin-right: 0px;
+  margin-left: 0px;
+  margin-right: 25px;
 }
 .subject{
   grid-column: 2 / 3;
-  grid-row: 2 / 5;
+  grid-row: 2 / 3;
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 25px;
@@ -451,11 +455,13 @@ ul {
 .subjectButtons{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .mathButton{
   height: 40px;
-  margin-left: 120px;
-  margin-right: 120px;
+  width: 300px;
+  /* margin-left: 120px;
+  margin-right: 120px; */
   margin-top: 20px;
   margin-bottom: 20px;
   color: #343148;
@@ -463,43 +469,53 @@ ul {
 }
 .readingButton{
   height: 40px;
-  margin-left: 120px;
-  margin-right: 120px;
+  width: 300px;
+  /* margin-left: 120px;
+  margin-right: 120px; */
   margin-top: 10px;
   margin-bottom: 20px;
   color: #343148;
   background-color: #EFEEE8;
 }
-.classdatabutton{
+.classdatabuttonscontainer{
   grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  margin-right: 25px;
+  display: flex;
+  justify-content: center;
+}
+.classdatabutton{
+  /* grid-column: 2 / 3;
+  grid-row: 6 / 7; */
   width: 100px;
   height: 50px;
   border-radius: 5px;
-  justify-self: center;
+  /* justify-self: center; */
   margin-top: 25px;
-  margin-right: 10px;
+  margin-left: 5px;
 }
 .classdatacontinuebutton{
-  grid-column: 2 / 3;
+  /* grid-column: 2 / 3;
+  grid-row: 6 / 7; */
   width: 100px;
   height: 50px;
   border-radius: 5px;
-  justify-self: center;
-  margin-top: 25px;
-  margin-right: 10px;
+  /* justify-self: center; */
+  margin-top: 0px;
+  margin-left: 25px;
 }
 /* end classDataPage Component */
 
 /* start DropMenu component */
 .dropMenuContainer{
-  grid-column: 1 / 2;
-  grid-row: 3 / 8;
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 50px 1fr 1fr 1fr 1fr;
-  margin-left: 25px;
+  margin-left: 0px;
   margin-right: 0px;
-  padding-top: 15px;
+  padding-top: 0px;
 }
 .mainDropMenuButton{
   grid-column: 2 / 3;
@@ -524,9 +540,42 @@ ul {
   height: 40px;
   background-color: #f9f9f9;
 }
-
-
 /* end DropMenu component */
+
+/* start ClassDataList component */
+.classdatalist{
+  margin-left: 25px;
+  margin-right: 25px;
+  grid-column: 1 / 2;
+  font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  height: 100%;
+}
+.classDataListHeader{
+  font-family: nobel, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 28px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+  margin-left: 25px;
+  margin-right: 0px;
+  
+}
+.usersclasslist{
+  background-color: #F5EBD7;
+}
+.usersclasslistbutton{
+  width: 85%;
+  height: 40px;
+  border-radius: 2px;
+  background-color: #F5EBD7;
+}
+.usersclasslistbutton:hover{
+  background-color: #EFD4AA;
+}
+/* end ClassDataList component */
 
 /* start StudentDataPage component */
 .studentdatacontainer{
@@ -793,3 +842,31 @@ ul {
   background-color: #DF4C36;
 }
 /* end StudentSquare component */
+
+/* start StudentList component */
+.studentlistcontainer{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.studentlist{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.studentlistitem{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.listName{
+  grid-column: 1 / 2;
+}
+.listBOY{
+  grid-column: 2 / 3;
+}
+.listEOYg{
+  grid-column: 3 / 4;
+}
+.listEOYs{
+  grid-column: 4 / 5;
+}
+/* end StudentList component */
