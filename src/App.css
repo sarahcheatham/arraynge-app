@@ -842,3 +842,31 @@ ul {
   background-color: #DF4C36;
 }
 /* end StudentSquare component */
+
+/* start StudentList component */
+.studentlistcontainer{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.studentlist{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.studentlistitem{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.listName{
+  grid-column: 1 / 2;
+}
+.listBOY{
+  grid-column: 2 / 3;
+}
+.listEOYg{
+  grid-column: 3 / 4;
+}
+.listEOYs{
+  grid-column: 4 / 5;
+}
+/* end StudentList component */

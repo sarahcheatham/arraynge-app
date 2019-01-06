@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StudentList from "./StudentList";
 
 class Secret extends Component{
     constructor(props){
@@ -13,7 +14,6 @@ class Secret extends Component{
                 gradelevel: ""
             }
         };
-        this.renderStudentList = this.renderStudentList.bind(this);
     }
 
     componentDidMount(){
@@ -41,29 +41,34 @@ class Secret extends Component{
         fetch("/api/studentdata").then((res)=>{
             return res.json()
         }).then((studentdata)=>{
-            console.log(studentdata)
-            console.log(this.state.lastPost.subject)
-            const rightStudents = studentdata.map((item, index)=>{
-                if(item.userId === this.state.userId && item.subject === this.state.lastPost.subject){
-                    return item
-                } 
-            })
-            const rightStudentCheck = (rightStudents) =>{
-                return rightStudents !== undefined
-            }
-            const rightClassList = rightStudents.filter(rightStudentCheck)
-            this.setState({students: rightClassList})
+            this.setState({students: studentdata})
         })
     }
-    renderStudentList(){
-       
-    }
     render(){
-        
+        const students = this.state.students.slice();
+        let studentList = [];
+        let studentComponents =[];
+        students.map((item, index)=>{
+            if(item.userId === this.state.userId || item.subject === this.state.lastPost.subject){
+                studentList.push(item)
+            }
+        })
+        studentList.forEach((student, index)=>{
+            const name = student.name;
+            const BOYscore = student.score[0].BOYscore;
+            const EOYgoal = student.score[1].EOYgoal;
+            const MOYscore = student.score[2].MOYscore;
+            const EOYscore = student.score[3].EOYscore;
+            let sc = <StudentList key={index} firstName={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
+            studentComponents.push(sc)
+        })
+        console.log(studentComponents)
         return(
             <div>
                 <h1>{this.state.message}</h1>
-                {this.renderStudentList()}
+                 <ul className="studentlistcontainer">
+                    {studentComponents}
+                </ul>
             </div>
         );
     }
