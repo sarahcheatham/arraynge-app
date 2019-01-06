@@ -83,6 +83,13 @@ class App extends Component {
       authenticated: false
     });
   }
+  //   if(this.state.authenticated === "token"){
+  //      event.target.innerHTML = "Sign In"
+  //   } else {
+  //     event.target.innerHTML = "Sign Out"
+  //   }
+  //   console.log(event.target.innerHTML)
+  // }
 
   renderError(){
     return(

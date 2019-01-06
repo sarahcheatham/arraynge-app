@@ -71,7 +71,9 @@ class ArrayngementPage extends Component{
                 return b.score[0].BOYscore - a.score[0].BOYscore
             });
             student = sortStudentsBoy.map((student, index)=>{
-                return <li key={index}><div className="student"><span className={colorToShow}/><span className="studentName">{student.name}</span></div></li>
+                let color = student.score[0].BOYscore >= 140 ? "greenSquare" : "redSquare";
+                console.log(color, student)
+                return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
             })
         }
         if(this.state.sortBy === "MOY score"){
@@ -79,7 +81,9 @@ class ArrayngementPage extends Component{
                  return b.score[2].MOYscore - a.score[2].MOYscore
              })
              student = sortStudentsMoy.map((student, index)=>{
-                 return <li key={index}><div className="student"><span className={colorToShow}/><span className="studentName">{student.name}</span></div></li>
+                let color = student.score[2].MOYscore >= 150 ? "greenSquare" : "redSquare";
+                console.log(color, student)
+                 return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
              })
         }
         if(this.state.sortBy === "EOY score"){
@@ -99,7 +103,18 @@ class ArrayngementPage extends Component{
             })
         }
         student = studentArr.map((student, index)=>{
-            return <li key={index}><span className="student"><span className={colorToShow}/><span className="studentName">{student.name}</span></span></li>
+            let color = ""
+            if(this.state.sortBy === ""){
+                color = "blankSquare"
+            }
+            if(this.state.sortBy === "BOY score"){
+                color = student.score[0].BOYscore >= 140 ? "greenSquare" : "redSquare";
+            }
+            if(this.state.sortBy === "MOY score"){
+                color = student.score[2].MOYscore >= 145 ? "greenSquare" : "redSquare";
+            }
+            console.log(color, student)
+            return <li key={index}><span className="student"><span className={color}/><span className="studentName">{student.name}</span></span></li>
         })
         
         return(
