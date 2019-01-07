@@ -48,7 +48,7 @@ function list(req, res, next){
 function show(req, res, next){
   User.findById(req.params.id).exec().then((user)=>{
     return res.json(user)
-})
+  })
 }
 
 exports.create = create;
