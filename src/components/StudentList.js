@@ -8,6 +8,8 @@ class StudentList extends Component{
             isEdit: false
         }
     }
+    //render input function 
+    //render span function 
     render(){
         let props = this.props;
         let whatToShow = ""
