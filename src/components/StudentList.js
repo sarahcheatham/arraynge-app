@@ -8,6 +8,7 @@ class StudentList extends Component{
         super();
         this.state={
             isEdit: false,
+            save_changes:{},
             userId: "",
             name: "",
             score: [
@@ -19,11 +20,12 @@ class StudentList extends Component{
         }
         this.renderInput = this.renderInput.bind(this);
         this.renderTable = this.renderTable.bind(this);
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleBoyScoreChange = this.handleBoyScoreChange.bind(this);
-        this.handleEoyGoalChange = this.handleEoyGoalChange.bind(this);
-        this.handleMoyScoreChange = this.handleMoyScoreChange.bind(this);
-        this.handleEoyScoreChange = this.handleEoyScoreChange.bind(this);
+        this.changeNameValue = this.changeNameValue.bind(this);
+        this.changeBoyScore = this.changeBoyScore.bind(this);
+        this.changeEoyGoal = this.changeEoyGoal.bind(this);
+        this.changeMoyScore = this.changeMoyScore.bind(this);
+        this.changeEoyScore = this.changeEoyScore.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
         fetch("/api/hey").then((res)=>{
@@ -31,60 +33,43 @@ class StudentList extends Component{
         }).then((userId)=>{
             this.setState({userId: userId})
         });
+        const { name, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
+        this.setState({ name, BOYscore, EOYgoal, MOYscore, EOYscore })
     }
 
-    //handleNameChange
-    handleNameChange(event){
-        event.preventDefault();
-        this.setState({[event.target.name]: event.target.value})
+    changeNameValue(event){
+        this.setState({name: event.target.value})
     }
 
-    //handleBoyScoreChange
-    handleBoyScoreChange(event){
-        event.preventDefault();
-        this.setState({BOYscore: event.target.placeholder})
-        if(this.state.BOYscore !== ""){
-            this.setState({BOYscore: event.target.value})
-        } else {
-            this.setState({BOYscore: event.target.value})
-        }
+    changeBoyScore(event){
+        this.setState({BOYscore: event.target.value})
     }
 
-    //handleEoyGoalChange
-    handleEoyGoalChange(event){
-        event.preventDefault();
-        this.setState({EOYgoal: event.target.placeholder})
-        if(this.state.EOYgoal !== ""){
-            this.setState({EOYgoal: event.target.value})
-        } else {
-            this.setState({EOYgoal: event.target.value})
-        }
+    changeEoyGoal(event){
+        this.setState({EOYgoal: event.target.value})
     }
 
-    //handleMoyScoreChange
-    handleMoyScoreChange(event){
-        event.preventDefault();
-        this.setState({MOYscore: event.target.placeholder})
-        if(this.state.MOYscore !== ""){
-            this.setState({MOYscore: event.target.value})
-        } else {
-            this.setState({MOYscore: event.target.value})
-        }
+    changeMoyScore(event){
+        this.setState({MOYscore: event.target.value})
     }
 
-    //handleEoyScoreChange
-    handleEoyScoreChange(event){
-        event.preventDefault();
-        this.setState({EOYscore: event.target.placeholder})
-        if(this.state.EOYscore !== ""){
-            this.setState({EOYscore: event.target.value})
-        } else {
-            this.setState({EOYscore: event.target.value})
-        }
+    changeEoyScore(event){
+        this.setState({EOYscore: event.target.value})
     }
+
     //handleSubmit function
     handleSubmit(event){
-        // fetch(`/api/studentdata/${this.state.userId}`, )
+        event.preventDefault();
+        this.props.onFormSubmit({
+            userId: this.state.userId,
+            name: this.state.name,
+            score:[
+                {BOYscore: this.state.BOYscore},
+                {EOYgoal: this.state.EOYgoal},
+                {MOYscore: this.state.MOYscore},
+                {EOYscore: this.state.EOYscore}
+            ]
+        })
     }
 
     //render input function 
@@ -94,13 +79,11 @@ class StudentList extends Component{
             <tr>
                 <td>
                     <input 
-                        type="text" 
-                        value={this.state.name}
+                        type="text"
+                        value={this.state.name} 
                         name="name" 
                         className="studentlistinput" 
-                        onChange={e=>{
-                            this.setState({[e.target.name]: e.target.value});
-                        }}
+                        onChange={this.changeNameValue}
                         placeholder={props.name} 
                     />
                 </td>
@@ -110,9 +93,7 @@ class StudentList extends Component{
                         value={this.state.BOYscore} 
                         name="BOYscore" 
                         className="studentlistinput" 
-                        onChange={e=>{
-                            this.setState({[e.target.name]: e.target.value});
-                        }}
+                        onChange={this.changeBoyScore}
                         placeholder={props.BOYscore} 
                     />
                 </td>
@@ -122,9 +103,7 @@ class StudentList extends Component{
                         value={this.state.EOYgoal} 
                         name="EOYgoal" 
                         className="studentlistinput" 
-                        onChange={e=>{
-                            this.setState({[e.target.name]: e.target.value});
-                        }}
+                        onChange={this.changeEoyGoal}
                         placeholder={props.EOYgoal} 
                     />
                 </td>
@@ -134,9 +113,7 @@ class StudentList extends Component{
                         value={this.state.MOYscore} 
                         name="MOYscore"
                         className="studentlistinput" 
-                        onChange={e=>{
-                            this.setState({[e.target.name]: e.target.value});
-                        }}
+                        onChange={this.changeMoyScore}
                         placeholder={props.MOYscore}
                     />
                 </td>
@@ -146,9 +123,7 @@ class StudentList extends Component{
                         value={this.state.EOYscore} 
                         name="EOYscore" 
                         className="studentlistinput" 
-                        onChange={e=>{
-                            this.setState({[e.target.name]: e.target.value});
-                        }}
+                        onChange={this.changeEoyScore}
                         placeholder={props.EOYscore} 
                     />
                 </td>
@@ -197,7 +172,7 @@ class StudentList extends Component{
     }
 }
 StudentList.propTypes = {
-    firstName: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     BOYscore: PropTypes.number,
     EOYgoal: PropTypes.number,
     MOYscore: PropTypes.number,

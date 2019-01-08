@@ -14,8 +14,8 @@ class Secret extends Component{
                 subject: "",
                 gradelevel: ""
             }
-            
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
@@ -46,6 +46,32 @@ class Secret extends Component{
             this.setState({students: studentdata})
         })
     }
+    handleSubmit(studentdata){
+        this.setState({
+            name: studentdata.name,
+            score: studentdata.score,
+            userId: studentdata.userId
+        })
+        const name = studentdata.name;
+        const score = studentdata.score;
+        const userId = studentdata.userId;
+        const gradelevel = this.state.lastPost.gradelevel;
+        const subject = this.state.lastPost.subject;
+        console.log(name, score, userId, gradelevel, subject)
+
+        let options = {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({userId, name, gradelevel, subject, score})
+        }
+        fetch("/api/studentdata/:id", options).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
     render(){
         const students = this.state.students.slice();
         let studentList = [];
@@ -61,7 +87,7 @@ class Secret extends Component{
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            let sc = <StudentList key={index} name={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
+            let sc = <StudentList key={index} name={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
             studentComponents.push(sc)
         })
         console.log(studentComponents)
