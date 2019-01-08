@@ -14,6 +14,7 @@ class Secret extends Component{
                 subject: "",
                 gradelevel: ""
             }
+            
         };
     }
 
@@ -60,7 +61,7 @@ class Secret extends Component{
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            let sc = <StudentList key={index} firstName={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
+            let sc = <StudentList key={index} name={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
             studentComponents.push(sc)
         })
         console.log(studentComponents)
