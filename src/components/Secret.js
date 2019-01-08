@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StudentList from "./StudentList";
+import { Table, thead, tr } from 'react-bootstrap';
 
 class Secret extends Component{
     constructor(props){
@@ -65,10 +66,21 @@ class Secret extends Component{
         console.log(studentComponents)
         return(
             <div>
-                <h1>{this.state.message}</h1>
-                 <ul className="studentlistcontainer">
+                <h2 className="secretgradelevel">{this.state.gradelevel}</h2>
+                <form>
+                <Table striped bordered>
+                    <thead>
+                        <tr>
+                            <th className="tableheader">Student Name:</th>
+                            <th className="tableheader">BOY Score:</th>
+                            <th className="tableheader">EOY Goal:</th>
+                            <th className="tableheader">MOY Score:</th>
+                            <th className="tableheader">EOY Score:</th>
+                        </tr>
+                    </thead>
                     {studentComponents}
-                </ul>
+                </Table>
+                </form>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 body > #root > div {
-  height: 100vh;
+  height: 100vh;  
 }
 .App {
   text-align: center;
@@ -844,29 +844,50 @@ ul {
 /* end StudentSquare component */
 
 /* start StudentList component */
-.studentlistcontainer{
-  margin-left: 100px;
-  margin-right: 100px;
+table, th, td {
+  border: 1px solid black;
 }
-.studentlist{
-  margin-left: 10px;
-  margin-right: 10px;
+table {
+  width: 75%;
+  margin-left: 125px;
 }
-.studentlistitem{
+th {
+  height: 50px;
+}
+td {
+  height: 20px;
+}
+.secretgradelevel{
   display: flex;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  margin-left: 125px;
 }
-.listName{
-  grid-column: 1 / 2;
+.tableheader{
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: #F9E7E4;
 }
-.listBOY{
-  grid-column: 2 / 3;
+.tablecell{
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }
-.listEOYg{
-  grid-column: 3 / 4;
+.A{
+  background-color: #EDEFFB;
 }
-.listEOYs{
-  grid-column: 4 / 5;
+.studentlistinput{
+  height: 20px;
+  width: 95%;
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+.studentlistbutton{
+  background-color: #656588;
 }
 /* end StudentList component */
