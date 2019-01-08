@@ -19,6 +19,11 @@ class StudentList extends Component{
         }
         this.renderInput = this.renderInput.bind(this);
         this.renderTable = this.renderTable.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleBoyScoreChange = this.handleBoyScoreChange.bind(this);
+        this.handleEoyGoalChange = this.handleEoyGoalChange.bind(this);
+        this.handleMoyScoreChange = this.handleMoyScoreChange.bind(this);
+        this.handleEoyScoreChange = this.handleEoyScoreChange.bind(this);
     }
     componentDidMount(){
         fetch("/api/hey").then((res)=>{
@@ -27,18 +32,59 @@ class StudentList extends Component{
             this.setState({userId: userId})
         });
     }
+
+    //handleNameChange
+    handleNameChange(event){
+        event.preventDefault();
+        this.setState({[event.target.name]: event.target.value})
+    }
+
+    //handleBoyScoreChange
+    handleBoyScoreChange(event){
+        event.preventDefault();
+        this.setState({BOYscore: event.target.placeholder})
+        if(this.state.BOYscore !== ""){
+            this.setState({BOYscore: event.target.value})
+        } else {
+            this.setState({BOYscore: event.target.value})
+        }
+    }
+
+    //handleEoyGoalChange
+    handleEoyGoalChange(event){
+        event.preventDefault();
+        this.setState({EOYgoal: event.target.placeholder})
+        if(this.state.EOYgoal !== ""){
+            this.setState({EOYgoal: event.target.value})
+        } else {
+            this.setState({EOYgoal: event.target.value})
+        }
+    }
+
+    //handleMoyScoreChange
+    handleMoyScoreChange(event){
+        event.preventDefault();
+        this.setState({MOYscore: event.target.placeholder})
+        if(this.state.MOYscore !== ""){
+            this.setState({MOYscore: event.target.value})
+        } else {
+            this.setState({MOYscore: event.target.value})
+        }
+    }
+
+    //handleEoyScoreChange
+    handleEoyScoreChange(event){
+        event.preventDefault();
+        this.setState({EOYscore: event.target.placeholder})
+        if(this.state.EOYscore !== ""){
+            this.setState({EOYscore: event.target.value})
+        } else {
+            this.setState({EOYscore: event.target.value})
+        }
+    }
     //handleSubmit function
     handleSubmit(event){
-        this.props.onFormSubmit({
-            userId: this.state.userId,
-            name: this.state.name,
-            score:[
-                {BOYscore: this.state.BOYscore},
-                {EOYgoal: this.state.EOYgoal},
-                {MOYscore: this.state.MOYscore},
-                {EOYscore: this.state.EOYscore}
-            ]
-        })
+        // fetch(`/api/studentdata/${this.state.userId}`, )
     }
 
     //render input function 
@@ -49,7 +95,7 @@ class StudentList extends Component{
                 <td>
                     <input 
                         type="text" 
-                        value={this.state.name} 
+                        value={this.state.name}
                         name="name" 
                         className="studentlistinput" 
                         onChange={e=>{
@@ -64,7 +110,9 @@ class StudentList extends Component{
                         value={this.state.BOYscore} 
                         name="BOYscore" 
                         className="studentlistinput" 
-                        onChange={this.handleBoyScoreChange} 
+                        onChange={e=>{
+                            this.setState({[e.target.name]: e.target.value});
+                        }}
                         placeholder={props.BOYscore} 
                     />
                 </td>
@@ -88,7 +136,7 @@ class StudentList extends Component{
                         className="studentlistinput" 
                         onChange={e=>{
                             this.setState({[e.target.name]: e.target.value});
-                        }} 
+                        }}
                         placeholder={props.MOYscore}
                     />
                 </td>
@@ -99,8 +147,8 @@ class StudentList extends Component{
                         name="EOYscore" 
                         className="studentlistinput" 
                         onChange={e=>{
-                                this.setState({[e.target.name]: e.target.value});
-                        }} 
+                            this.setState({[e.target.name]: e.target.value});
+                        }}
                         placeholder={props.EOYscore} 
                     />
                 </td>
