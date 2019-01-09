@@ -3,6 +3,8 @@ import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
 import readingBenchmarks from '../api/readingBenchmarks.json';
 import mathBenchmarks from '../api/mathBenchmarks.json';
+import Konva from 'konva';
+import {Stage, Layer, Rect, Text} from 'react-konva';
 //comment
 
 class ArrayngementPage extends Component{
@@ -54,7 +56,6 @@ class ArrayngementPage extends Component{
     render(){
         const studentArr = this.state.students.slice();
         let student = null;
-        let colorToShow = "blankSquare";
         const gradeLevelCheckBoy = (studentArr)=>{
             return studentArr.score[0].BOYscore >= 140
         }
@@ -80,8 +81,6 @@ class ArrayngementPage extends Component{
              })
              student = sortStudentsMoy.map((student, index)=>{
                  let color = "";
-                // let color = student.score[2].MOYscore >= 145 ? "greenSquare" : "redSquare";
-                // console.log(color, student)
                  return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
              })
         }
@@ -90,7 +89,8 @@ class ArrayngementPage extends Component{
                 return b.score[3].EOYscore - a.score[3].EOYscore
             })
             student = sortStudentsEoy.map((student, index)=>{
-                return <li key={index}><div className="student"><span className={colorToShow}/><span className="studentName">{student.name}</span></div></li>
+                let color = "";
+                return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
             })
         }
         if(this.state.sortBy === "EOY goal"){
@@ -98,7 +98,8 @@ class ArrayngementPage extends Component{
                 return b.score[1].EOYgoal - a.score[1].EOYgoal
             })
             student = sortStudentsEoyGoal.map((student, index)=>{
-                return <li key={index}><div className="student"><span className={colorToShow}/><span className="studentName">{student.name}</span></div></li>
+                let color = "";
+                return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
             })
         }
         student = studentArr.map((student, index)=>{
