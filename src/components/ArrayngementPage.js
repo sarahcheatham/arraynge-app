@@ -201,14 +201,29 @@ class ArrayngementPage extends Component{
                     </ul>
                 </div>
                 <div 
-                    id="div2"
+                    id="groupcontainer"
                     className="droppable"
                     onDrop={this.drop}
                     onDragOver={this.allowDrop}
                 >
-                    <span className="groupheader">
-                        DROP HERE:
+                    <span id="grouponeheader">
+                        group one
                     </span>
+                    <span id="grouptwoheader">
+                        group two
+                    </span>
+                    <span id="groupthreeheader">
+                        group three
+                    </span>
+                    <span id="groupfourheader">
+                        group four
+                    </span>
+                    {/* <span id="groupfiveheader">
+                        group five:
+                    </span>
+                    <span id="groupsixheader">
+                        group six:
+                    </span> */}
                 </div>
             </div>
         );
