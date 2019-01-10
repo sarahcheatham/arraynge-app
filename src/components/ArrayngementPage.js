@@ -13,10 +13,12 @@ class ArrayngementPage extends Component{
             sortBy: "",
             userId: "",
             subject: "",
-            gradelevel: "",
-                
+            gradelevel: "",     
         };
         this.handleSortBy = this.handleSortBy.bind(this);
+        this.allowDrop = this.allowDrop.bind(this);
+        this.drag = this.drag.bind(this);
+        this.drop = this.drop.bind(this);
     }
 
     componentDidMount(){
@@ -51,27 +53,19 @@ class ArrayngementPage extends Component{
             sortBy: event.sortBy
         });
     }
-    onDragStart = (event, id)=>{
-        console.log("dragStart", event.target.childNodes)
-        event.dataTransfer.setData("text", event.target.childNodes)
-        // event.dataTransfer("text/plain", event.target.children)
+   
+    allowDrop(allowdropevent){
+        allowdropevent.preventDefault();
+    }
+    
+    drag(dragevent){
+        dragevent.dataTransfer.setData("text", dragevent.target.id)
     }
 
-    onDragOver = (event)=>{
-        event.preventDefault();
-        // console.log(event.dataTransfer)
-        event.dataTransfer.effectsAllowed = "move"
-        // event.dataTransfer.dropEffect = "move"
-    }
-
-    onDrop = (event)=>{
-        event.preventDefault();
-        console.log(event)
-        // if(event.target.id){
-        //     console.log(event.dataTransfer.effectsAllowed)
-        // }
-        // let data = event.dataTransfer.getData("text/plain");
-        // event.target.appendChild(document.getElementById(data))
+    drop(dropevent){
+        dropevent.preventDefault();
+        var data = dropevent.dataTransfer.getData("text");
+        dropevent.target.appendChild(document.getElementById(data));
     }
 
     render(){
@@ -162,7 +156,6 @@ class ArrayngementPage extends Component{
                 }
             }
             if(this.state.sortBy === "MOY score"){
-                // color = student.score[2].MOYscore >= 145 ? "greenSquare" : "redSquare";
                 if(student.score[2].MOYscore >= 151){
                     color = "blueSquare"
                 } else if(student.score[2].MOYscore >= 146){
@@ -177,12 +170,16 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            // console.log(color, student)
             return <li key={index} 
-                        className="container-drag"
-                        onDragStart={(e)=>{this.onDragStart(e)}}
+                        id="div1"
+                        onDrop={this.drop}
+                        onDragOver={this.allowDrop}
                     >
-                        <div className="student">
+                        <div className="student" 
+                            draggable
+                            onDragStart={this.drag}
+                            id="drag"
+                        >
                             <span className={color}/>
                             <span className="studentName">
                                 {student.name}
@@ -198,18 +195,16 @@ class ArrayngementPage extends Component{
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
                     <p className="arrayngementsubject">{this.state.subject}</p>
                 </span>
-                <div 
-                    // onDragStart={(e)=>{this.onDragStart(e)}}
-                >
+                <div>
                     <ul className="studentlist">
                         {student}
                     </ul>
                 </div>
                 <div 
-                    id="target"
+                    id="div2"
                     className="droppable"
-                    onDragOver={(e)=>{this.onDragOver(e)}}
-                    onDrop={(e)=>{this.onDrop(e)}}
+                    onDrop={this.drop}
+                    onDragOver={this.allowDrop}
                 >
                     <span className="groupheader">
                         DROP HERE:
