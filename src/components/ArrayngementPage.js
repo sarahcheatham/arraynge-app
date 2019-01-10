@@ -3,9 +3,7 @@ import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
 import readingBenchmarks from '../api/readingBenchmarks.json';
 import mathBenchmarks from '../api/mathBenchmarks.json';
-import Konva from 'konva';
-import {Stage, Layer, Rect, Text} from 'react-konva';
-//comment
+
 
 class ArrayngementPage extends Component{
     constructor(){
@@ -15,7 +13,8 @@ class ArrayngementPage extends Component{
             sortBy: "",
             userId: "",
             subject: "",
-            gradelevel: ""
+            gradelevel: "",
+                
         };
         this.handleSortBy = this.handleSortBy.bind(this);
     }
@@ -37,7 +36,7 @@ class ArrayngementPage extends Component{
             const relevantStudents = students.filter(relevantStudentsCheck);
             const lastStudent = relevantStudents[relevantStudents.length -1];
             const subject = lastStudent.subject;
-            const gradelevel = lastStudent.gradelevel
+            const gradelevel = lastStudent.gradelevel;
             this.setState({
                 students: relevantStudents,
                 subject: subject,
@@ -52,27 +51,46 @@ class ArrayngementPage extends Component{
             sortBy: event.sortBy
         });
     }
+    onDragStart = (event, id)=>{
+        console.log("dragStart", event.target.childNodes)
+        event.dataTransfer.setData("text", event.target.childNodes)
+        // event.dataTransfer("text/plain", event.target.children)
+    }
+
+    onDragOver = (event)=>{
+        event.preventDefault();
+        // console.log(event.dataTransfer)
+        event.dataTransfer.effectsAllowed = "move"
+        // event.dataTransfer.dropEffect = "move"
+    }
+
+    onDrop = (event)=>{
+        event.preventDefault();
+        console.log(event)
+        // if(event.target.id){
+        //     console.log(event.dataTransfer.effectsAllowed)
+        // }
+        // let data = event.dataTransfer.getData("text/plain");
+        // event.target.appendChild(document.getElementById(data))
+    }
 
     render(){
         const studentArr = this.state.students.slice();
         let student = null;
-        const gradeLevelCheckBoy = (studentArr)=>{
-            return studentArr.score[0].BOYscore >= 140
-        }
-        const onGradeLevelBoy = studentArr.filter(gradeLevelCheckBoy);
-        console.log(onGradeLevelBoy)
-        const belowGradeLevelCheckBoy = (studentArr)=>{
-            return studentArr.score[0].BOYscore < 140
-        }
-        const belowGradeLevelBoy = studentArr.filter(belowGradeLevelCheckBoy)
-        console.log(belowGradeLevelBoy)
         if(this.state.sortBy === "BOY score"){
             const sortStudentsBoy = studentArr.sort((a, b)=>{
                 return b.score[0].BOYscore - a.score[0].BOYscore
             });
             student = sortStudentsBoy.map((student, index)=>{
                 let color = "";
-                return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
+                return <li key={index}>
+                            <div className="student">
+                                <span className={color}/>
+                                <span className="studentName">
+                                    {student.name}
+                                </span>
+                            </div>
+                        </li>
             })
         }
         if(this.state.sortBy === "MOY score"){
@@ -81,7 +99,14 @@ class ArrayngementPage extends Component{
              })
              student = sortStudentsMoy.map((student, index)=>{
                  let color = "";
-                 return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
+                 return <li key={index}>
+                            <div className="student">
+                                <span className={color}/>
+                                <span className="studentName">
+                                    {student.name}
+                                </span>
+                            </div>
+                        </li>
              })
         }
         if(this.state.sortBy === "EOY score"){
@@ -90,7 +115,14 @@ class ArrayngementPage extends Component{
             })
             student = sortStudentsEoy.map((student, index)=>{
                 let color = "";
-                return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
+                return <li key={index}>
+                            <div className="student">
+                                <span className={color}/>
+                                <span className="studentName">
+                                    {student.name}
+                                </span>
+                            </div> 
+                        </li>
             })
         }
         if(this.state.sortBy === "EOY goal"){
@@ -99,7 +131,14 @@ class ArrayngementPage extends Component{
             })
             student = sortStudentsEoyGoal.map((student, index)=>{
                 let color = "";
-                return <li key={index}><div className="student"><span className={color}/><span className="studentName">{student.name}</span></div></li>
+                return <li key={index}>
+                            <div className="student">
+                                <span className={color}/>
+                                <span className="studentName">
+                                    {student.name}
+                                </span>
+                            </div>
+                        </li>
             })
         }
         student = studentArr.map((student, index)=>{
@@ -138,8 +177,18 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            console.log(color, student)
-            return <li key={index}><span className="student"><span className={color}/><span className="studentName">{student.name}</span></span></li>
+            // console.log(color, student)
+            return <li key={index} 
+                        className="container-drag"
+                        onDragStart={(e)=>{this.onDragStart(e)}}
+                    >
+                        <div className="student">
+                            <span className={color}/>
+                            <span className="studentName">
+                                {student.name}
+                            </span>
+                        </div> 
+                    </li>
         })
         
         return(
@@ -149,10 +198,22 @@ class ArrayngementPage extends Component{
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
                     <p className="arrayngementsubject">{this.state.subject}</p>
                 </span>
-                <div>
+                <div 
+                    // onDragStart={(e)=>{this.onDragStart(e)}}
+                >
                     <ul className="studentlist">
                         {student}
                     </ul>
+                </div>
+                <div 
+                    id="target"
+                    className="droppable"
+                    onDragOver={(e)=>{this.onDragOver(e)}}
+                    onDrop={(e)=>{this.onDrop(e)}}
+                >
+                    <span className="groupheader">
+                        DROP HERE:
+                    </span>
                 </div>
             </div>
         );
