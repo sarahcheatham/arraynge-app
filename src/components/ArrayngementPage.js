@@ -136,6 +136,7 @@ class ArrayngementPage extends Component{
             })
         }
         student = studentArr.map((student, index)=>{
+            console.log(student)
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"
@@ -165,6 +166,36 @@ class ArrayngementPage extends Component{
                 } else if(student.score[2].MOYscore >= 135){
                     color = "orangeSquare"
                 } else if(student.score[2].MOYscore < 135){
+                    color = "redSquare"
+                } else {
+                    color = "blankSquare"
+                }
+            }
+            if(this.state.sortBy === "EOY goal"){
+                if(student.score[1].EOYgoal >= 161){
+                    color = "blueSquare"
+                } else if(student.score[1].EOYgoal >= 155){
+                    color = "greenSquare"
+                } else if(student.score[1].EOYgoal >= 150){
+                    color = "yellowSquare"
+                } else if(student.score[1].EOYgoal >= 145){
+                    color = "orangeSquare"
+                } else if(student.score[1].EOYgoal < 145){
+                    color = "redSquare"
+                } else {
+                    color = "blankSquare"
+                }
+            }
+            if(this.state.sortBy === "EOY score"){
+                if(student.score[3].EOYscore >= 161){
+                    color = "blueSquare"
+                } else if(student.score[3].EOYscore >= 155){
+                    color = "greenSquare"
+                } else if(student.score[3].EOYscore >= 150){
+                    color = "yellowSquare"
+                } else if(student.score[3].EOYscore >= 145){
+                    color = "orangeSquare"
+                } else if(student.score[3].EOYscore < 145){
                     color = "redSquare"
                 } else {
                     color = "blankSquare"
@@ -206,24 +237,18 @@ class ArrayngementPage extends Component{
                     onDrop={this.drop}
                     onDragOver={this.allowDrop}
                 >
-                    <span id="grouponeheader">
-                        group one
+                    <span id="grouponebox">
+                        <p className="groupheader">group one</p>
                     </span>
-                    <span id="grouptwoheader">
-                        group two
+                    <span id="grouptwobox">
+                        <p className="groupheader">group two</p>
                     </span>
-                    <span id="groupthreeheader">
-                        group three
+                    <span id="groupthreebox">
+                        <p className="groupheader">group three</p>
                     </span>
-                    <span id="groupfourheader">
-                        group four
+                    <span id="groupfourbox">
+                        <p className="groupheader">group four</p>
                     </span>
-                    {/* <span id="groupfiveheader">
-                        group five:
-                    </span>
-                    <span id="groupsixheader">
-                        group six:
-                    </span> */}
                 </div>
             </div>
         );

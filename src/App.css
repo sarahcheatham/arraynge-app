@@ -699,10 +699,10 @@ ul {
   margin-bottom: 25px;
   grid-template-columns: 45% 45%;
   grid-template-rows: 35% 35%;
-  grid-column-gap: 10px;
-  grid-row-gap: 20px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
-#grouponeheader{
+#grouponebox{
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   font-family: le-havre, sans-serif;
@@ -710,13 +710,14 @@ ul {
   font-weight: 300;
   margin-left: 25px;
   margin-right: 25px;
+  margin-bottom: 25px;
   padding-top: 15px;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #D6D5DA;
+  /* background-color: #D6D5DA; */
   color: #535B85;
 }
-#grouptwoheader{
+#grouptwobox{
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   font-family: le-havre, sans-serif;
@@ -724,39 +725,57 @@ ul {
   font-weight: 300;
   margin-left: 25px;
   margin-right: 25px;
+  margin-bottom: 25px;
   padding-top: 15px;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #D6D5DA;
+  /* background-color: #D6D5DA; */
+  /* background-color: #E8E8E8; */
+  /* background-color: #EFDABF; */
+  background-color: #EADFD3;
   color: #535B85;
 }
-#groupthreeheader{
+#groupthreebox{
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   font-family: le-havre, sans-serif;
   font-style: normal;
   font-weight: 300;
+  margin-top: 25px;
   margin-left: 25px;
   margin-right: 25px;
   padding-top: 15px;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #D6D5DA;
+  background-color: #E8E8E8;
+  /* background-color: #EBD0A7; */
+  /* background-color: #EFDABF; */
   color: #535B85;
 }
-#groupfourheader{
+#groupfourbox{
   grid-column: 2 / 3;
   grid-row: 2 / 3;
   font-family: le-havre, sans-serif;
   font-style: normal;
-  font-weight: 300; 
+  font-weight: 300;
+  margin-top: 25px; 
   margin-left: 25px;
   margin-right: 25px;
   padding-top: 15px;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #D6D5DA;
+  /* background-color: #EDB3A6; */
+  /* background-color: #EACBC5; */
+  background-color: #EAD9D8;
   color: #535B85;
+}
+.groupheader{
+  color: #535B85;
+  font-family: le-havre, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  margin-top: 0px;
+  font-size: 18px;
 }
 /* #groupfiveheader{
   grid-column: 1 / 2;
