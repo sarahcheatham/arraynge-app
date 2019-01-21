@@ -13,6 +13,13 @@ export function setCurrentSubject(subject){
     }
 }
 
+export function setNumberOfStudents(numberOfStudents){
+    return {
+        type: "SET_NUMBER_OF_STUDENTS",
+        value: numberOfStudents
+    }
+}
+
 export function loadUserId(){
     return function(dispatch){
         fetch("/api/hey")

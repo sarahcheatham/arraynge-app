@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 // import PropTypes from 'prop-types';
 import SubHeader from './SubHeader';
-import ClassDataList from './ClassDataList';
+// import ClassDataList from './ClassDataList';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ class ClassDataPage extends Component{
         this.closeMenu = this.closeMenu.bind(this);
         this.gradeLevelClick = this.gradeLevelClick.bind(this);
         this.subjectClick = this.subjectClick.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     componentDidMount(){
@@ -84,7 +84,7 @@ class ClassDataPage extends Component{
         this.props.gradelevel === "" ? whatToShow = "SHOW GRADE LEVELS" : whatToShow = this.props.gradelevel
         return(
             <div className="classDataPage">
-                <ClassDataList className="classdatalist" renderStudentList={this.props.renderStudentList}/>
+                {/* <ClassDataList className="classdatalist" renderStudentList={this.props.renderStudentList}/> */}
                 <form>
                     <div className="classDataPageHeader">
                         <SubHeader text="CREATE A NEW CLASS" className="classDataPageHeader"/>

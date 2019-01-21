@@ -1,8 +1,8 @@
 export default {
-    users: [],
-    userId: "",
-    gradelevel: "",
-    subject: "",
+    currentUserId: "",
+    currentGradeLevel: "",
+    currentSubject: "",
+    numberOfStudents: 0,
     classdata: [],
-    students: []
+    // students: []
 }

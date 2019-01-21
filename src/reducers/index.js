@@ -29,9 +29,16 @@ function classdata(state = [],action) {
     return state;
 }
 
+function numberOfStudents(state = 0, action){
+    if(action.type === "SET_NUMBER_OF_STUDENTS"){
+        return action.value;
+    }
+    return state;
+}
+
 
 const rootReducer = combineReducers({
-    currentUserId, currentGradeLevel, currentSubject, classdata
+    currentUserId, currentGradeLevel, currentSubject, classdata, numberOfStudents
 });
 
 export default rootReducer;

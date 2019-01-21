@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 
 class StudentDataPage extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            numberofstudents: "",
+            numberOfStudents: "",
             data: [],
             gradelevel: "",
             subject: "",
@@ -61,13 +61,13 @@ class StudentDataPage extends Component{
             color: 'black',
             textDecoration: 'none'
         }
-        if(this.state.numberofstudents !== ''){
+        if(this.state.numberOfStudents !== ''){
             whatToShow = <Button className="continuebutton"><Link to={'/arrayngement'} style={styles} className="continuebutton">Continue</Link></Button>;
         } else {
             whatToShow = '';
         }
         let studentComponents = [];
-        for(let i = 0; i < this.state.numberofstudents; i++){
+        for(let i = 0; i < this.state.numberOfStudents; i++){
             let sc = <StudentForm key={i} onFormSubmit={this.handleFormSubmit}/>
             studentComponents.push(sc)
         }
@@ -80,11 +80,17 @@ class StudentDataPage extends Component{
                         <ControlLabel className="numberofstudents">Please enter the number of students in your class:</ControlLabel>{' '}
                         <FormControl 
                             type='text'
-                            name='numberofstudents'
+                            name='numberOfStudents'
+                            // onChange={(e)=>{
+                            //     console.log(e.target.value)
+                            //     const numberOfStudents = this.props.numberOfStudents(e.target.value);
+                            //     // const numberOfStudents = this.props.numberOfStudents;
+                            //     this.setState({numberOfStudents: numberOfStudents})
+                            // }}
                             onChange={e=>{
                                 this.setState({[e.target.name]: e.target.value});
                             }}
-                            value={this.state.numberofstudents}
+                            value={this.state.numberOfStudents}
                         />
                     </FormGroup>
                 </form>
