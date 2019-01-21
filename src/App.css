@@ -370,7 +370,6 @@ ul {
 .show {
   display: block;
 }
-
 /* end Navbar component */
 
 /* start WelcomePage component */
@@ -405,8 +404,7 @@ ul {
 }
 /* end WelcomePage component */
 
-/* start classDataPage Component */
-
+/* start ClassDataPage Component */
 .classDataPage{
   display: grid;
   grid-template-columns: 1fr;
@@ -848,7 +846,6 @@ ul {
   font-size: 18px;
   color: #627277
 }
-
 /* end ArrayngementPage component */
 
 /* start ArrayngementDropMenu component */
@@ -896,7 +893,6 @@ ul {
   font-size: 12px;
   margin-bottom: 10px;
 }
-
 /* end DropMenu component */
 
 /* start StudentSquare component */
@@ -955,21 +951,14 @@ table, th, td {
   border: 1px solid black;
 }
 table {
-  width: 75%;
-  margin-left: 125px;
+  width: 60%;
+  margin-left: 20%;
 }
 th {
   height: 50px;
 }
 td {
   height: 20px;
-}
-.secretgradelevel{
-  display: flex;
-  font-family: quasimoda, sans-serif;
-  font-style: normal;
-  font-weight: 200;
-  margin-left: 125px;
 }
 .tableheader{
   font-family: quasimoda, sans-serif;
@@ -998,3 +987,31 @@ td {
   background-color: #656588;
 }
 /* end StudentList component */
+
+/* start Secret component */
+.secretgradeandbutton{
+  display: grid;
+  margin-left: 20%;
+  margin-right: 20%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 75px;
+}
+
+.secretgradelevel{
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  justify-self: flex-start;
+}
+.editbutton{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  justify-self: flex-end;
+  border-radius: 5px;
+}
+/* end Secret component */

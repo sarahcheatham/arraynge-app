@@ -47,7 +47,7 @@ class WelcomePage extends Component{
                     </Row>
                     <Row>
                         <Button className="viewarrbutton">
-                            <Link to={'/myarrayngements'} style={styles}>
+                            <Link to={'/arrayngement'} style={styles}>
                                 VIEW ARRAYNGEMENTS
                             </Link>
                         </Button>

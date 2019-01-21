@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import StudentList from "./StudentList";
-import { Table, thead, tr } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Table, thead, tr } from 'react-bootstrap';
 
 class Secret extends Component{
     constructor(props){
         super(props);
-
         this.state = {
             message: "",
+            isEdit: false,
             userId: "",
             students: [],
             lastPost: {
@@ -16,6 +16,7 @@ class Secret extends Component{
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
 
     componentDidMount(){
@@ -46,6 +47,11 @@ class Secret extends Component{
             this.setState({students: studentdata})
         })
     }
+    handleEdit(event){
+        event.preventDefault();
+        this.setState({isEdit: true})
+    }
+
     handleSubmit(studentdata){
         this.setState({
             name: studentdata.name,
@@ -72,6 +78,7 @@ class Secret extends Component{
             console.log(err)
         })
     }
+
     render(){
         const students = this.state.students.slice();
         let studentList = [];
@@ -87,13 +94,16 @@ class Secret extends Component{
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            let sc = <StudentList key={index} name={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
+            let sc = <StudentList key={index} name={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onEdit={this.handleEdit} onFormSubmit={this.handleSubmit}/>
             studentComponents.push(sc)
         })
         console.log(studentComponents)
         return(
-            <div>
-                <h2 className="secretgradelevel">{this.state.gradelevel}</h2>
+            <div className="secretpage">
+                <div className="secretgradeandbutton">
+                    <h2 className="secretgradelevel">{this.state.gradelevel}</h2>
+                    <Button className="editbutton" onClick={this.handleEdit}>Edit Scores</Button>
+                </div>
                 <form>
                 <Table striped bordered>
                     <thead>

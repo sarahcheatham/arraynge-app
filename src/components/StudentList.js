@@ -18,7 +18,7 @@ class StudentList extends Component{
                 {EOYscore: ''}
             ]
         }
-        this.renderInput = this.renderInput.bind(this);
+        this.renderForm = this.renderForm.bind(this);
         this.renderTable = this.renderTable.bind(this);
         this.changeNameValue = this.changeNameValue.bind(this);
         this.changeBoyScore = this.changeBoyScore.bind(this);
@@ -72,8 +72,8 @@ class StudentList extends Component{
         })
     }
 
-    //render input function 
-    renderInput(){
+    //render form function 
+    renderForm(){
         let props = this.props;
         return(
             <tr>
@@ -145,7 +145,7 @@ class StudentList extends Component{
         let props = this.props;
         return(
             <tr className="A">
-                <td className="tablecell">{props.firstName}</td>
+                <td className="tablecell">{props.name}</td>
                 <td className="tablecell">{props.BOYscore}</td>
                 <td className="tablecell">{props.EOYgoal}</td>
                 <td className="tablecell">{props.MOYscore}</td>
@@ -156,10 +156,11 @@ class StudentList extends Component{
     
     render(){
         let props = this.props;
-        let whatToShow = ""
-        if(this.state.isEdit === false){
-            //input fuction
-            whatToShow = this.renderInput();
+        let whatToShow = "";
+        let isEdit = this.props.isEdit;
+        if(isEdit === true){
+            //form fuction
+            whatToShow = this.renderForm();
         } else{
             //table function
             whatToShow = this.renderTable();
