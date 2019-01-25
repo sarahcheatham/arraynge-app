@@ -1,44 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [ arraynge ]
 
-## Available Scripts
+##### Arraynge is an application made specifically for Kindergarten through 8th grade teachers who use the NWEA MAP test to assess their students. 
 
-In the project directory, you can run:
+##### My application allows teachers to sort students based on their test scores and then group the students based on their skill level. 
 
-### `npm start`
+### Build Tools
+##### A full stack web application built using React for the front-end, Node.js and Express for the back-end, and MongoDB for the database.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Instructions
+##### 1. Create an account.
+##### 2. Click the button that says, "CREATE A NEW ARRAYNGEMENT".
+##### 3. Choose your grade level and subject.
+##### 4. Enter how many students you have in your class and this will generate enough forms for each of your students. 
+##### 5. Enter your students test scores and then press  
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Back Story
+##### I am currently working as a Kindergarten teacher, in Austin, Texas, and have been for the past 4 years. I teach my students in a small group, rotation style environment, which just means I divide up my class into 3 or 4 groups based on their skill level and then rotate through groups until I have met with each group. I do this for both reading and math, which allows me to meet with each student every day and to target my instruction based on skill level. 
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### My problem, that I solved with this app, was that the only way, or the fastest way, I could make my leveled groups was to first, physically hand write out a list of all my students and their test scores. Then I had to write out another list of all my students and their test scores from high to low. Then finally write out another list where I actually form my groups.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+##### This was some thing I would have to do three times per year for both math and reading and it would usually take about an hour to analyze and group students based on this data. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
