@@ -22,17 +22,13 @@ class ArrayngementPage extends Component{
     }
 
     componentDidMount(){
-        fetch("/api/hey").then((res)=>{
-            return res.text()
-        }).then((userId)=>{
-            this.setState({userId: userId})
-        });
+        this.props.loadUserId();
         fetch("/api/studentdata").then((res)=>{
             return res.json()
         }).then((students)=>{
             const relevantStudentsCheck = (students) =>{
                 if(students !== null){
-                    return students.userId === this.state.userId
+                    return students.userId === this.props.userId
                 }
             }
             const relevantStudents = students.filter(relevantStudentsCheck);

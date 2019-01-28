@@ -18,11 +18,15 @@ class StudentDataPage extends Component{
     }
 
     componentDidMount(){
+        this.props.loadUserId();
         fetch("/api/classdata")
         .then(res=> res.json())
         .then(data => {
-            console.log(data)
-            this.setState({ data })
+            const filterByUserId = (data)=>{
+                return data.userId === this.props.userId
+            }
+            const filteredData = data.filter(filterByUserId);
+            this.setState({ data: filteredData })
             data.map((item, index)=>{
                 this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
             })
@@ -81,12 +85,6 @@ class StudentDataPage extends Component{
                         <FormControl 
                             type='text'
                             name='numberOfStudents'
-                            // onChange={(e)=>{
-                            //     console.log(e.target.value)
-                            //     const numberOfStudents = this.props.numberOfStudents(e.target.value);
-                            //     // const numberOfStudents = this.props.numberOfStudents;
-                            //     this.setState({numberOfStudents: numberOfStudents})
-                            // }}
                             onChange={e=>{
                                 this.setState({[e.target.name]: e.target.value});
                             }}
