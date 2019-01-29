@@ -3,6 +3,7 @@ import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
 import readingBenchmarks from '../api/readingBenchmarks.json';
 import mathBenchmarks from '../api/mathBenchmarks.json';
+import SubjectDropMenu from "./SubjectDropMenu";
 
 
 class ArrayngementPage extends Component{
@@ -132,7 +133,6 @@ class ArrayngementPage extends Component{
             })
         }
         student = studentArr.map((student, index)=>{
-            console.log(student)
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"
@@ -220,7 +220,8 @@ class ArrayngementPage extends Component{
                 <span className="inputbar">
                     <p className="studentlabel">STUDENTS:</p>
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
-                    <p className="arrayngementsubject">{this.state.subject}</p>
+                    {/* <p className="arrayngementsubject">{this.state.subject}</p> */}
+                    <SubjectDropMenu className="arrayngementsubject"/>
                 </span>
                 <div>
                     <ul className="studentlist">
