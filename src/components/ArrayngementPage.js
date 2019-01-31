@@ -3,7 +3,7 @@ import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
 import readingBenchmarks from '../api/readingBenchmarks.json';
 import mathBenchmarks from '../api/mathBenchmarks.json';
-import SubjectDropMenu from "./SubjectDropMenu";
+// import SubjectDropMenu from "./SubjectDropMenu";
 
 
 class ArrayngementPage extends Component{
@@ -67,6 +67,14 @@ class ArrayngementPage extends Component{
 
     render(){
         const studentArr = this.state.students.slice();
+        //filter students by subject
+        const checkSubject = (students)=>{
+            if(students !== null){
+                return students.subject === this.state.subject  
+            }
+        }
+        const filteredStudents = studentArr.filter(checkSubject);
+        console.log(filteredStudents)
         let student = null;
         if(this.state.sortBy === "BOY score"){
             const sortStudentsBoy = studentArr.sort((a, b)=>{
@@ -220,8 +228,8 @@ class ArrayngementPage extends Component{
                 <span className="inputbar">
                     <p className="studentlabel">STUDENTS:</p>
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
-                    {/* <p className="arrayngementsubject">{this.state.subject}</p> */}
-                    <SubjectDropMenu className="arrayngementsubject"/>
+                    <p className="arrayngementsubject">{this.state.subject}</p>
+                    {/* <SubjectDropMenu className="arrayngementsubject"/> */}
                 </span>
                 <div>
                     <ul className="studentlist">
