@@ -12,6 +12,7 @@ import WelcomePage from './components/WelcomePage';
 import ArrayngementPage from './components/ArrayngementPage';
 import StudentDataPage from './components/StudentDataPage';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
+import ArrayngementPageContainer from './containers/ArrayngementPageContainer';
 
 class App extends Component {
   constructor(){
@@ -119,7 +120,8 @@ class App extends Component {
           <Route path="/studentdata" component={StudentDataPageContainer}/>
           <Route path="/classdata" component={ClassDataPageContainer}/>
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
-          <Route path="/arrayngement" component={ArrayngementPage}/>
+          {/* <Route path="/arrayngement" component={ArrayngementPage}/> */}
+          <Route path="/arrayngement" component={ArrayngementPageContainer}/>
           <Route exact path="/secret" component={Secret}/>
         </Switch>
       </div>
