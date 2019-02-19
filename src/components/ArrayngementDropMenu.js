@@ -5,7 +5,6 @@ import { ControlLabel, Button } from 'react-bootstrap';
 class ArrayngementDropMenu extends Component{
     constructor(){
         super();
-
         this.state={
             showMenu: false,
             sortBy: ""
@@ -24,7 +23,7 @@ class ArrayngementDropMenu extends Component{
 
     closeMenu(event){
         if(!this.dropdownMenu.contains(event.target)){
-            this.setState({ showMenu: false}, ()=>{
+            this.setState({ showMenu: false }, ()=>{
                 document.removeEventListener('click', this.closeMenu);
             });
         }

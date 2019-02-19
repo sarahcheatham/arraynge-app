@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { ControlLabel, Button } from 'react-bootstrap';
 
 class SubjectDropMenu extends Component{
     constructor(){
@@ -36,13 +36,23 @@ class SubjectDropMenu extends Component{
         this.setState({
             subject: event.target.innerHTML
         })
+        this.props.onSubjectClick({
+            subject: this.state.subject
+        })
     }
 
     render(){
+        let whatToShow = "";
+        if(this.props.subject === 'READING'){
+            whatToShow = "MATH"
+        } else {
+            whatToShow = "READING"
+        }
         return(
             <form className={this.props.className}>
+                <ControlLabel className="subjectLabel">Subject:</ControlLabel>
                 <Button onClick={this.showMenu} className='subjectDropMenuButton'>
-                    SUBJECT
+                    {this.props.subject}
                 </Button>
 
                 {
@@ -55,8 +65,7 @@ class SubjectDropMenu extends Component{
                                 this.dropdownMenu = element;
                             }}
                         >
-                            <Button className='subjectReading' onClick={this.subjectClick}>READING</Button>
-                            <Button className='subjectMath' onClick={this.subjectClick}>MATH</Button>
+                            <Button className='subjectReading' onClick={this.subjectClick}>{whatToShow}</Button>
                         </div>
                     ) 
                     : (
@@ -67,8 +76,8 @@ class SubjectDropMenu extends Component{
         );
     }
 }
-// DropMenu.propTypes ={
-//     onGradeLevelClick: PropTypes.func.isRequired
-// };
 
+SubjectDropMenu.propTypes ={
+    onSubjectClick: PropTypes.func.isRequired
+};
 export default SubjectDropMenu;

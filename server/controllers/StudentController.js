@@ -26,7 +26,7 @@ module.exports.create = (req, res)=>{
 }
 
 module.exports.update = (req, res)=>{
-    return res.json({id: req.params.id})
+    return res.json(req.body)
 }
 
 module.exports.remove = (req, res)=>{

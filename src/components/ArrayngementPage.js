@@ -3,7 +3,7 @@ import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
 import readingBenchmarks from '../api/readingBenchmarks.json';
 import mathBenchmarks from '../api/mathBenchmarks.json';
-// import SubjectDropMenu from "./SubjectDropMenu";
+import SubjectDropMenu from "./SubjectDropMenu";
 
 
 class ArrayngementPage extends Component{
@@ -17,6 +17,7 @@ class ArrayngementPage extends Component{
             gradelevel: "",     
         };
         this.handleSortBy = this.handleSortBy.bind(this);
+        this.handleSubjectChange = this.handleSubjectChange.bind(this);
         this.allowDrop = this.allowDrop.bind(this);
         this.drag = this.drag.bind(this);
         this.drop = this.drop.bind(this);
@@ -50,6 +51,13 @@ class ArrayngementPage extends Component{
             sortBy: event.sortBy
         });
     }
+
+    handleSubjectChange(event){
+        console.log(event)
+        this.setState({
+            subject: event.subject
+        })
+    }
    
     allowDrop(allowdropevent){
         allowdropevent.preventDefault();
@@ -77,7 +85,7 @@ class ArrayngementPage extends Component{
         console.log(filteredStudents)
         let student = null;
         if(this.state.sortBy === "BOY score"){
-            const sortStudentsBoy = studentArr.sort((a, b)=>{
+            const sortStudentsBoy = filteredStudents.sort((a, b)=>{
                 return b.score[0].BOYscore - a.score[0].BOYscore
             });
             student = sortStudentsBoy.map((student, index)=>{
@@ -93,7 +101,7 @@ class ArrayngementPage extends Component{
             })
         }
         if(this.state.sortBy === "MOY score"){
-             const sortStudentsMoy = studentArr.sort((a, b)=>{
+             const sortStudentsMoy = filteredStudents.sort((a, b)=>{
                  return b.score[2].MOYscore - a.score[2].MOYscore
              })
              student = sortStudentsMoy.map((student, index)=>{
@@ -109,7 +117,7 @@ class ArrayngementPage extends Component{
              })
         }
         if(this.state.sortBy === "EOY score"){
-            const sortStudentsEoy = studentArr.sort((a, b)=>{
+            const sortStudentsEoy = filteredStudents.sort((a, b)=>{
                 return b.score[3].EOYscore - a.score[3].EOYscore
             })
             student = sortStudentsEoy.map((student, index)=>{
@@ -125,7 +133,7 @@ class ArrayngementPage extends Component{
             })
         }
         if(this.state.sortBy === "EOY goal"){
-            const sortStudentsEoyGoal = studentArr.sort((a, b)=>{
+            const sortStudentsEoyGoal = filteredStudents.sort((a, b)=>{
                 return b.score[1].EOYgoal - a.score[1].EOYgoal
             })
             student = sortStudentsEoyGoal.map((student, index)=>{
@@ -140,7 +148,7 @@ class ArrayngementPage extends Component{
                         </li>
             })
         }
-        student = studentArr.map((student, index)=>{
+        student = filteredStudents.map((student, index)=>{
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"
@@ -228,8 +236,7 @@ class ArrayngementPage extends Component{
                 <span className="inputbar">
                     <p className="studentlabel">STUDENTS:</p>
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
-                    <p className="arrayngementsubject">{this.state.subject}</p>
-                    {/* <SubjectDropMenu className="arrayngementsubject"/> */}
+                    <SubjectDropMenu className="arrayngementsubject" subject={this.state.subject} onSubjectClick={this.handleSubjectChange}/>
                 </span>
                 <div>
                     <ul className="studentlist">

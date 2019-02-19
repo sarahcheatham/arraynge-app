@@ -43,7 +43,7 @@ const studentSchema = new Schema({
     score: [scoreSchema]
 });
 
-const classdataSchema = new Schema({
+const arrayngementSchema = new Schema({
     gradelevel: [gradelevelSchema],
     subject: [subjectSchema],
     numberofstudents: {
@@ -52,8 +52,8 @@ const classdataSchema = new Schema({
     student: [studentSchema]
 });
 
-const arrayngementSchema = new Schema({
-    classdata: [classdataSchema]
-});
+// const arrayngementSchema = new Schema({
+//     classdata: [classdataSchema]
+// });
 
 module.exports = mongoose.model("Arrayngement", arrayngementSchema);
