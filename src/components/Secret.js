@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import StudentList from "./StudentList";
+import StudentUpdateForm from "./StudentUpdateForm";
+import StudentUpdateTable from "./StudentUpdateTable";
 import { Grid, Row, Col, Button, Table, thead, tr } from 'react-bootstrap';
 
 class Secret extends Component{
@@ -49,7 +50,8 @@ class Secret extends Component{
     }
     handleEdit(event){
         event.preventDefault();
-        this.setState({isEdit: true})
+        this.setState({isEdit: !this.state.isEdit})
+        console.log(this.state.isEdit)
     }
 
     handleSubmit(studentdata){
@@ -81,8 +83,10 @@ class Secret extends Component{
 
     render(){
         const students = this.state.students.slice();
+        let formOrTable = "";
         let studentList = [];
-        let studentComponents =[];
+        let formComponents =[];
+        let tableComponents = [];
         students.map((item, index)=>{
             if(item.userId === this.state.userId || item.subject === this.state.lastPost.subject){
                 studentList.push(item)
@@ -90,14 +94,29 @@ class Secret extends Component{
         })
         studentList.forEach((student, index)=>{
             const name = student.name;
+            const subject = student.subject;
             const BOYscore = student.score[0].BOYscore;
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            let sc = <StudentList key={index} name={name} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onEdit={this.handleEdit} onFormSubmit={this.handleSubmit}/>
-            studentComponents.push(sc)
+            let sc = <StudentUpdateForm key={index} name={name} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onEdit={this.handleEdit} onFormSubmit={this.handleSubmit}/>
+            formComponents.push(sc)
         })
-        console.log(studentComponents)
+        studentList.forEach((student, index)=>{
+            const name = student.name;
+            const subject = student.subject;
+            const BOYscore = student.score[0].BOYscore;
+            const EOYgoal = student.score[1].EOYgoal;
+            const MOYscore = student.score[2].MOYscore;
+            const EOYscore = student.score[3].EOYscore;
+            let sc = <StudentUpdateTable key={index} name={name} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
+            tableComponents.push(sc)
+        })
+        if(this.state.isEdit === true){
+            formOrTable = formComponents;
+        } else {
+            formOrTable = tableComponents;
+        }
         return(
             <div className="secretpage">
                 <div className="secretgradeandbutton">
@@ -109,13 +128,14 @@ class Secret extends Component{
                     <thead>
                         <tr>
                             <th className="tableheader">Student Name:</th>
+                            <th className="tableheader">Subject:</th>
                             <th className="tableheader">BOY Score:</th>
                             <th className="tableheader">EOY Goal:</th>
                             <th className="tableheader">MOY Score:</th>
                             <th className="tableheader">EOY Score:</th>
                         </tr>
                     </thead>
-                    {studentComponents}
+                    {formOrTable}
                 </Table>
                 </form>
             </div>

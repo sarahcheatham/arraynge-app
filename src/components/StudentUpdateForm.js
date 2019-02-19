@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button } from 'react-bootstrap';
 import Image1 from '../images/content-save.png';
 
-class StudentList extends Component{
+class StudentUpdateForm extends Component{
     constructor(){
         super();
         this.state={
@@ -11,6 +11,7 @@ class StudentList extends Component{
             save_changes:{},
             userId: "",
             name: "",
+            subject: "",
             score: [
                 {BOYscore: ''},
                 {EOYgoal: ''},
@@ -18,9 +19,8 @@ class StudentList extends Component{
                 {EOYscore: ''}
             ]
         }
-        this.renderForm = this.renderForm.bind(this);
-        this.renderTable = this.renderTable.bind(this);
         this.changeNameValue = this.changeNameValue.bind(this);
+        this.changeSubjectValue = this.changeSubjectValue.bind(this);
         this.changeBoyScore = this.changeBoyScore.bind(this);
         this.changeEoyGoal = this.changeEoyGoal.bind(this);
         this.changeMoyScore = this.changeMoyScore.bind(this);
@@ -33,12 +33,16 @@ class StudentList extends Component{
         }).then((userId)=>{
             this.setState({userId: userId})
         });
-        const { name, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
-        this.setState({ name, BOYscore, EOYgoal, MOYscore, EOYscore })
+        const { name, subject, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
+        this.setState({ name, subject, BOYscore, EOYgoal, MOYscore, EOYscore })
     }
 
     changeNameValue(event){
         this.setState({name: event.target.value})
+    }
+
+    changeSubjectValue(event){
+        this.setState({subject: event.target.value})
     }
 
     changeBoyScore(event){
@@ -63,6 +67,7 @@ class StudentList extends Component{
         this.props.onFormSubmit({
             userId: this.state.userId,
             name: this.state.name,
+            subject: this.state.subject,
             score:[
                 {BOYscore: this.state.BOYscore},
                 {EOYgoal: this.state.EOYgoal},
@@ -71,10 +76,8 @@ class StudentList extends Component{
             ]
         })
     }
-
-    //render form function 
-    renderForm(){
-        let props = this.props;
+    render(){
+    let props = this.props;
         return(
             <tr>
                 <td>
@@ -85,6 +88,16 @@ class StudentList extends Component{
                         className="studentlistinput" 
                         onChange={this.changeNameValue}
                         placeholder={props.name} 
+                    />
+                </td>
+                <td>
+                    <input 
+                        type="text"
+                        value={this.state.subject} 
+                        name="subject" 
+                        className="studentlistinput" 
+                        onChange={this.changeSubjectValue}
+                        placeholder={props.subject} 
                     />
                 </td>
                 <td>
@@ -139,45 +152,31 @@ class StudentList extends Component{
             </tr>
         )
     }
-
-    //render table function 
-    renderTable(){
-        let props = this.props;
-        return(
-            <tr className="A">
-                <td className="tablecell">{props.name}</td>
-                <td className="tablecell">{props.BOYscore}</td>
-                <td className="tablecell">{props.EOYgoal}</td>
-                <td className="tablecell">{props.MOYscore}</td>
-                <td className="tablecell">{props.EOYscore}</td>
-            </tr>
-        )
-    }
-    
-    render(){
-        let props = this.props;
-        let whatToShow = "";
-        let isEdit = this.props.isEdit;
-        if(isEdit === true){
-            //form fuction
-            whatToShow = this.renderForm();
-        } else{
-            //table function
-            whatToShow = this.renderTable();
-        }
-        return(
-            <tbody>
-                {whatToShow}
-            </tbody>
-        )
-    }
+    // render(){
+    //     let props = this.props;
+    //     let whatToShow = "";
+    //     let isEdit = this.props.isEdit;
+    //     if(isEdit !== true){
+    //         //form fuction
+    //         whatToShow = this.renderForm();
+    //     } else{
+    //         //table function
+    //         whatToShow = this.renderTable();
+    //     }
+    //     return(
+    //         <tbody>
+    //             {whatToShow}
+    //         </tbody>
+    //     )
+    // }
 }
-StudentList.propTypes = {
+StudentUpdateForm.propTypes = {
     name: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired,
     BOYscore: PropTypes.number,
     EOYgoal: PropTypes.number,
     MOYscore: PropTypes.number,
     EOYscore: PropTypes.number
 };
 
-export default StudentList;
+export default StudentUpdateForm;
