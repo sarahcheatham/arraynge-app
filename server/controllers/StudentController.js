@@ -26,7 +26,15 @@ module.exports.create = (req, res)=>{
 }
 
 module.exports.update = (req, res)=>{
-    return res.json(req.body)
+    StudentModel.findByIdAndUpdate(
+        req.params.id, 
+        req.body, 
+        {new: true},
+        (err, scoreUpdate)=>{
+            if(err) return res.status(500).send(err);
+            return res.send(scoreUpdate)
+        }
+    )
 }
 
 module.exports.remove = (req, res)=>{
