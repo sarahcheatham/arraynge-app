@@ -7,11 +7,12 @@ class StudentUpdateForm extends Component{
     constructor(){
         super();
         this.state={
-            isEdit: false,
             save_changes:{},
+            id: "",
             userId: "",
             name: "",
             subject: "",
+            gradelevel: "",
             score: [
                 {BOYscore: ''},
                 {EOYgoal: ''},
@@ -33,8 +34,8 @@ class StudentUpdateForm extends Component{
         }).then((userId)=>{
             this.setState({userId: userId})
         });
-        const { name, subject, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
-        this.setState({ name, subject, BOYscore, EOYgoal, MOYscore, EOYscore })
+        const { id, name, subject, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
+        this.setState({ id, name, subject, BOYscore, EOYgoal, MOYscore, EOYscore })
     }
 
     changeNameValue(event){
@@ -65,9 +66,11 @@ class StudentUpdateForm extends Component{
     handleSubmit(event){
         event.preventDefault();
         this.props.onFormSubmit({
+            id: this.state.id,
             userId: this.state.userId,
             name: this.state.name,
             subject: this.state.subject,
+            gradelevel: this.state.gradelevel,
             score:[
                 {BOYscore: this.state.BOYscore},
                 {EOYgoal: this.state.EOYgoal},
@@ -152,23 +155,6 @@ class StudentUpdateForm extends Component{
             </tr>
         )
     }
-    // render(){
-    //     let props = this.props;
-    //     let whatToShow = "";
-    //     let isEdit = this.props.isEdit;
-    //     if(isEdit !== true){
-    //         //form fuction
-    //         whatToShow = this.renderForm();
-    //     } else{
-    //         //table function
-    //         whatToShow = this.renderTable();
-    //     }
-    //     return(
-    //         <tbody>
-    //             {whatToShow}
-    //         </tbody>
-    //     )
-    // }
 }
 StudentUpdateForm.propTypes = {
     name: PropTypes.string.isRequired,

@@ -8,8 +8,10 @@ class Secret extends Component{
         super(props);
         this.state = {
             message: "",
+            save: {},
             isEdit: false,
             userId: "",
+            id: "",
             students: [],
             lastPost: {
                 subject: "",
@@ -46,6 +48,7 @@ class Secret extends Component{
             return res.json()
         }).then((studentdata)=>{
             this.setState({students: studentdata})
+            console.log(this.state.students)
         })
     }
     handleEdit(event){
@@ -55,29 +58,35 @@ class Secret extends Component{
     }
 
     handleSubmit(studentdata){
-        this.setState({
-            name: studentdata.name,
-            score: studentdata.score,
-            userId: studentdata.userId
-        })
+        // fetch('/api/studentdata/:id').then((res)=>{
+        //     return res.json()
+        // })
+        console.log("studentdata:", studentdata)
+        // this.setState({
+        //     name: studentdata.name,
+        //     score: studentdata.score,
+        //     userId: studentdata.userId
+        // })
+        const id = studentdata.id;
         const name = studentdata.name;
         const score = studentdata.score;
         const userId = studentdata.userId;
-        const gradelevel = this.state.lastPost.gradelevel;
-        const subject = this.state.lastPost.subject;
-        console.log(name, score, userId, gradelevel, subject)
-
+        const gradelevel = studentdata.gradelevel;
+        const subject = studentdata.subject;
+        // const gradelevel = this.state.lastPost.gradelevel;
+        // const subject = this.state.lastPost.subject;
+        console.log(id, name, score, userId, gradelevel, subject)
         let options = {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({userId, name, gradelevel, subject, score})
+            body: JSON.stringify({name, score, userId, gradelevel, subject})
         }
-        fetch("/api/studentdata/:id", options).then((res)=>{
+        fetch(`/api/studentdata/${id}`, options).then((res)=>{
             return res.json()
         }).then((res)=>{
-            console.log(res)
+            console.log("response:", res)
         }).catch((err)=>{
-            console.log(err)
+            console.log("error:", err)
         })
     }
 
@@ -93,23 +102,25 @@ class Secret extends Component{
             }
         })
         studentList.forEach((student, index)=>{
+            const id = student._id;
             const name = student.name;
             const subject = student.subject;
             const BOYscore = student.score[0].BOYscore;
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            let sc = <StudentUpdateForm key={index} name={name} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onEdit={this.handleEdit} onFormSubmit={this.handleSubmit}/>
+            let sc = <StudentUpdateForm key={index} id={id} name={name} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
             formComponents.push(sc)
         })
         studentList.forEach((student, index)=>{
+            const id = student._id;
             const name = student.name;
             const subject = student.subject;
             const BOYscore = student.score[0].BOYscore;
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            let sc = <StudentUpdateTable key={index} name={name} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
+            let sc = <StudentUpdateTable key={index} id={id} name={name} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore}/>
             tableComponents.push(sc)
         })
         if(this.state.isEdit === true){

@@ -69,6 +69,9 @@ function startWebServer(){
   app.get("/api/studentdata/:id", function(req, res){
     res.send(req.body)
   })
+  // app.put("/api/studentdata/:id", function (req, res){
+  //   res.send(req.body)
+  // })
   // app.get("/api/arrayngement", function(req, res){
   //   res.send(`${req.student}`)
   // });
