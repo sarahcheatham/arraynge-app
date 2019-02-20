@@ -1030,6 +1030,7 @@ td {
   grid-template-rows: 1fr 1fr;
   margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 15px;
   padding-top: 10px;
   height: 40px;
 }

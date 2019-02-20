@@ -1,7 +1,7 @@
 [
     {   
     "subject": "READING",
-    "gradeLevel": "KINDERGARTEN",
+    "gradelevel": "KINDERGARTEN",
     "score": [
         {"BOYscore": 141},
         {"MOYscore": 151},
@@ -10,7 +10,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "FIRST GRADE",
+        "gradelevel": "FIRST GRADE",
         "score": [
             {"BOYscore": 161},
             {"MOYscore": 171},
@@ -19,7 +19,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "SECOND GRADE",
+        "gradelevel": "SECOND GRADE",
         "score": [
             {"BOYscore": 175},
             {"MOYscore": 184},
@@ -28,7 +28,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "THIRD GRADE",
+        "gradelevel": "THIRD GRADE",
         "score": [
             {"BOYscore": 188},
             {"MOYscore": 196},
@@ -37,7 +37,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "FOURTH GRADE",
+        "gradelevel": "FOURTH GRADE",
         "score": [
             {"BOYscore": 198},
             {"MOYscore": 204},
@@ -46,7 +46,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "FIFTH GRADE",
+        "gradelevel": "FIFTH GRADE",
         "score": [
             {"BOYscore": 206},
             {"MOYscore": 210},
@@ -55,7 +55,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "SIXTH GRADE",
+        "gradelevel": "SIXTH GRADE",
         "score": [
             {"BOYscore": 211},
             {"MOYscore": 214},
@@ -64,7 +64,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "SEVENTH GRADE",
+        "gradelevel": "SEVENTH GRADE",
         "score": [
             {"BOYscore": 214},
             {"MOYscore": 217},
@@ -73,7 +73,7 @@
     },
     {   
         "subject": "READING",
-        "gradeLevel": "EIGHTH GRADE",
+        "gradelevel": "EIGHTH GRADE",
         "score": [
             {"BOYscore": 217},
             {"MOYscore": 219},
@@ -82,7 +82,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "KINDERGARTEN",
+        "gradelevel": "KINDERGARTEN",
         "score": [
             {"BOYscore": 140},
             {"MOYscore": 152},
@@ -91,7 +91,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "FIRST GRADE",
+        "gradelevel": "FIRST GRADE",
         "score": [
             {"BOYscore": 162},
             {"MOYscore": 174},
@@ -100,7 +100,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "SECOND GRADE",
+        "gradelevel": "SECOND GRADE",
         "score": [
             {"BOYscore": 177},
             {"MOYscore": 186},
@@ -109,7 +109,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "THIRD GRADE",
+        "gradelevel": "THIRD GRADE",
         "score": [
             {"BOYscore": 190},
             {"MOYscore": 198},
@@ -118,7 +118,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "FOURTH GRADE",
+        "gradelevel": "FOURTH GRADE",
         "score": [
             {"BOYscore": 202},
             {"MOYscore": 209},
@@ -127,7 +127,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "FIFTH GRADE",
+        "gradelevel": "FIFTH GRADE",
         "score": [
             {"BOYscore": 211},
             {"MOYscore": 217},
@@ -136,7 +136,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "SIXTH GRADE",
+        "gradelevel": "SIXTH GRADE",
         "score": [
             {"BOYscore": 218},
             {"MOYscore": 222},
@@ -145,7 +145,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "SEVENTH GRADE",
+        "gradelevel": "SEVENTH GRADE",
         "score": [
             {"BOYscore": 223},
             {"MOYscore": 226},
@@ -154,7 +154,7 @@
     },
     {   
         "subject": "MATH",
-        "gradeLevel": "EIGHTH GRADE",
+        "gradelevel": "EIGHTH GRADE",
         "score": [
             {"BOYscore": 226},
             {"MOYscore": 229},

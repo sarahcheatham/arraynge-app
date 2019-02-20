@@ -4,7 +4,6 @@ import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
 import SubjectDropMenu from "./SubjectDropMenu";
 
-
 class ArrayngementPage extends Component{
     constructor(){
         super();
@@ -73,6 +72,15 @@ class ArrayngementPage extends Component{
     }
 
     render(){
+        const benchmark = [];
+        const findBm = benchmarks.find((bm, index)=>{
+            const gradelevel = this.state.gradelevel.toUpperCase();
+            const subject = this.state.subject;
+            if(bm.gradelevel === gradelevel && bm.subject === subject){
+               benchmark.push(bm) 
+            }
+        })
+        console.log(benchmark)
         const studentArr = this.state.students.slice();
         //filter students by subject
         const checkSubject = (students)=>{
@@ -81,7 +89,6 @@ class ArrayngementPage extends Component{
             }
         }
         const filteredStudents = studentArr.filter(checkSubject);
-        console.log(filteredStudents)
         let student = null;
         if(this.state.sortBy === "BOY score"){
             const sortStudentsBoy = filteredStudents.sort((a, b)=>{
