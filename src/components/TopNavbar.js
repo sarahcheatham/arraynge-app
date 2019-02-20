@@ -13,6 +13,9 @@ const TopNavbar = (props) => {
         <Nav pullRight>
           <Link to="/secret" className="secret"><Navbar.Text>Secret</Navbar.Text></Link>
         </Nav>
+        <Nav pullRight>
+          <Link to="/charts" className="charts"><Navbar.Text>Charts</Navbar.Text></Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );

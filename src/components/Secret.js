@@ -58,24 +58,13 @@ class Secret extends Component{
     }
 
     handleSubmit(studentdata){
-        // fetch('/api/studentdata/:id').then((res)=>{
-        //     return res.json()
-        // })
         console.log("studentdata:", studentdata)
-        // this.setState({
-        //     name: studentdata.name,
-        //     score: studentdata.score,
-        //     userId: studentdata.userId
-        // })
         const id = studentdata.id;
         const name = studentdata.name;
         const score = studentdata.score;
         const userId = studentdata.userId;
         const gradelevel = studentdata.gradelevel;
         const subject = studentdata.subject;
-        // const gradelevel = this.state.lastPost.gradelevel;
-        // const subject = this.state.lastPost.subject;
-        console.log(id, name, score, userId, gradelevel, subject)
         let options = {
             method: "PUT",
             headers: {"Content-Type": "application/json"},

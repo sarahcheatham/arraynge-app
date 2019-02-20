@@ -13,6 +13,7 @@ import ArrayngementPage from './components/ArrayngementPage';
 import StudentDataPage from './components/StudentDataPage';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
 import ArrayngementPageContainer from './containers/ArrayngementPageContainer';
+import MidpointChart from './components/MidpointChart';
 
 class App extends Component {
   constructor(){
@@ -79,11 +80,23 @@ class App extends Component {
     }  
   }
 
-  handleSignOut(){
+  handleSignOut(event){
     localStorage.removeItem("token");
     this.setState({
       authenticated: false
     });
+    // if(this.state.authenticated === token){
+    //   event.target.innerHTML = "Sign Out"
+    // }
+    // else {
+    //   event.target.innerHTML = "Sign In"
+    // }
+    // console.log(event.target.innerHTML)
+    // if(this.state.authenticated === false){
+    //   event.target.innerHTML = "Sign Out"
+    // } else {
+    //   event.target.innerHTML = "Sign In"
+    // }
   }
   //   if(this.state.authenticated === "token"){
   //      event.target.innerHTML = "Sign In"
@@ -123,6 +136,7 @@ class App extends Component {
           {/* <Route path="/arrayngement" component={ArrayngementPage}/> */}
           <Route path="/arrayngement" component={ArrayngementPageContainer}/>
           <Route exact path="/secret" component={Secret}/>
+          <Route path="/charts" component={MidpointChart}/>
         </Switch>
       </div>
     )

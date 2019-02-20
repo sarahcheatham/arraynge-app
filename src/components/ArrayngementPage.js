@@ -1,8 +1,7 @@
 import React, {Component} from "react";
+import benchmarks from '../api/benchmarks.json';
 import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import StudentSquare from "./StudentSquare";
-import readingBenchmarks from '../api/readingBenchmarks.json';
-import mathBenchmarks from '../api/mathBenchmarks.json';
 import SubjectDropMenu from "./SubjectDropMenu";
 
 
