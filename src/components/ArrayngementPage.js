@@ -174,6 +174,21 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
+            // if(this.state.sortBy === "BOY score"){
+            //     if(student.score[0].BOYscore >= 141){
+            //         color = "blueSquare"
+            //     } else if(student.score[0].BOYscore >= 138){
+            //         color = "greenSquare"
+            //     } else if(student.score[0].BOYscore >= 135){
+            //         color = "yellowSquare"
+            //     } else if(student.score[0].BOYscore >= 130){
+            //         color = "orangeSquare"
+            //     } else if(student.score[0].BOYscore < 130){
+            //         color = "redSquare"
+            //     } else {
+            //         color = "blankSquare"
+            //     }
+            // }
             if(this.state.sortBy === "MOY score"){
                 if(student.score[2].MOYscore >= 151){
                     color = "blueSquare"

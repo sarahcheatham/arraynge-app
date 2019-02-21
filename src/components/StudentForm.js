@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Image1 from '../images/content-save.png';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 class StudentForm extends Component{
     constructor(){
@@ -15,7 +16,8 @@ class StudentForm extends Component{
                 {EOYgoal: ''},
                 {MOYscore: ''},
                 {EOYscore: ''}
-            ]
+            ],
+            check: false
         };
     }
 
@@ -29,6 +31,7 @@ class StudentForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
+        this.setState({check: true})
         this.props.onFormSubmit({
             userId: this.state.userId,
             name: this.state.name,
@@ -42,6 +45,19 @@ class StudentForm extends Component{
     }
 
     render(){
+        let showStyle = "";
+        const noShow = {
+            display: "none"
+        }
+        const show = {
+            color: "8FAD57"
+        }
+        if(this.state.check === true){
+            showStyle = show;
+        } else {
+            showStyle = noShow;
+        }
+
         return(
             <form onSubmit={this.handleSubmit.bind(this)}>
                 <FormGroup className="studentdatapage">
@@ -113,6 +129,9 @@ class StudentForm extends Component{
                             id="saveimage"
                         />
                     </Button>
+                    <div className="checkbox">
+                        <SvgIcon style={showStyle}xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path nativeColor="#8FAD57" fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></SvgIcon>
+                    </div>
                 </FormGroup>
             </form>
         );

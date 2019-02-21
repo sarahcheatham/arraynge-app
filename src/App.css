@@ -586,7 +586,7 @@ ul {
 }
 .studentdatapage{
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 100px;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 50px 25px;
   grid-template-rows: 1fr;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -600,7 +600,7 @@ ul {
 .studentdatapagebutton{
   grid-column: 6 / 7;
   height: 30px;
-  width: 50%;
+  width: 100%;
   margin-top: 15px;
   margin-bottom: 20px;
   margin-right: 50px;
@@ -641,6 +641,11 @@ ul {
   width: 100px;
   height: 20px;
 }
+.checkbox{
+  margin-top: 20px;
+  margin-left: 20px;
+  grid-column: 7 / 8;
+}
 .studentdatalabels{
   display: flex;
 }
@@ -680,6 +685,7 @@ ul {
 .continuebutton{
   margin-bottom: 50px;
 }
+
 /* end StudentDataPage component */
 
 /* start ArrayngementPage component */

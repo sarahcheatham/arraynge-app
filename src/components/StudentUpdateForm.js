@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { Button } from 'react-bootstrap';
 import Image1 from '../images/content-save.png';
+import SvgIcon from '@material-ui/core/SvgIcon';
 
 class StudentUpdateForm extends Component{
     constructor(){
@@ -18,7 +19,8 @@ class StudentUpdateForm extends Component{
                 {EOYgoal: ''},
                 {MOYscore: ''},
                 {EOYscore: ''}
-            ]
+            ],
+            check: false
         }
         this.changeNameValue = this.changeNameValue.bind(this);
         this.changeSubjectValue = this.changeSubjectValue.bind(this);
@@ -65,6 +67,7 @@ class StudentUpdateForm extends Component{
     //handleSubmit function
     handleSubmit(event){
         event.preventDefault();
+        this.setState({check: true})
         this.props.onFormSubmit({
             id: this.state.id,
             userId: this.state.userId,
@@ -80,7 +83,19 @@ class StudentUpdateForm extends Component{
         })
     }
     render(){
-    let props = this.props;
+        let props = this.props;
+        let showStyle = "";
+        const noShow = {
+            display: "none"
+        }
+        const show = {
+            color: "8FAD57"
+        }
+        if(this.state.check === true){
+            showStyle = show;
+        } else {
+            showStyle = noShow;
+        }
         return(
             <tr>
                 <td>
@@ -152,6 +167,9 @@ class StudentUpdateForm extends Component{
                         />
                     </Button>
                 </td>
+                <div>
+                    <SvgIcon style={showStyle}xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path nativeColor="#8FAD57" fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></SvgIcon>
+                </div>
             </tr>
         )
     }
