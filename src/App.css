@@ -806,6 +806,7 @@ ul {
 .studentlist{ 
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  margin-top: 2px;
 }
 .student{
   display: flex;

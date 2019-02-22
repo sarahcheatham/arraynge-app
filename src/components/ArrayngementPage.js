@@ -73,6 +73,9 @@ class ArrayngementPage extends Component{
 
     render(){
         const benchmark = [];
+        let boyBenchmark = null;
+        let moyBenchmark = null;
+        let eoyBenchmark = null;
         const findBm = benchmarks.find((bm, index)=>{
             const gradelevel = this.state.gradelevel.toUpperCase();
             const subject = this.state.subject;
@@ -80,7 +83,12 @@ class ArrayngementPage extends Component{
                benchmark.push(bm) 
             }
         })
-        console.log(benchmark)
+        if(benchmark[0] !== undefined){
+            boyBenchmark = benchmark[0].score[0].BOYscore;
+            moyBenchmark = benchmark[0].score[1].MOYscore;
+            eoyBenchmark = benchmark[0].score[2].EOYscore;
+        }
+        console.log(boyBenchmark, moyBenchmark, eoyBenchmark)
         const studentArr = this.state.students.slice();
         //filter students by subject
         const checkSubject = (students)=>{
@@ -160,16 +168,18 @@ class ArrayngementPage extends Component{
                 color = "blankSquare"
             }
             if(this.state.sortBy === "BOY score"){
-                if(student.score[0].BOYscore >= 141){
+                if(student.score[0].BOYscore >= boyBenchmark +5){
                     color = "blueSquare"
-                } else if(student.score[0].BOYscore >= 138){
+                } else if(student.score[0].BOYscore >= boyBenchmark){
                     color = "greenSquare"
-                } else if(student.score[0].BOYscore >= 135){
+                } else if(student.score[0].BOYscore >= boyBenchmark -5){
                     color = "yellowSquare"
-                } else if(student.score[0].BOYscore >= 130){
+                } else if(student.score[0].BOYscore >= boyBenchmark -10){
                     color = "orangeSquare"
-                } else if(student.score[0].BOYscore < 130){
+                } else if(student.score[0].BOYscore < boyBenchmark -10){
                     color = "redSquare"
+                } else if(student.score[0].BOYscore === null){
+                    color = "blankSquare"
                 } else {
                     color = "blankSquare"
                 }
@@ -190,50 +200,95 @@ class ArrayngementPage extends Component{
             //     }
             // }
             if(this.state.sortBy === "MOY score"){
-                if(student.score[2].MOYscore >= 151){
+                if(student.score[2].MOYscore >= moyBenchmark +5){
                     color = "blueSquare"
-                } else if(student.score[2].MOYscore >= 146){
+                } else if(student.score[2].MOYscore >= moyBenchmark){
                     color = "greenSquare"
-                } else if(student.score[2].MOYscore >= 140){
+                } else if(student.score[2].MOYscore >= moyBenchmark -5){
                     color = "yellowSquare"
-                } else if(student.score[2].MOYscore >= 135){
+                } else if(student.score[2].MOYscore >= moyBenchmark -10){
                     color = "orangeSquare"
-                } else if(student.score[2].MOYscore < 135){
+                } else if(student.score[2].MOYscore < moyBenchmark -10){
                     color = "redSquare"
                 } else {
                     color = "blankSquare"
                 }
             }
+            // if(this.state.sortBy === "MOY score"){
+            //     if(student.score[2].MOYscore >= 151){
+            //         color = "blueSquare"
+            //     } else if(student.score[2].MOYscore >= 146){
+            //         color = "greenSquare"
+            //     } else if(student.score[2].MOYscore >= 140){
+            //         color = "yellowSquare"
+            //     } else if(student.score[2].MOYscore >= 135){
+            //         color = "orangeSquare"
+            //     } else if(student.score[2].MOYscore < 135){
+            //         color = "redSquare"
+            //     } else {
+            //         color = "blankSquare"
+            //     }
+            // }
             if(this.state.sortBy === "EOY goal"){
-                if(student.score[1].EOYgoal >= 161){
+                if(student.score[1].EOYgoal >= eoyBenchmark +5){
                     color = "blueSquare"
-                } else if(student.score[1].EOYgoal >= 155){
+                } else if(student.score[1].EOYgoal >= eoyBenchmark){
                     color = "greenSquare"
-                } else if(student.score[1].EOYgoal >= 150){
+                } else if(student.score[1].EOYgoal >= eoyBenchmark -5){
                     color = "yellowSquare"
-                } else if(student.score[1].EOYgoal >= 145){
+                } else if(student.score[1].EOYgoal >= eoyBenchmark -10){
                     color = "orangeSquare"
-                } else if(student.score[1].EOYgoal < 145){
+                } else if(student.score[1].EOYgoal < eoyBenchmark -10){
                     color = "redSquare"
                 } else {
                     color = "blankSquare"
                 }
             }
+            // if(this.state.sortBy === "EOY goal"){
+            //     if(student.score[1].EOYgoal >= 161){
+            //         color = "blueSquare"
+            //     } else if(student.score[1].EOYgoal >= 155){
+            //         color = "greenSquare"
+            //     } else if(student.score[1].EOYgoal >= 150){
+            //         color = "yellowSquare"
+            //     } else if(student.score[1].EOYgoal >= 145){
+            //         color = "orangeSquare"
+            //     } else if(student.score[1].EOYgoal < 145){
+            //         color = "redSquare"
+            //     } else {
+            //         color = "blankSquare"
+            //     }
+            // }
             if(this.state.sortBy === "EOY score"){
-                if(student.score[3].EOYscore >= 161){
+                if(student.score[3].EOYscore >= eoyBenchmark +5){
                     color = "blueSquare"
-                } else if(student.score[3].EOYscore >= 155){
+                } else if(student.score[3].EOYscore >= eoyBenchmark){
                     color = "greenSquare"
-                } else if(student.score[3].EOYscore >= 150){
+                } else if(student.score[3].EOYscore >= eoyBenchmark -5){
                     color = "yellowSquare"
-                } else if(student.score[3].EOYscore >= 145){
+                } else if(student.score[3].EOYscore >= eoyBenchmark -10){
                     color = "orangeSquare"
-                } else if(student.score[3].EOYscore < 145){
+                } else if(student.score[3].EOYscore < eoyBenchmark -10){
                     color = "redSquare"
                 } else {
                     color = "blankSquare"
                 }
             }
+            // if(this.state.sortBy === "EOY score"){
+            //     if(student.score[3].EOYscore >= 161){
+            //         color = "blueSquare"
+            //     } else if(student.score[3].EOYscore >= 155){
+            //         color = "greenSquare"
+            //     } else if(student.score[3].EOYscore >= 150){
+            //         color = "yellowSquare"
+            //     } else if(student.score[3].EOYscore >= 145){
+            //         color = "orangeSquare"
+            //     } else if(student.score[3].EOYscore < 145){
+            //         color = "redSquare"
+            //     } else {
+            //         color = "blankSquare"
+            //     }
+            // }
             return <li key={index} 
                         id="div1"
                         onDrop={this.drop}
