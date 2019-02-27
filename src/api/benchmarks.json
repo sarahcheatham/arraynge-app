@@ -3,81 +3,81 @@
     "subject": "READING",
     "gradelevel": "KINDERGARTEN",
     "score": [
-        {"BOYscore": 141},
-        {"MOYscore": 151},
-        {"EOYscore": 158}
+        {"BOYscore": 141.0},
+        {"MOYscore": 151.3},
+        {"EOYscore": 158.1}
     ]
     },
     {   
         "subject": "READING",
         "gradelevel": "FIRST GRADE",
         "score": [
-            {"BOYscore": 161},
-            {"MOYscore": 171},
-            {"EOYscore": 177}
+            {"BOYscore": 160.7},
+            {"MOYscore": 171.5},
+            {"EOYscore": 177.5}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "SECOND GRADE",
         "score": [
-            {"BOYscore": 175},
-            {"MOYscore": 184},
-            {"EOYscore": 189}
+            {"BOYscore": 174.7},
+            {"MOYscore": 184.2},
+            {"EOYscore": 188.7}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "THIRD GRADE",
         "score": [
-            {"BOYscore": 188},
-            {"MOYscore": 196},
-            {"EOYscore": 199}
+            {"BOYscore": 188.3},
+            {"MOYscore": 195.6},
+            {"EOYscore": 198.6}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "FOURTH GRADE",
         "score": [
-            {"BOYscore": 198},
-            {"MOYscore": 204},
-            {"EOYscore": 206}
+            {"BOYscore": 198.2},
+            {"MOYscore": 203.6},
+            {"EOYscore": 205.9}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "FIFTH GRADE",
         "score": [
-            {"BOYscore": 206},
-            {"MOYscore": 210},
-            {"EOYscore": 212}
+            {"BOYscore": 205.7},
+            {"MOYscore": 209.8},
+            {"EOYscore": 211.8}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "SIXTH GRADE",
         "score": [
-            {"BOYscore": 211},
-            {"MOYscore": 214},
-            {"EOYscore": 216}
+            {"BOYscore": 211.0},
+            {"MOYscore": 214.2},
+            {"EOYscore": 215.8}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "SEVENTH GRADE",
         "score": [
-            {"BOYscore": 214},
-            {"MOYscore": 217},
-            {"EOYscore": 218}
+            {"BOYscore": 214.4},
+            {"MOYscore": 216.9},
+            {"EOYscore": 218.2}
         ]
     },
     {   
         "subject": "READING",
         "gradelevel": "EIGHTH GRADE",
         "score": [
-            {"BOYscore": 217},
-            {"MOYscore": 219},
-            {"EOYscore": 220}
+            {"BOYscore": 217.2},
+            {"MOYscore": 219.1},
+            {"EOYscore": 220.1}
         ]
     },
     {   
