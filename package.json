@@ -19,6 +19,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
+    "react-dnd": "^7.0.2",
     "react-dom": "^16.7.0",
     "react-konva": "^16.7.1",
     "react-redux": "^6.0.0",
