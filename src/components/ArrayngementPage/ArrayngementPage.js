@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import benchmarks from '../api/benchmarks.json';
+import benchmarks from '../../api/benchmarks.json';
 import ArrayngementDropMenu from "./ArrayngementDropMenu";
-import StudentSquare from "./StudentSquare";
+// import StudentSquare from "./StudentSquare";
 import SubjectDropMenu from "./SubjectDropMenu";
 
 class ArrayngementPage extends Component{

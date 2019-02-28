@@ -9,7 +9,7 @@ import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
 import WelcomePage from './components/WelcomePage';
-import ArrayngementPage from './components/ArrayngementPage';
+// import ArrayngementPage from './components/ArrayngementPage';
 import StudentDataPage from './components/StudentDataPage';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
 import ArrayngementPageContainer from './containers/ArrayngementPageContainer';

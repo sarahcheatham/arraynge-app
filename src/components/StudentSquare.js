@@ -50,7 +50,7 @@ class StudentSquare extends Component{
     // }
     
     render(){
-        let colorToShow = "blankSquare";
+        // let colorToShow = "blankSquare";
         return (
             <span className={this.props.className}></span>
         )

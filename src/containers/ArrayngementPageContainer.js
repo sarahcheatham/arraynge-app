@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ArrayngementPage from "../components/ArrayngementPage";
+import ArrayngementPage from "../components/ArrayngementPage/ArrayngementPage";
 import { loadUserId } from "../actions";
 
 function mapStateToProps(state){
