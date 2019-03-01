@@ -84,81 +84,81 @@
         "subject": "MATH",
         "gradelevel": "KINDERGARTEN",
         "score": [
-            {"BOYscore": 140},
-            {"MOYscore": 152},
-            {"EOYscore": 159}
+            {"BOYscore": 140.0},
+            {"MOYscore": 151.5},
+            {"EOYscore": 159.1}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "FIRST GRADE",
         "score": [
-            {"BOYscore": 162},
-            {"MOYscore": 174},
-            {"EOYscore": 181}
+            {"BOYscore": 162.4},
+            {"MOYscore": 173.8},
+            {"EOYscore": 180.8}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "SECOND GRADE",
         "score": [
-            {"BOYscore": 177},
-            {"MOYscore": 186},
-            {"EOYscore": 192}
+            {"BOYscore": 176.9},
+            {"MOYscore": 186.4},
+            {"EOYscore": 192.1}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "THIRD GRADE",
         "score": [
-            {"BOYscore": 190},
-            {"MOYscore": 198},
-            {"EOYscore": 203}
+            {"BOYscore": 190.4},
+            {"MOYscore": 198.2},
+            {"EOYscore": 203.4}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "FOURTH GRADE",
         "score": [
-            {"BOYscore": 202},
-            {"MOYscore": 209},
-            {"EOYscore": 214}
+            {"BOYscore": 201.9},
+            {"MOYscore": 208.7},
+            {"EOYscore": 213.5}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "FIFTH GRADE",
         "score": [
-            {"BOYscore": 211},
-            {"MOYscore": 217},
-            {"EOYscore": 221}
+            {"BOYscore": 211.4},
+            {"MOYscore": 217.2},
+            {"EOYscore": 221.4}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "SIXTH GRADE",
         "score": [
-            {"BOYscore": 218},
-            {"MOYscore": 222},
-            {"EOYscore": 225}
+            {"BOYscore": 217.6},
+            {"MOYscore": 222.1},
+            {"EOYscore": 225.3}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "SEVENTH GRADE",
         "score": [
-            {"BOYscore": 223},
-            {"MOYscore": 226},
-            {"EOYscore": 229}
+            {"BOYscore": 222.6},
+            {"MOYscore": 226.1},
+            {"EOYscore": 228.6}
         ]
     },
     {   
         "subject": "MATH",
         "gradelevel": "EIGHTH GRADE",
         "score": [
-            {"BOYscore": 226},
-            {"MOYscore": 229},
-            {"EOYscore": 231}
+            {"BOYscore": 226.3},
+            {"MOYscore": 229.1},
+            {"EOYscore": 230.9}
         ]
     }
 ]

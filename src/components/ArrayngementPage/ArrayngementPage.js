@@ -84,9 +84,10 @@ class ArrayngementPage extends Component{
             }
         })
         if(benchmark[0] !== undefined){
-            boyBenchmark = benchmark[0].score[0].BOYscore;
-            moyBenchmark = benchmark[0].score[1].MOYscore;
-            eoyBenchmark = benchmark[0].score[2].EOYscore;
+            //rounds the benchmark down to nearest integer based on decimal
+            boyBenchmark = Math.floor(benchmark[0].score[0].BOYscore);
+            moyBenchmark = Math.floor(benchmark[0].score[1].MOYscore);
+            eoyBenchmark = Math.floor(benchmark[0].score[2].EOYscore);
         }
         console.log(boyBenchmark, moyBenchmark, eoyBenchmark)
         const studentArr = this.state.students.slice();
@@ -97,12 +98,13 @@ class ArrayngementPage extends Component{
             }
         }
         const filteredStudents = studentArr.filter(checkSubject);
-        let student = null;
+        //sort students by time of year for tests
+        let studentCards = null;
         if(this.state.sortBy === "BOY score"){
             const sortStudentsBoy = filteredStudents.sort((a, b)=>{
                 return b.score[0].BOYscore - a.score[0].BOYscore
             });
-            student = sortStudentsBoy.map((student, index)=>{
+            studentCards = sortStudentsBoy.map((student, index)=>{
                 let color = "";
                 return <li key={index}>
                             <div className="student">
@@ -118,7 +120,7 @@ class ArrayngementPage extends Component{
              const sortStudentsMoy = filteredStudents.sort((a, b)=>{
                  return b.score[2].MOYscore - a.score[2].MOYscore
              })
-             student = sortStudentsMoy.map((student, index)=>{
+             studentCards = sortStudentsMoy.map((student, index)=>{
                  let color = "";
                  return <li key={index}>
                             <div className="student">
@@ -134,7 +136,7 @@ class ArrayngementPage extends Component{
             const sortStudentsEoy = filteredStudents.sort((a, b)=>{
                 return b.score[3].EOYscore - a.score[3].EOYscore
             })
-            student = sortStudentsEoy.map((student, index)=>{
+            studentCards = sortStudentsEoy.map((student, index)=>{
                 let color = "";
                 return <li key={index}>
                             <div className="student">
@@ -150,7 +152,7 @@ class ArrayngementPage extends Component{
             const sortStudentsEoyGoal = filteredStudents.sort((a, b)=>{
                 return b.score[1].EOYgoal - a.score[1].EOYgoal
             })
-            student = sortStudentsEoyGoal.map((student, index)=>{
+            studentCards = sortStudentsEoyGoal.map((student, index)=>{
                 let color = "";
                 return <li key={index}>
                             <div className="student">
@@ -162,7 +164,9 @@ class ArrayngementPage extends Component{
                         </li>
             })
         }
-        student = filteredStudents.map((student, index)=>{
+        console.log("studentCards:",studentCards)
+        //assign a square to each student based on their scores compared to the benchmarks
+        studentCards = filteredStudents.map((student, index)=>{
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"
@@ -184,21 +188,6 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            // if(this.state.sortBy === "BOY score"){
-            //     if(student.score[0].BOYscore >= 141){
-            //         color = "blueSquare"
-            //     } else if(student.score[0].BOYscore >= 138){
-            //         color = "greenSquare"
-            //     } else if(student.score[0].BOYscore >= 135){
-            //         color = "yellowSquare"
-            //     } else if(student.score[0].BOYscore >= 130){
-            //         color = "orangeSquare"
-            //     } else if(student.score[0].BOYscore < 130){
-            //         color = "redSquare"
-            //     } else {
-            //         color = "blankSquare"
-            //     }
-            // }
             if(this.state.sortBy === "MOY score"){
                 if(student.score[2].MOYscore >= moyBenchmark +5){
                     color = "blueSquare"
@@ -214,21 +203,6 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            // if(this.state.sortBy === "MOY score"){
-            //     if(student.score[2].MOYscore >= 151){
-            //         color = "blueSquare"
-            //     } else if(student.score[2].MOYscore >= 146){
-            //         color = "greenSquare"
-            //     } else if(student.score[2].MOYscore >= 140){
-            //         color = "yellowSquare"
-            //     } else if(student.score[2].MOYscore >= 135){
-            //         color = "orangeSquare"
-            //     } else if(student.score[2].MOYscore < 135){
-            //         color = "redSquare"
-            //     } else {
-            //         color = "blankSquare"
-            //     }
-            // }
             if(this.state.sortBy === "EOY goal"){
                 if(student.score[1].EOYgoal >= eoyBenchmark +5){
                     color = "blueSquare"
@@ -244,21 +218,6 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            // if(this.state.sortBy === "EOY goal"){
-            //     if(student.score[1].EOYgoal >= 161){
-            //         color = "blueSquare"
-            //     } else if(student.score[1].EOYgoal >= 155){
-            //         color = "greenSquare"
-            //     } else if(student.score[1].EOYgoal >= 150){
-            //         color = "yellowSquare"
-            //     } else if(student.score[1].EOYgoal >= 145){
-            //         color = "orangeSquare"
-            //     } else if(student.score[1].EOYgoal < 145){
-            //         color = "redSquare"
-            //     } else {
-            //         color = "blankSquare"
-            //     }
-            // }
             if(this.state.sortBy === "EOY score"){
                 if(student.score[3].EOYscore >= eoyBenchmark +5){
                     color = "blueSquare"
@@ -274,21 +233,6 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            // if(this.state.sortBy === "EOY score"){
-            //     if(student.score[3].EOYscore >= 161){
-            //         color = "blueSquare"
-            //     } else if(student.score[3].EOYscore >= 155){
-            //         color = "greenSquare"
-            //     } else if(student.score[3].EOYscore >= 150){
-            //         color = "yellowSquare"
-            //     } else if(student.score[3].EOYscore >= 145){
-            //         color = "orangeSquare"
-            //     } else if(student.score[3].EOYscore < 145){
-            //         color = "redSquare"
-            //     } else {
-            //         color = "blankSquare"
-            //     }
-            // }
             return <li key={index} 
                         id="div1"
                         onDrop={this.drop}
@@ -316,25 +260,46 @@ class ArrayngementPage extends Component{
                 </span>
                 <div>
                     <ul className="studentlist">
-                        {student}
+                        {studentCards}
                     </ul>
                 </div>
-                <div 
+                {/* <div 
                     id="groupcontainer"
                     className="droppable"
                     onDrop={this.drop}
                     onDragOver={this.allowDrop}
-                >
-                    <span id="grouponebox">
+                > */}
+                <div id="groupcontainer" className="droppable">
+                    <span
+                    id="grouponebox"
+                    className="droppable"
+                    onDrop={this.drop}
+                    onDragOver={this.allowDrop}
+                    >
                         <p className="groupheader">group one</p>
                     </span>
-                    <span id="grouptwobox">
+                    <span
+                    id="grouptwobox"
+                    className="droppable"
+                    onDrop={this.drop}
+                    onDragOver={this.allowDrop}
+                    >
                         <p className="groupheader">group two</p>
                     </span>
-                    <span id="groupthreebox">
+                    <span
+                    id="groupthreebox"
+                    className="droppable"
+                    onDrop={this.drop}
+                    onDragOver={this.allowDrop}
+                    >
                         <p className="groupheader">group three</p>
                     </span>
-                    <span id="groupfourbox">
+                    <span
+                    id="groupfourbox"
+                    className="droppable"
+                    onDrop={this.drop}
+                    onDragOver={this.allowDrop}
+                    >
                         <p className="groupheader">group four</p>
                     </span>
                 </div>
