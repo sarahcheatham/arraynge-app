@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-// import PropTypes from 'prop-types';
-import SubHeader from './SubHeader';
-// import ClassDataList from './ClassDataList';
+import SubHeader from '../SubHeader';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './ClassDataPage.css';
 
 class ClassDataPage extends Component{
     constructor(props){
@@ -84,7 +83,6 @@ class ClassDataPage extends Component{
         this.props.gradelevel === "" ? whatToShow = "SHOW GRADE LEVELS" : whatToShow = this.props.gradelevel
         return(
             <div className="classDataPage">
-                {/* <ClassDataList className="classdatalist" renderStudentList={this.props.renderStudentList}/> */}
                 <form>
                     <div className="classDataPageHeader">
                         <SubHeader text="CREATE A NEW CLASS" className="classDataPageHeader"/>

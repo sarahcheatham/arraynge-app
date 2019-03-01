@@ -1,0 +1,107 @@
+/* start StudentDataPage Component */
+.studentdatacontainer{
+    margin-right: 25px;
+    margin-left: 25px;
+}
+.numberofstudents{
+    font-family: acumin-pro, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    color: #343148; 
+}
+.subjectheader{
+    font-family: nobel, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    margin-top: 0px;
+    color: #B0585E;
+}
+.studentdatasubheader{
+    font-family: nobel, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    color: #AA7874;
+}
+#formNumberOfStudents{
+    color: #343148;
+}
+.continuebutton{
+    margin-bottom: 50px;
+}
+/* end StudentDataPage Component */
+
+/* start StudentForm Component */
+.studentdatapage{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 50px 25px;
+    grid-template-rows: 1fr;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 8%;
+    margin-right: 8%;
+    font-family: acumin-pro, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    color: #343148
+}
+.studentdatapagebutton{
+    grid-column: 6 / 7;
+    height: 30px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    color: #EDEFFB;
+    background-color: #AA7874;
+    display: flex;
+    justify-content: center;
+    border-radius: 3px;
+}
+#formInlineStudent{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 225px;
+    height: 20px;
+}
+#formInlineBoyScore{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    width: 100px;
+    height: 20px;
+}
+#formInlineEoyGoal{
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    width: 100px;
+    height: 20px;
+}
+#formInlineMoyScore{
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+    width: 100px;
+    height: 20px;
+}
+#formInlineEoyScore{
+    grid-column: 5 / 6;
+    grid-row: 1 / 2;
+    width: 100px;
+    height: 20px;
+}
+.checkbox{
+    margin-top: 20px;
+    margin-left: 20px;
+    grid-column: 7 / 8;
+}
+.studentdatalabels{
+    display: flex;
+}
+.studentdatainputs{
+    display: flex;
+    margin-right: 15px;
+}
+.studentdataname{
+    display: flex;
+}
+/* end StudentForm Component */

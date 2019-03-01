@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import StudentForm from './StudentForm';
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './StudentDataPage.css';
 
 
 class StudentDataPage extends Component{

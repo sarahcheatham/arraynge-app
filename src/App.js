@@ -3,14 +3,11 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
-import SignUpSignInPage from './components/SignUpSignInPage';
-import ClassDataPageContainer from './containers/ClassDataPageContainer';
-import Secret from './components/Secret';
 import TopNavbar from './components/TopNavbar';
+import SignUpSignInPage from './components/SignUpSignInPage';
 import WelcomePage from './components/WelcomePage';
-// import ArrayngementPage from './components/ArrayngementPage';
-import StudentDataPage from './components/StudentDataPage';
+import ScoresPage from './components/ScoresPage/ScoresPage';
+import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
 import ArrayngementPageContainer from './containers/ArrayngementPageContainer';
 import MidpointChart from './components/MidpointChart';
@@ -129,13 +126,11 @@ class App extends Component {
       <div className="page">
         <Switch>
           <Route exact path="/" render={()=> <WelcomePage/>}/>
-          {/* <Route path="/studentdata" component={StudentDataPage}/> */}
           <Route path="/studentdata" component={StudentDataPageContainer}/>
           <Route path="/classdata" component={ClassDataPageContainer}/>
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
-          {/* <Route path="/arrayngement" component={ArrayngementPage}/> */}
           <Route path="/arrayngement" component={ArrayngementPageContainer}/>
-          <Route exact path="/secret" component={Secret}/>
+          <Route exact path="/scores" component={ScoresPage}/>
           <Route path="/charts" component={MidpointChart}/>
         </Switch>
       </div>
@@ -154,7 +149,6 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Header/>
-            <Navbar/>
             <TopNavbar
               showNavItems={this.state.authenticated} 
               onSignOut={this.handleSignOut}

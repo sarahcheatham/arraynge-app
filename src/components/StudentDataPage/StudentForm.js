@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Image1 from '../images/content-save.png';
+import Image1 from '../../images/content-save.png';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 class StudentForm extends Component{

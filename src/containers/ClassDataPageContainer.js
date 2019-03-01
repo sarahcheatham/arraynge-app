@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ClassDataPage from "../components/ClassDataPage";
+import ClassDataPage from "../components/ClassDataPage/ClassDataPage";
 import { loadUserId, loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject } from '../actions';
 
 function mapStateToProps(state) {
