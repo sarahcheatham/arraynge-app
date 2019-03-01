@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import StudentDataPage from "../components/StudentDataPage";
+import StudentDataPage from "../components/StudentDataPage/StudentDataPage";
 import { loadUserId } from "../actions";
 
 function mapStateToProps(state){

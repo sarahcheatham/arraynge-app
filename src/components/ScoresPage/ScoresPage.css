@@ -1,0 +1,72 @@
+/* start ScoresPage Component */
+table, th, td {
+    border: 1px solid black;
+}
+table {
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 10%;
+}
+th {
+    height: 50px;
+}
+.tableheader{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: #F9E7E4;
+}
+.secretgradeandbutton{
+    display: grid;
+    margin-left: 20%;
+    margin-right: 20%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 75px;
+}
+.secretgradelevel{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    justify-self: flex-start;
+}
+.editbutton{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    justify-self: flex-end;
+    border-radius: 5px;
+}
+/* end ScoresPage Component */
+
+/* start StudentUpdateTable Component */
+.tablecell{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+.A{
+    background-color: #EDEFFB;
+}
+/* end StudentUpdateTable Component */
+
+/* start StudentUpdateForm Component */
+td {
+    height: 20px;
+}
+.studentlistinput{
+    height: 20px;
+    width: 95%;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+.studentlistbutton{
+    background-color: #656588;
+}
+/* end StudentUpdateForm Component */

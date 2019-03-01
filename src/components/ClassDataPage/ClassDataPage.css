@@ -1,0 +1,122 @@
+/* start ClassDataPage Component */
+.classDataPage{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 250px 100px 1fr 1fr;
+    grid-column-gap: 50px;
+    font-family: acumin-pro, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+.classDataPageHeader{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 25px;
+    font-family: nobel, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+}
+.classDataSubHeader{
+    font-size: 22px;
+    font-family: nobel, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+.classDataText{
+    font-size: 12px;
+    margin-bottom: 20px;
+    padding-top: 0px;
+}
+.gradeLevel{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    margin-top: 15px;
+    margin-left: 0px;
+    margin-right: 25px;
+}
+.subject{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    margin-top: 15px;
+    margin-left: 0px;
+    margin-right: 25px;
+}
+.subjectButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mathButton{
+    height: 40px;
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #343148;
+    background-color: #EFEEE8;
+}
+.readingButton{
+    height: 40px;
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #343148;
+    background-color: #EFEEE8;
+}
+.classdatabuttonscontainer{
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+}
+.classdatabutton{
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 25px;
+    margin-left: 5px;
+}
+.classdatacontinuebutton{
+    width: 100px;
+    height: 50px;
+    margin-top: 0px;
+    margin-left: 25px;
+}
+/* css for drop menu start */
+.dropMenuContainer{
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 1fr 1fr 1fr;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+}
+.mainDropMenuButton{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 0px;
+    color: #343148;
+    background-color: #EFEEE8;
+    height: 40px;
+    width: 300px;
+    justify-self: center;
+    align-self: end;
+}
+.dropMenu{
+    grid-column: 2 / 3;
+    grid-row: 2 / 6;
+    display: grid;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+.grades{
+    width: 300px;
+    height: 40px;
+    background-color: #f9f9f9;
+}
+/* css for drop menu end */
+/* end of ClassDataPage Component */

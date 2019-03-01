@@ -65,7 +65,7 @@ class SubjectDropMenu extends Component{
                                 this.dropdownMenu = element;
                             }}
                         >
-                            <Button className='subjectReading' onClick={this.subjectClick}>{whatToShow}</Button>
+                            <Button className='subjectChangeButton' onClick={this.subjectClick}>{whatToShow}</Button>
                         </div>
                     ) 
                     : (

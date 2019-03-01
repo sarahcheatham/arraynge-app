@@ -54,7 +54,7 @@ function startWebServer(){
   app.get("/api/hey", function (req, res){
     res.send(`${req.user._id}`)
   })
-  app.get("/api/secret", function (req, res) {
+  app.get("/api/scores", function (req, res) {
     res.send(`${req.user.firstName} ${req.user.lastName}'s Class List`)
   });
   app.get("/api/welcome", function(req, res){

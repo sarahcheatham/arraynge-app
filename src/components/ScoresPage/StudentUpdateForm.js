@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { Button } from 'react-bootstrap';
-import Image1 from '../images/content-save.png';
+import Image1 from '../../images/content-save.png';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 class StudentUpdateForm extends Component{

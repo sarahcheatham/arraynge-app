@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import StudentUpdateForm from "./StudentUpdateForm";
 import StudentUpdateTable from "./StudentUpdateTable";
 import { Grid, Row, Col, Button, Table, thead, tr } from 'react-bootstrap';
+import './ScoresPage.css';
 
-class Secret extends Component{
+class ScoresPage extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -28,7 +29,8 @@ class Secret extends Component{
         }).then((userId)=>{
             this.setState({userId: userId})
         });
-        fetch("/api/secret").then((res)=>{
+        fetch("/api/scores").then((res)=>{
+            console.log("scores fetch:", res)
             return res.text();
         }).then((data)=>{
             this.setState({
@@ -143,4 +145,4 @@ class Secret extends Component{
     }
 }
 
-export default Secret;
+export default ScoresPage;
