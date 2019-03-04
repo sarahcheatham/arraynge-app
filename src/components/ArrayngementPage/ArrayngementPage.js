@@ -3,6 +3,12 @@ import benchmarks from '../../api/benchmarks.json';
 import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import './ArrayngementPage.css';
 import SubjectDropMenu from "./SubjectDropMenu";
+import NumberOfGroupsDropMenu from './NumberOfGroupsDropMenu';
+import TwoGroups from "./TwoGroups";
+import ThreeGroups from "./ThreeGroups";
+import FourGroups from "./FourGroups";
+import FiveGroups from "./FiveGroups";
+import SixGroups from "./SixGroups";
 
 class ArrayngementPage extends Component{
     constructor(){
@@ -263,46 +269,22 @@ class ArrayngementPage extends Component{
                         {studentCards}
                     </ul>
                 </div>
-                {/* <div 
-                    id="groupcontainer"
-                    className="droppable"
-                    onDrop={this.drop}
-                    onDragOver={this.allowDrop}
-                > */}
-                <div id="groupcontainer" className="droppable">
-                    <span
+                {/* <TwoGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
+                <ThreeGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+                {/* <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
+                {/* <FiveGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
+                {/* <SixGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
+                {/* <div id="groupcontainer" className="droppable"> */}
+                    {/* <span
                     id="grouponebox"
                     className="droppable"
                     onDrop={this.drop}
                     onDragOver={this.allowDrop}
-                    >
-                        <p className="groupheader">group one</p>
-                    </span>
-                    <span
-                    id="grouptwobox"
-                    className="droppable"
-                    onDrop={this.drop}
-                    onDragOver={this.allowDrop}
-                    >
-                        <p className="groupheader">group two</p>
-                    </span>
-                    <span
-                    id="groupthreebox"
-                    className="droppable"
-                    onDrop={this.drop}
-                    onDragOver={this.allowDrop}
-                    >
-                        <p className="groupheader">group three</p>
-                    </span>
-                    <span
-                    id="groupfourbox"
-                    className="droppable"
-                    onDrop={this.drop}
-                    onDragOver={this.allowDrop}
-                    >
-                        <p className="groupheader">group four</p>
-                    </span>
-                </div>
+                    > */}
+                        {/* <input type="text" className="groupheader" placeholder="group one"/> */}
+                        {/* <p className="groupheader">group one</p> */}
+                    {/* </span> */}
+                {/* </div> */}
             </div>
         );
     }
