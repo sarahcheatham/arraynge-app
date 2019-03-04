@@ -12,7 +12,7 @@ class NumberOfGroupsDropMenu extends Component{
         }
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
-        this.subjectClick = this.subjectClick.bind(this);
+        this.groupClick = this.groupClick.bind(this);
     }
 
     showMenu(event){
@@ -50,7 +50,7 @@ class NumberOfGroupsDropMenu extends Component{
         // }
         return(
             <form className={this.props.className}>
-                <ControlLabel className="groupsLabel">Number Of Groups:</ControlLabel>
+                <ControlLabel className="groupsLabel">Groups:</ControlLabel>
                 <Button onClick={this.showMenu} className='groupsDropMenuButton'>
                     {this.props.numberOfGroups}
                 </Button>

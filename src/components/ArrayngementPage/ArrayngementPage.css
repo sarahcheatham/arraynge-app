@@ -383,3 +383,53 @@
     color: #465155;
 }
 /* end SubjectDropMenu component */
+
+/* start NumberOfGroupsDropMenu component */
+.arrayngementgroups{
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: 50px 100px;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    padding-top: 10px;
+    height: 40px;
+}
+.groupsLabel{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    align-self: flex-end;
+    font-family: acumin-pro, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 12px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+} 
+.groupsDropMenuButton{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    color: #343148;
+    background-color: #EFEEE8;
+    height: 30px;
+    width: 100px;
+}
+.groupsDropMenu{
+    grid-column: 2 / 3;
+    grid-row: 2 / 6;
+    display: grid;
+    justify-content: center;
+}
+.groupsChangeButton{
+    width: 100px;
+    height: 30px;
+    background-color: #f9f9f9;
+    color: #465155;
+}
+/* end NumberOfGroupsDropMenu component */

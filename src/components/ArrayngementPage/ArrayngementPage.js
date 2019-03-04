@@ -18,10 +18,12 @@ class ArrayngementPage extends Component{
             sortBy: "",
             userId: "",
             subject: "",
-            gradelevel: "",     
+            gradelevel: "", 
+            numberOfGroups: ""    
         };
         this.handleSortBy = this.handleSortBy.bind(this);
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
+        this.handleGroupsChange = this.handleGroupsChange.bind(this);
         this.allowDrop = this.allowDrop.bind(this);
         this.drag = this.drag.bind(this);
         this.drop = this.drop.bind(this);
@@ -62,6 +64,10 @@ class ArrayngementPage extends Component{
             subject: event.subject
         })
     }
+
+    handleGroupsChange(event){
+        this.setState({numberOfGroups: event.numberOfGroups})
+    }
    
     allowDrop(allowdropevent){
         allowdropevent.preventDefault();
@@ -78,6 +84,7 @@ class ArrayngementPage extends Component{
     }
 
     render(){
+        console.log("numberOfGroups:",this.state.numberOfGroups)
         const benchmark = [];
         let boyBenchmark = null;
         let moyBenchmark = null;
@@ -262,6 +269,7 @@ class ArrayngementPage extends Component{
                 <span className="inputbar">
                     <p className="studentlabel">STUDENTS:</p>
                     <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
+                    <NumberOfGroupsDropMenu className="arrayngementgroups" onGroupsClick={this.handleGroupsChange}/>
                     <SubjectDropMenu className="arrayngementsubject" subject={this.state.subject} onSubjectClick={this.handleSubjectChange}/>
                 </span>
                 <div>
