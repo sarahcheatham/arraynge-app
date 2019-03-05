@@ -5,7 +5,6 @@ import { ControlLabel, Button } from 'react-bootstrap';
 class NumberOfGroupsDropMenu extends Component{
     constructor(){
         super();
-
         this.state={
             showMenu: false,
             numberOfGroups: ""
@@ -23,18 +22,17 @@ class NumberOfGroupsDropMenu extends Component{
     }
 
     closeMenu(event){
+        event.preventDefault();
         if(!this.dropdownMenu.contains(event.target)){
             this.setState({ showMenu: false}, ()=>{
                 document.removeEventListener('click', this.closeMenu);
             });
         }
     }
-
     groupClick(event){
         event.preventDefault();
-        console.log(event.target.innerHTML)
         this.setState({
-            numberOfGroups: event.target.innerHTML
+            numberOfGroups: event.target.value
         })
         this.props.onGroupsClick({
             numberOfGroups: this.state.numberOfGroups
@@ -42,17 +40,12 @@ class NumberOfGroupsDropMenu extends Component{
     }
 
     render(){
-        // let whatToShow = "";
-        // if(this.props.subject === 'READING'){
-        //     whatToShow = "MATH"
-        // } else {
-        //     whatToShow = "READING"
-        // }
+        let whatToShow = this.state.numberOfGroups;
         return(
-            <form className={this.props.className}>
-                <ControlLabel className="groupsLabel">Groups:</ControlLabel>
+            <form className={this.props.className} onSubmit={this.groupClick.bind(this)}>
+                <ControlLabel className="groupsLabel">Number of Groups:</ControlLabel>
                 <Button onClick={this.showMenu} className='groupsDropMenuButton'>
-                    {this.props.numberOfGroups}
+                    {whatToShow}
                 </Button>
 
                 {
@@ -65,11 +58,11 @@ class NumberOfGroupsDropMenu extends Component{
                                 this.dropdownMenu = element;
                             }}
                         >
-                            <Button className='groupsChangeButton' onClick={this.groupClick}>2</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick}>3</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick}>4</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick}>5</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick}>6</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="2">2</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="3">3</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="4">4</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="5">5</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="6">6</Button>
                         </div>
                     ) 
                     : (

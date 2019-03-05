@@ -1,0 +1,236 @@
+/* default groups 4 */
+
+/* start TwoGroups Component */
+#twoGroupContainer{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: grid;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    grid-template-columns: 45% 45%;
+    grid-column-gap: 100px;
+}
+#twoGroupOneBox{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    /* background-color: #D6D5DA; */
+    color: #535B85;
+}
+#twoGroupTwoBox{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 0px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #EADFD3;
+    color: #535B85;
+}
+/* end TwoGroups Component */
+
+/* start FourGroups Component */
+#groupcontainer{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: grid;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 35% 35%;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+.groupheader{
+    color: #535B85;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 0px;
+    font-size: 18px;
+}
+#grouponebox{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    /* background-color: #D6D5DA; */
+    color: #535B85;
+}
+#grouptwobox{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #EADFD3;
+    color: #535B85;
+}
+#groupthreebox{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #E8E8E8;
+    color: #535B85;
+}
+#groupfourbox{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 25px; 
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #EAD9D8;
+    color: #535B85;
+}
+/* end FourGroups Component */
+
+/* start SixGroups Component */
+#sixGroupContainer{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: grid;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 30% 30% 30%;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+#sixGroupOneBox{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    /* background-color: #D6D5DA; */
+    color: #535B85;
+}
+#sixGroupTwoBox{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #EADFD3;
+    color: #535B85;
+}
+#sixGroupThreeBox{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #E8E8E8;
+    color: #535B85;
+}
+#sixGroupFourBox{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 0px; 
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #EAD9D8;
+    color: #535B85;
+}
+#sixGroupFiveBox{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 0px; 
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #EAD9D8;
+    color: #535B85;
+}
+#sixGroupSixBox{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    font-family: le-havre, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 0px; 
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #EAD9D8;
+    color: #535B85;
+}
+/* end SixGroups Component */

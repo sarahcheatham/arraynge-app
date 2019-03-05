@@ -1,14 +1,15 @@
 import React, {Component} from "react";
 import benchmarks from '../../api/benchmarks.json';
-import ArrayngementDropMenu from "./ArrayngementDropMenu";
 import './ArrayngementPage.css';
-import SubjectDropMenu from "./SubjectDropMenu";
-import NumberOfGroupsDropMenu from './NumberOfGroupsDropMenu';
-import TwoGroups from "./TwoGroups";
-import ThreeGroups from "./ThreeGroups";
-import FourGroups from "./FourGroups";
-import FiveGroups from "./FiveGroups";
-import SixGroups from "./SixGroups";
+import './Groups/Groups.css';
+import ArrayngementDropMenu from "./DropMenus/ArrayngementDropMenu";
+import SubjectDropMenu from "./DropMenus/SubjectDropMenu";
+import NumberOfGroupsDropMenu from './DropMenus/NumberOfGroupsDropMenu';
+import TwoGroups from "./Groups/TwoGroups";
+import ThreeGroups from "./Groups/ThreeGroups";
+import FourGroups from "./Groups/FourGroups";
+import FiveGroups from "./Groups/FiveGroups";
+import SixGroups from "./Groups/SixGroups";
 
 class ArrayngementPage extends Component{
     constructor(){
@@ -52,21 +53,24 @@ class ArrayngementPage extends Component{
     }
 
     handleSortBy(event){
-        console.log(event)
+        console.log("handleSortBy:", event)
         this.setState({
             sortBy: event.sortBy
         });
     }
 
     handleSubjectChange(event){
-        console.log(event)
+        console.log("handleSubjectChange:", event)
         this.setState({
             subject: event.subject
         })
     }
 
     handleGroupsChange(event){
-        this.setState({numberOfGroups: event.numberOfGroups})
+        console.log("handleGroupsChange:", event)
+        this.setState({
+            numberOfGroups: event.numberOfGroups
+        });
     }
    
     allowDrop(allowdropevent){
@@ -84,11 +88,28 @@ class ArrayngementPage extends Component{
     }
 
     render(){
-        console.log("numberOfGroups:",this.state.numberOfGroups)
         const benchmark = [];
         let boyBenchmark = null;
         let moyBenchmark = null;
         let eoyBenchmark = null;
+        let numberOfGroupsToShow = "";
+        //render correct groups component
+        if(this.state.numberOfGroups === ""){
+            numberOfGroupsToShow = <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        }
+        if(this.state.numberOfGroups === "2"){
+            numberOfGroupsToShow = <TwoGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        } else if(this.state.numberOfGroups === "3"){
+            numberOfGroupsToShow = <ThreeGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        } else if(this.state.numberOfGroups === "4"){
+            numberOfGroupsToShow = <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        } else if(this.state.numberOfGroups === "5"){
+            numberOfGroupsToShow = <FiveGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        } else if(this.state.numberOfGroups === "6"){
+            numberOfGroupsToShow = <SixGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        } else {
+            numberOfGroupsToShow = "";
+        }
         const findBm = benchmarks.find((bm, index)=>{
             const gradelevel = this.state.gradelevel.toUpperCase();
             const subject = this.state.subject;
@@ -102,7 +123,6 @@ class ArrayngementPage extends Component{
             moyBenchmark = Math.floor(benchmark[0].score[1].MOYscore);
             eoyBenchmark = Math.floor(benchmark[0].score[2].EOYscore);
         }
-        console.log(boyBenchmark, moyBenchmark, eoyBenchmark)
         const studentArr = this.state.students.slice();
         //filter students by subject
         const checkSubject = (students)=>{
@@ -177,7 +197,6 @@ class ArrayngementPage extends Component{
                         </li>
             })
         }
-        console.log("studentCards:",studentCards)
         //assign a square to each student based on their scores compared to the benchmarks
         studentCards = filteredStudents.map((student, index)=>{
             let color = "";
@@ -277,11 +296,7 @@ class ArrayngementPage extends Component{
                         {studentCards}
                     </ul>
                 </div>
-                {/* <TwoGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
-                <ThreeGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-                {/* <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
-                {/* <FiveGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
-                {/* <SixGroups onDrop={this.drop} onDragOver={this.allowDrop}/> */}
+                {numberOfGroupsToShow}
                 {/* <div id="groupcontainer" className="droppable"> */}
                     {/* <span
                     id="grouponebox"

@@ -20,6 +20,7 @@ ul {
 .header {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+  margin-bottom: 0px;
   font-family: ivystyle-tw, sans-serif;
   font-style: normal;
   font-weight: 200;
