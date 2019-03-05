@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 class FiveGroups extends Component{
     render(props){
         return(
-            <div id="sixGroupContainer" className="droppable">
+            <div id="fiveGroupContainer" className="droppable">
                 <span
-                id="sixGroupOneBox"
+                id="fiveGroupOneBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
@@ -14,7 +14,7 @@ class FiveGroups extends Component{
                     <p className="groupheader" contenteditable="true">group one</p>
                 </span>
                 <span
-                id="sixGroupTwoBox"
+                id="fiveGroupTwoBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
@@ -22,7 +22,7 @@ class FiveGroups extends Component{
                     <p className="groupheader" contenteditable="true">group two</p>
                 </span>
                 <span
-                id="sixGroupThreeBox"
+                id="fiveGroupThreeBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
@@ -30,7 +30,7 @@ class FiveGroups extends Component{
                     <p className="groupheader" contenteditable="true">group three</p>
                 </span>
                 <span
-                id="sixGroupFourBox"
+                id="fiveGroupFourBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
@@ -38,7 +38,7 @@ class FiveGroups extends Component{
                     <p className="groupheader" contenteditable="true">group four</p>
                 </span>
                 <span
-                id="sixGroupFiveBox"
+                id="fiveGroupFiveBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}

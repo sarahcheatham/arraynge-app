@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 class ThreeGroups extends Component{
     render(props){
         return(
-            <div id="groupcontainer" className="droppable">
+            <div id="threeGroupContainer" className="droppable">
                 <span
-                id="grouponebox"
+                id="threeGroupOneBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
@@ -14,7 +14,7 @@ class ThreeGroups extends Component{
                     <p className="groupheader">group one</p>
                 </span>
                 <span
-                id="grouptwobox"
+                id="threeGroupTwoBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
@@ -22,7 +22,7 @@ class ThreeGroups extends Component{
                     <p className="groupheader">group two</p>
                 </span>
                 <span
-                id="groupthreebox"
+                id="threeGroupThreeBox"
                 className="droppable"
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
