@@ -4,19 +4,30 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const TopNavbar = (props) => {
+  let whatToShow = "";
+  if(props.showNavItems === false){
+    whatToShow = "Sign In"
+  } else {
+    whatToShow = "Sign Out"
+  }
+  console.log("props:", props.showNavItems)
   return (
-    <Navbar inverse collapseOnSelect className="navie">
-      <Navbar.Collapse>
-        <Nav pullRight>
-          <NavItem onClick={props.onSignOut} className="signoutButton">Sign Out</NavItem>
+    <Navbar inverse className="navie">
+        <Nav>
+          <NavItem onClick={props.onSignOut} className="signoutButton">{whatToShow}</NavItem>
         </Nav>
-        <Nav pullRight>
-          <Link to="/scores" className="secret"><Navbar.Text>Scores</Navbar.Text></Link>
+        <Nav>
+            <Link to="/" className="secret"><Navbar.Text>Home</Navbar.Text></Link>
         </Nav>
-        <Nav pullRight>
-          <Link to="/charts" className="charts"><Navbar.Text>Charts</Navbar.Text></Link>
+        <Nav>
+            <Link to="/scores" className="secret"><Navbar.Text>Edit Scores</Navbar.Text></Link>
         </Nav>
-      </Navbar.Collapse>
+        <Nav>
+            <Link to="/arrayngement" id="longword" className="secret"><Navbar.Text>Arraynge</Navbar.Text></Link>
+        </Nav>
+        <Nav>
+          <Link to="/charts" className="secret"><Navbar.Text>View Charts</Navbar.Text></Link>
+        </Nav>
     </Navbar>
   );
 };

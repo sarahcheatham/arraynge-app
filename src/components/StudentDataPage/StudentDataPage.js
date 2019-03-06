@@ -67,7 +67,7 @@ class StudentDataPage extends Component{
             textDecoration: 'none'
         }
         if(this.state.numberOfStudents !== ''){
-            whatToShow = <Button className="continuebutton"><Link to={'/arrayngement'} style={styles} className="continuebutton">Continue</Link></Button>;
+            whatToShow = <Button className="continuebutton"><Link to={'/arrayngement'} style={styles} className="continuebutton">CONTINUE</Link></Button>;
         } else {
             whatToShow = '';
         }

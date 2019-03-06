@@ -30,7 +30,7 @@ class WelcomePage extends Component{
             <Grid className="welcomepage">
                 <Col>
                     <Row>
-                        <SubHeader text={this.state.welcomeMessage}/>
+                        <SubHeader className="subwel" text={this.state.welcomeMessage}/>
                     </Row>
                     <Row>
                         <p className='welcometext'>What would you like to do?</p>

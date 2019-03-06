@@ -28,7 +28,12 @@
     color: #343148;
 }
 .continuebutton{
-    margin-bottom: 50px;
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 25px;
+    margin-left: 0px;
+    /* margin-bottom: 50px; */
 }
 /* end StudentDataPage Component */
 
