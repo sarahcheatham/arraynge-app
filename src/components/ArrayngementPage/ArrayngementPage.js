@@ -95,6 +95,7 @@ class ArrayngementPage extends Component{
     }
 
     render(){
+        console.log("students:", this.state.students)
         const benchmark = [];
         let boyBenchmark = null;
         let moyBenchmark = null;
