@@ -134,7 +134,7 @@ class ScoresPage extends Component{
                             <th className="tableheader">BOY Score:</th>
                             <th className="tableheader">EOY Goal:</th>
                             <th className="tableheader">MOY Score:</th>
-                            <th className="tableheader">EOY Score:</th>
+                            <th className="tableheader" id="EOY">EOY Score:</th>
                         </tr>
                     </thead>
                     {formOrTable}
