@@ -45,7 +45,7 @@ function startWebServer(){
   app.use(studentRoutes);
   app.use(arrayngmentRoutes)
   //deployment
-  app.use(express.static(path.join(__dirname, "arraynge", "build" )))
+  app.use(express.static(path.join(__dirname + "arraynge" + "build" )))
 
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
@@ -84,7 +84,7 @@ function startWebServer(){
   });
   //deployment
   app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "arraynge", "build", "index.html"));
+    res.sendFile(path.join(__dirname + "arraynge" + "build" + "index.html"));
   })
   //heroku injects the port number into the PORT env value
   const port = process.env.PORT || 3001;
