@@ -69,5 +69,11 @@ td {
 .studentlistbutton{
     background-color: #656588;
 }
+.saved{
+    color: #8FAD57;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
 
 /* end StudentUpdateForm Component */

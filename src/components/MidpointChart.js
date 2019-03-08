@@ -4,7 +4,7 @@ class MidpointChart extends Component{
     render() {
 		return (
             <div>
-                Chart
+                Benchmark and Goal Tracking Charts Coming Soon!
             </div>
 		);
 	}

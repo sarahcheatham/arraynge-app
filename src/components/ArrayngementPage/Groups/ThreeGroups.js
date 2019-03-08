@@ -11,7 +11,7 @@ class ThreeGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader">group one</p>
+                    <p className="groupheader" contentEditable>group one</p>
                 </span>
                 <span
                 id="threeGroupTwoBox"
@@ -19,7 +19,7 @@ class ThreeGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader">group two</p>
+                    <p className="groupheader" contentEditable>group two</p>
                 </span>
                 <span
                 id="threeGroupThreeBox"
@@ -27,7 +27,7 @@ class ThreeGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader">group three</p>
+                    <p className="groupheader" contentEditable>group three</p>
                 </span>
             </div>
         );

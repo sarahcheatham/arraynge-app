@@ -38,7 +38,7 @@ class WelcomePage extends Component{
                     <Row>
                         <Button className="newarrbutton">
                             <Link to={'/classdata'} style={styles}>
-                                CREATE A NEW ARRAYNGEMENT
+                                CREATE A NEW CLASS
                             </Link>
                         </Button>
                     </Row>
@@ -48,7 +48,7 @@ class WelcomePage extends Component{
                     <Row>
                         <Button className="viewarrbutton">
                             <Link to={'/arrayngement'} style={styles}>
-                                VIEW ARRAYNGEMENTS
+                                ARRAYNGE YOUR CLASS
                             </Link>
                         </Button>
                     </Row>
