@@ -30,10 +30,14 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd arraynge && npm install --only=dev && npm install && npm run build"
+  },
+  "engines": {
+    "node": "11.10.0"
   },
   "eslintConfig": {
     "extends": "react-app"
