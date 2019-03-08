@@ -45,7 +45,7 @@ function startWebServer(){
   app.use(studentRoutes);
   app.use(arrayngmentRoutes)
   //deployment
-  app.use(express.static(path.join(__dirname + "public" + "build" )))
+  // app.use(express.static(path.join(__dirname + "public" + "build" )))
 
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
