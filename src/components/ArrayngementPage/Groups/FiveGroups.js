@@ -11,7 +11,7 @@ class FiveGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader" contenteditable="true">group one</p>
+                    <p className="groupheader" contentEditable>group one</p>
                 </span>
                 <span
                 id="fiveGroupTwoBox"
@@ -19,7 +19,7 @@ class FiveGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader" contenteditable="true">group two</p>
+                    <p className="groupheader" contentEditable>group two</p>
                 </span>
                 <span
                 id="fiveGroupThreeBox"
@@ -27,7 +27,7 @@ class FiveGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader" contenteditable="true">group three</p>
+                    <p className="groupheader" contentEditable>group three</p>
                 </span>
                 <span
                 id="fiveGroupFourBox"
@@ -35,7 +35,7 @@ class FiveGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader" contenteditable="true">group four</p>
+                    <p className="groupheader" contentEditable>group four</p>
                 </span>
                 <span
                 id="fiveGroupFiveBox"
@@ -43,7 +43,7 @@ class FiveGroups extends Component{
                 onDrop={this.props.onDrop}
                 onDragOver={this.props.onDragOver}
                 >
-                    <p className="groupheader" contenteditable="true">group five</p>
+                    <p className="groupheader" contentEditable>group five</p>
                 </span>
             </div>
         );

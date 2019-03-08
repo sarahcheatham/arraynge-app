@@ -38,6 +38,15 @@ module.exports.update = (req, res)=>{
 }
 
 module.exports.remove = (req, res)=>{
-    return res.json({})
+    StudentModel.findByIdAndRemove(req.params.id, (err, student)=>{
+        if(err) return res.status(500).send(err)
+
+        //creating a simple object to send back with a message and the id of the document that was removed
+        const response = {
+            message: "Student successfully deleted",
+            id: student._id
+        }
+        return res.status(200).send(response);
+    });
 }
 

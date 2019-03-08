@@ -16,6 +16,7 @@ class ArrayngementPage extends Component{
         super();
         this.state={
             students: [],
+            list: [],
             sortBy: "",
             userId: "",
             subject: "",
@@ -26,7 +27,7 @@ class ArrayngementPage extends Component{
         this.handleSubjectChange = this.handleSubjectChange.bind(this);
         this.handleGroupsChange = this.handleGroupsChange.bind(this);
         this.allowDrop = this.allowDrop.bind(this);
-        this.drag = this.drag.bind(this);
+        // this.drag = this.drag.bind(this);
         this.drop = this.drop.bind(this);
     }
 
@@ -77,8 +78,14 @@ class ArrayngementPage extends Component{
         allowdropevent.preventDefault();
     }
     
-    drag(dragevent){
-        dragevent.dataTransfer.setData("text", dragevent.target.id)
+     // drag(dragevent){
+    //     dragevent.dataTransfer.setData("text", dragevent.target.id)
+    // }
+
+    dragStart = (e, index)=>{
+        this.draggedItem = e.target.parentNode.id;
+        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text", e.target.parentNode.id)
     }
 
     drop(dropevent){
@@ -88,6 +95,7 @@ class ArrayngementPage extends Component{
     }
 
     render(){
+        console.log("students:", this.state.students)
         const benchmark = [];
         let boyBenchmark = null;
         let moyBenchmark = null;
@@ -265,16 +273,29 @@ class ArrayngementPage extends Component{
                     color = "blankSquare"
                 }
             }
-            return <li key={index} 
-                        id="div1"
+            return <li 
+                        key={index}
+                        id={index}
+                        className="list"
                         onDrop={this.drop}
                         onDragOver={this.allowDrop}
                     >
-                        <div className="student" 
+                 {/* <li key={index} 
+                         id="div1"
+                         onDrop={this.drop}
+                         onDragOver={this.allowDrop}
+                     > */}
+                        <div 
+                            className="student"
+                            draggable
+                            onDragStart={e=>this.dragStart(e, index)}
+                            id="drag"
+                        >
+                        {/* <div className="student" 
                             draggable
                             onDragStart={this.drag}
                             id="drag"
-                        >
+                        > */}
                             <span className={color}/>
                             <span className="studentName">
                                 {student.name}

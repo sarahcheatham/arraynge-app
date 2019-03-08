@@ -56,11 +56,16 @@ class ScoresPage extends Component{
     handleEdit(event){
         event.preventDefault();
         this.setState({isEdit: !this.state.isEdit})
-        console.log(this.state.isEdit)
+        if(this.state.isEdit === true){
+            fetch("/api/studentdata").then((res)=>{
+                return res.json()
+            }).then((studentdata)=>{
+                this.setState({students: studentdata})
+            })
+        }
     }
 
     handleSubmit(studentdata){
-        console.log("studentdata:", studentdata)
         const id = studentdata.id;
         const name = studentdata.name;
         const score = studentdata.score;
@@ -84,6 +89,7 @@ class ScoresPage extends Component{
     render(){
         const students = this.state.students.slice();
         let formOrTable = "";
+        let buttonText = ""
         let studentList = [];
         let formComponents =[];
         let tableComponents = [];
@@ -116,14 +122,16 @@ class ScoresPage extends Component{
         })
         if(this.state.isEdit === true){
             formOrTable = formComponents;
+            buttonText = "Save Scores"
         } else {
             formOrTable = tableComponents;
+            buttonText = "Edit Scores"
         }
         return(
             <div className="secretpage">
                 <div className="secretgradeandbutton">
                     <h2 className="secretgradelevel">{this.state.gradelevel}</h2>
-                    <Button className="editbutton" onClick={this.handleEdit}>Edit Scores</Button>
+                    <Button className="editbutton" onClick={this.handleEdit}>{buttonText}</Button>
                 </div>
                 <form>
                 <Table striped bordered>
