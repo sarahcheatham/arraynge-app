@@ -35,7 +35,7 @@ class StudentDataPage extends Component{
     }
 
     handleFormSubmit(studentdata){
-        console.log(studentdata)
+        console.log("studentdata:", studentdata)
         this.setState({
             name: studentdata.name,
             score: studentdata.score,
