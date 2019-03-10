@@ -80,7 +80,7 @@ function startWebServer(){
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
 
   app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/build/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
   });
   //deployment
   // app.get("*", (req, res)=>{
