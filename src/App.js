@@ -120,7 +120,6 @@ class App extends Component {
  
   render() {
     let whatToShow = "";
-    console.log()
     if(this.state.authenticated){
       whatToShow = this.renderApp();
     } else {
