@@ -4,19 +4,19 @@ function BarGroup(props) {
     let barColour = '#348AA7';
     let xMid = props.barWidth * -1;
     let yMid = props.barWidth;
-    let heightScale = d => d * props.barWidth;
+    let heightScale = d => d * props.barWidth / 10;
   
     let height = heightScale(props.d.value);
-    height = height / 6;
-    console.log("height:", height / 6)
+    // height = height / 6;
+    console.log("height:", height)
     console.log("xMid:", xMid)
     
     return <g className="bar-group">
-        <rect y={yMid} width={props.barWidth - barPadding} height={height} fill={barColour} alignmentBaseline="baseline"/>
-        <text className="name-label" x={height} y={yMid} alignmentBaseline="baseline" >     
+        <rect y={yMid} width={props.barWidth - barPadding} height={height} fill={barColour}/>
+        <text className="name-label" x={height} y={yMid}>     
             {props.d.name}
         </text>
-        <text className="value-label" x={xMid} y={height} alignmentBaseline="baseline"> 
+        <text className="value-label" x={xMid} y={height}> 
             {props.d.value}
         </text>
     </g>
