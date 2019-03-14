@@ -1,33 +1,39 @@
-import React, {Component} from "react";
+import React from "react";
 import BarGroup from './BarGroup';
+import './BarChart.css';
+import benchmarks from '../../api/benchmarks.json';
 
 class BarChart extends React.Component {
-    state = {
+  constructor(){
+    super();
+    this.state = {
       data: [
         { name: 'Below Grade Level', value: 60 },
         { name: 'Above Grade Level', value: 100 },
       ]
     }
+  }
+
+  componentDidMount(){
+    this.props.loadUserId();
+    this.props.loadStudentData();
+    console.log("benchmarks:", benchmarks)
+  }
   
     render() {
-      let barWidth = 30;
-      let positiveBarWidth = Math.abs(barWidth);
-      console.log("barWidth", barWidth)
-      console.log("positiveBarWidth:", positiveBarWidth)
+      console.log(this.props.studentdata)
+      let barWidth = 20;
+      console.log("barWidth:", barWidth)
       let barGroups = this.state.data.map((d, i) => 
-        // console.log("d:",d, i)
         <g transform={`translate(${i * barWidth}, 0)`}>
-          <BarGroup d={d} barWidth={positiveBarWidth}/>
+          <BarGroup d={d} barWidth={barWidth}/>
         </g>
-        // <g transform={`translate(${i * barWidth}, -20)`}>
-        //   <BarGroup d={d} barWidth={barWidth} />
-        // </g>
       )                         
       
       return <svg width="500" height="800" >
         <g className="container">
           <text className="title" x="10" y="30">Benchmark Graph</text>
-          <g className="chart" transform="translate(250, 400) rotate(180)">
+          <g className="chart">
             {barGroups}
           </g>
         </g>

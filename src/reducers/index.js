@@ -29,6 +29,13 @@ function classdata(state = [],action) {
     return state;
 }
 
+function studentdata(state = [], action){
+    if(action.type === "STUDENT_DATA_LOADED"){
+        return action.value
+    }
+    return state;
+}
+
 function numberOfStudents(state = 0, action){
     if(action.type === "SET_NUMBER_OF_STUDENTS"){
         return action.value;
@@ -38,7 +45,7 @@ function numberOfStudents(state = 0, action){
 
 
 const rootReducer = combineReducers({
-    currentUserId, currentGradeLevel, currentSubject, classdata, numberOfStudents
+    currentUserId, currentGradeLevel, currentSubject, classdata, studentdata, numberOfStudents
 });
 
 export default rootReducer;

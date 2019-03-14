@@ -66,6 +66,35 @@ export function createClassData(classdata){
     }
 }
 
+export function loadStudentData(){
+    return function(dispatch){
+        fetch("/api/studentdata")
+        .then((res)=>{
+            return res.json();
+        }).then((studentdata)=>{
+            dispatch(studentDataLoaded(studentdata));
+        });
+    };
+}
+
+export function studentDataLoaded(studentdata){
+    return {
+        type: "STUDENT_DATA_LOADED",
+        value: studentdata
+    }
+}
+
+// export function createStudentData(studentdata){
+//     return function (dispatch){
+//         fetch("/api/studentdata",{
+//             method: "POST",
+//             headers: {"Content-Type": "application/json"},
+//             body: JSON.stringify(studentdata)
+//         }).then(()=> dispatch(loadStudentData()));
+//     }
+// }
+
+
 // export function createClassData(classdata){
 //     console.log("ACTION",classdata)
 //     return function (dispatch){
