@@ -1,5 +1,10 @@
 import { combineReducers } from 'redux';
-import state from '../state';
+import { 
+    FETCH_STUDENTDATA_BEGIN,
+    FETCH_STUDENTDATA_SUCCESS,
+    FETCH_STUDENTDATA_FAILURE
+} from '../actions/index';
+// import state from '../state';
 
 function currentUserId(state="", action){
     if(action.type === "SET_USER_ID"){
@@ -29,19 +34,50 @@ function classdata(state = [],action) {
     return state;
 }
 
-function studentdata(state = [], action){
-    if(action.type === "STUDENT_DATA_LOADED"){
-        return action.value
-    }
-    return state;
-}
-
 function numberOfStudents(state = 0, action){
     if(action.type === "SET_NUMBER_OF_STUDENTS"){
         return action.value;
     }
     return state;
 }
+
+const initialState = {
+    students: [],
+    loading: false,
+    error: null
+};
+
+function studentdata(state = initialState, action){
+    switch(action.type){
+        case FETCH_STUDENTDATA_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+        case FETCH_STUDENTDATA_SUCCESS:
+            return {
+                ...state,
+                loading: false, 
+                students: action.payload.studentdata
+            };
+        case FETCH_STUDENTDATA_FAILURE:
+            return {
+                ...state, 
+                loading: false,
+                error: action.payload.error,
+                students: []
+            };
+        default:
+            return state;
+    }
+}
+// function studentdata(state = [], action){
+//     if(action.type === "STUDENT_DATA_LOADED"){
+//         return action.value
+//     }
+//     return state;
+// }
 
 
 const rootReducer = combineReducers({
