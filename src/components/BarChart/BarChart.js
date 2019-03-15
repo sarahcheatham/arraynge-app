@@ -25,27 +25,23 @@ class BarChart extends React.Component {
     const userId = nextProps.userId;
     const studentdata = nextProps.studentdata.students;
     console.log('nextProps:', nextProps, "userId:", userId, 'studentdata:', studentdata)
-    this.setState({userId: userId})
-    // if(nextProps.someValue!==this.props.someValue){
-    //   //Perform some operation
-    //   this.setState({someState: someValue });
-    //   this.classMethod();
-    // }
+    this.setState({userId: userId, studentdata: studentdata})
   }
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     // Typical usage (don't forget to compare props):
     console.log("prevProps:", prevProps)
     console.log("prevState:", prevState)
+    console.log("snapshot:", snapshot)
     console.log("PROPS:", this.props.studentdata.students)
-    const studentdata = this.props.studentdata.students
-    // this.setState({studentdata: studentdata })
-    
-    // students = this.props.studentdata.students.map((student, index)=>{
-    //   console.log(student, index)
-    // })
-    // if (this.props.userID !== prevProps.userID) {
-    //   this.fetchData(this.props.userID);
-    // }
+    let students = [];
+    if(this.state.studentdata !== undefined){
+      const studentdata = this.state.studentdata.slice();
+      studentdata.map((student, index)=>{
+          if(student.userId === this.state.userId){
+            students.push(student)
+          }
+      })
+    }
   }
   
   
