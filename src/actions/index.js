@@ -73,14 +73,8 @@ export function fetchStudentData(){
             .then(handleErrors)
             .then(res => res.json())
             .then(studentdata => {
-                    console.log("student data action:", studentdata)
-                    studentdata.map((student, index)=>{
-                        console.log(student.userId, )
-                    })
                     dispatch(fetchStudentDataSuccess(studentdata));
                     return studentdata;
-               
-                
             })
             .catch(error => dispatch(fetchStudentDataFailure(error)))
     };

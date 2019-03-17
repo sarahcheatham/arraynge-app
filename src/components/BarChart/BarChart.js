@@ -9,6 +9,7 @@ class BarChart extends React.Component {
     this.state = {
       userId: "",
       studentdata: [],
+      students: [],
       data: [
         { name: 'Below Grade Level', value: 60 },
         { name: 'Above Grade Level', value: 100 },
@@ -19,6 +20,7 @@ class BarChart extends React.Component {
   componentDidMount(){
     this.props.loadUserId();
     this.props.fetchStudentData(); 
+    console.log("mount:", this.props.userId)
   }
 
   componentWillReceiveProps(nextProps){
@@ -27,20 +29,17 @@ class BarChart extends React.Component {
     console.log('nextProps:', nextProps, "userId:", userId, 'studentdata:', studentdata)
     this.setState({userId: userId, studentdata: studentdata})
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState) {
     // Typical usage (don't forget to compare props):
     console.log("prevProps:", prevProps)
     console.log("prevState:", prevState)
-    console.log("snapshot:", snapshot)
-    console.log("PROPS:", this.props.studentdata.students)
-    let students = [];
-    if(this.state.studentdata !== undefined){
-      const studentdata = this.state.studentdata.slice();
-      studentdata.map((student, index)=>{
-          if(student.userId === this.state.userId){
-            students.push(student)
-          }
-      })
+    if(this.props.studentdata.students !== undefined){
+      const studentdata = this.props.studentdata.students.slice();
+      const relevantStudentsCheck = (student) =>{
+        return student.userId === this.state.userId
+      }
+      const filteredStudents = studentdata.filter(relevantStudentsCheck);
+      console.log('filteredStudents', filteredStudents)
     }
   }
   
