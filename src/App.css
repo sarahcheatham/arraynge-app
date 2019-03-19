@@ -1,16 +1,19 @@
 body > #root > div {
   height: 100vh;  
+  background-color: #F9F9F9;
 }
 .App {
   text-align: center;
   display: grid;
   grid-template-columns: 125px 1fr;
   grid-template-rows: 100px 1fr;
+  background-color: #F9F9F9;
   /* background-color: #f2e3ea; */
 }
 .page{
   grid-column: 2 / 3;
   grid-row: 2 / 3;
+  background-color: #F9F9F9;
   /* height: 100vh;  */
 }
 ul {
@@ -379,6 +382,7 @@ ul {
 /* start WelcomePage component */
 .welcomepage{
   height: 100vh;
+  background-color: #F9F6EF;
   /* background-color: #E8EFEE; */
 }
 .subwel{
@@ -389,9 +393,10 @@ ul {
   font-style: normal;
   font-weight: 200;
   color: #4A494E;
-  background-color: #E8EFEE;
+  /* background-color: #E8EFEE; */
   /* background-color: #E6E5E3; */
-  border-bottom: 10px solid #BFACCF;
+  background-color: #F7F7FB;
+  border-bottom: 10px solid #681F42;
   /* color: #627277; */
   /* font-family: pulpo-rust-75, serif;
   font-style: normal;
@@ -405,11 +410,12 @@ ul {
   /* background-color: #D13076; */
   /* background-color: #CA8374; */
   /* background-color: #B0585E; */
-  background-color: #CA547F;
-  font-size: 12px;
+  /* background-color: #CA547F; */
   /* background-color: #B0585E; */
+  font-size: 12px;
+  /* background-color: #E1B129; */
   
-  /* background-color: #C16278; */
+  background-color: #C16278;
   height: 50px;
   width: 25%;
   align-self: center; 
@@ -420,10 +426,7 @@ ul {
 .viewarrbutton{
   color: #f2edd7;
   font-size: 12px;
-  /* background-color: #0C4C8A; */
   background-color: #245B6A;
-  /* background-color: #B0585E; */
-  /* background-color: #8E6B70; */
   height: 50px;
   width: 25%;
   align-self: center; 

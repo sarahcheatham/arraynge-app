@@ -5,8 +5,10 @@ import { loadUserId, fetchStudentData } from "../actions";
 function mapStateToProps(state){
     return{
         userId: state.currentUserId,
-        studentdata: state.studentdata
-        // studentdata: state.studentdata
+        studentdata: state.studentdata,
+        loading: state.loading,
+        error: state.error
+
     }
 }
 

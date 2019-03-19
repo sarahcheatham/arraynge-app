@@ -1,4 +1,7 @@
 /* start ScoresPage Component */
+.secretpage{
+    background-color: #F9F9F9;
+}
 table, th, td {
     border: 1px solid black;
 }
@@ -31,6 +34,7 @@ th {
     font-style: normal;
     font-weight: 200;
     justify-self: flex-start;
+    color: #19182D;
 }
 .editbutton{
     grid-column: 2 / 3;
@@ -50,7 +54,8 @@ th {
     font-weight: 400;
 }
 .A{
-    background-color: #EDEFFB;
+    /* background-color: #EDEFFB; */
+    background-color: #F7F7FB;
 }
 /* end StudentUpdateTable Component */
 

@@ -69,7 +69,7 @@ export function createClassData(classdata){
 export function fetchStudentData(){
     return dispatch =>{
         dispatch(fetchStudentDataBegin());
-        return fetch("/api/studentdata")
+        return fetch('/api/studentdata')
             .then(handleErrors)
             .then(res => res.json())
             .then(studentdata => {

@@ -23,8 +23,8 @@
     padding-top: 15px;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: #CFD8E5;
-    /* background-color: #D6D5DA; */
+    /* background-color: #CFD8E5; */
+    background-color: #F4E8D9;
     color: #535B85;
 }
 #twoGroupTwoBox{
@@ -39,7 +39,8 @@
     padding-top: 15px;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: #EADFD3;
+    background-color: #F3E4DF;
+    /* background-color: #EADFD3; */
     color: #535B85;
 }
 /* end TwoGroups Component */
@@ -87,7 +88,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EADFD3;
+    background-color: #F2EDD7;
+    /* background-color: #EADFD3; */
     color: #535B85;
 }
 #threeGroupThreeBox{
@@ -103,7 +105,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #E8E8E8;
+    background-color: #E7EFE6;
+    /* background-color: #E8E8E8; */
     color: #535B85; 
 }
 /* end ThreeGroups Component */
@@ -160,7 +163,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EADFD3;
+    /* background-color: #EADFD3; */
+    background-color: #F4E8D9;
     color: #535B85;
 }
 #groupthreebox{
@@ -175,7 +179,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #E8E8E8;
+    /* background-color: #E8E8E8; */
+    background-color: #E7EFE6;
     color: #535B85;
 }
 #groupfourbox{
@@ -190,7 +195,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EAD9D8;
+    /* background-color: #EAD9D8; */
+    background-color: #F3E4DF;
     color: #535B85;
 }
 /* end FourGroups Component */
@@ -236,7 +242,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EADFD3;
+    /* background-color: #EADFD3; */
+    background-color: #F2EDD7;
     color: #535B85;
 }
 #fiveGroupThreeBox{
@@ -252,7 +259,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #E8E8E8;
+    /* background-color: #E8E8E8; */
+    background-color: #F4E8D9;
     color: #535B85;
 }
 #fiveGroupFourBox{
@@ -268,7 +276,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EAD9D8;
+    /* background-color: #EAD9D8; */
+    background-color: #F3E4DF;
     color: #535B85;
 }
 #fiveGroupFiveBox{
@@ -284,7 +293,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #D6D5DA;
+    /* background-color: #D6D5DA; */
+    background-color: #EADFD3;
     color: #535B85;
 }
 /* end FiveGroups Component */
@@ -318,6 +328,7 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
+    background-color: #F2EDD7;
     /* background-color: #D6D5DA; */
     color: #535B85;
 }
@@ -334,7 +345,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EADFD3;
+    /* background-color: #EADFD3; */
+    background-color: #F4E8D9;
     color: #535B85;
 }
 #sixGroupThreeBox{
@@ -350,7 +362,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #E8E8E8;
+    /* background-color: #E8E8E8; */
+    background-color: #F3E4DF;
     color: #535B85;
 }
 #sixGroupFourBox{
@@ -366,7 +379,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #EAD9D8;
+    /* background-color: #EAD9D8; */
+    background-color: #E7EFE6;
     color: #535B85;
 }
 #sixGroupFiveBox{
@@ -383,6 +397,7 @@
     padding-left: 35px;
     padding-right: 35px;
     background-color: #D6D5DA;
+    /* background-color: #CDCCDD; */
     color: #535B85;
 }
 #sixGroupSixBox{
@@ -398,7 +413,8 @@
     padding-top: 15px;
     padding-left: 35px;
     padding-right: 35px;
-    background-color: #DFEAED;
+    /* background-color: #DFEAED; */
+    background-color: #EADFD3;
     color: #535B85;
 }
 /* end SixGroups Component */

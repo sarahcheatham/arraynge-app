@@ -4,6 +4,7 @@
     grid-template-columns: 200px 1fr;
     grid-template-rows: 75px 1fr;
     background-color: #F9F6EF;
+ 
     height: 125vh;
     /* margin-right: 20px; */
 }
@@ -177,7 +178,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    color: #343148;
+    /* color: #343148; */
+    color: #19182d;
     background-color: #EFEEE8;
     height: 30px;
     width: 100px;
@@ -190,7 +192,8 @@
     width: 100%;
     height: 30px;
     background-color: #f9f9f9;
-    color: #465155;
+    /* color: #465155; */
+    color: #19182d;
 }
 /* end SubjectDropMenu component */
 
@@ -225,7 +228,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    color: #343148;
+    /* color: #343148; */
+    color: #19182d;
     background-color: #EFEEE8;
     height: 30px;
     width: 100px;
@@ -240,6 +244,7 @@
     width: 100px;
     height: 30px;
     background-color: #f9f9f9;
-    color: #465155;
+    /* color: #465155; */
+    color: #19182d;
 }
 /* end NumberOfGroupsDropMenu component */

@@ -11,6 +11,13 @@ module.exports.show = (req, res)=>{
         return res.json(student)
     })
 }
+// module.exports.show = (req, res)=>{
+//     StudentModel.find({ userId: req.params.userId }).exec().then((filteredStudents)=>{
+//         console.log('req:', req.params.userId)
+//         console.log('filteredStudents:', filteredStudents)
+//         return res.json(filteredStudents)
+//     })
+// }
 
 module.exports.create = (req, res)=>{
     const s = new StudentModel({
