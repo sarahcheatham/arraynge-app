@@ -9,6 +9,7 @@ class ClassDataPage extends Component{
         super(props);
         this.state = {
             showMenu: false,
+            currentUser: "",
             classdata: {
                 userId: "",
                 gradelevel: "",
@@ -26,6 +27,12 @@ class ClassDataPage extends Component{
         this.props.loadUserId();
         this.props.loadClassData();
     }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log("prevProps:", prevProps, "prevState:", prevState)
+    //     // Only update if bricks change
+    //     // return nextState.blocks.length > this.state.blocks.length;
+    // }
 
     showMenu(event){
         event.preventDefault();

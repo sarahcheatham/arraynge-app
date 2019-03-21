@@ -43,7 +43,7 @@ function startWebServer(){
   //secure
   app.use(classdataRoutes);
   app.use(studentRoutes);
-  app.use(arrayngmentRoutes)
+  app.use(arrayngmentRoutes);
   //deployment
   // app.use(express.static(path.join(__dirname + "public" + "build" )))
 
@@ -69,6 +69,9 @@ function startWebServer(){
     res.send(req.body)
   });
   app.get("/api/studentdata/:id", function(req, res){
+    res.send(req.body)
+  })
+  app.get("/api/studentdata/:userId", function(req, res){
     res.send(req.body)
   })
   // app.put("/api/studentdata/:id", function (req, res){

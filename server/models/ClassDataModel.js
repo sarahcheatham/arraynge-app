@@ -13,4 +13,8 @@ const classDataSchema = new Schema({
     }
 })
 
+// const teacherSchema = new Schema({
+//     teacher: {type: Schema.Types.ObjectId, ref: "Classdata"}
+// })
+
 module.exports = mongoose.model("Classdata", classDataSchema);

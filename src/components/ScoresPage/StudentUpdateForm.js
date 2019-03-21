@@ -28,6 +28,7 @@ class StudentUpdateForm extends Component{
         this.changeEoyGoal = this.changeEoyGoal.bind(this);
         this.changeMoyScore = this.changeMoyScore.bind(this);
         this.changeEoyScore = this.changeEoyScore.bind(this);
+        this.changeGradeLevel = this.changeGradeLevel.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
@@ -36,8 +37,8 @@ class StudentUpdateForm extends Component{
         }).then((userId)=>{
             this.setState({userId: userId})
         });
-        const { id, name, subject, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
-        this.setState({ id, name, subject, BOYscore, EOYgoal, MOYscore, EOYscore })
+        const { id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
+        this.setState({ id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore })
     }
 
     changeNameValue(event){
@@ -62,6 +63,10 @@ class StudentUpdateForm extends Component{
 
     changeEoyScore(event){
         this.setState({EOYscore: event.target.value})
+    }
+
+    changeGradeLevel(event){
+        this.setState({gradelevel: event.target.value})
     }
 
     //handleSubmit function
@@ -106,6 +111,16 @@ class StudentUpdateForm extends Component{
                         className="studentlistinput" 
                         onChange={this.changeNameValue}
                         placeholder={props.name} 
+                    />
+                </td>
+                <td id="hideinput">
+                    <input 
+                        type="text" 
+                        value={this.state.gradelevel} 
+                        name="gradelevel" 
+                        className="studentlistinput" 
+                        onChange={this.changeGradeLevel}
+                        placeholder={props.gradelevel} 
                     />
                 </td>
                 <td>
@@ -176,6 +191,7 @@ class StudentUpdateForm extends Component{
 }
 StudentUpdateForm.propTypes = {
     name: PropTypes.string.isRequired,
+    gradelevel: PropTypes.string.isRequired,
     subject: PropTypes.string.isRequired,
     BOYscore: PropTypes.number,
     EOYgoal: PropTypes.number,

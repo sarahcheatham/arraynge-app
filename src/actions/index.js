@@ -66,6 +66,77 @@ export function createClassData(classdata){
     }
 }
 
+export function fetchStudentData(){
+    return dispatch =>{
+        dispatch(fetchStudentDataBegin());
+        return fetch('/api/studentdata')
+            .then(handleErrors)
+            .then(res => res.json())
+            .then(studentdata => {
+                    dispatch(fetchStudentDataSuccess(studentdata));
+                    return studentdata;
+            })
+            .catch(error => dispatch(fetchStudentDataFailure(error)))
+    };
+}
+
+
+
+function handleErrors(response){
+    if(!response.ok){
+        throw Error(response.statusText);
+    }
+    return response;
+}
+
+export const FETCH_STUDENTDATA_BEGIN = "FETCH_STUDENTDATA_BEGIN";
+export const FETCH_STUDENTDATA_SUCCESS = "FETCH_STUDENTDATA_SUCCESS";
+export const FETCH_STUDENTDATA_FAILURE = "FETCH_STUDENTDATA_FAILURE";
+
+export const fetchStudentDataBegin = () =>({
+    type: FETCH_STUDENTDATA_BEGIN
+});
+
+export const fetchStudentDataSuccess = studentdata =>({
+    type: FETCH_STUDENTDATA_SUCCESS,
+    payload: { studentdata }
+});
+
+export const fetchStudentDataFailure = error =>({
+    type: FETCH_STUDENTDATA_FAILURE,
+    payload: { error }
+});
+
+// export function loadStudentData(){
+//     return function(dispatch){
+//         fetch("/api/studentdata")
+//         .then((res)=>{
+//             return res.json();
+//         }).then((studentdata)=>{
+//             console.log('actions studentdata:', studentdata)
+//             dispatch(studentDataLoaded(studentdata));
+//         });
+//     };
+// }
+
+// export function studentDataLoaded(studentdata){
+//     return {
+//         type: "STUDENT_DATA_LOADED",
+//         value: studentdata
+//     }
+// }
+
+// export function createStudentData(studentdata){
+//     return function (dispatch){
+//         fetch("/api/studentdata",{
+//             method: "POST",
+//             headers: {"Content-Type": "application/json"},
+//             body: JSON.stringify(studentdata)
+//         }).then(()=> dispatch(loadStudentData()));
+//     }
+// }
+
+
 // export function createClassData(classdata){
 //     console.log("ACTION",classdata)
 //     return function (dispatch){

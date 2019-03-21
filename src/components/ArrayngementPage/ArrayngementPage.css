@@ -4,6 +4,7 @@
     grid-template-columns: 200px 1fr;
     grid-template-rows: 75px 1fr;
     background-color: #F9F6EF;
+ 
     height: 125vh;
     /* margin-right: 20px; */
 }
@@ -25,9 +26,15 @@
     margin-top: 5px;
     margin-bottom: 5px;
     background-color: #EDEADD;
-    font-family: priori-sans, sans-serif;
+    font-family: quasimoda, sans-serif;
     font-style: normal;
-    font-weight: 200;
+    font-weight: 300;
+    /* font-family: acumin-pro, sans-serif;
+    font-style: normal;
+    font-weight: 100; */
+    /* font-family: priori-sans, sans-serif;
+    font-style: normal;
+    font-weight: 200; */
     font-size: 15px;
 }
 .inputbar{
@@ -46,7 +53,7 @@
     margin-left: 25px;
     font-family: nobel, sans-serif;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 100;
     font-size: 24px;
 }
 .blankSquare{
@@ -121,6 +128,9 @@
     justify-self: center;
     align-self: end;
     display: flex;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 .arrayngementDropMenu{
     grid-column: 2 / 3;
@@ -133,6 +143,9 @@
     width: 100px;
     height: 30px;
     background-color: #f9f9f9;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 .scoresLabel{
     grid-column: 1/ 2;
@@ -177,7 +190,11 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    color: #343148;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    /* color: #343148; */
+    color: #19182d;
     background-color: #EFEEE8;
     height: 30px;
     width: 100px;
@@ -190,7 +207,11 @@
     width: 100%;
     height: 30px;
     background-color: #f9f9f9;
-    color: #465155;
+    /* color: #465155; */
+    color: #19182d;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 /* end SubjectDropMenu component */
 
@@ -225,10 +246,14 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    color: #343148;
+    /* color: #343148; */
+    color: #19182d;
     background-color: #EFEEE8;
     height: 30px;
     width: 100px;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 .groupsDropMenu{
     grid-column: 2 / 3;
@@ -240,6 +265,12 @@
     width: 100px;
     height: 30px;
     background-color: #f9f9f9;
-    color: #465155;
+    /* color: #465155; */
+    color: #19182d;
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
+
+
 /* end NumberOfGroupsDropMenu component */

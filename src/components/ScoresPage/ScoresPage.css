@@ -1,10 +1,14 @@
 /* start ScoresPage Component */
+.secretpage{
+    background-color: #F9F9F9;
+}
 table, th, td {
     border: 1px solid black;
 }
 table {
     width: 60%;
-    margin-left: 20%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 10%;
 }
 th {
@@ -31,6 +35,7 @@ th {
     font-style: normal;
     font-weight: 200;
     justify-self: flex-start;
+    color: #19182D;
 }
 .editbutton{
     grid-column: 2 / 3;
@@ -49,8 +54,18 @@ th {
     font-style: normal;
     font-weight: 400;
 }
+#hidelabel{
+    display:none;
+}
+#hidecell{
+    display: none;
+}
+#hideinput{
+    display: none;
+}
 .A{
-    background-color: #EDEFFB;
+    /* background-color: #EDEFFB; */
+    background-color: #F7F7FB;
 }
 /* end StudentUpdateTable Component */
 

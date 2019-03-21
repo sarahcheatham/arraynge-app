@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ArrayngementPage from "../components/ArrayngementPage/ArrayngementPage";
+import BarChart from "../components/BarChart/BarChart";
 import { loadUserId, fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
@@ -7,7 +7,8 @@ function mapStateToProps(state){
         userId: state.currentUserId,
         studentdata: state.studentdata,
         loading: state.loading,
-        error: state.error 
+        error: state.error
+
     }
 }
 
@@ -19,8 +20,15 @@ function mapDispatchToProps(dispatch){
         fetchStudentData(){
             dispatch(fetchStudentData())
         }
+        // loadStudentData(){
+        //     dispatch(loadStudentData())
+        // },
+        // studentDataLoaded:function(studentdata){
+        //     let action = studentDataLoaded(studentdata);
+        //     dispatch(action);
+        // }
     }
 }
 
-const ArrayngementPageContainer = connect(mapStateToProps, mapDispatchToProps)(ArrayngementPage)
-export default ArrayngementPageContainer;
+const BarChartContainer = connect(mapStateToProps, mapDispatchToProps)(BarChart)
+export default BarChartContainer;

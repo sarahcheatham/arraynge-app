@@ -33,7 +33,7 @@ class ArrayngementPage extends Component{
 
     componentDidMount(){
         this.props.loadUserId();
-        fetch("/api/studentdata").then((res)=>{
+        fetch(`/api/studentdata`).then((res)=>{
             return res.json()
         }).then((students)=>{
             const relevantStudentsCheck = (students) =>{
@@ -41,16 +41,46 @@ class ArrayngementPage extends Component{
                     return students.userId === this.props.userId
                 }
             }
-            const relevantStudents = students.filter(relevantStudentsCheck);
-            const lastStudent = relevantStudents[relevantStudents.length -1];
-            const subject = lastStudent.subject;
+            const filteredStudents = students.filter(relevantStudentsCheck);
+            const lastStudent = filteredStudents[filteredStudents.length -1];
             const gradelevel = lastStudent.gradelevel;
+            const subject = lastStudent.subject;
             this.setState({
-                students: relevantStudents,
-                subject: subject,
-                gradelevel: gradelevel
-            });
-        });
+                students: filteredStudents,
+                gradelevel: gradelevel,
+                subject: subject
+            })
+            console.log(this.state.students)
+        }) 
+        // fetch(`/api/studentdata/:id`).then((res)=>{
+        //     return res.json()
+        // }).then((filteredStudents)=>{
+        //     console.log('filteredStudents:', filteredStudents)
+        // }) 
+        
+        // fetch(`/api/studentdata/${this.state.userId}`).then((res)=>{
+        //     return res.json()
+        // }).then((filteredStudents)=>{
+        //     console.log('filteredStudents:', filteredStudents)
+        // })
+        // fetch("/api/studentdata").then((res)=>{
+        //     return res.json()
+        // }).then((students)=>{
+        //     const relevantStudentsCheck = (students) =>{
+        //         if(students !== null){
+        //             return students.userId === this.props.userId
+        //         }
+        //     }
+        //     const relevantStudents = students.filter(relevantStudentsCheck);
+        //     const lastStudent = relevantStudents[relevantStudents.length -1];
+        //     const subject = lastStudent.subject;
+        //     const gradelevel = lastStudent.gradelevel;
+        //     this.setState({
+        //         students: relevantStudents,
+        //         subject: subject,
+        //         gradelevel: gradelevel
+        //     });
+        // });
     }
 
     handleSortBy(event){
@@ -280,22 +310,12 @@ class ArrayngementPage extends Component{
                         onDrop={this.drop}
                         onDragOver={this.allowDrop}
                     >
-                 {/* <li key={index} 
-                         id="div1"
-                         onDrop={this.drop}
-                         onDragOver={this.allowDrop}
-                     > */}
                         <div 
                             className="student"
                             draggable
                             onDragStart={e=>this.dragStart(e, index)}
                             id="drag"
                         >
-                        {/* <div className="student" 
-                            draggable
-                            onDragStart={this.drag}
-                            id="drag"
-                        > */}
                             <span className={color}/>
                             <span className="studentName">
                                 {student.name}
@@ -318,17 +338,6 @@ class ArrayngementPage extends Component{
                     </ul>
                 </div>
                 {numberOfGroupsToShow}
-                {/* <div id="groupcontainer" className="droppable"> */}
-                    {/* <span
-                    id="grouponebox"
-                    className="droppable"
-                    onDrop={this.drop}
-                    onDragOver={this.allowDrop}
-                    > */}
-                        {/* <input type="text" className="groupheader" placeholder="group one"/> */}
-                        {/* <p className="groupheader">group one</p> */}
-                    {/* </span> */}
-                {/* </div> */}
             </div>
         );
     }
