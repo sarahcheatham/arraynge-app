@@ -10,6 +10,7 @@ class StudentUpdateTable extends Component{
             userId: "",
             name: "",
             subject: "",
+            gradelevel: "",
             score: [
                 {BOYscore: ''},
                 {EOYgoal: ''},
@@ -23,6 +24,7 @@ class StudentUpdateTable extends Component{
         return(
             <tr className="A">
                 <td className="tablecell">{props.name}</td>
+                <td className="tablecell" id="hidecell">{props.gradelevel}</td>
                 <td className="tablecell">{props.subject}</td>
                 <td className="tablecell">{props.BOYscore}</td>
                 <td className="tablecell">{props.EOYgoal}</td>
@@ -34,6 +36,7 @@ class StudentUpdateTable extends Component{
 }
 StudentUpdateTable.propTypes = {
     name: PropTypes.string.isRequired,
+    gradelevel: PropTypes.string.isRequired,
     subject: PropTypes.string.isRequired,
     BOYscore: PropTypes.number,
     EOYgoal: PropTypes.number,

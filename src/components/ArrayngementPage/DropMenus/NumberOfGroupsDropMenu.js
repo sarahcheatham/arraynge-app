@@ -58,11 +58,11 @@ class NumberOfGroupsDropMenu extends Component{
                                 this.dropdownMenu = element;
                             }}
                         >
-                            <Button className='groupsChangeButton' onClick={this.groupClick} value="2">2 groups</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick} value="3">3 groups</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick} value="4">4 groups</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick} value="5">5 groups</Button>
-                            <Button className='groupsChangeButton' onClick={this.groupClick} value="6">6 groups</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="2">2 Groups</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="3">3 Groups</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="4">4 Groups</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="5">5 Groups</Button>
+                            <Button className='groupsChangeButton' onClick={this.groupClick} value="6">6 Groups</Button>
                         </div>
                     ) 
                     : (

@@ -7,7 +7,8 @@ table, th, td {
 }
 table {
     width: 60%;
-    margin-left: 20%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 10%;
 }
 th {
@@ -52,6 +53,15 @@ th {
     font-family: quasimoda, sans-serif;
     font-style: normal;
     font-weight: 400;
+}
+#hidelabel{
+    display:none;
+}
+#hidecell{
+    display: none;
+}
+#hideinput{
+    display: none;
 }
 .A{
     /* background-color: #EDEFFB; */

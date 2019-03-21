@@ -33,7 +33,6 @@ class ArrayngementPage extends Component{
 
     componentDidMount(){
         this.props.loadUserId();
-        // this.props.fetchStudentData();
         fetch(`/api/studentdata`).then((res)=>{
             return res.json()
         }).then((students)=>{
@@ -311,22 +310,12 @@ class ArrayngementPage extends Component{
                         onDrop={this.drop}
                         onDragOver={this.allowDrop}
                     >
-                 {/* <li key={index} 
-                         id="div1"
-                         onDrop={this.drop}
-                         onDragOver={this.allowDrop}
-                     > */}
                         <div 
                             className="student"
                             draggable
                             onDragStart={e=>this.dragStart(e, index)}
                             id="drag"
                         >
-                        {/* <div className="student" 
-                            draggable
-                            onDragStart={this.drag}
-                            id="drag"
-                        > */}
                             <span className={color}/>
                             <span className="studentName">
                                 {student.name}
@@ -349,17 +338,6 @@ class ArrayngementPage extends Component{
                     </ul>
                 </div>
                 {numberOfGroupsToShow}
-                {/* <div id="groupcontainer" className="droppable"> */}
-                    {/* <span
-                    id="grouponebox"
-                    className="droppable"
-                    onDrop={this.drop}
-                    onDragOver={this.allowDrop}
-                    > */}
-                        {/* <input type="text" className="groupheader" placeholder="group one"/> */}
-                        {/* <p className="groupheader">group one</p> */}
-                    {/* </span> */}
-                {/* </div> */}
             </div>
         );
     }

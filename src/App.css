@@ -6,7 +6,7 @@ body > #root > div {
   text-align: center;
   display: grid;
   grid-template-columns: 125px 1fr;
-  grid-template-rows: 100px 1fr;
+  grid-template-rows: 90px 1fr;
   background-color: #F9F9F9;
   /* background-color: #f2e3ea; */
 }
@@ -290,9 +290,12 @@ ul {
 
 .navbar {
   overflow: hidden;
-  font-family: ivystyle-sans, sans-serif;
+  font-family: quasimoda, sans-serif;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
+  /* font-family: ivystyle-sans, sans-serif;
+  font-style: normal;
+  font-weight: 300; */
   grid-column: 1 / 2;
   grid-row: 1 / 4;
   max-height: 100%;
@@ -382,69 +385,61 @@ ul {
 /* start WelcomePage component */
 .welcomepage{
   height: 100vh;
-  background-color: #F9F6EF;
+  /* background-color: #F9F6EF; */
   /* background-color: #E8EFEE; */
 }
 .subwel{
-  /* font-family: bigmoore, serif;
-  font-style: normal;
-  font-weight: 400; */
-  font-family: freight-sans-pro-lights, sans-serif;
+  font-family: quasimoda, sans-serif;
   font-style: normal;
   font-weight: 200;
-  color: #4A494E;
-  /* background-color: #E8EFEE; */
-  /* background-color: #E6E5E3; */
-  background-color: #F7F7FB;
-  border-bottom: 10px solid #681F42;
-  /* color: #627277; */
-  /* font-family: pulpo-rust-75, serif;
-  font-style: normal;
-  font-weight: 400; */
+  /* color: #4A494E; */
+  color: #19182D;
   font-size: 32px;
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 10px;
 }
 .newarrbutton{
-  color: #f2edd7;
-  /* background-color: #D13076; */
-  /* background-color: #CA8374; */
-  /* background-color: #B0585E; */
-  /* background-color: #CA547F; */
-  /* background-color: #B0585E; */
+  /* color: #f2edd7; */
+  color: #F7F7FB;
   font-size: 12px;
-  /* background-color: #E1B129; */
-  
-  background-color: #C16278;
+  /* background-color: #656588; */
+  background-color: #6C658E;
   height: 50px;
   width: 25%;
   align-self: center; 
   justify-self: center;
   margin-top: 20px;
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
 
 .viewarrbutton{
-  color: #f2edd7;
+  color: #F7F7FB;
+  /* color: #f2edd7; */
   font-size: 12px;
-  background-color: #245B6A;
+  /* background-color: #921B4E; */
+  background-color: #892E5D;
   height: 50px;
   width: 25%;
   align-self: center; 
   justify-self: center;
   margin-top: 20px;
+  font-family: quasimoda, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }
 .welcometext{
-  font-family: freight-sans-pro-lights, sans-serif;
+  font-family: quasimoda, sans-serif;
   font-style: normal;
   font-weight: 200;
-  /* font-family: acumin-pro, sans-serif;
-  font-style: normal;
-  font-weight: 100; */
   font-size: 22px; 
-  color: #627277;
+  /* color: #627277; */
+  color: #19182D;
   /* color: #343148; */
   align-self: start;
-  padding-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 /* end WelcomePage component */
 

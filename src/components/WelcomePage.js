@@ -23,7 +23,7 @@ class WelcomePage extends Component{
 
     render(){
         const styles = {
-            color: 'white',
+            color: '#F7F7FB',
             textDecoration: 'none'
         }
         return(

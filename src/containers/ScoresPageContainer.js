@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ArrayngementPage from "../components/ArrayngementPage/ArrayngementPage";
+import ScoresPage from "../components/ScoresPage/ScoresPage";
 import { loadUserId, fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
@@ -22,5 +22,5 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-const ArrayngementPageContainer = connect(mapStateToProps, mapDispatchToProps)(ArrayngementPage)
-export default ArrayngementPageContainer;
+const ScoresPageContainer = connect(mapStateToProps, mapDispatchToProps)(ScoresPage)
+export default ScoresPageContainer;

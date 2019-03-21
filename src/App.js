@@ -6,7 +6,7 @@ import Header from './components/Header';
 import TopNavbar from './components/TopNavbar';
 import SignUpSignInPage from './components/SignUpSignInPage';
 import WelcomePage from './components/WelcomePage';
-import ScoresPage from './components/ScoresPage/ScoresPage';
+import ScoresPageContainer from './containers/ScoresPageContainer';
 import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
 import ArrayngementPageContainer from './containers/ArrayngementPageContainer';
@@ -111,7 +111,7 @@ class App extends Component {
           <Route path="/classdata" component={ClassDataPageContainer}/>
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
           <Route path="/arrayngement" component={ArrayngementPageContainer}/>
-          <Route exact path="/scores" component={ScoresPage}/>
+          <Route exact path="/scores" component={ScoresPageContainer}/>
           <Route path="/charts" component={BarChartContainer}/>
         </Switch>
       </div>

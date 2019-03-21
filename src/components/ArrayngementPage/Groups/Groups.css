@@ -25,7 +25,7 @@
     padding-right: 25px;
     /* background-color: #CFD8E5; */
     background-color: #F4E8D9;
-    color: #535B85;
+    color: #19182d;
 }
 #twoGroupTwoBox{
     grid-column: 2 / 3;
@@ -41,7 +41,7 @@
     padding-right: 25px;
     background-color: #F3E4DF;
     /* background-color: #EADFD3; */
-    color: #535B85;
+    color: #19182d;
 }
 /* end TwoGroups Component */
 
@@ -73,7 +73,7 @@
     padding-left: 35px;
     padding-right: 35px;
     /* background-color: #D6D5DA; */
-    color: #535B85;
+    color: #19182d;
 }
 #threeGroupTwoBox{
     grid-column: 2 / 3;
@@ -90,7 +90,7 @@
     padding-right: 35px;
     background-color: #F2EDD7;
     /* background-color: #EADFD3; */
-    color: #535B85;
+    color: #19182d;
 }
 #threeGroupThreeBox{
     grid-column: 1 / 2;
@@ -107,7 +107,7 @@
     padding-right: 35px;
     background-color: #E7EFE6;
     /* background-color: #E8E8E8; */
-    color: #535B85; 
+    color: #19182d; 
 }
 /* end ThreeGroups Component */
 
@@ -130,9 +130,15 @@
 }
 .groupheader{
     color: #535B85;
-    font-family: le-havre, sans-serif;
+    /* font-family: le-havre, sans-serif;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 300; */
+    /* font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 300; */
+    font-family: acumin-pro, sans-serif;
+    font-style: normal;
+    font-weight: 100;
     margin-top: 0px;
     font-size: 18px;
 }
@@ -149,7 +155,7 @@
     padding-left: 35px;
     padding-right: 35px;
     /* background-color: #D6D5DA; */
-    color: #535B85;
+    color: #19182d;
 }
 #grouptwobox{
     grid-column: 2 / 3;
@@ -165,7 +171,7 @@
     padding-right: 35px;
     /* background-color: #EADFD3; */
     background-color: #F4E8D9;
-    color: #535B85;
+    color: #19182d;
 }
 #groupthreebox{
     grid-column: 1 / 2;
@@ -181,7 +187,7 @@
     padding-right: 35px;
     /* background-color: #E8E8E8; */
     background-color: #E7EFE6;
-    color: #535B85;
+    color: #19182d;
 }
 #groupfourbox{
     grid-column: 2 / 3;
@@ -197,7 +203,7 @@
     padding-right: 35px;
     /* background-color: #EAD9D8; */
     background-color: #F3E4DF;
-    color: #535B85;
+    color: #19182d;
 }
 /* end FourGroups Component */
 
@@ -228,7 +234,7 @@
     padding-left: 35px;
     padding-right: 35px;
     /* background-color: #DBCAD8; */
-    color: #535B85;
+    color: #19182d;
 }
 #fiveGroupTwoBox{
     grid-column: 3 / 4;
@@ -244,7 +250,7 @@
     padding-right: 35px;
     /* background-color: #EADFD3; */
     background-color: #F2EDD7;
-    color: #535B85;
+    color: #19182d;
 }
 #fiveGroupThreeBox{
     grid-column: 1 / 2;
@@ -261,7 +267,7 @@
     padding-right: 35px;
     /* background-color: #E8E8E8; */
     background-color: #F4E8D9;
-    color: #535B85;
+    color: #19182d;
 }
 #fiveGroupFourBox{
     grid-column: 2 / 3;
@@ -278,7 +284,7 @@
     padding-right: 35px;
     /* background-color: #EAD9D8; */
     background-color: #F3E4DF;
-    color: #535B85;
+    color: #19182d;
 }
 #fiveGroupFiveBox{
     grid-column: 3 / 4;
@@ -295,7 +301,7 @@
     padding-right: 35px;
     /* background-color: #D6D5DA; */
     background-color: #EADFD3;
-    color: #535B85;
+    color: #19182d;
 }
 /* end FiveGroups Component */
 
@@ -330,7 +336,7 @@
     padding-right: 35px;
     background-color: #F2EDD7;
     /* background-color: #D6D5DA; */
-    color: #535B85;
+    color: #19182d;
 }
 #sixGroupTwoBox{
     grid-column: 2 / 3;
@@ -347,7 +353,7 @@
     padding-right: 35px;
     /* background-color: #EADFD3; */
     background-color: #F4E8D9;
-    color: #535B85;
+    color: #19182d;
 }
 #sixGroupThreeBox{
     grid-column: 1 / 2;
@@ -364,7 +370,7 @@
     padding-right: 35px;
     /* background-color: #E8E8E8; */
     background-color: #F3E4DF;
-    color: #535B85;
+    color: #19182d;
 }
 #sixGroupFourBox{
     grid-column: 2 / 3;
@@ -381,7 +387,7 @@
     padding-right: 35px;
     /* background-color: #EAD9D8; */
     background-color: #E7EFE6;
-    color: #535B85;
+    color: #19182d;
 }
 #sixGroupFiveBox{
     grid-column: 1 / 2;
@@ -398,7 +404,7 @@
     padding-right: 35px;
     background-color: #D6D5DA;
     /* background-color: #CDCCDD; */
-    color: #535B85;
+    color: #19182d;
 }
 #sixGroupSixBox{
     grid-column: 2 / 3;
@@ -415,6 +421,6 @@
     padding-right: 35px;
     /* background-color: #DFEAED; */
     background-color: #EADFD3;
-    color: #535B85;
+    color: #19182d;
 }
 /* end SixGroups Component */
