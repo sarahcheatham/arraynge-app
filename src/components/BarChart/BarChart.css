@@ -1,0 +1,45 @@
+.title{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    display: flex;
+    align-self: center;
+    margin-left: 15%;
+}
+.barchartinputbar{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    background-color: #F2EDD7;
+}
+.barchartsubject{
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: 50px 100px;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    padding-top: 10px;
+    height: 40px;
+}
+.graphtitle{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+}
+.name-label{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+}
+.value-label{
+    font-family: quasimoda, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+}

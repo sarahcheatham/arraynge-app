@@ -1,25 +1,32 @@
 import React from "react";
+import benchmarks from '../../api/benchmarks.json';
+
 function BarGroup(props) {
-    let barPadding = 2;
+    let barPadding = 5;
     let barColour = '#348AA7';
-    // let xMid = props.barWidth * 10;
-    // let yMid = props.barWidth;
     let heightScale = d => d * props.barWidth / 10;
-  
     let height = heightScale(props.d.value);
     let negativeValue = -Math.abs(props.d.value);
     let xMid = heightScale(props.d.value * 2)
     let yMid = props.barWidth;
-    console.log("height:", height)
-    console.log("xMid:", xMid)
-    console.log("props.d:", props.d.value)
-    console.log("negativeValue:", negativeValue)
-    
+    const bm = benchmarks.filter((benchmark, index)=>{
+        if(benchmark.gradelevel === props.gradelevel.toUpperCase()){
+            return benchmark
+        }
+    })
+    const correctBenchmark = bm.filter((benchmark, index)=>{
+        console.log("bmSubject item:", benchmark.subject)
+        console.log("props.subject:", props.subject)
+        if(props.subject === benchmark.subject){
+            return benchmark
+        }
+    })
+    console.log("correctBenchmark:", correctBenchmark)
     return <g className="bar-group">
-        <text className="name-label" x={height * -2} y={props.d.value} transform="rotate(45)">     
+        <text className="name-label" x={450} y={-80} transform="rotate(70)">     
             {props.d.name}
         </text>
-        <text className="value-label" x={xMid} y={props.d.value}> 
+        <text className="value-label" x={220} y={375}> 
             {props.d.value}
         </text>
         <rect className="rect" y={yMid} width={props.barWidth - barPadding} height={height} fill={barColour} transform="translate(250, 400) rotate(180)"/>

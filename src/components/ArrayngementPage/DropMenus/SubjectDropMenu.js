@@ -42,18 +42,25 @@ class SubjectDropMenu extends Component{
     }
 
     render(){
+        let showSubject = "READING"
         let otherSubject = "";
         console.log("props.subject:", this.props.subject)
-        if(this.props.subject === 'READING'){
-            otherSubject = "MATH"
+        if(this.props.subject === ''){
+            showSubject = "READING";
+            otherSubject = "MATH";
+        } else if(this.props.subject === "READING") {
+            showSubject = "READING";
+            otherSubject = "MATH";
         } else {
-            otherSubject = "READING"
+            showSubject = "MATH";
+            otherSubject = "READING";
         }
         return(
             <form className={this.props.className}>
                 <ControlLabel className="subjectLabel">Subject:</ControlLabel>
                 <Button onClick={this.showMenu} className='subjectDropMenuButton'>
-                    {this.props.subject}
+                    {showSubject}
+                    {/* {this.props.subject} */}
                 </Button>
 
                 {
