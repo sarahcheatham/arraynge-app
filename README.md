@@ -24,13 +24,13 @@ A full stack web application built using React.js and Redux for the front-end, N
 2. Click the button that says, "ARRAYNGE YOUR CLASS".
 3. Choose what test data you would like to base your "arrayngement" on. 
 
-BOY score = Beginning of the Year score
++ BOY score = Beginning of the Year score
 
-MOY score = Middle of the Year score
++ MOY score = Middle of the Year score
 
-EOY score = End of the Year score 
++ EOY score = End of the Year score 
 
-EOY goal = End of the Year goal
++ EOY goal = End of the Year goal
 
 4. Choose how many groups you would like to break your class into from the drop down menu labeled groups.  
 5. Choose which subject you would like to base your "arrayngement" on.  
