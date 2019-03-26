@@ -10,9 +10,9 @@ A full stack web application built using React for the front-end, Node.js and Ex
 ### Demo My App
 [https://arraynge.herokuapp.com/](https://arraynge.herokuapp.com/)
 
-***Demo Credentials***
-***username:*** worldsbestboss@gmail.com
-***password:*** password
+##### Demo Credentials
+###### username: worldsbestboss@gmail.com
+###### password: password
 
 
 ### Screencast Video of Application
