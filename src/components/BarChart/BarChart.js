@@ -43,35 +43,10 @@ class BarChart extends React.Component {
           benchmarks: benchmarks
       })
     })
-    const bm = benchmarks.filter((benchmark, index)=>{
-      if(benchmark.gradelevel === this.state.gradelevel.toUpperCase()){
-          return benchmark
-      }
-    })
-    console.log("bm:", bm)
-    // const correctBenchmark = bm.filter((benchmark, index)=>{
-    //   if(props.subject === benchmark.subject){
-    //       return benchmark
-    //   }
-    // })
-  // console.log("correctBenchmark:", correctBenchmark)
   // console.log("props.subject:", props.subject)
   }
   handleSubjectChange(event){
     console.log("handleSubjectChange:", event)
-    // console.log("gradelevel:", this.state.gradelevel)
-    // console.log("state benchmarks:", this.state.benchmarks)
-    // const bm = benchmarks.filter((benchmark, index)=>{
-    //   if(benchmark.gradelevel === this.state.gradelevel.toUpperCase()){
-    //     return benchmark
-    //   }
-    // })
-    // const correctBenchmark = bm.filter((benchmark, index)=>{
-    //   if(benchmark.subject === this.state.subject){
-    //     return benchmark
-    //   }
-    // })
-    // console.log("correctBenchmark:", correctBenchmark)
     this.setState({
         subject: event.subject
     })
@@ -84,52 +59,35 @@ class BarChart extends React.Component {
   //   this.setState({userId: userId, studentdata: studentdata})
   // }
   // componentDidUpdate(prevProps, prevState) {
-  //   console.log("subject:", this.state.subject)
-  //   console.log("gradelevel:", this.state.gradelevel)
-  //   console.log("state benchmarks:", this.state.benchmarks)
-  //   console.log(benchmarks)
-  //   const bm = benchmarks.filter((benchmark, index)=>{
-  //     if(benchmark.gradelevel === this.state.gradelevel.toUpperCase()){
-  //       return benchmark
-  //     }
-  //   })
-  //   const correctBenchmark = bm.filter((benchmark, index)=>{
-  //     if(benchmark.subject === this.state.subject){
-  //       return benchmark
-  //     }
-  //   })
-
-  //   console.log("correctBenchmark:", correctBenchmark)
-  //   this.setState({benchmark: correctBenchmark})
-  //   console.log(this.state.benchmark)
-  //   const bm = benchmarks.filter((benchmark, index)=>{
-  //     if(benchmark.gradelevel === props.gradelevel.toUpperCase()){
-  //         return benchmark
-  //     }
-  //   })
-  //   const correctBenchmark = bm.filter((benchmark, index)=>{
-  //     if(props.subject === benchmark.subject){
-  //         return benchmark
-  //     }
-  //   })
   //   Typical usage (don't forget to compare props):
   //   console.log("prevProps:", prevProps)
   //   console.log("prevState:", prevState)
-  //   const bm = benchmarks.find((benchmark)=>{
-  //     console.log(benchmark.gradelevel === this.state.gradelevel)
-  //   })
-  //   if(this.props.studentdata.students !== undefined){
-  //     const studentdata = this.props.studentdata.students.slice();
-  //     const relevantStudentsCheck = (student) =>{
-  //       return student.userId === this.state.userId
-  //     }
-  //     const filteredStudents = studentdata.filter(relevantStudentsCheck);
-  //     console.log('filteredStudents', filteredStudents)
-  //   }
-  // }
+// }
   
   
   render() {
+      const bm = benchmarks.filter((benchmark, index)=>{
+        if(benchmark.gradelevel === this.state.gradelevel.toUpperCase()){
+          return benchmark
+        }
+      })
+      const correctBenchmark = bm.filter((benchmark, index)=>{
+        if(this.state.subject === benchmark.subject){
+            return benchmark
+        }
+      })
+      const boyBenchmark = correctBenchmark.map((item, index)=>{
+        return item.score[0].BOYscore
+      })
+      console.log("boyBenchmark:", boyBenchmark);
+      const moyBenchmark = correctBenchmark.map((item, index)=>{
+        return item.score[1].MOYscore
+      })
+      console.log("moyBenchmark:", moyBenchmark)
+      const eoyBenchmark = correctBenchmark.map((item, index)=>{
+        return item.score[2].EOYscore
+      })
+      console.log("eoyBenchmark:", eoyBenchmark)
       let barWidth = 40;
       let barGroups = this.state.data.map((d, i) => 
         <g transform={`translate(${i * barWidth}, 50)`}>
