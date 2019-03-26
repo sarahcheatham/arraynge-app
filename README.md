@@ -7,6 +7,14 @@ My application allows teachers to sort students based on their test scores and t
 ### Build Tools
 A full stack web application built using React for the front-end, Node.js and Express for the back-end, and MongoDB for the database.
 
+### Demo My App
+[https://arraynge.herokuapp.com/](https://arraynge.herokuapp.com/)
+
+***Demo Credentials***
+***username:*** worldsbestboss@gmail.com
+***password:*** password
+
+
 ### Screencast Video of Application
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/HxMxtn4BxFM/0.jpg)](https://www.youtube.com/watch?v=HxMxtn4BxFM&feature=youtu.be)
 

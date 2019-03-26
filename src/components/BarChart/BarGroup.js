@@ -9,19 +9,18 @@ function BarGroup(props) {
     let negativeValue = -Math.abs(props.d.value);
     let xMid = heightScale(props.d.value * 2)
     let yMid = props.barWidth;
-    const bm = benchmarks.filter((benchmark, index)=>{
-        if(benchmark.gradelevel === props.gradelevel.toUpperCase()){
-            return benchmark
-        }
-    })
-    const correctBenchmark = bm.filter((benchmark, index)=>{
-        console.log("bmSubject item:", benchmark.subject)
-        console.log("props.subject:", props.subject)
-        if(props.subject === benchmark.subject){
-            return benchmark
-        }
-    })
-    console.log("correctBenchmark:", correctBenchmark)
+    // const bm = benchmarks.filter((benchmark, index)=>{
+    //     if(benchmark.gradelevel === props.gradelevel.toUpperCase()){
+    //         return benchmark
+    //     }
+    // })
+    // const correctBenchmark = bm.filter((benchmark, index)=>{
+    //     if(props.subject === benchmark.subject){
+    //         return benchmark
+    //     }
+    // })
+    // console.log("correctBenchmark:", correctBenchmark)
+    // console.log("props.subject:", props.subject)
     return <g className="bar-group">
         <text className="name-label" x={450} y={-80} transform="rotate(70)">     
             {props.d.name}
