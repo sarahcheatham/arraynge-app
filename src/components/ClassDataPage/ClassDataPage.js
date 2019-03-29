@@ -24,7 +24,7 @@ class ClassDataPage extends Component{
     };
 
     componentDidMount(){
-        this.props.loadUserId();
+        // this.props.loadUserId();
         this.props.loadClassData();
     }
 
@@ -56,7 +56,7 @@ class ClassDataPage extends Component{
         event.preventDefault();
         const subject = {subject: event.target.value};
         this.props.setSubject(event.target.value)
-        const userId = {userId: this.props.userId};
+        const userId = {userId: this.props.currentUserId};
         this.setState({
             classdata: Object.assign(this.state.classdata, subject, userId),
         })
@@ -65,7 +65,7 @@ class ClassDataPage extends Component{
     handleSubmit(event){
         event.preventDefault();
         const data = {
-            userId: this.props.userId,
+            userId: this.props.currentUserId,
             gradelevel: this.props.gradelevel,
             subject: this.props.subject
         }
@@ -76,6 +76,7 @@ class ClassDataPage extends Component{
     }
     
     render(){
+        console.log("props:", this.props)
         const styles = {
             color: 'black',
             textDecoration: 'none'

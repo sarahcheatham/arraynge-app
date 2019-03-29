@@ -6,6 +6,16 @@ module.exports.list = (req, res)=>{
     })
 }
 
+module.exports.getUserStudents = (req, res) => {
+    StudentModel.find({
+        userId: req.params.userId
+    })
+    .exec()
+    .then(students => {
+        return res.json(students);
+    });
+}
+
 module.exports.show = (req, res)=>{
     StudentModel.findById(req.params.id).exec().then((student)=>{
         return res.json(student)

@@ -66,10 +66,10 @@ export function createClassData(classdata){
     }
 }
 
-export function fetchStudentData(){
+export function fetchStudentData(userId){
     return dispatch =>{
         dispatch(fetchStudentDataBegin());
-        return fetch('/api/studentdata')
+        return fetch(`/api/my-students/${userId}`)
             .then(handleErrors)
             .then(res => res.json())
             .then(studentdata => {

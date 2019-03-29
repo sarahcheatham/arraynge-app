@@ -28,17 +28,18 @@ class ScoresPage extends Component{
     }
 
     componentDidMount(){
-        this.props.loadUserId();
+        // this.props.loadUserId();
         fetch('/api/studentdata').then((res)=>{
             return res.json();
         }).then((students)=>{
             const relevantStudentsCheck = (students)=>{
                 if(students !== null){
-                    return students.userId === this.props.userId
+                    return students.userId === this.props.currentUserId
                 }
             }
             const filteredStudents = students.filter(relevantStudentsCheck);
             const lastStudent = filteredStudents[filteredStudents.length-1];
+            console.log("lastStudent:", lastStudent)
             const gradelevel = lastStudent.gradelevel;
             this.setState({
                 students: filteredStudents,
@@ -144,7 +145,7 @@ class ScoresPage extends Component{
         let formComponents =[];
         let tableComponents = [];
         students.map((student, index)=>{
-            if(student.userId === this.props.userId){
+            if(student.userId === this.props.currentUserId){
                 studentList.push(student)
             }
             // if(item.userId === this.state.userId || item.subject === this.state.lastPost.subject){

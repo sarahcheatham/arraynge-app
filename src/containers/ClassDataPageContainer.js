@@ -6,7 +6,7 @@ function mapStateToProps(state) {
   return {
     gradelevel: state.currentGradeLevel,
     subject: state.currentSubject,
-    userId: state.currentUserId,
+    currentUserId: state.currentUserId,
     classdata: state.currentClassdata
   };
 }

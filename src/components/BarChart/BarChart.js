@@ -34,6 +34,7 @@ class BarChart extends React.Component {
         }
         const filteredStudents = students.filter(relevantStudentsCheck);
         const lastStudent = filteredStudents[filteredStudents.length-1];
+        console.log("lastStudent:", lastStudent)
         const gradelevel = lastStudent.gradelevel;
         const subject = lastStudent.subject;
         this.setState({
@@ -51,12 +52,16 @@ class BarChart extends React.Component {
         subject: event.subject
     })
 }
-
+// static getDerivedStateFromProps(props, state){
+//   console.log("props:", props)
+//   console.log("state:", state)
+// }
   // componentWillReceiveProps(nextProps){
-  //   const userId = nextProps.userId;
-  //   const studentdata = nextProps.studentdata.students;
-  //   console.log('nextProps:', nextProps, "userId:", userId, 'studentdata:', studentdata)
-  //   this.setState({userId: userId, studentdata: studentdata})
+    // console.log("nextProps:", nextProps)
+    // const userId = nextProps.userId;
+    // const studentdata = nextProps.studentdata.students;
+    // console.log('nextProps:', nextProps, "userId:", userId, 'studentdata:', studentdata)
+    // this.setState({userId: userId, studentdata: studentdata})
   // }
   // componentDidUpdate(prevProps, prevState) {
   //   Typical usage (don't forget to compare props):
@@ -66,6 +71,7 @@ class BarChart extends React.Component {
   
   
   render() {
+    
       const bm = benchmarks.filter((benchmark, index)=>{
         if(benchmark.gradelevel === this.state.gradelevel.toUpperCase()){
           return benchmark

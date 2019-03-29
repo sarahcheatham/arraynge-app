@@ -5,7 +5,7 @@ import { Alert } from 'react-bootstrap';
 import Header from './components/Header';
 import TopNavbar from './components/TopNavbar';
 import SignUpSignInPage from './components/SignUpSignInPage';
-import WelcomePage from './components/WelcomePage';
+import WelcomeContainer from './containers/WelcomeContainer';
 import ScoresPageContainer from './containers/ScoresPageContainer';
 import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
@@ -27,6 +27,12 @@ class App extends Component {
     this.handleSignUp = this.handleSignUp.bind(this);
   };
 
+  componentDidMount(){
+    if(this.state.authenticated){
+      this.props.loadUserId();
+    }
+  }
+  
   handleSignUp(credentials){
     const { username, password, confirmPassword } = credentials;
     console.log(credentials)
@@ -48,6 +54,7 @@ class App extends Component {
           signUpSignInError: "",
           authenticated: token
         });
+        this.props.loadUserId();
       });
     }
   }
@@ -73,6 +80,7 @@ class App extends Component {
           signUpSignInError: "",
           authenticated: token
         });
+        this.props.loadUserId();
       });
     }  
   }
@@ -82,6 +90,7 @@ class App extends Component {
     this.setState({
       authenticated: false
     });
+    this.props.setCurrentUserId(null);
   }
 
   renderError(){
@@ -106,7 +115,7 @@ class App extends Component {
     return(
       <div className="page">
         <Switch>
-          <Route exact path="/" render={()=> <WelcomePage/>}/>
+          <Route exact path="/" component={WelcomeContainer}/>
           <Route path="/studentdata" component={StudentDataPageContainer}/>
           <Route path="/classdata" component={ClassDataPageContainer}/>
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}

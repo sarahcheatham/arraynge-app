@@ -4,6 +4,6 @@ export default {
     currentSubject: "",
     numberOfStudents: 0,
     classdata: [],
-    studentdata: []
+    studentdata: [],
     // students: []
 }

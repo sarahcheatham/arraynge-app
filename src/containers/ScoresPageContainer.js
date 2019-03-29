@@ -4,7 +4,7 @@ import { loadUserId, fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
-        userId: state.currentUserId,
+        currentUserId: state.currentUserId,
         studentdata: state.studentdata,
         loading: state.loading,
         error: state.error 

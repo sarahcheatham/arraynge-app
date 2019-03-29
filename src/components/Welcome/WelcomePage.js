@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 // import PropTypes from 'prop-types';
-import SubHeader from './SubHeader';
+import SubHeader from '../SubHeader';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,15 @@ class WelcomePage extends Component{
             welcomeMessage: ""
         };
     }
+
+    static getDerivedStateFromProps(props, state){
+        console.log("props:", props)
+        console.log("state:", state)
+        console.log('*** eived  s   getDrfetchStudentData ***', props.currentUserId)
+        props.fetchStudentData(props.currentUserId)
+        return state;
+    }
+
     componentDidMount(){
         fetch("/api/welcome").then((res)=>{
             return res.text();
@@ -19,6 +28,11 @@ class WelcomePage extends Component{
                 welcomeMessage: welcomeMessage
             });
         });
+        console.log('*** didMount fetchStudentData ***', this.props.currentUserId)
+        // if(this.props.currentUserId){
+        //     this.props.fetchStudentData(this.props.currentUserId)
+        // }
+        
     }
 
     render(){

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { list, show, create, update, remove } = require("../controllers/StudentController");
+const { list, show, create, update, remove, getUserStudents } = require("../controllers/StudentController");
 
+router.get('/api/my-students/:userId', getUserStudents);
 router.get("/api/studentdata", list);
 // router.get("/api/studentdata/:userId", showAll);
 router.get("/api/studentdata/:id", show);
