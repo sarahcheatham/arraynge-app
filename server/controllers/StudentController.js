@@ -1,7 +1,7 @@
 const StudentModel = require("../models/StudentModel");
 
 module.exports.list = (req, res)=>{
-    StudentModel.find({}).exec().then((students)=>{
+    StudentModel.find({ userId: req.user._id }).exec().then((students)=>{
         return res.json(students)
     })
 }
