@@ -12,13 +12,13 @@ class WelcomePage extends Component{
         };
     }
 
-    static getDerivedStateFromProps(props, state){
-        console.log("props:", props)
-        console.log("state:", state)
-        console.log('*** eived  s   getDrfetchStudentData ***', props.currentUserId)
-        props.fetchStudentData(props.currentUserId)
-        return state;
-    }
+    // static getDerivedStateFromProps(props, state){
+    //     console.log("props:", props)
+    //     console.log("state:", state)
+    //     console.log('*** eived  s   getDrfetchStudentData ***', props.currentUserId)
+    //     props.fetchStudentData(props.currentUserId)
+    //     return state;
+    // }
 
     componentDidMount(){
         fetch("/api/welcome").then((res)=>{
@@ -28,11 +28,11 @@ class WelcomePage extends Component{
                 welcomeMessage: welcomeMessage
             });
         });
-        console.log('*** didMount fetchStudentData ***', this.props.currentUserId)
+        // console.log('*** didMount fetchStudentData ***', this.props.currentUserId)
         // if(this.props.currentUserId){
         //     this.props.fetchStudentData(this.props.currentUserId)
         // }
-        
+        this.props.fetchStudentData()
     }
 
     render(){

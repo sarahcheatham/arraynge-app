@@ -4,6 +4,9 @@ import StudentUpdateTable from "./StudentUpdateTable";
 import { Grid, Row, Col, Button, Table, thead, tr } from 'react-bootstrap';
 import './ScoresPage.css';
 
+//loading previous students when you log out and log in as a new user 
+//until you click the home button then come back to the scores page.
+
 class ScoresPage extends Component{
     constructor(props){
         super(props);
@@ -28,25 +31,29 @@ class ScoresPage extends Component{
     }
 
     componentDidMount(){
+        // if(this.props.studentdata){
+        //     this.setState({students: this.props.studentdata.students})
+        // }
+        // console.log("studentdata:", this.props.studentdata.students)
         // this.props.loadUserId();
-        fetch('/api/studentdata').then((res)=>{
-            return res.json();
-        }).then((students)=>{
-            const relevantStudentsCheck = (students)=>{
-                if(students !== null){
-                    return students.userId === this.props.currentUserId
-                }
-            }
-            const filteredStudents = students.filter(relevantStudentsCheck);
-            const lastStudent = filteredStudents[filteredStudents.length-1];
-            console.log("lastStudent:", lastStudent)
-            const gradelevel = lastStudent.gradelevel;
-            this.setState({
-                students: filteredStudents,
-                gradelevel: gradelevel
-            })
-            console.log(this.state.students)
-        })
+        // fetch('/api/studentdata').then((res)=>{
+        //     return res.json();
+        // }).then((students)=>{
+        //     const relevantStudentsCheck = (students)=>{
+        //         if(students !== null){
+        //             return students.userId === this.props.currentUserId
+        //         }
+        //     }
+        //     const filteredStudents = students.filter(relevantStudentsCheck);
+        //     const lastStudent = filteredStudents[filteredStudents.length-1];
+        //     console.log("lastStudent:", lastStudent)
+        //     const gradelevel = lastStudent.gradelevel;
+        //     this.setState({
+        //         students: filteredStudents,
+        //         gradelevel: gradelevel
+        //     })
+        //     console.log(this.state.students)
+        // })
         // fetch("/api/hey").then((res)=>{
         //     return res.text()
         // }).then((userId)=>{
@@ -117,6 +124,9 @@ class ScoresPage extends Component{
     }
 
     handleSubmit(studentdata){
+        //put fetch is not refreshing when you click the edit/save scores button after clicking
+        //the purple save button that is next to each students name.
+        console.log("studentdata:", studentdata)
         const id = studentdata.id;
         const name = studentdata.name;
         const score = studentdata.score;
@@ -138,21 +148,13 @@ class ScoresPage extends Component{
     }
 
     render(){
-        const students = this.state.students.slice();
+        const students = this.props.studentdata.students;
         let formOrTable = "";
         let buttonText = ""
         let studentList = [];
         let formComponents =[];
         let tableComponents = [];
-        students.map((student, index)=>{
-            if(student.userId === this.props.currentUserId){
-                studentList.push(student)
-            }
-            // if(item.userId === this.state.userId || item.subject === this.state.lastPost.subject){
-            //     studentList.push(item)
-            // }
-        })
-        studentList.forEach((student, index)=>{
+        students.forEach((student, index)=>{
             const id = student._id;
             const name = student.name;
             const gradelevel = student.gradelevel;
@@ -161,10 +163,11 @@ class ScoresPage extends Component{
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
+            console.log(id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore)
             let sc = <StudentUpdateForm key={index} id={id} name={name} gradelevel={gradelevel} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
-            formComponents.push(sc)
+            formComponents.push(sc);
         })
-        studentList.forEach((student, index)=>{
+        students.forEach((student, index)=>{
             const id = student._id;
             const name = student.name;
             const gradelevel = student.gradelevel;

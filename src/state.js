@@ -5,5 +5,4 @@ export default {
     numberOfStudents: 0,
     classdata: [],
     studentdata: [],
-    // students: []
 }

@@ -4,15 +4,15 @@ import { fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
-        currentUserId: state.currentUserId,
+        // currentUserId: state.currentUserId,
         students: state.students
     }
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        fetchStudentData(userId){
-            dispatch(fetchStudentData(userId))
+        fetchStudentData(){
+            dispatch(fetchStudentData())
         }
     }
 }
