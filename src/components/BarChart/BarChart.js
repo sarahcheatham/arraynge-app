@@ -12,8 +12,10 @@ class BarChart extends React.Component {
       students: [],
       gradelevel: "",
       subject: "",
-      benchmarks: [],
-      benchmark: [],
+      correctBenchmark: [],
+      boyBenchmark: [],
+      moyBenchmark: [],
+      eoyBenchmark: [],
       data: [
         { name: 'Below Grade Level', value: 60 },
         { name: 'Above Grade Level', value: 100 },
@@ -23,39 +25,51 @@ class BarChart extends React.Component {
   }
 
   componentDidMount(){
-    this.props.loadUserId();
-    fetch('/api/studentdata').then((res)=>{
-        return res.json();
-    }).then((students)=>{
-        const relevantStudentsCheck = (students)=>{
-            if(students !== null){
-                return students.userId === this.props.userId
-            }
-        }
-        const filteredStudents = students.filter(relevantStudentsCheck);
-        const lastStudent = filteredStudents[filteredStudents.length-1];
-        console.log("lastStudent:", lastStudent)
-        const gradelevel = lastStudent.gradelevel;
-        const subject = lastStudent.subject;
-        this.setState({
-          students: filteredStudents,
-          gradelevel: gradelevel,
-          subject: subject,
-          benchmarks: benchmarks
-      })
-    })
-  // console.log("props.subject:", props.subject)
+    const students = this.props.studentdata.students;
+    const lastStudent = students[students.length-1];
+    const gradelevel = lastStudent.gradelevel;
+    const subject = lastStudent.subject;
+    this.setState({students, gradelevel, subject})
   }
+
   handleSubjectChange(event){
     console.log("handleSubjectChange:", event)
     this.setState({
         subject: event.subject
     })
-}
-// static getDerivedStateFromProps(props, state){
-//   console.log("props:", props)
-//   console.log("state:", state)
-// }
+  }
+
+  static getDerivedStateFromProps(props, state){
+    const bm = benchmarks.filter((benchmark, index)=>{
+      if(benchmark.gradelevel === state.gradelevel.toUpperCase()){
+        return benchmark
+      }
+    })
+    console.log("bm:", bm)
+    const correctBenchmark = bm.filter((benchmark, index)=>{
+      if(state.subject === benchmark.subject){
+        return benchmark
+      }
+    })
+    console.log("correctBenchmark:", correctBenchmark)
+    const boyBenchmark = correctBenchmark.map((item, index)=>{
+      return item.score[0].BOYscore
+    })
+    console.log("boyBenchmark:", boyBenchmark);
+    const moyBenchmark = correctBenchmark.map((item, index)=>{
+      return item.score[1].MOYscore
+    })
+    console.log("moyBenchmark:", moyBenchmark)
+    const eoyBenchmark = correctBenchmark.map((item, index)=>{
+      return item.score[2].EOYscore
+    })
+    console.log("eoyBenchmark:", eoyBenchmark)
+    // this.setState({correctBenchmark})
+    console.log("props:", props)
+    console.log("state:", state)
+    return state
+  }
+
   // componentWillReceiveProps(nextProps){
     // console.log("nextProps:", nextProps)
     // const userId = nextProps.userId;
@@ -68,35 +82,10 @@ class BarChart extends React.Component {
   //   console.log("prevProps:", prevProps)
   //   console.log("prevState:", prevState)
 // }
-  
-  
   render() {
-    
-      const bm = benchmarks.filter((benchmark, index)=>{
-        if(benchmark.gradelevel === this.state.gradelevel.toUpperCase()){
-          return benchmark
-        }
-      })
-      const correctBenchmark = bm.filter((benchmark, index)=>{
-        if(this.state.subject === benchmark.subject){
-            return benchmark
-        }
-      })
-      const boyBenchmark = correctBenchmark.map((item, index)=>{
-        return item.score[0].BOYscore
-      })
-      console.log("boyBenchmark:", boyBenchmark);
-      const moyBenchmark = correctBenchmark.map((item, index)=>{
-        return item.score[1].MOYscore
-      })
-      console.log("moyBenchmark:", moyBenchmark)
-      const eoyBenchmark = correctBenchmark.map((item, index)=>{
-        return item.score[2].EOYscore
-      })
-      console.log("eoyBenchmark:", eoyBenchmark)
       let barWidth = 40;
       let barGroups = this.state.data.map((d, i) => 
-        <g transform={`translate(${i * barWidth}, 50)`}>
+        <g transform={`translate(${i * barWidth}, 50)`} key={i}>
           <BarGroup gradelevel={this.state.gradelevel} subject={this.state.subject} d={d} barWidth={barWidth}/>
         </g>
       )                         

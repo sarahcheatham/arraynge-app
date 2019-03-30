@@ -1,7 +1,12 @@
 const ClassDataModel = require("../models/ClassDataModel");
 
+// module.exports.list = (req, res)=>{
+//     ClassDataModel.find({}).exec().then((classesdata)=>{
+//         return res.json(classesdata)
+//     })
+// }
 module.exports.list = (req, res)=>{
-    ClassDataModel.find({}).exec().then((classesdata)=>{
+    ClassDataModel.find({ userId: req.user._id }).exec().then((classesdata)=>{
         return res.json(classesdata)
     })
 }

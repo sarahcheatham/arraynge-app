@@ -19,10 +19,6 @@ class ScoresPage extends Component{
             id: "",
             students: [],
             gradelevel: ""
-            // lastPost: {
-            //     subject: "",
-            //     gradelevel: ""
-            // }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
@@ -31,77 +27,13 @@ class ScoresPage extends Component{
     }
 
     componentDidMount(){
-        // if(this.props.studentdata){
-        //     this.setState({students: this.props.studentdata.students})
-        // }
-        // console.log("studentdata:", this.props.studentdata.students)
-        // this.props.loadUserId();
-        // fetch('/api/studentdata').then((res)=>{
-        //     return res.json();
-        // }).then((students)=>{
-        //     const relevantStudentsCheck = (students)=>{
-        //         if(students !== null){
-        //             return students.userId === this.props.currentUserId
-        //         }
-        //     }
-        //     const filteredStudents = students.filter(relevantStudentsCheck);
-        //     const lastStudent = filteredStudents[filteredStudents.length-1];
-        //     console.log("lastStudent:", lastStudent)
-        //     const gradelevel = lastStudent.gradelevel;
-        //     this.setState({
-        //         students: filteredStudents,
-        //         gradelevel: gradelevel
-        //     })
-        //     console.log(this.state.students)
-        // })
-        // fetch("/api/hey").then((res)=>{
-        //     return res.text()
-        // }).then((userId)=>{
-        //     this.setState({userId: userId})
-        // });
-        // fetch("/api/scores").then((res)=>{
-        //     console.log("scores fetch:", res)
-        //     return res.text();
-        // }).then((data)=>{
-        //     this.setState({
-        //         message: data
-        //     });
-        // });
-        // this.props.loadUserId();
-        // fetch(`/api/studentdata`).then((res)=>{
-        //     return res.json()
-        // }).then((students)=>{
-        //     const relevantStudentsCheck = (students) =>{
-        //         if(students !== null){
-        //             return students.userId === this.props.userId
-        //         }
-        //     }
-        //     const filteredStudents = students.filter(relevantStudentsCheck);
-        //     const lastStudent = filteredStudents[filteredStudents.length -1];
-        //     const gradelevel = lastStudent.gradelevel;
-        //     const subject = lastStudent.subject;
-        //     this.setState({
-        //         students: filteredStudents,
-        //         gradelevel: gradelevel,
-        //         subject: subject
-        //     })
-        //     console.log(this.state.students)
-        // }) 
-        // fetch("/api/classdata").then((res)=>{
-        //     return res.json()
-        // }).then((data)=>{
-        //     const classdata = data.slice();
-        //     const lastPost = classdata.splice(-1)[0];
-        //     if(lastPost.userId = this.state.userId){
-        //         this.setState({lastPost: lastPost, gradelevel: lastPost.gradelevel, subject: lastPost.subject})
-        //     }  
-        // })
-        // fetch("/api/studentdata").then((res)=>{
-        //     return res.json()
-        // }).then((studentdata)=>{
-        //     this.setState({students: studentdata})
-        //     console.log(this.state.students)
-        // })
+        const students = this.props.studentdata.students;
+        const lastStudent = students[students.length-1];
+        const gradelevel = lastStudent.gradelevel;
+        console.log("lastStudent", lastStudent)
+        console.log("gradelevel:", gradelevel)
+        console.log("componentdidmount:", this.props.studentdata.students)
+        this.setState({ students, gradelevel })
     }
     mouseDown(event){
         event.preventDefault();
@@ -126,13 +58,13 @@ class ScoresPage extends Component{
     handleSubmit(studentdata){
         //put fetch is not refreshing when you click the edit/save scores button after clicking
         //the purple save button that is next to each students name.
-        console.log("studentdata:", studentdata)
         const id = studentdata.id;
         const name = studentdata.name;
         const score = studentdata.score;
-        const userId = studentdata.userId;
+        const userId = this.props.currentUserId;
         const gradelevel = studentdata.gradelevel;
         const subject = studentdata.subject;
+        console.log("studentdata:", studentdata)
         let options = {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
@@ -156,6 +88,7 @@ class ScoresPage extends Component{
         let tableComponents = [];
         students.forEach((student, index)=>{
             const id = student._id;
+            const userId = this.props.currentUserId;
             const name = student.name;
             const gradelevel = student.gradelevel;
             const subject = student.subject;
@@ -163,8 +96,8 @@ class ScoresPage extends Component{
             const EOYgoal = student.score[1].EOYgoal;
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
-            console.log(id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore)
-            let sc = <StudentUpdateForm key={index} id={id} name={name} gradelevel={gradelevel} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
+            // console.log(id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore)
+            let sc = <StudentUpdateForm key={index} id={id} userId={userId} name={name} gradelevel={gradelevel} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
             formComponents.push(sc);
         })
         students.forEach((student, index)=>{
@@ -205,7 +138,9 @@ class ScoresPage extends Component{
                             <th className="tableheader" id="EOY">EOY Score:</th>
                         </tr>
                     </thead>
+                    <tbody>
                     {formOrTable}
+                    </tbody>
                 </Table>
                 </form>
             </div>

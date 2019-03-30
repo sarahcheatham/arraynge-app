@@ -32,11 +32,13 @@ class StudentUpdateForm extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount(){
-        fetch("/api/hey").then((res)=>{
-            return res.text()
-        }).then((userId)=>{
-            this.setState({userId: userId})
-        });
+        // fetch("/api/hey").then((res)=>{
+        //     return res.text()
+        // }).then((userId)=>{
+        //     this.setState({userId: userId})
+        // });
+       
+        
         const { id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore } = this.props;
         this.setState({ id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore })
     }
@@ -75,7 +77,7 @@ class StudentUpdateForm extends Component{
         this.setState({check: true})
         this.props.onFormSubmit({
             id: this.state.id,
-            userId: this.state.userId,
+            userId: this.props.currentUserId,
             name: this.state.name,
             subject: this.state.subject,
             gradelevel: this.state.gradelevel,
@@ -182,7 +184,7 @@ class StudentUpdateForm extends Component{
                         />
                     </Button>
                     <span className="saved" style={showStyle}>
-                        saved!<SvgIcon style={showStyle}xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path nativeColor="#8FAD57" fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></SvgIcon>
+                        saved!<SvgIcon style={showStyle}xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path nativecolor="#8FAD57" fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></SvgIcon>
                     </span>
                 </td>
             </tr>

@@ -62,9 +62,12 @@ function startWebServer(){
   app.get("/api/welcome", function(req, res){
     res.send(`Welcome ${req.user.firstName} ${req.user.lastName}!`)
   });
+  // app.get("/api/classdata", function(req, res){
+  //   res.send(`${req.classdata.gradelevel} ${req.classdata.subject} ${req.classdata.userId}`)
+  // });
   app.get("/api/classdata", function(req, res){
-    res.send(`${req.classdata.gradelevel} ${req.classdata.subject} ${req.classdata.userId}`)
-  });
+    res.send(req.body)
+  })
   app.get("/api/studentdata", function(req, res){
     res.send(req.body)
   });

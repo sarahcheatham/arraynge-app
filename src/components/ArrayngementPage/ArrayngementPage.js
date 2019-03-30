@@ -32,26 +32,47 @@ class ArrayngementPage extends Component{
     }
 
     componentDidMount(){
-        this.props.loadUserId();
-        fetch(`/api/studentdata`).then((res)=>{
-            return res.json()
-        }).then((students)=>{
-            const relevantStudentsCheck = (students) =>{
-                if(students !== null){
-                    return students.userId === this.props.userId
-                }
-            }
-            const filteredStudents = students.filter(relevantStudentsCheck);
-            const lastStudent = filteredStudents[filteredStudents.length -1];
-            const gradelevel = lastStudent.gradelevel;
-            const subject = lastStudent.subject;
-            this.setState({
-                students: filteredStudents,
-                gradelevel: gradelevel,
-                subject: subject
-            })
-            console.log(this.state.students)
-        }) 
+        const studentArr = this.props.studentdata.students;
+        console.log("studentArr componentdidmount:", studentArr)
+        const lastStudent = studentArr[studentArr.length-1];
+        console.log("lastStudent:", lastStudent)
+        const gradelevel = lastStudent.gradelevel;
+        const subject = lastStudent.subject;
+        this.setState({
+            students: studentArr,
+            gradelevel: gradelevel,
+            subject: subject
+        })
+        console.log("this.state.students:", this.state.students)
+        console.log("this.state.gradelevel:", this.state.gradelevel)
+        console.log("this.state.subject:", this.state.subject)
+
+        //     const filteredStudents = students.filter(relevantStudentsCheck);
+        //     const lastStudent = filteredStudents[filteredStudents.length -1];
+        //     const gradelevel = lastStudent.gradelevel;
+        //     const subject = lastStudent.subject;
+
+
+        // this.props.loadUserId();
+        // fetch(`/api/studentdata`).then((res)=>{
+        //     return res.json()
+        // }).then((students)=>{
+        //     const relevantStudentsCheck = (students) =>{
+        //         if(students !== null){
+        //             return students.userId === this.props.userId
+        //         }
+        //     }
+        //     const filteredStudents = students.filter(relevantStudentsCheck);
+        //     const lastStudent = filteredStudents[filteredStudents.length -1];
+        //     const gradelevel = lastStudent.gradelevel;
+        //     const subject = lastStudent.subject;
+        //     this.setState({
+        //         students: filteredStudents,
+        //         gradelevel: gradelevel,
+        //         subject: subject
+        //     })
+        //     console.log(this.state.students)
+        // }) 
         // fetch(`/api/studentdata/:id`).then((res)=>{
         //     return res.json()
         // }).then((filteredStudents)=>{
@@ -125,7 +146,6 @@ class ArrayngementPage extends Component{
     }
 
     render(){
-        console.log("students:", this.state.students)
         const benchmark = [];
         let boyBenchmark = null;
         let moyBenchmark = null;
@@ -161,7 +181,9 @@ class ArrayngementPage extends Component{
             moyBenchmark = Math.floor(benchmark[0].score[1].MOYscore);
             eoyBenchmark = Math.floor(benchmark[0].score[2].EOYscore);
         }
-        const studentArr = this.state.students.slice();
+        // const studentArr = this.state.students.slice();
+        const studentArr = this.props.studentdata.students;
+        console.log("studentArr:", studentArr)
         //filter students by subject
         const checkSubject = (students)=>{
             if(students !== null){

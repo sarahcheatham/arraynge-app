@@ -1,21 +1,18 @@
 import { connect } from "react-redux";
 import ClassDataPage from "../components/ClassDataPage/ClassDataPage";
-import { loadUserId, loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject } from '../actions';
+import { loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject } from '../actions';
 
 function mapStateToProps(state) {
   return {
+    currentUserId: state.currentUserId,
     gradelevel: state.currentGradeLevel,
     subject: state.currentSubject,
-    currentUserId: state.currentUserId,
     classdata: state.currentClassdata
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      loadUserId() {
-          dispatch(loadUserId());
-      },
       loadClassData(){
         dispatch(loadClassData())
       },

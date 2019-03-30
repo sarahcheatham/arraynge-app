@@ -24,7 +24,6 @@ class ClassDataPage extends Component{
     };
 
     componentDidMount(){
-        // this.props.loadUserId();
         this.props.loadClassData();
     }
 

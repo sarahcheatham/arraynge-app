@@ -19,15 +19,10 @@ class StudentDataPage extends Component{
     }
 
     componentDidMount(){
-        this.props.loadUserId();
         fetch("/api/classdata")
         .then(res=> res.json())
         .then(data => {
-            const filterByUserId = (data)=>{
-                return data.userId === this.props.userId
-            }
-            const filteredData = data.filter(filterByUserId);
-            this.setState({ data: filteredData })
+            this.setState({ data })
             data.map((item, index)=>{
                 this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
             })

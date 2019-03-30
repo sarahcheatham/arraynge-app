@@ -4,23 +4,10 @@ import { fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
-        // currentUserId: state.currentUserId,
-        studentdata: state.studentdata,
-        // loading: state.loading,
-        // error: state.error 
+        studentdata: state.studentdata
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        // loadUserId(){
-        //     dispatch(loadUserId())
-        // },
-        // fetchStudentData(){
-        //     dispatch(fetchStudentData())
-        // }
-    }
-}
 
-const ScoresPageContainer = connect(mapStateToProps, mapDispatchToProps)(ScoresPage)
+const ScoresPageContainer = connect(mapStateToProps)(ScoresPage)
 export default ScoresPageContainer;
