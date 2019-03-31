@@ -40,17 +40,14 @@ class BarChart extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state){
-    const bm = benchmarks.filter((benchmark, index)=>{
-      if(benchmark.gradelevel === state.gradelevel.toUpperCase()){
-        return benchmark
-      }
-    })
+    const bm = benchmarks.filter(benchmark => benchmark.gradelevel === state.gradelevel.toUpperCase());
     console.log("bm:", bm)
-    const correctBenchmark = bm.filter((benchmark, index)=>{
-      if(state.subject === benchmark.subject){
-        return benchmark
-      }
-    })
+    const correctBenchmark = bm.filter(benchmark => benchmark.subject === state.subject)
+    // const correctBenchmark = bm.filter((benchmark, index)=>{
+    //   if(state.subject === benchmark.subject){
+    //     return benchmark
+    //   }
+    // })
     console.log("correctBenchmark:", correctBenchmark)
     const boyBenchmark = correctBenchmark.map((item, index)=>{
       return item.score[0].BOYscore
