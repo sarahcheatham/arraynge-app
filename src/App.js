@@ -31,6 +31,7 @@ class App extends Component {
     if(this.state.authenticated){
       this.props.loadUserId();
     }
+    console.log("app loaded")
   }
   
   handleSignUp(credentials){
