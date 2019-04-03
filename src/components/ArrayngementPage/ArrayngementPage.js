@@ -174,42 +174,39 @@ class ArrayngementPage extends Component{
             eoyBenchmark = Math.floor(benchmark[0].score[2].EOYscore);
         }
         
-        // bench = {
-        //     "BOY score": boyBenchmark,
-        //     "MOY score": moyBenchmark,
-        //     "EOY score": eoyBenchmark
-        // }
-        // return bench[sortBy]
-
-        if(sortBy === "BOY score"){
-            return boyBenchmark
-        } else if(sortBy === "MOY score"){
-            return moyBenchmark
-        } else if(sortBy === "EOY score" || sortBy === "EOY goal"){
-            return eoyBenchmark
+        const bench = {
+            "BOY score": boyBenchmark,
+            "MOY score": moyBenchmark,
+            "EOY score": eoyBenchmark,
+            "EOY goal": eoyBenchmark
         }
+        console.log("bench:", bench[sortBy])
+        return bench[sortBy]
+
+        // if(sortBy === "BOY score"){
+        //     return boyBenchmark
+        // } else if(sortBy === "MOY score"){
+        //     return moyBenchmark
+        // } else if(sortBy === "EOY score" || sortBy === "EOY goal"){
+        //     return eoyBenchmark
+        // }
+    }
+
+    getNumberOfGroups(numberOfGroups){
+        const groupHashMap = {
+            "": "",
+            "2": <TwoGroups onDrop={this.drop} onDragOver={this.allowDrop}/>,
+            "3": <ThreeGroups onDrop={this.drop} onDragOver={this.allowDrop}/>,
+            "4": <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/>,
+            "5": <FiveGroups onDrop={this.drop} onDragOver={this.allowDrop}/>,
+            "6": <SixGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
+        }
+        console.log("groupHashMap:", groupHashMap[numberOfGroups])
+        return groupHashMap[numberOfGroups]
     }
 
     render(){
-        let numberOfGroupsToShow = "";
-        //render correct groups component
-        //make into a hash table
-        if(this.state.numberOfGroups === ""){
-            numberOfGroupsToShow = <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-        }
-        if(this.state.numberOfGroups === "2"){
-            numberOfGroupsToShow = <TwoGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-        } else if(this.state.numberOfGroups === "3"){
-            numberOfGroupsToShow = <ThreeGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-        } else if(this.state.numberOfGroups === "4"){
-            numberOfGroupsToShow = <FourGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-        } else if(this.state.numberOfGroups === "5"){
-            numberOfGroupsToShow = <FiveGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-        } else if(this.state.numberOfGroups === "6"){
-            numberOfGroupsToShow = <SixGroups onDrop={this.drop} onDragOver={this.allowDrop}/>
-        } else {
-            numberOfGroupsToShow = "";
-        }
+        let numberOfGroupsToShow = this.getNumberOfGroups(this.state.numberOfGroups);
         const benchmarkScore = this.getBenchmarkForScore(this.state.sortBy);
         const studentArr = this.props.studentdata.students;
         console.log("studentArr:", studentArr)
