@@ -24,9 +24,12 @@ ul {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   margin-bottom: 0px;
-  font-family: ivystyle-tw, sans-serif;
+  font-family: acumin-pro, sans-serif;
   font-style: normal;
   font-weight: 200;
+  /* font-family: ivystyle-tw, sans-serif;
+  font-style: normal;
+  font-weight: 200; */
   font-size: 36px;
   color: #432fc5;
   /* background-color: #EFEEE8; */
@@ -263,6 +266,9 @@ ul {
   align-self: center; 
   justify-self: center;
   margin-right: 40px; 
+  font-family: objektiv-mk1, sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
 #firstName{
   width: 90%;
