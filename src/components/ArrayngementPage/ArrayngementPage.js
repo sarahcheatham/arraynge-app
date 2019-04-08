@@ -33,9 +33,7 @@ class ArrayngementPage extends Component{
 
     componentDidMount(){
         const studentArr = this.props.studentdata.students;
-        console.log("studentArr componentdidmount:", studentArr)
         const lastStudent = studentArr[studentArr.length-1];
-        console.log("lastStudent:", lastStudent)
         const gradelevel = lastStudent.gradelevel;
         const subject = lastStudent.subject;
         this.setState({

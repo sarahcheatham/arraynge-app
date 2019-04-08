@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from "../App";
-import { loadUserId, setCurrentUserId } from "../actions";
+import { loadUserId, setCurrentUserId, fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
@@ -15,6 +15,9 @@ function mapDispatchToProps(dispatch){
         },
         setCurrentUserId(userId){
             dispatch(setCurrentUserId(userId))
+        },
+        fetchStudentData(){
+            dispatch(fetchStudentData())
         }
     }
 }

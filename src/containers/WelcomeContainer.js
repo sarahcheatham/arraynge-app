@@ -9,13 +9,13 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        fetchStudentData(){
-            dispatch(fetchStudentData())
-        }
-    }
-}
+// function mapDispatchToProps(dispatch){
+//     return {
+//         fetchStudentData(){
+//             dispatch(fetchStudentData())
+//         }
+//     }
+// }
 
-const WelcomeContainer = connect(mapStateToProps, mapDispatchToProps)(WelcomePage)
+const WelcomeContainer = connect(mapStateToProps)(WelcomePage)
 export default WelcomeContainer;

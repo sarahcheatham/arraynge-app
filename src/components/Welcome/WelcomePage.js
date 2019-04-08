@@ -32,7 +32,7 @@ class WelcomePage extends Component{
         // if(this.props.currentUserId){
         //     this.props.fetchStudentData(this.props.currentUserId)
         // }
-        this.props.fetchStudentData()
+        // this.props.fetchStudentData()
     }
 
     render(){
