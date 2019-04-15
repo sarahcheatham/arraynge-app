@@ -8,6 +8,14 @@ function mapStateToProps(state){
     }
 }
 
+function mapDispatchToProps(dispatch){
+    return {
+        fetchStudentData(){
+            dispatch(fetchStudentData())
+        }
+    }
+}
 
-const ScoresPageContainer = connect(mapStateToProps)(ScoresPage)
+
+const ScoresPageContainer = connect(mapStateToProps, mapDispatchToProps)(ScoresPage)
 export default ScoresPageContainer;

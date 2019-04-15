@@ -2,6 +2,7 @@ import React from "react";
 import BarGroup from './BarGroup';
 import './BarChart.css';
 import SubjectDropMenu from "../ArrayngementPage/DropMenus/SubjectDropMenu";
+import ArrayngementDropMenu from "../ArrayngementPage/DropMenus/ArrayngementDropMenu";
 import benchmarks from '../../api/benchmarks.json';
 
 class BarChart extends React.Component {
@@ -12,6 +13,7 @@ class BarChart extends React.Component {
       students: [],
       gradelevel: "",
       subject: "",
+      sortBy: "",
       correctBenchmark: [],
       boyBenchmark: [],
       moyBenchmark: [],
@@ -22,6 +24,7 @@ class BarChart extends React.Component {
       ]
     }
     this.handleSubjectChange = this.handleSubjectChange.bind(this);
+    this.handleSortBy = this.handleSortBy.bind(this)
   }
 
   componentDidMount(){
@@ -39,47 +42,90 @@ class BarChart extends React.Component {
     })
   }
 
-  static getDerivedStateFromProps(props, state){
-    const bm = benchmarks.filter(benchmark => benchmark.gradelevel === state.gradelevel.toUpperCase());
-    console.log("bm:", bm)
-    const correctBenchmark = bm.filter(benchmark => benchmark.subject === state.subject)
-    // const correctBenchmark = bm.filter((benchmark, index)=>{
-    //   if(state.subject === benchmark.subject){
-    //     return benchmark
-    //   }
-    // })
-    console.log("correctBenchmark:", correctBenchmark)
-    const boyBenchmark = correctBenchmark.map((item, index)=>{
-      return item.score[0].BOYscore
+  handleSortBy(event){
+    // console.log("handleSortBy:", event)
+    this.setState({
+        sortBy: event.sortBy
+    });
+}
+scoreInfo = {
+  "BOY score": {
+      propertyName: "BOYscore",
+      index: 0
+  },
+  "MOY score": {
+      propertyName: "MOYscore",
+      index: 2
+  },
+  "EOY score": {
+      propertyName: "EOYscore",
+      index: 3
+  },
+  "EOY goal": {
+      propertyName: "EOYgoal",
+      index: 1
+  }
+}
+  getBenchmarkForCount(sortBy){
+    const benchmark = [];
+    let boyBenchmark = null;
+    let moyBenchmark = null;
+    let eoyBenchmark = null;
+
+    const findBm = benchmarks.find((bm, index)=>{
+        const gradelevel = this.state.gradelevel.toUpperCase();
+        const subject = this.state.subject;
+        if(bm.gradelevel === gradelevel && bm.subject === subject){
+            benchmark.push(bm) 
+        }
     })
-    console.log("boyBenchmark:", boyBenchmark);
-    const moyBenchmark = correctBenchmark.map((item, index)=>{
-      return item.score[1].MOYscore
-    })
-    console.log("moyBenchmark:", moyBenchmark)
-    const eoyBenchmark = correctBenchmark.map((item, index)=>{
-      return item.score[2].EOYscore
-    })
-    console.log("eoyBenchmark:", eoyBenchmark)
-    // this.setState({correctBenchmark})
-    console.log("props:", props)
-    console.log("state:", state)
-    return state
+    if(benchmark[0] !== undefined){
+        //rounds the benchmark down to nearest integer based on decimal
+        boyBenchmark = Math.floor(benchmark[0].score[0].BOYscore);
+        moyBenchmark = Math.floor(benchmark[0].score[1].MOYscore);
+        eoyBenchmark = Math.floor(benchmark[0].score[2].EOYscore);
+    }
+    const bench = {
+      "BOY score": boyBenchmark,
+      "MOY score": moyBenchmark,
+      "EOY score": eoyBenchmark,
+      "EOY goal": eoyBenchmark
+    }
+    return bench[sortBy]
   }
 
-  // componentWillReceiveProps(nextProps){
-    // console.log("nextProps:", nextProps)
-    // const userId = nextProps.userId;
-    // const studentdata = nextProps.studentdata.students;
-    // console.log('nextProps:', nextProps, "userId:", userId, 'studentdata:', studentdata)
-    // this.setState({userId: userId, studentdata: studentdata})
-  // }
-  // componentDidUpdate(prevProps, prevState) {
-  //   Typical usage (don't forget to compare props):
-  //   console.log("prevProps:", prevProps)
-  //   console.log("prevState:", prevState)
-// }
+  filterBySubject(subject){
+    const students = this.props.studentdata.students;
+    const filterStudents = students.filter((student, index)=>{
+        if(student.subject === subject){
+          return student
+        }
+    })
+    return filterStudents
+  }
+  compareStudentScore(students, bench){
+    const sortBy = this.state.sortBy;
+    // console.log("sortBy:", sortBy)
+    const belowGradeLevel = students.filter((student, index)=>{
+      console.log("sortBy:", sortBy)
+      const studentScore = {
+        "BOY score": student.score[0].BOYscore,
+        "MOY score": student.score[2].MOYscore,
+        "EOY score": student.score[3].EOYscore,
+        "EOY goal": student.score[1].EOYgoal
+      }
+      
+    })
+    // console.log(students, bench)
+  }
+  
+
   render() {
+      const bench = this.getBenchmarkForCount(this.state.sortBy);
+      console.log("bench:", bench)
+      const students = this.filterBySubject(this.state.subject);
+      console.log("students:", students)
+      console.log(this.compareStudentScore(students, bench))
       let barWidth = 40;
       let barGroups = this.state.data.map((d, i) => 
         <g transform={`translate(${i * barWidth}, 50)`} key={i}>
@@ -91,6 +137,7 @@ class BarChart extends React.Component {
           <span className="barchartinputbar">
             <div className="title">{this.state.gradelevel} Benchmark Graph: {this.state.subject}</div>
             <SubjectDropMenu className="barchartsubject" subject={this.state.subject} onSubjectClick={this.handleSubjectChange}/>
+            <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
           </span>
           <svg width="500" height="800" >
           <g>

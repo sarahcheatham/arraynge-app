@@ -41,27 +41,27 @@ class ArrayngementPage extends Component{
             gradelevel: gradelevel,
             subject: subject
         })
-        console.log("this.state.students:", this.state.students)
-        console.log("this.state.gradelevel:", this.state.gradelevel)
-        console.log("this.state.subject:", this.state.subject)
+        // console.log("this.state.students:", this.state.students)
+        // console.log("this.state.gradelevel:", this.state.gradelevel)
+        // console.log("this.state.subject:", this.state.subject)
     }
 
     handleSortBy(event){
-        console.log("handleSortBy:", event)
+        // console.log("handleSortBy:", event)
         this.setState({
             sortBy: event.sortBy
         });
     }
 
     handleSubjectChange(event){
-        console.log("handleSubjectChange:", event)
+        // console.log("handleSubjectChange:", event)
         this.setState({
             subject: event.subject
-        })
+        });
     }
 
     handleGroupsChange(event){
-        console.log("handleGroupsChange:", event)
+        // console.log("handleGroupsChange:", event)
         this.setState({
             numberOfGroups: event.numberOfGroups
         });
@@ -79,7 +79,7 @@ class ArrayngementPage extends Component{
 
     drop(dropevent){
         dropevent.preventDefault();
-        var data = dropevent.dataTransfer.getData("text");
+        const data = dropevent.dataTransfer.getData("text");
         dropevent.target.appendChild(document.getElementById(data));
     }
 

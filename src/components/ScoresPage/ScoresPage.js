@@ -18,12 +18,14 @@ class ScoresPage extends Component{
             userId: "",
             id: "",
             students: [],
-            gradelevel: ""
+            gradelevel: "",
+            delete: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.mouseDown = this.mouseDown.bind(this);
         this.mouseUp = this.mouseUp.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount(){
@@ -47,12 +49,31 @@ class ScoresPage extends Component{
         event.preventDefault();
         this.setState({isEdit: !this.state.isEdit})
         if(this.state.isEdit === true){
-            fetch("/api/studentdata").then((res)=>{
-                return res.json()
-            }).then((studentdata)=>{
-                this.setState({students: studentdata})
-            })
+            this.props.fetchStudentData();
+            // fetch("/api/studentdata").then((res)=>{
+            //     return res.json()
+            // }).then((studentdata)=>{
+            //     this.setState({students: studentdata})
+            // })
         }
+    }
+    handleDelete(student){
+        const id = student.id;
+        console.log("handleDelete:", student)
+        let options = {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({id})
+        }
+        fetch(`/api/studentdata/${id}`, options).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log("response:", res)
+        }).catch((err)=>{
+            console.log("error:", err)
+        })
+        this.setState({delete: true})
+        this.props.fetchStudentData();
     }
 
     handleSubmit(studentdata){
@@ -80,12 +101,23 @@ class ScoresPage extends Component{
     }
 
     render(){
-        const students = this.props.studentdata.students;
+        let students = this.props.studentdata.students;
         let formOrTable = "";
-        let buttonText = ""
+        let buttonText = "";
         let studentList = [];
         let formComponents =[];
         let tableComponents = [];
+        let showStyle = "";
+        let showStyle2 = "";
+        const noShow = {
+            display: "none"
+        }
+        const show = {
+            display: "block"
+        }
+        const showInline = {
+            display: "inline flex"
+        }
         students.forEach((student, index)=>{
             const id = student._id;
             const userId = this.props.currentUserId;
@@ -97,7 +129,7 @@ class ScoresPage extends Component{
             const MOYscore = student.score[2].MOYscore;
             const EOYscore = student.score[3].EOYscore;
             // console.log(id, name, gradelevel, subject, BOYscore, EOYgoal, MOYscore, EOYscore)
-            let sc = <StudentUpdateForm key={index} id={id} userId={userId} name={name} gradelevel={gradelevel} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit}/>
+            let sc = <StudentUpdateForm key={index} id={id} userId={userId} name={name} gradelevel={gradelevel} subject={subject} BOYscore={BOYscore} EOYgoal={EOYgoal} MOYscore={MOYscore} EOYscore={EOYscore} onFormSubmit={this.handleSubmit} onStudentDelete={this.handleDelete}/>
             formComponents.push(sc);
         })
         students.forEach((student, index)=>{
@@ -114,10 +146,14 @@ class ScoresPage extends Component{
         })
         if(this.state.isEdit === true){
             formOrTable = formComponents;
-            buttonText = "Save Scores"
+            buttonText = "Save Scores";
+            showStyle = show;
+            showStyle2 = showInline;
         } else {
             formOrTable = tableComponents;
-            buttonText = "Edit Scores"
+            buttonText = "Edit Scores";
+            showStyle = noShow;
+            showStyle2 = noShow;
         }
         return(
             <div className="secretpage">
@@ -136,6 +172,8 @@ class ScoresPage extends Component{
                             <th className="tableheader">EOY Goal:</th>
                             <th className="tableheader">MOY Score:</th>
                             <th className="tableheader" id="EOY">EOY Score:</th>
+                            <th className="tableheader" style={showStyle} id="saveheader"></th>
+                            <th className="tableheader" style={showStyle2}></th>
                         </tr>
                     </thead>
                     <tbody>
