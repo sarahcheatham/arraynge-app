@@ -23,7 +23,7 @@ class StudentDataPage extends Component{
         .then(res=> res.json())
         .then(data => {
             this.setState({ data })
-            data.map((item, index)=>{
+            data.map(item=>{
                 this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
             })
         })

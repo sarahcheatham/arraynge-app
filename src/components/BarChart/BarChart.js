@@ -4,6 +4,7 @@ import './BarChart.css';
 import SubjectDropMenu from "../ArrayngementPage/DropMenus/SubjectDropMenu";
 import ArrayngementDropMenu from "../ArrayngementPage/DropMenus/ArrayngementDropMenu";
 import benchmarks from '../../api/benchmarks.json';
+import { Table } from 'react-bootstrap';
 
 class BarChart extends React.Component {
   constructor(props){
@@ -105,18 +106,28 @@ scoreInfo = {
   }
   compareStudentScore(students, bench){
     const sortBy = this.state.sortBy;
-    // console.log("sortBy:", sortBy)
-    const belowGradeLevel = students.filter((student, index)=>{
-      console.log("sortBy:", sortBy)
+    let aboveGradeLevel = 0;
+    let belowGradeLevel = 0;
+    const graphData = [];
+    const filterByScore = students.filter((student, index)=>{
       const studentScore = {
         "BOY score": student.score[0].BOYscore,
         "MOY score": student.score[2].MOYscore,
         "EOY score": student.score[3].EOYscore,
         "EOY goal": student.score[1].EOYgoal
       }
-      
+      if(studentScore[sortBy] !== undefined && bench !== undefined){
+        if(studentScore[sortBy] >= bench){
+          aboveGradeLevel++
+        } else if(studentScore[sortBy] < bench){
+          belowGradeLevel++
+        }
+        console.log("studentScore:",studentScore[sortBy])
+        console.log("bench:", bench)
+      }
     })
-    // console.log(students, bench)
+    graphData.push(belowGradeLevel, aboveGradeLevel)
+    return graphData
   }
   
 
@@ -125,13 +136,19 @@ scoreInfo = {
       console.log("bench:", bench)
       const students = this.filterBySubject(this.state.subject);
       console.log("students:", students)
-      console.log(this.compareStudentScore(students, bench))
-      let barWidth = 40;
-      let barGroups = this.state.data.map((d, i) => 
-        <g transform={`translate(${i * barWidth}, 50)`} key={i}>
+      const graphData = this.compareStudentScore(students, bench);
+      console.log("graphData:", graphData)
+      let barWidth = 100;
+      let barGroups = graphData.map((d, i)=>
+        <g transform={`translate(${i * barWidth - 35}, 50)`} key={i}>
           <BarGroup gradelevel={this.state.gradelevel} subject={this.state.subject} d={d} barWidth={barWidth}/>
         </g>
-      )                         
+      )
+      // let barGroups = this.state.data.map((d, i) => 
+      //   <g transform={`translate(${i * barWidth}, 50)`} key={i}>
+      //     <BarGroup gradelevel={this.state.gradelevel} subject={this.state.subject} d={d} barWidth={barWidth}/>
+      //   </g>
+      // )                         
       
       return <div>
           <span className="barchartinputbar">
@@ -139,13 +156,19 @@ scoreInfo = {
             <SubjectDropMenu className="barchartsubject" subject={this.state.subject} onSubjectClick={this.handleSubjectChange}/>
             <ArrayngementDropMenu className="arrayngementdropmenu" onSortBy={this.handleSortBy}/>
           </span>
-          <svg width="500" height="800" >
+          <svg width="500" height="400" >
           <g>
             <g className="chart">
               {barGroups}
             </g>
           </g>
         </svg>
+        <Table>
+          <thead>
+            <th className="graphTable">Below Grade Level</th>
+            <th className="graphTable">At or Above Grade Level</th>
+          </thead>
+        </Table>
       </div>
     }
   }
