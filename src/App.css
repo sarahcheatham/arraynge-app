@@ -25,9 +25,12 @@ ul {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   margin-bottom: 0px;
-  font-family: acumin-pro, sans-serif;
+  font-family: source-sans-pro, sans-serif;
   font-style: normal;
   font-weight: 200;
+  /* font-family: acumin-pro, sans-serif;
+  font-style: normal;
+  font-weight: 200; */
   /* font-family: ivystyle-tw, sans-serif;
   font-style: normal;
   font-weight: 200; */

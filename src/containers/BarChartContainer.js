@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import BarChart from "../components/BarChart/BarChart";
-import { loadUserId, fetchStudentData } from "../actions";
+import { fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
-        userId: state.currentUserId,
         studentdata: state.studentdata,
         loading: state.loading,
         error: state.error
@@ -14,19 +13,9 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        loadUserId(){
-            dispatch(loadUserId())
-        },
         fetchStudentData(){
             dispatch(fetchStudentData())
         }
-        // loadStudentData(){
-        //     dispatch(loadStudentData())
-        // },
-        // studentDataLoaded:function(studentdata){
-        //     let action = studentDataLoaded(studentdata);
-        //     dispatch(action);
-        // }
     }
 }
 

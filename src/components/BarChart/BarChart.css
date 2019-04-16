@@ -14,10 +14,12 @@
     padding-bottom: 0px;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    background-color: #F2EDD7;
+    grid-template-rows: 75px;
+    background-color: #E8EAEE;
+    /* background-color: #F2EDD7; */
 }
 .barchartsubject{
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 50px 100px;
@@ -27,6 +29,16 @@
     margin-left: 0px;
     padding-top: 10px;
     height: 40px;
+}
+.barchartdropmenu{
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: 50px 100px;
+    grid-template-rows: 40px 1fr 1fr 1fr 1fr;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 10px;
 }
 .graphtitle{
     font-family: quasimoda, sans-serif;
@@ -45,10 +57,14 @@
     font-weight: 200;
 }
 .graphTable{
-    width: 30px;
+    width: 20%;
     font-family: quasimoda, sans-serif;
     font-style: normal;
     font-weight: 200;
     font-size: 14px;
+}
+.barChartTable{
+    margin-top: 1%;
+    width: 425px;
 }
 
