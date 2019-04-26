@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import StudentDataPage from "../components/StudentDataPage/StudentDataPage";
-import { loadUserId } from "../actions";
+import { loadUserId, fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
@@ -13,6 +13,9 @@ function mapDispatchToProps(dispatch){
     return {
         loadUserId(){
             dispatch(loadUserId())
+        },
+        fetchStudentData(){
+            dispatch(fetchStudentData())
         }
     }
 }

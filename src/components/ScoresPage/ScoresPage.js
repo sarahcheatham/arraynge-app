@@ -83,7 +83,7 @@ class ScoresPage extends Component{
         const name = studentdata.name;
         const score = studentdata.score;
         const userId = this.props.currentUserId;
-        const gradelevel = studentdata.gradelevel;
+        const gradelevel = this.state.gradelevel;
         const subject = studentdata.subject;
         console.log("studentdata:", studentdata)
         let options = {
@@ -122,7 +122,7 @@ class ScoresPage extends Component{
             const id = student._id;
             const userId = this.props.currentUserId;
             const name = student.name;
-            const gradelevel = student.gradelevel;
+            const gradelevel = this.state.gradelevel;
             const subject = student.subject;
             const BOYscore = student.score[0].BOYscore;
             const EOYgoal = student.score[1].EOYgoal;
@@ -135,7 +135,7 @@ class ScoresPage extends Component{
         students.forEach((student, index)=>{
             const id = student._id;
             const name = student.name;
-            const gradelevel = student.gradelevel;
+            const gradelevel = this.state.gradelevel;
             const subject = student.subject;
             const BOYscore = student.score[0].BOYscore;
             const EOYgoal = student.score[1].EOYgoal;

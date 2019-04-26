@@ -83,6 +83,7 @@ class App extends Component {
           authenticated: token
         });
         this.props.loadUserId();
+        this.props.fetchStudentData();
       });
     }  
   }

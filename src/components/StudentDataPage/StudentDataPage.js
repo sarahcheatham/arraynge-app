@@ -15,7 +15,8 @@ class StudentDataPage extends Component{
             subject: "",
             userId: ""
         };
-        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount(){
@@ -55,17 +56,21 @@ class StudentDataPage extends Component{
         })
     }
 
+    handleClick(e){
+        this.props.fetchStudentData()
+    }
     render(){
         let whatToShow = '';
         const styles = {
             color: 'black',
             textDecoration: 'none'
         }
-        if(this.state.numberOfStudents !== ''){
-            whatToShow = <Button className="continuebutton"><Link to={'/arrayngement'} style={styles} className="continuebutton">CONTINUE</Link></Button>;
-        } else {
-            whatToShow = '';
-        }
+        // if(this.state.numberOfStudents !== ''){
+        //     console.log()
+        //     whatToShow = <Button className="continuebutton"><Link to={'/arrayngement'} style={styles} className="continuebutton">CONTINUE</Link></Button>;
+        // } else {
+        //     whatToShow = '';
+        // }
         let studentComponents = [];
         for(let i = 0; i < this.state.numberOfStudents; i++){
             let sc = <StudentForm key={i} onFormSubmit={this.handleFormSubmit}/>
@@ -89,7 +94,8 @@ class StudentDataPage extends Component{
                     </FormGroup>
                 </form>
                 {studentComponents}
-                {whatToShow}
+                <Button className="continuebutton" onClick={this.handleClick}><Link to={'/arrayngement'} style={styles} className="continuebutton">CONTINUE</Link></Button>
+                {/* {whatToShow} */}
             </div>
         )
     }

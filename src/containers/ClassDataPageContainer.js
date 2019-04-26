@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ClassDataPage from "../components/ClassDataPage/ClassDataPage";
-import { loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject } from '../actions';
+import { loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject, fetchStudentData } from '../actions';
 
 function mapStateToProps(state) {
   return {
@@ -27,7 +27,10 @@ function mapDispatchToProps(dispatch) {
       createClassData:function(classdata){
           let action = createClassData(classdata);
           dispatch(action);
-      }
+      },
+      fetchStudentData(){
+        dispatch(fetchStudentData())
+    }
   };
 }
 

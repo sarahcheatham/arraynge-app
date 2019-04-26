@@ -218,6 +218,7 @@ class ArrayngementPage extends Component{
         //sort students by time of year for tests
         let studentCards = null;
         if(this.state.sortBy > ""){
+            console.log("sort:", this.sortStudentScore(filteredStudents, this.state.sortBy))
             this.sortStudentScore(filteredStudents, this.state.sortBy)  
         }
         //assign a square to each student based on their scores compared to the benchmarks

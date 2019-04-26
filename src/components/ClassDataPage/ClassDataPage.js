@@ -21,6 +21,7 @@ class ClassDataPage extends Component{
         this.gradeLevelClick = this.gradeLevelClick.bind(this);
         this.subjectClick = this.subjectClick.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleContinueClick = this.handleContinueClick.bind(this);
     };
 
     componentDidMount(){
@@ -72,6 +73,9 @@ class ClassDataPage extends Component{
             classdata: Object.assign(this.state.classdata, data)
         })
         this.props.createClassData(this.state.classdata)
+    }
+    handleContinueClick(e){
+        this.props.fetchStudentData()
     }
     
     render(){
@@ -139,7 +143,7 @@ class ClassDataPage extends Component{
                             SAVE
                         </Button>
                         <Link to={'/studentdata'} style={styles} className="classdatabutton">
-                            <Button type="submit" className="classdatacontinuebutton">
+                            <Button type="submit" className="classdatacontinuebutton" onClick={this.handleContinueClick}>
                                 CONTINUE
                             </Button>
                         </Link>
