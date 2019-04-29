@@ -32,6 +32,8 @@ class ArrayngementPage extends Component{
     }
 
     componentDidMount(){
+        this.props.fetchStudentData();
+        console.log("props.studentdata:", this.props.studentdata.students)
         const studentArr = this.props.studentdata.students;
         const lastStudent = studentArr[studentArr.length-1];
         const gradelevel = lastStudent.gradelevel;
@@ -104,10 +106,10 @@ class ArrayngementPage extends Component{
 
     //sort students by time of year for tests
     sortStudentScore(filteredStudents, sortBy){
-        // const propertyName = this.scoreInfo[sortBy].propertyName;
-        // const index = this.scoreInfo[sortBy].index;
+        const propertyName = this.scoreInfo[sortBy].propertyName;
+        const index = this.scoreInfo[sortBy].index;
 
-        const { propertyName, index } = this.scoreInfo[sortBy]; // same as above, but using "destructuring"
+        // const { propertyName, index } = this.scoreInfo[sortBy]; // same as above, but using "destructuring"
     
         let studentCards = null;
         const sortStudents = filteredStudents.sort((a, b)=>{
@@ -124,6 +126,7 @@ class ArrayngementPage extends Component{
                         </div>
                     </li>
         })
+        console.log("studentCards:", studentCards)
         return studentCards
     }
     //assign a color square to each student based on their scores compared to the benchmarks
@@ -131,7 +134,9 @@ class ArrayngementPage extends Component{
         if(sortBy === ""){
             return "blankSquare"
         }
-        const { propertyName, index } = this.scoreInfo[sortBy]; // same as above, but using "destructuring"
+        const propertyName = this.scoreInfo[sortBy].propertyName;
+        const index = this.scoreInfo[sortBy].index;
+        // const { propertyName, index } = this.scoreInfo[sortBy]; // same as above, but using "destructuring"
         let color = "";
 
         if(student.score[index][propertyName] >= benchmark +5){
@@ -203,33 +208,57 @@ class ArrayngementPage extends Component{
         return groupHashMap[numberOfGroups]
     }
 
+    filterBySubject(students){
+        const subject = this.state.subject;
+        const checkSubject = (students)=>{
+            if(students !== null){
+                return students.subject === subject  
+            }
+        }
+        const filteredStudents = students.filter(checkSubject);
+        return filteredStudents
+    }
+
     render(){
         let numberOfGroupsToShow = this.getNumberOfGroups(this.state.numberOfGroups);
         const benchmarkScore = this.getBenchmarkForScore(this.state.sortBy);
-        const studentArr = this.props.studentdata.students;
-        console.log("studentArr:", studentArr)
+        const filteredStudents = this.filterBySubject(this.state.students)
         //filter students by subject
-        const checkSubject = (students)=>{
-            if(students !== null){
-                return students.subject === this.state.subject  
-            }
-        }
-        const filteredStudents = studentArr.filter(checkSubject);
+        console.log("filteredStudents:", filteredStudents)
+        
         //sort students by time of year for tests
         let studentCards = null;
-        if(this.state.sortBy > ""){
-            console.log("sort:", this.sortStudentScore(filteredStudents, this.state.sortBy))
-            this.sortStudentScore(filteredStudents, this.state.sortBy)  
+        if(this.state.sortBy !== ""){
+            studentCards = this.sortStudentScore(filteredStudents, this.state.sortBy)  
         }
         //assign a square to each student based on their scores compared to the benchmarks
         studentCards = filteredStudents.map((student, index)=>{
             let color = "";
-            // if(this.state.sortBy === ""){
-            //     color = "blankSquare"
-            // }
-            // if(this.state.sortBy > ""){
-            color = this.getColorForScore(this.state.sortBy, student, benchmarkScore)
-            return <li 
+            if(this.state.sortBy === ""){
+                color = "blankSquare"
+                return <li 
+                            key={index}
+                            id={index}
+                            className="list"
+                            onDrop={this.drop}
+                            onDragOver={this.allowDrop}
+                        >
+                            <div 
+                                className="student"
+                                draggable
+                                onDragStart={e=>this.dragStart(e, index)}
+                                id="drag"
+                            >
+                                <span className={color}/>
+                                <span className="studentName">
+                                    {student.name}
+                                </span>
+                            </div> 
+                        </li>
+            }
+            if(this.state.sortBy !== ""){
+                color = this.getColorForScore(this.state.sortBy, student, benchmarkScore)
+                return <li 
                         key={index}
                         id={index}
                         className="list"
@@ -248,7 +277,9 @@ class ArrayngementPage extends Component{
                             </span>
                         </div> 
                     </li>
+            }
         })
+
         
         return(
             <div className="arrayngementpage">

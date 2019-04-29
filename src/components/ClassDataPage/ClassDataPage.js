@@ -79,7 +79,6 @@ class ClassDataPage extends Component{
     }
     
     render(){
-        console.log("props:", this.props)
         const styles = {
             color: 'black',
             textDecoration: 'none'
