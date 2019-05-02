@@ -31,7 +31,20 @@ class StudentDataPage extends Component{
     }
 
     handleFormSubmit(studentdata){
-        console.log("studentdata:", studentdata)
+        const blankScore = "";
+        if(studentdata.score[0].BOYscore=== undefined){
+            studentdata.score[0].BOYscore = blankScore
+        } 
+        if (studentdata.score[1].EOYgoal === undefined){
+            studentdata.score[1].EOYgoal = blankScore
+        } 
+        if (studentdata.score[2].MOYscore === undefined){
+            studentdata.score[2].MOYscore = blankScore
+        } 
+        if (studentdata.score[3].EOYscore === undefined){
+            studentdata.score[3].EOYscore = blankScore
+        }
+        console.log("studentdata.score:", studentdata.score[0])
         this.setState({
             name: studentdata.name,
             score: studentdata.score,

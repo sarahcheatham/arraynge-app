@@ -79,6 +79,19 @@ class ScoresPage extends Component{
     handleSubmit(studentdata){
         //put fetch is not refreshing when you click the edit/save scores button after clicking
         //the purple save button that is next to each students name.
+        const blankScore = "";
+        if(studentdata.score[0].BOYscore=== undefined){
+            studentdata.score[0].BOYscore = blankScore
+        } 
+        if (studentdata.score[1].EOYgoal === undefined){
+            studentdata.score[1].EOYgoal = blankScore
+        } 
+        if (studentdata.score[2].MOYscore === undefined){
+            studentdata.score[2].MOYscore = blankScore
+        } 
+        if (studentdata.score[3].EOYscore === undefined){
+            studentdata.score[3].EOYscore = blankScore
+        }
         const id = studentdata.id;
         const name = studentdata.name;
         const score = studentdata.score;

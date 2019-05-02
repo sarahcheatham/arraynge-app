@@ -232,7 +232,9 @@ class ArrayngementPage extends Component{
             studentCards = this.sortStudentScore(filteredStudents, this.state.sortBy)  
         }
         //assign a square to each student based on their scores compared to the benchmarks
+        // studentCards.map((student, index)=>{
         studentCards = filteredStudents.map((student, index)=>{
+            console.log("student:", student.name, student.score[0].BOYscore)
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"
