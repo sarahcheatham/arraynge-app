@@ -11,6 +11,7 @@ import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
 import ArrayngementPageContainer from './containers/ArrayngementPageContainer';
 import BarChartContainer from './containers/BarChartContainer';
+import BarChart2 from './components/BarChart/BarChart2';
 
 class App extends Component {
   constructor(){
@@ -124,7 +125,8 @@ class App extends Component {
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
           <Route path="/arrayngement" component={ArrayngementPageContainer}/>
           <Route exact path="/scores" component={ScoresPageContainer}/>
-          <Route path="/charts" component={BarChartContainer}/>
+          {/* <Route path="/charts" component={BarChartContainer}/> */}
+          <Route path="/charts" component={BarChart2}/>
         </Switch>
       </div>
     )
