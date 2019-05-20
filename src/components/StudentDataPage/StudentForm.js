@@ -39,7 +39,7 @@ class StudentForm extends Component{
                 {BOYscore: this.state.BOYscore},
                 {EOYgoal: this.state.EOYgoal},
                 {MOYscore: this.state.MOYscore},
-                {EOYscore: this.state.EOYscore}
+                {EOYscore: this.state.EOYscore} 
             ]
         })
     }

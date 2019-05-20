@@ -138,7 +138,9 @@ class ArrayngementPage extends Component{
         const index = this.scoreInfo[sortBy].index;
         // const { propertyName, index } = this.scoreInfo[sortBy]; // same as above, but using "destructuring"
         let color = "";
-
+        // if(student.score[index][propertyName] === null){
+        //     color = "blankSquare"
+        // }
         if(student.score[index][propertyName] >= benchmark +5){
             color = "blueSquare"
         } else if(student.score[index][propertyName] >= benchmark){
@@ -147,11 +149,9 @@ class ArrayngementPage extends Component{
             color = "yellowSquare"
         } else if(student.score[index][propertyName] >= benchmark -10){
             color = "orangeSquare"
-        } else if(student.score[index][propertyName] < benchmark -10){
+        } else if(student.score[index][propertyName] >= benchmark -100){
             color = "redSquare"
         } else if(student.score[index][propertyName] === null){
-            color = "blankSquare"
-        } else {
             color = "blankSquare"
         }
         return color
@@ -234,7 +234,7 @@ class ArrayngementPage extends Component{
         //assign a square to each student based on their scores compared to the benchmarks
         // studentCards.map((student, index)=>{
         studentCards = filteredStudents.map((student, index)=>{
-            console.log("student:", student.name, student.score[0].BOYscore)
+            console.log("student:", student.name, student.score[3].EOYscore)
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"

@@ -11,19 +11,10 @@ class BarChart extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      userId: "",
       students: [],
       gradelevel: "",
       subject: "",
       sortBy: "",
-      correctBenchmark: [],
-      boyBenchmark: [],
-      moyBenchmark: [],
-      eoyBenchmark: [],
-      data: [
-        { name: 'Below Grade Level', value: 60 },
-        { name: 'Above Grade Level', value: 100 },
-      ]
     }
     this.handleSubjectChange = this.handleSubjectChange.bind(this);
     this.handleSortBy = this.handleSortBy.bind(this)
@@ -38,36 +29,38 @@ class BarChart extends React.Component {
   }
 
   handleSubjectChange(event){
-    console.log("handleSubjectChange:", event)
     this.setState({
         subject: event.subject
     })
   }
 
   handleSortBy(event){
-    // console.log("handleSortBy:", event)
     this.setState({
         sortBy: event.sortBy
     });
-}
-scoreInfo = {
-  "BOY score": {
-      propertyName: "BOYscore",
-      index: 0
-  },
-  "MOY score": {
-      propertyName: "MOYscore",
-      index: 2
-  },
-  "EOY score": {
-      propertyName: "EOYscore",
-      index: 3
-  },
-  "EOY goal": {
-      propertyName: "EOYgoal",
-      index: 1
   }
-}
+
+  //hash table that aligns with where to locate the score by the time of year
+  scoreInfo = {
+    "BOY score": {
+        propertyName: "BOYscore",
+        index: 0
+    },
+    "MOY score": {
+        propertyName: "MOYscore",
+        index: 2
+    },
+    "EOY score": {
+        propertyName: "EOYscore",
+        index: 3
+    },
+    "EOY goal": {
+        propertyName: "EOYgoal",
+        index: 1
+    }
+  }
+
+  //function to find the benchmark that matches the grade level and subject
   getBenchmarkForCount(sortBy){
     const benchmark = [];
     let boyBenchmark = null;
@@ -81,12 +74,15 @@ scoreInfo = {
             benchmark.push(bm) 
         }
     })
+
+    //rounds the benchmark down to nearest integer based on decimal
     if(benchmark[0] !== undefined){
-        //rounds the benchmark down to nearest integer based on decimal
         boyBenchmark = Math.floor(benchmark[0].score[0].BOYscore);
         moyBenchmark = Math.floor(benchmark[0].score[1].MOYscore);
         eoyBenchmark = Math.floor(benchmark[0].score[2].EOYscore);
     }
+
+    //hash table that uses the correct benchmark when the sortBy changes via the drop down menu
     const bench = {
       "BOY score": boyBenchmark,
       "MOY score": moyBenchmark,
@@ -96,6 +92,7 @@ scoreInfo = {
     return bench[sortBy]
   }
 
+  //only gets the students test scores that have an entry for the subject via the drop down menu
   filterBySubject(subject){
     const students = this.props.studentdata.students;
     const filterStudents = students.filter((student, index)=>{
@@ -105,6 +102,8 @@ scoreInfo = {
     })
     return filterStudents
   }
+
+  //compares the student score to the bench and increases the count if the student is above or below the benchmark
   compareStudentScore(students, bench){
     const sortBy = this.state.sortBy;
     let aboveGradeLevel = 0;
@@ -123,27 +122,26 @@ scoreInfo = {
         } else if(studentScore[sortBy] < bench){
           belowGradeLevel++
         }
-        // console.log("studentScore:",studentScore[sortBy])
-        // console.log("bench:", bench)
       }
     })
     graphData.push(belowGradeLevel, aboveGradeLevel)
     return graphData
   }
   
-
   render() {
       const bench = this.getBenchmarkForCount(this.state.sortBy);
       const students = this.filterBySubject(this.state.subject);
       const graphData = this.compareStudentScore(students, bench);
       const barWidth = 100;
+      const below = graphData[0];
+      const above = graphData[1];
+
       let barGroups = graphData.map((data, index)=>
         <g transform={`translate(${(index + 2) * barWidth - 50}, 75)`} key={index}>
           <BarGroup gradelevel={this.state.gradelevel} subject={this.state.subject} data={data} barWidth={barWidth} index={index}/>
         </g>
       )
-      const below = graphData[0];
-      const above = graphData[1];
+
       return <div>
           <span className="barchartinputbar">
             <div className="title">{this.state.gradelevel} Benchmark Graph: {this.state.subject}</div>
@@ -160,6 +158,6 @@ scoreInfo = {
         <BarChartTable below={below} above={above}/>
       </div>
     }
-  }
+}
 export default BarChart;
 
