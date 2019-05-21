@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import BarChart from "../components/BarChart/BarChart";
+// import BarChart from "../components/BarChart/BarChart";
+import BarChart2 from "../components/BarChart/BarChart2";
 import { fetchStudentData } from "../actions";
 
 function mapStateToProps(state){
@@ -19,5 +20,6 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-const BarChartContainer = connect(mapStateToProps, mapDispatchToProps)(BarChart)
+// const BarChartContainer = connect(mapStateToProps, mapDispatchToProps)(BarChart)
+const BarChartContainer = connect(mapStateToProps, mapDispatchToProps) (BarChart2)
 export default BarChartContainer;

@@ -16,30 +16,48 @@ class BarChart2 extends Component{
     chartRef = React.createRef();
 
     componentDidMount(){
+        // const students = this.props.studentdata.students;
         const myChartRef = this.chartRef.current.getContext("2d");
         new Chart(myChartRef, {
-            //choose what type of graph
             type: "bar",
             //Bring in data for the graph
-            data: {
-                labels: ["Above Grade Level", "Below Grade Level"]
-
+            data:{
+                labels: ["Below Grade Level", "Above Grade Level"]
             },
-            // data: {
-            //     labels: yearLabels,
-            //     datasets: [
-            //         { label: "Sales", data: managerData },
-            //         { label: "National Average", data: nationalAverageData}
-            //     ]
-            // },
             options: {
-                //customize chart options
+                title: {
+                    display: true,
+                    text: "Benchmark Graph",
+                    fontSize: 24
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'category',
+                        labels: ["Below Grade Level", "At or Above Grade Level"]
+                    }],
+                    yAxes: [{
+                        type: 'linear',
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 30,
+                            stepSize: 2
+                        }
+                    }]
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        top: 0,
+                        bottom: 50
+                    }
+                }
             }
         });
     }
     render(){
         return (
-            <div class="graphContainer">
+            <div class="graphContainer" style={{position: "relative", height: "100vh", width: "80vw"}}>
                 <canvas
                     id="myChart"
                     ref={this.chartRef}

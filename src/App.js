@@ -125,8 +125,8 @@ class App extends Component {
           {/* <Route exact path="/classdata" render={(props)=> <ClassDataPageContainer gradelevel={props.gradelevel} subject={props.subject} userId={props.userId} classdata={props.classdata}/>}/> */}
           <Route path="/arrayngement" component={ArrayngementPageContainer}/>
           <Route exact path="/scores" component={ScoresPageContainer}/>
-          {/* <Route path="/charts" component={BarChartContainer}/> */}
-          <Route path="/charts" component={BarChart2}/>
+          <Route path="/charts" component={BarChartContainer}/>
+          {/* <Route path="/charts" component={BarChart2}/> */}
         </Switch>
       </div>
     )
