@@ -3,7 +3,7 @@ import Chart from "chart.js";
 import benchmarks from '../../api/benchmarks.json';
 import "./BarChart2.css";
 
-class BarChart2 extends Component{
+class BoyBarChart extends Component{
     constructor(props){
         super(props);
     }
@@ -75,4 +75,4 @@ class BarChart2 extends Component{
     }
 }
 
-export default BarChart2;
+export default BoyBarChart;

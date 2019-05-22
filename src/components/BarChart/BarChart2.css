@@ -1,10 +1,26 @@
 .graphContainer {
-    /* width: 80vw;
-    height: 70vh; */
-    background: white;
-    padding: 30px 20px 30px 20px;
+    width: 30vw;
+    height: 100vh;
+    /* background: white; */
+    padding: 20px;
     margin: 0 auto;
     border-radius: 10px;
+}
+#subject-input-bar{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+.subjectB{
+    grid-column: 3 / 4;
+    display: flex;
+    justify-self: end;
+    justify-content: center;
+    border-radius: 5%;
+    margin-right: 5%;
+    width: 150px;
+    height: 50px;
+    background-color: #EDEADD;
+    color: #19182D;
 }
 
 @media only screen and (max-width: 600px) {

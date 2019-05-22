@@ -11,7 +11,6 @@ import ClassDataPageContainer from './containers/ClassDataPageContainer';
 import StudentDataPageContainer from './containers/StudentDataPageContainer';
 import ArrayngementPageContainer from './containers/ArrayngementPageContainer';
 import BarChartContainer from './containers/BarChartContainer';
-import BarChart2 from './components/BarChart/BarChart2';
 
 class App extends Component {
   constructor(){

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import benchmarks from '../../api/benchmarks.json';
-import SubjectDropMenu from "../ArrayngementPage/DropMenus/SubjectDropMenu";
-import BarChart2 from './BarChart2';
+import BoyBarChart from './BoyBarChart';
+import SubjectButton from './SubjectButton';
 
 class BarChartPage extends Component{
     constructor(props){
@@ -10,9 +10,9 @@ class BarChartPage extends Component{
             students: [],
             gradelevel: "",
             subject: "",
-            sortBy: ""
+            switchSubject: false
         }
-
+        this.switchSubject = this.switchSubject.bind(this);
     }
 
     componentDidMount(){
@@ -23,12 +23,33 @@ class BarChartPage extends Component{
         this.setState({students, gradelevel, subject})
     }
 
-    // handleSubjectChange(event){
-    //     this.setState({
-    //         subject: event.subject
-    //     })
-    // }
-
+    switchSubject(e){
+        console.log("e:", e)
+        e.preventDefault();
+        let currentSubject = "";
+        const subject = this.state.subject;
+        console.log("subject:", subject)
+        subject === "READING" ? currentSubject = "MATH" : currentSubject = "READING";
+        this.setState({ switchSubject: true, subject: currentSubject })
+    }
+    scoreInfo = {
+        "BOY score": {
+            propertyName: "BOYscore",
+            index: 0
+        },
+        "MOY score": {
+            propertyName: "MOYscore",
+            index: 2
+        },
+        "EOY score": {
+            propertyName: "EOYscore",
+            index: 3
+        },
+        "EOY goal": {
+            propertyName: "EOYgoal",
+            index: 1
+        }
+    }
     compareData(){
         const students = this.state.students;
         const subject = this.state.subject;
@@ -40,17 +61,19 @@ class BarChartPage extends Component{
         const studentMOYscores = filteredStudents.map(student => student.score[2].MOYscore);
         const studentEOYscores = filteredStudents.map(student => student.score[3].EOYscore);
         console.log("studentScores:", studentEOYscores)
-
-        
     }
 
     render(){
         const compareData = this.compareData();
         console.log(compareData)
+        let subjectToShow = "";
+        this.state.switchSubject && this.state.subject === "READING" ? subjectToShow = "VIEW MATH SCORES" : this.state.switchSubject && this.state.subject === "MATH" ? subjectToShow = "VIEW READING SCORES" : subjectToShow = "VIEW MATH SCORES"
         return(
             <div className="bar-chart-page">
-                <SubjectDropMenu className="barchartsubject" subject={this.state.subject} onSubjectClick={this.handleSubjectChange}/>
-                <BarChart2/>
+                <span id="subject-input-bar">
+                    <SubjectButton className="subjectB" text={subjectToShow} subjectSwitch={this.switchSubject}/>
+                </span>
+                <BoyBarChart/>
             </div>
         )
     }
