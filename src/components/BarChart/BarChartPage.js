@@ -33,8 +33,13 @@ class BarChartPage extends Component{
         const students = this.state.students;
         const subject = this.state.subject;
         const gradelevel = this.state.gradelevel;
-        const filteredStudents = students.filter(student => student.subject === subject && student.gradelevel === gradelevel)
-        console.log("filteredStudents:", filteredStudents)
+        const filteredStudents = students.filter(student => student.subject === subject && student.gradelevel === gradelevel);
+        const filteredBenchmark = benchmarks.filter(benchmark => benchmark.gradelevel === gradelevel.toUpperCase() && benchmark.subject === subject);
+        const studentBOYscores = filteredStudents.map(student => student.score[0].BOYscore);
+        const studentEOYgoal = filteredStudents.map(student => student.score[1].EOYgoal);
+        const studentMOYscores = filteredStudents.map(student => student.score[2].MOYscore);
+        const studentEOYscores = filteredStudents.map(student => student.score[3].EOYscore);
+        console.log("studentScores:", studentEOYscores)
 
         
     }
