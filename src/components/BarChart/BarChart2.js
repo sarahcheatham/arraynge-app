@@ -6,23 +6,19 @@ import "./BarChart2.css";
 class BarChart2 extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            students: [],
-            gradelevel: "",
-            subject: "",
-            sortBy: ""
-        }
     }
     chartRef = React.createRef();
 
     componentDidMount(){
-        // const students = this.props.studentdata.students;
         const myChartRef = this.chartRef.current.getContext("2d");
         new Chart(myChartRef, {
             type: "bar",
             //Bring in data for the graph
             data:{
-                labels: ["Below Grade Level", "Above Grade Level"]
+                labels: ["Below Grade Level", "Above Grade Level"],
+                datasets: [
+
+                ]
             },
             options: {
                 title: {
@@ -55,6 +51,18 @@ class BarChart2 extends Component{
             }
         });
     }
+    handleSubjectChange(event){
+        this.setState({
+            subject: event.subject
+        })
+      }
+    
+      handleSortBy(event){
+        this.setState({
+            sortBy: event.sortBy
+        });
+      }
+    
     render(){
         return (
             <div class="graphContainer" style={{position: "relative", height: "100vh", width: "80vw"}}>
