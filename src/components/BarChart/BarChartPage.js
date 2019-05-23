@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import benchmarks from '../../api/benchmarks.json';
-import BoyBarChart from './BoyBarChart';
+import BenchmarkBarChart from './BenchmarkBarChart';
 import SubjectButton from './SubjectButton';
 
 class BarChartPage extends Component{
@@ -52,8 +52,6 @@ class BarChartPage extends Component{
     }
 
     getBenchmarks(){
-        let above = [];
-        let below = [];
         const students = this.state.students;
         const subject = this.state.subject;
         const gradelevel = this.state.gradelevel;
@@ -69,20 +67,27 @@ class BarChartPage extends Component{
         ]
         return bench
     }
-    getDataPoints(){
-        const getBenchmarks = this.getBenchmarks();
-        const studentScores = this.getStudentScores();
-        console.log("studentScores:", studentScores)
-        console.log("getBenchmarks:", getBenchmarks)
+    boyAbove(){
+        let above = [];
+        const bench = this.getBenchmarks();
+        const boyBench = bench[0].BOYbench[0];
+        const scores = this.getStudentScores();
+        const boyScores = scores[0].BOYscore;
+        const aboveScores = boyScores.filter(score => score >= boyBench)
+        above.push(aboveScores)
+        const aboveCount = above.length;
+    }
+    boyBelow(){
+        let below = [];
     }
 
     render(){
-        // const getBenchmarks = this.getBenchmarks();
-        // console.log("getBenchmarks:", getBenchmarks)
-        // const studentScores = this.getStudentScores();
-        // console.log("studentScores:", studentScores)
-        const dataPoints = this.getDataPoints();
-        console.log("dataPoints:", dataPoints)
+        const getBenchmarks = this.getBenchmarks();
+        const studentScores = this.getStudentScores();
+        console.log("boyAbove:", this.boyAbove())
+        console.log("studentScores:", studentScores)
+        console.log("getBenchmarks:", getBenchmarks)
+       
 
         let subjectToShow = "";
         this.state.switchSubject && this.state.subject === "READING" ? subjectToShow = "VIEW MATH SCORES" : this.state.switchSubject && this.state.subject === "MATH" ? subjectToShow = "VIEW READING SCORES" : subjectToShow = "VIEW MATH SCORES"
@@ -91,7 +96,7 @@ class BarChartPage extends Component{
                 <span id="subject-input-bar">
                     <SubjectButton className="subjectB" text={subjectToShow} subjectSwitch={this.switchSubject}/>
                 </span>
-                <BoyBarChart/>
+                <BenchmarkBarChart/>
             </div>
         )
     }

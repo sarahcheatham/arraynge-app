@@ -3,7 +3,7 @@ import Chart from "chart.js";
 import benchmarks from '../../api/benchmarks.json';
 import "./BarChart2.css";
 
-class BoyBarChart extends Component{
+class BenchmarkBarChart extends Component{
     constructor(props){
         super(props);
     }
@@ -17,7 +17,7 @@ class BoyBarChart extends Component{
             data:{
                 labels: ["Below Grade Level", "Above Grade Level"],
                 datasets: [
-
+                    
                 ]
             },
             options: {
@@ -75,4 +75,4 @@ class BoyBarChart extends Component{
     }
 }
 
-export default BoyBarChart;
+export default BenchmarkBarChart;
