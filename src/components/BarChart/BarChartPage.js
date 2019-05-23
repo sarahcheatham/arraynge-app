@@ -24,7 +24,6 @@ class BarChartPage extends Component{
     }
 
     switchSubject(e){
-        console.log("e:", e)
         e.preventDefault();
         let currentSubject = "";
         const subject = this.state.subject;
@@ -32,40 +31,59 @@ class BarChartPage extends Component{
         subject === "READING" ? currentSubject = "MATH" : currentSubject = "READING";
         this.setState({ switchSubject: true, subject: currentSubject })
     }
-    scoreInfo = {
-        "BOY score": {
-            propertyName: "BOYscore",
-            index: 0
-        },
-        "MOY score": {
-            propertyName: "MOYscore",
-            index: 2
-        },
-        "EOY score": {
-            propertyName: "EOYscore",
-            index: 3
-        },
-        "EOY goal": {
-            propertyName: "EOYgoal",
-            index: 1
-        }
-    }
-    compareData(){
+
+    getStudentScores(){
         const students = this.state.students;
         const subject = this.state.subject;
         const gradelevel = this.state.gradelevel;
+
         const filteredStudents = students.filter(student => student.subject === subject && student.gradelevel === gradelevel);
-        const filteredBenchmark = benchmarks.filter(benchmark => benchmark.gradelevel === gradelevel.toUpperCase() && benchmark.subject === subject);
         const studentBOYscores = filteredStudents.map(student => student.score[0].BOYscore);
         const studentEOYgoal = filteredStudents.map(student => student.score[1].EOYgoal);
         const studentMOYscores = filteredStudents.map(student => student.score[2].MOYscore);
         const studentEOYscores = filteredStudents.map(student => student.score[3].EOYscore);
-        console.log("studentScores:", studentEOYscores)
+        const studentScores = [
+            {"BOYscore" : studentBOYscores}, 
+            {"EOYgoal" : studentEOYgoal}, 
+            {"MOYscore" : studentMOYscores}, 
+            {"EOYscore" : studentEOYscores}
+        ];
+        return studentScores
+    }
+
+    getBenchmarks(){
+        let above = [];
+        let below = [];
+        const students = this.state.students;
+        const subject = this.state.subject;
+        const gradelevel = this.state.gradelevel;
+        
+        const filteredBenchmark = benchmarks.filter(benchmark => benchmark.gradelevel === gradelevel.toUpperCase() && benchmark.subject === subject);
+        const boyBenchmark = filteredBenchmark.map(benchmark => Math.floor(benchmark.score[0].BOYscore))
+        const moyBenchmark = filteredBenchmark.map(benchmark => Math.floor(benchmark.score[1].MOYscore))
+        const eoyBenchmark = filteredBenchmark.map(benchmark => Math.floor(benchmark.score[2].EOYscore))
+        const bench = [
+            {"BOYbench": boyBenchmark},
+            {"MOYbench": moyBenchmark},
+            {"EOYbench": eoyBenchmark}
+        ]
+        return bench
+    }
+    getDataPoints(){
+        const getBenchmarks = this.getBenchmarks();
+        const studentScores = this.getStudentScores();
+        console.log("studentScores:", studentScores)
+        console.log("getBenchmarks:", getBenchmarks)
     }
 
     render(){
-        const compareData = this.compareData();
-        console.log(compareData)
+        // const getBenchmarks = this.getBenchmarks();
+        // console.log("getBenchmarks:", getBenchmarks)
+        // const studentScores = this.getStudentScores();
+        // console.log("studentScores:", studentScores)
+        const dataPoints = this.getDataPoints();
+        console.log("dataPoints:", dataPoints)
+
         let subjectToShow = "";
         this.state.switchSubject && this.state.subject === "READING" ? subjectToShow = "VIEW MATH SCORES" : this.state.switchSubject && this.state.subject === "MATH" ? subjectToShow = "VIEW READING SCORES" : subjectToShow = "VIEW MATH SCORES"
         return(
