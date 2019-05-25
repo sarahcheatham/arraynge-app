@@ -6,19 +6,32 @@ import "./BarChart2.css";
 class BenchmarkBarChart extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            above: this.props.above,
+            below: this.props.below
+        }
     }
     chartRef = React.createRef();
 
+    // static getDerivedStateFromProps(nextProps, prevState){
+    //     console.log("nextProps:", nextProps)
+    //     console.log("prevState:", prevState)
+    //     if(nextProps !== prevState){
+    //       return { below: nextProps.below, above: nextProps.above };
+    //    }
+    //    else return null;
+    // }
     componentDidMount(){
+        // console.log("props:", props)
         const myChartRef = this.chartRef.current.getContext("2d");
         new Chart(myChartRef, {
             type: "bar",
             //Bring in data for the graph
             data:{
                 labels: ["Below Grade Level", "Above Grade Level"],
-                datasets: [
+                datasets: [{
                     
-                ]
+                }]
             },
             options: {
                 title: {
@@ -51,6 +64,10 @@ class BenchmarkBarChart extends Component{
             }
         });
     }
+    componentDidUpdate(){
+        
+    }
+    
     handleSubjectChange(event){
         this.setState({
             subject: event.subject
