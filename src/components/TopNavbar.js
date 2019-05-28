@@ -10,7 +10,7 @@ const TopNavbar = (props) => {
   } else {
     whatToShow = "Sign Out"
   }
-  console.log("props:", props.showNavItems)
+  // console.log("props:", props.showNavItems)
   return (
     <Navbar inverse className="navie">
         <Nav>

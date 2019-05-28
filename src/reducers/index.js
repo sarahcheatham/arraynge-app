@@ -1,8 +1,12 @@
+import storeState from '../state';
 import { combineReducers } from 'redux';
 import { 
     FETCH_STUDENTDATA_BEGIN,
     FETCH_STUDENTDATA_SUCCESS,
-    FETCH_STUDENTDATA_FAILURE
+    FETCH_STUDENTDATA_FAILURE,
+    FETCH_CLASSDATA_BEGIN,
+    FETCH_CLASSDATA_SUCCESS,
+    FETCH_CLASSDATA_FAILURE
 } from '../actions/index';
 // import state from '../state';
 
@@ -27,11 +31,60 @@ function currentSubject(state="", action){
     return state;
 }
 
-function classdata(state = [],action) {
-    if (action.type === "CLASS_DATA_LOADED") {
-        return action.value;
+// function classdata(state = [], action){
+//     console.log('REDUCER: ', action)
+//     switch(action.type){
+//         case 'POST_CLASS_DATA_LOADING':
+//         return {
+//             ...state
+//         }
+//         case 'POST_CLASS_DATA_SUCCESS':
+//         return {
+//             ...state,
+//             classdata: action.data
+//     }
+//         case 'POST_CLASS_DATA_FAIL':
+//         return {
+//             ...state,
+//             error: action.error
+//         }
+//         default: 
+//             return {...state}
+//    }
+// }
+// function classdata(state = [],action) {
+//     if (action.type === "CLASS_DATA_LOADED") {
+//         return action.value;
+//     }
+//     return state;
+// }
+const classdata = (state = storeState, action) =>{
+    console.log("REDUCER:", action)
+    console.log("STATE:", state)
+    console.log("STORE STATE:", storeState)
+    switch(action.type){
+        case FETCH_CLASSDATA_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+        case FETCH_CLASSDATA_SUCCESS:
+            return {
+                ...state,
+                loading: false, 
+                classes: action.payload.classes
+            };
+        case FETCH_CLASSDATA_FAILURE:
+            return {
+                ...state, 
+                loading: false,
+                error: action.payload.error,
+                classes: []
+            };
+        default:
+            return state;
     }
-    return state;
 }
 
 function numberOfStudents(state = 0, action){
@@ -41,13 +94,16 @@ function numberOfStudents(state = 0, action){
     return state;
 }
 
-const initialState = {
-    students: [],
-    loading: false,
-    error: null
-};
+// const initialState = {
+//     students: [],
+//     loading: false,
+//     error: null
+// };
 
-function studentdata(state = initialState, action){
+function studentdata(state = storeState, action){
+    console.log("REDUCER:", action)
+    console.log("STATE:", state)
+    console.log("STORE STATE:", storeState)
     switch(action.type){
         case FETCH_STUDENTDATA_BEGIN:
             return {
@@ -59,7 +115,7 @@ function studentdata(state = initialState, action){
             return {
                 ...state,
                 loading: false, 
-                students: action.payload.studentdata
+                students: action.payload.students
             };
         case FETCH_STUDENTDATA_FAILURE:
             return {

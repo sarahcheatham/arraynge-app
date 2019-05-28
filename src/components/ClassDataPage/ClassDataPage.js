@@ -26,6 +26,7 @@ class ClassDataPage extends Component{
 
     componentDidMount(){
         this.props.loadClassData();
+        this.props.fetchStudentData();
     }
 
     showMenu(event){

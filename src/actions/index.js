@@ -1,27 +1,27 @@
 
-export function setCurrentGradeLevel(gradelevel){
+export const setCurrentGradeLevel = gradelevel =>{
     return {
         type: "SET_GRADE_LEVEL",
         value: gradelevel
     }
 }
 
-export function setCurrentSubject(subject){
+export const setCurrentSubject = subject => {
     return {
         type: "SET_SUBJECT",
         value: subject
     }
 }
 
-export function setNumberOfStudents(numberOfStudents){
+export const setNumberOfStudents = numberOfStudents => {
     return {
         type: "SET_NUMBER_OF_STUDENTS",
         value: numberOfStudents
     }
 }
 
-export function loadUserId(){
-    return function(dispatch){
+export const loadUserId = () => {
+    return dispatch => {
         fetch("/api/hey")
         .then((res)=>{
             return res.text();
@@ -31,33 +31,65 @@ export function loadUserId(){
     };
 }
 
-export function setCurrentUserId(userId){
+export const setCurrentUserId = userId => {
     return {
         type: "SET_USER_ID",
         value: userId
     }
 }
 
-export function loadClassData(){
-    return function(dispatch){
-        fetch("/api/classdata")
-        .then((res)=>{
-            return res.json();
-        }).then((classdata)=>{
-            dispatch(classDataLoaded(classdata));
-        });
+export const FETCH_CLASSDATA_BEGIN = "FETCH_CLASSDATA_BEGIN";
+export const FETCH_CLASSDATA_SUCCESS = "FETCH_CLASSSDATA_SUCCESS";
+export const FETCH_CLASSDATA_FAILURE = "FETCH_CLASSDATA_FAILURE";
+
+export const fetchClassDataBegin = () =>({
+    type: FETCH_CLASSDATA_BEGIN
+});
+
+export const fetchClassDataSuccess = classes =>({
+    type: FETCH_CLASSDATA_SUCCESS,
+    payload: { classes }
+});
+
+export const fetchClassDataFailure = error =>({
+    type: FETCH_CLASSDATA_FAILURE,
+    payload: { error }
+});
+
+export const loadClassData = () => {
+    return dispatch => {
+        dispatch(fetchClassDataBegin());
+        return fetch('/api/classdata')
+            .then(handleErrors)
+            .then(res => res.json())
+            .then(classes => {
+                    dispatch(fetchClassDataSuccess(classes));
+                    return classes;
+            })
+            .catch(error => dispatch(fetchClassDataFailure(error)))
     };
 }
 
-export function classDataLoaded(classdata){
-    return {
-        type: "CLASS_DATA_LOADED",
-        value: classdata
-    }
-}
+// export const loadClassData = () => {
+//     return dispatch => {
+//         fetch("/api/classdata")
+//         .then((res)=>{
+//             return res.json();
+//         }).then((classdata)=>{
+//             dispatch(classDataLoaded(classdata));
+//         });
+//     };
+// }
 
-export function createClassData(classdata){
-    return function (dispatch){
+// export const classDataLoaded = classdata => {
+//     return {
+//         type: "CLASS_DATA_LOADED",
+//         value: classdata
+//     }
+// }
+
+export const createClassData = classdata => {
+    return dispatch => {
         fetch("/api/classdata",{
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -66,8 +98,8 @@ export function createClassData(classdata){
     }
 }
 
-export function fetchStudentData(userId){
-    return dispatch =>{
+export const fetchStudentData = userId => {
+    return dispatch => {
         dispatch(fetchStudentDataBegin());
         return fetch('/api/studentdata')
             .then(handleErrors)
@@ -82,13 +114,14 @@ export function fetchStudentData(userId){
 
 
 
-function handleErrors(response){
+export const handleErrors = response => {
     if(!response.ok){
         throw Error(response.statusText);
     }
     return response;
 }
 
+//put in types.js
 export const FETCH_STUDENTDATA_BEGIN = "FETCH_STUDENTDATA_BEGIN";
 export const FETCH_STUDENTDATA_SUCCESS = "FETCH_STUDENTDATA_SUCCESS";
 export const FETCH_STUDENTDATA_FAILURE = "FETCH_STUDENTDATA_FAILURE";
@@ -97,9 +130,9 @@ export const fetchStudentDataBegin = () =>({
     type: FETCH_STUDENTDATA_BEGIN
 });
 
-export const fetchStudentDataSuccess = studentdata =>({
+export const fetchStudentDataSuccess = students =>({
     type: FETCH_STUDENTDATA_SUCCESS,
-    payload: { studentdata }
+    payload: { students }
 });
 
 export const fetchStudentDataFailure = error =>({

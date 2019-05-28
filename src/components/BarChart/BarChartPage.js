@@ -24,6 +24,7 @@ class BarChartPage extends Component{
     chartRef = React.createRef();
 
     componentDidMount(){
+        this.props.fetchStudentData();
         const students = this.props.studentdata.students;
         const lastStudent = students[students.length-1];
         const gradelevel = lastStudent.gradelevel;

@@ -20,6 +20,7 @@ class StudentDataPage extends Component{
     }
 
     componentDidMount(){
+        this.props.fetchStudentData();
         fetch("/api/classdata")
         .then(res=> res.json())
         .then(data => {

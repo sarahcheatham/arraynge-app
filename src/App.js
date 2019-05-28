@@ -30,6 +30,7 @@ class App extends Component {
   componentDidMount(){
     if(this.state.authenticated){
       this.props.loadUserId();
+      this.props.loadClassData();
       this.props.fetchStudentData();
     }
     console.log("app loaded")

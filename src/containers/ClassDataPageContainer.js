@@ -2,38 +2,42 @@ import { connect } from "react-redux";
 import ClassDataPage from "../components/ClassDataPage/ClassDataPage";
 import { loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject, fetchStudentData } from '../actions';
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     currentUserId: state.currentUserId,
     gradelevel: state.currentGradeLevel,
     subject: state.currentSubject,
-    classdata: state.currentClassdata
+    classdatadata: {
+      loading: state.loading,
+      error: state.error,
+      classes: state.classes
+  }
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
-      loadClassData(){
-        dispatch(loadClassData())
-      },
-      setGradeLevel:function(gradelevel){
-          let action = setCurrentGradeLevel(gradelevel);
-          dispatch(action);
-      },
-      setSubject:function(subject){
-          let action = setCurrentSubject(subject);
-          dispatch(action);
-      },
-      createClassData:function(classdata){
-          let action = createClassData(classdata);
-          dispatch(action);
-      },
-      fetchStudentData(){
-        dispatch(fetchStudentData())
+    loadClassData(){
+      dispatch(loadClassData())
+    },
+    fetchStudentData(){
+      dispatch(fetchStudentData())
+    },
+    setGradeLevel: gradelevel => {
+      let action = setCurrentGradeLevel(gradelevel);
+      dispatch(action);
+    },
+    setSubject: subject => {
+      let action = setCurrentSubject(subject);
+      dispatch(action);
+    },
+    createClassData: classdata => {
+      let action = createClassData(classdata);
+      dispatch(action);
     }
   };
 }
 
-const ClassDataPageContainer =  connect(mapStateToProps, mapDispatchToProps)(ClassDataPage);
+const ClassDataPageContainer = connect(mapStateToProps, mapDispatchToProps)(ClassDataPage);
 
 export default ClassDataPageContainer;

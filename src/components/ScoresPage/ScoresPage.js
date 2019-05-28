@@ -29,6 +29,7 @@ class ScoresPage extends Component{
     }
 
     componentDidMount(){
+        this.props.fetchStudentData()
         const students = this.props.studentdata.students;
         const lastStudent = students[students.length-1];
         const gradelevel = lastStudent.gradelevel;
@@ -179,7 +180,7 @@ class ScoresPage extends Component{
                     <thead>
                         <tr>
                             <th className="tableheader">Student Name:</th>
-                            <th className="tableheader" id="hidelabel">Grade Level:</th>
+                            <th className="tableheader" id="hidelabel">Grade Levels:</th>
                             <th className="tableheader">Subject:</th>
                             <th className="tableheader">BOY Score:</th>
                             <th className="tableheader">EOY Goal:</th>
