@@ -31,7 +31,7 @@ class App extends Component {
     if(this.state.authenticated){
       this.props.loadUserId();
       this.props.loadClassData();
-      this.props.fetchStudentData();
+      this.props.loadStudentData();
     }
     console.log("app loaded")
   }

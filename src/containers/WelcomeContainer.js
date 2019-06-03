@@ -1,21 +1,22 @@
 import { connect } from 'react-redux';
 import WelcomePage from "../components/Welcome/WelcomePage";
-import { fetchStudentData } from "../actions";
+import { loadStudentData } from "../actions";
 
-function mapStateToProps(state){
+const mapStateToProps = state => {
     return{
-        // currentUserId: state.currentUserId,
-        students: state.students
+        studentdata: {
+            loading: state.loading,
+            error: state.error,
+            students: state.students
+        }
     }
 }
 
-// function mapDispatchToProps(dispatch){
-//     return {
-//         fetchStudentData(){
-//             dispatch(fetchStudentData())
-//         }
-//     }
-// }
+const mapDispatchToProps = dispatch => {
+    return {
+        loadStudentData: () => dispatch(loadStudentData()) 
+    }
+}
 
 const WelcomeContainer = connect(mapStateToProps)(WelcomePage)
 export default WelcomeContainer;

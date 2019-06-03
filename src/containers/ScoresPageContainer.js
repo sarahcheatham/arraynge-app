@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import ScoresPage from "../components/ScoresPage/ScoresPage";
-import { fetchStudentData } from "../actions";
+import { loadStudentData } from "../actions";
 
-function mapStateToProps(state){
-    return{
+const mapStateToProps = state => {
+    return {
         studentdata: state.studentdata
     }
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = dispatch => {
     return {
-        fetchStudentData(){
-            dispatch(fetchStudentData())
+        loadStudentData(){
+            dispatch(loadStudentData())
         }
     }
 }

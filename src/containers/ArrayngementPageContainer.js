@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ArrayngementPage from "../components/ArrayngementPage/ArrayngementPage";
-import { fetchStudentData } from "../actions";
+import { loadStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
@@ -10,8 +10,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        fetchStudentData(){
-            dispatch(fetchStudentData())
+        loadStudentData(){
+            dispatch(loadStudentData())
         }
     }
 }

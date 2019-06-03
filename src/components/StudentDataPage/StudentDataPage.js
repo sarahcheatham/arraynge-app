@@ -9,6 +9,9 @@ class StudentDataPage extends Component{
     constructor(props){
         super(props);
         this.state = {
+            loading: false,
+            classdata: null,
+            error: null,
             numberOfStudents: "",
             data: [],
             gradelevel: "",
@@ -20,15 +23,22 @@ class StudentDataPage extends Component{
     }
 
     componentDidMount(){
-        this.props.fetchStudentData();
-        fetch("/api/classdata")
-        .then(res=> res.json())
-        .then(data => {
-            this.setState({ data })
-            data.map(item=>{
-                this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
-            })
-        })
+        this.setState({ loading: true })
+        this.props.loadClassData();
+        this.props.loadStudentData();
+        // fetch("/api/classdata")
+        // .then(res=> res.json())
+        // .then(data => {
+        //     this.setState({ data })
+        //     data.map(item=>{
+        //         this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
+        //     })
+        // })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        const { classdata, loading, error } = this.props;
+        console.log("UPDATE:", classdata.classes)
     }
 
     handleFormSubmit(studentdata){

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 // import BarChart from "../components/BarChart/BarChart";
 // import BarChart2 from "../components/BarChart/BarChart2";
 import BarChartPage from '../components/BarChart/BarChartPage';
-import { fetchStudentData } from "../actions";
+import { loadStudentData } from "../actions";
 
 function mapStateToProps(state){
     return{
@@ -15,8 +15,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return {
-        fetchStudentData(){
-            dispatch(fetchStudentData())
+        loadStudentData(){
+            dispatch(loadStudentData())
         }
     }
 }

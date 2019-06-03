@@ -1,22 +1,19 @@
 import { connect } from 'react-redux';
 import StudentDataPage from "../components/StudentDataPage/StudentDataPage";
-import { loadUserId, fetchStudentData } from "../actions";
+import { loadUserId, loadClassData, loadStudentData } from "../actions";
 
-function mapStateToProps(state){
+const mapStateToProps = state => {
     return{
         currentUserId: state.currentUserId,
         classdata: state.classdata
     }
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = dispatch => {
     return {
-        loadUserId(){
-            dispatch(loadUserId())
-        },
-        fetchStudentData(){
-            dispatch(fetchStudentData())
-        }
+        loadUserId: () => dispatch(loadUserId()),
+        loadClassData: () => dispatch(loadClassData()),
+        loadStudentData: () => dispatch(loadStudentData())
     }
 }
 

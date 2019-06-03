@@ -29,10 +29,10 @@ class WelcomePage extends Component{
             });
         });
         // console.log('*** didMount fetchStudentData ***', this.props.currentUserId)
-        // if(this.props.currentUserId){
-        //     this.props.fetchStudentData(this.props.currentUserId)
-        // }
-        // this.props.fetchStudentData()
+        if(this.props.currentUserId){
+            this.props.loadStudentData()
+        }
+        // this.props.loadStudentData()
     }
 
     render(){

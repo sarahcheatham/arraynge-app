@@ -16,27 +16,21 @@ class ClassDataPage extends Component{
                 subject: ""
             }
         }
-        this.showMenu = this.showMenu.bind(this);
-        this.closeMenu = this.closeMenu.bind(this);
-        this.gradeLevelClick = this.gradeLevelClick.bind(this);
-        this.subjectClick = this.subjectClick.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleContinueClick = this.handleContinueClick.bind(this);
     };
 
     componentDidMount(){
         this.props.loadClassData();
-        this.props.fetchStudentData();
+        this.props.loadStudentData();
     }
 
-    showMenu(event){
+    showMenu = event => {
         event.preventDefault();
         this.setState({ showMenu: true}, ()=>{
             document.addEventListener('click', this.closeMenu);
         });
     }
 
-    closeMenu(event){
+    closeMenu = event => {
         if(!this.dropdownMenu.contains(event.target)){
             this.setState({ showMenu: false}, ()=>{
                 document.removeEventListener('click', this.closeMenu);
@@ -44,39 +38,39 @@ class ClassDataPage extends Component{
         }
     }
 
-    gradeLevelClick(event){
+    gradeLevelClick = event => {
         event.preventDefault();
-        const classdata = {gradelevel: event.target.value};
+        const gradelevel = {gradelevel: event.target.value};
         this.props.setGradeLevel(event.target.value)
         this.setState({
-            classdata: Object.assign(this.state.classdata, classdata)
+            classdata: Object.assign(this.state.classdata, gradelevel)
         })
     }
 
-    subjectClick(event){
+    subjectClick = event => {
         event.preventDefault();
         const subject = {subject: event.target.value};
         this.props.setSubject(event.target.value)
-        const userId = {userId: this.props.currentUserId};
         this.setState({
-            classdata: Object.assign(this.state.classdata, subject, userId),
+            classdata: Object.assign(this.state.classdata, subject),
         })
     }
 
-    handleSubmit(event){
+    handleSubmit = event => {
         event.preventDefault();
-        const data = {
+        const classdata = {
             userId: this.props.currentUserId,
             gradelevel: this.props.gradelevel,
             subject: this.props.subject
         }
+        console.log("CLASSDATA PROPS:", classdata)
         this.setState({
-            classdata: Object.assign(this.state.classdata, data)
+            classdata: Object.assign(this.state.classdata, classdata)
         })
-        this.props.createClassData(this.state.classdata)
+        this.props.createClassData(classdata)
     }
-    handleContinueClick(e){
-        this.props.fetchStudentData()
+    handleContinueClick = event => {
+        this.props.loadStudentData()
     }
     
     render(){
