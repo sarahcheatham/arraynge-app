@@ -11,12 +11,14 @@ export const setCurrentSubject = subject => {
         value: subject
     }
 }
+
 export const setNumberOfStudents = numberOfStudents => {
     return {
         type: "SET_NUMBER_OF_STUDENTS",
         value: numberOfStudents
     }
 }
+
 export const handleErrors = response => {
     if(!response.ok){
         throw Error(response.statusText);
@@ -127,6 +129,8 @@ export const createStudentData = studentdata => {
         }).then(()=> dispatch(loadStudentData()));
     }
 }
+
+
 
 
 

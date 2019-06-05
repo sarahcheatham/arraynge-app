@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from "../App";
-import { loadUserId, setCurrentUserId, loadStudentData, loadClassData } from "../actions";
+import { loadUserId, setCurrentUserId, loadStudentData, loadClassData } from "../store/actions";
 
 const mapStateToProps = state => {
     return{

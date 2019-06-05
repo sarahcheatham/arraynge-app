@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ScoresPage from "../components/ScoresPage/ScoresPage";
-import { loadStudentData } from "../actions";
+import { loadStudentData } from "../store/actions";
 
 const mapStateToProps = state => {
     return {

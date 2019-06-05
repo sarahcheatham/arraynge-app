@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
 import ArrayngementPage from "../components/ArrayngementPage/ArrayngementPage";
-import { loadStudentData } from "../actions";
+import { loadStudentData } from "../store/actions";
 
-function mapStateToProps(state){
+const mapStateToProps = state => {
     return{
+        // studentdata: {
+        //     loading: state.loading,
+        //     error: state.error,
+        //     students: state.students
+        // }
         studentdata: state.studentdata
     }
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = dispatch => {
     return {
-        loadStudentData(){
-            dispatch(loadStudentData())
-        }
+        loadStudentData: () => dispatch(loadStudentData())
     }
 }
 

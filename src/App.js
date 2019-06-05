@@ -30,10 +30,9 @@ class App extends Component {
   componentDidMount(){
     if(this.state.authenticated){
       this.props.loadUserId();
-      this.props.loadClassData();
-      this.props.loadStudentData();
+      console.log("USER ID LOADED")
     }
-    console.log("app loaded")
+    this.props.setCurrentUserId(null);
   }
   
   handleSignUp(credentials){
@@ -78,13 +77,15 @@ class App extends Component {
         return res.json();
       }).then((data) => {
         const { token } = data;
+        console.log(token)
         localStorage.setItem("token", token);
         this.setState({
           signUpSignInError: "",
           authenticated: token
         });
         this.props.loadUserId();
-        this.props.fetchStudentData();
+        this.props.loadClassData();
+        this.props.loadStudentData();
       });
     }  
   }

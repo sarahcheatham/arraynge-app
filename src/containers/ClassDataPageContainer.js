@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ClassDataPage from "../components/ClassDataPage/ClassDataPage";
-import { loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject, loadStudentData } from '../actions';
+import { loadClassData, createClassData, setCurrentGradeLevel, setCurrentSubject, loadStudentData } from '../store/actions';
 
 const mapStateToProps = state => {
   return {

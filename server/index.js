@@ -10,7 +10,7 @@ const sessionRoutes = require("./routes/SessionRoutes");
 const authenticationRoutes = require("./routes/AuthenticationRoutes");
 const studentRoutes = require("./routes/StudentRoutes");
 const classdataRoutes = require("./routes/ClassDataRoutes");
-const arrayngmentRoutes = require("./routes/ArrayngementRoutes");
+
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
@@ -43,7 +43,6 @@ function startWebServer(){
   //secure
   app.use(classdataRoutes);
   app.use(studentRoutes);
-  app.use(arrayngmentRoutes);
   //deployment
   // app.use(express.static(path.join(__dirname + "public" + "build" )))
 
@@ -68,6 +67,12 @@ function startWebServer(){
   app.get("/api/classdata", function(req, res){
     res.send(req.body)
   })
+  app.get("/api/classdata/:id", function(req, res){
+    res.send(req.body)
+  })
+  app.get("/api/classdata/lastclass/:id", function(req, res){
+    res.send(req.body)
+  })
   app.get("/api/studentdata", function(req, res){
     res.send(req.body)
   });
@@ -77,12 +82,7 @@ function startWebServer(){
   app.get("/api/studentdata/:userId", function(req, res){
     res.send(req.body)
   })
-  // app.put("/api/studentdata/:id", function (req, res){
-  //   res.send(req.body)
-  // })
-  // app.get("/api/arrayngement", function(req, res){
-  //   res.send(`${req.student}`)
-  // });
+  
   //database stuff goes here for the user data that is saved in the database that they are trying to retreive
 
   app.get('*', function(req, res) {

@@ -32,7 +32,8 @@ class ArrayngementPage extends Component{
     }
 
     componentDidMount(){
-        this.props.fetchStudentData();
+        this.props.loadStudentData();
+        // this.props.fetchStudentData();
         console.log("props.studentdata:", this.props.studentdata.students)
         const studentArr = this.props.studentdata.students;
         const lastStudent = studentArr[studentArr.length-1];
@@ -162,7 +163,7 @@ class ArrayngementPage extends Component{
         let boyBenchmark = null;
         let moyBenchmark = null;
         let eoyBenchmark = null;
-
+    
         const findBm = benchmarks.find((bm, index)=>{
             const gradelevel = this.state.gradelevel.toUpperCase();
             const subject = this.state.subject;
@@ -170,6 +171,7 @@ class ArrayngementPage extends Component{
                benchmark.push(bm) 
             }
         })
+
         if(benchmark[0] !== undefined){
             //rounds the benchmark down to nearest integer based on decimal
             boyBenchmark = Math.floor(benchmark[0].score[0].BOYscore);

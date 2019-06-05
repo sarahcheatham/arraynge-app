@@ -1,5 +1,6 @@
 const storeState =  {
     currentUserId: "",
+    // welcomeMessage: "",
     currentGradeLevel: "",
     currentSubject: "",
     numberOfStudents: 0,
@@ -17,11 +18,3 @@ const storeState =  {
 
 export default storeState
 
-// export default {
-//     currentUserId: "",
-//     currentGradeLevel: "",
-//     currentSubject: "",
-//     numberOfStudents: 0,
-//     classdata: [],
-//     studentdata: [],
-// }

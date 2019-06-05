@@ -391,66 +391,6 @@ ul {
 }
 /* end Navbar component */
 
-/* start WelcomePage component */
-.welcomepage{
-  height: 100vh;
-  /* background-color: #F9F6EF; */
-  /* background-color: #E8EFEE; */
-}
-.subwel{
-  font-family: quasimoda, sans-serif;
-  font-style: normal;
-  font-weight: 200;
-  /* color: #4A494E; */
-  color: #19182D;
-  font-size: 32px;
-  padding-top: 25px;
-  padding-bottom: 10px;
-}
-.newarrbutton{
-  /* color: #f2edd7; */
-  color: #F7F7FB;
-  font-size: 12px;
-  /* background-color: #656588; */
-  background-color: #6C658E;
-  height: 50px;
-  width: 25%;
-  align-self: center; 
-  justify-self: center;
-  margin-top: 20px;
-  font-family: quasimoda, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-}
-
-.viewarrbutton{
-  color: #F7F7FB;
-  /* color: #f2edd7; */
-  font-size: 12px;
-  /* background-color: #921B4E; */
-  background-color: #892E5D;
-  height: 50px;
-  width: 25%;
-  align-self: center; 
-  justify-self: center;
-  margin-top: 20px;
-  font-family: quasimoda, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-}
-.welcometext{
-  font-family: quasimoda, sans-serif;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 22px; 
-  /* color: #627277; */
-  color: #19182D;
-  /* color: #343148; */
-  align-self: start;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-/* end WelcomePage component */
 
 /* start ClassDataList component */
 .classdatalist{

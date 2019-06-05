@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StudentUpdateForm from "./StudentUpdateForm";
 import StudentUpdateTable from "./StudentUpdateTable";
-import { Grid, Row, Col, Button, Table, thead, tr } from 'react-bootstrap';
+import { Button, Table, thead, tr } from 'react-bootstrap';
 import './ScoresPage.css';
 
 //loading previous students when you log out and log in as a new user 
@@ -29,7 +29,7 @@ class ScoresPage extends Component{
     }
 
     componentDidMount(){
-        this.props.fetchStudentData()
+        this.props.loadStudentData()
         const students = this.props.studentdata.students;
         const lastStudent = students[students.length-1];
         const gradelevel = lastStudent.gradelevel;
@@ -50,7 +50,7 @@ class ScoresPage extends Component{
         event.preventDefault();
         this.setState({isEdit: !this.state.isEdit})
         if(this.state.isEdit === true){
-            this.props.fetchStudentData();
+            this.props.loadStudentData();
             // fetch("/api/studentdata").then((res)=>{
             //     return res.json()
             // }).then((studentdata)=>{
@@ -74,7 +74,7 @@ class ScoresPage extends Component{
             console.log("error:", err)
         })
         this.setState({delete: true})
-        this.props.fetchStudentData();
+        this.props.loadStudentData();
     }
 
     handleSubmit(studentdata){
@@ -118,7 +118,7 @@ class ScoresPage extends Component{
         let students = this.props.studentdata.students;
         let formOrTable = "";
         let buttonText = "";
-        let studentList = [];
+        // let studentList = [];
         let formComponents =[];
         let tableComponents = [];
         let showStyle = "";
@@ -186,8 +186,8 @@ class ScoresPage extends Component{
                             <th className="tableheader">EOY Goal:</th>
                             <th className="tableheader">MOY Score:</th>
                             <th className="tableheader" id="EOY">EOY Score:</th>
-                            <th className="tableheader" style={showStyle} id="saveheader"></th>
-                            <th className="tableheader" style={showStyle2}></th>
+                            <th className="tableheader" style={{showStyle}} id="saveheader"></th>
+                            <th className="tableheader" style={{showStyle2}}></th>
                         </tr>
                     </thead>
                     <tbody>

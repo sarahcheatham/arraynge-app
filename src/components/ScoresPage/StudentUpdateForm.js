@@ -105,18 +105,18 @@ class StudentUpdateForm extends Component{
     }
     render(){
         let props = this.props;
-        let showStyle = "";
-        const noShow = {
-            display: "none"
-        }
-        const show = {
-            color: "8FAD57"
-        }
-        if(this.state.check === true){
-            showStyle = show;
-        } else {
-            showStyle = noShow;
-        }
+        // let showStyle = "";
+        // const noShow = {
+        //     display: "none"
+        // }
+        // const show = {
+        //     color: "8FAD57"
+        // }
+        // if(this.state.check === true){
+        //     showStyle = show;
+        // } else {
+        //     showStyle = noShow;
+        // }
         return(
             <tr>
                 <td>

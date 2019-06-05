@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 // import BarChart from "../components/BarChart/BarChart";
 // import BarChart2 from "../components/BarChart/BarChart2";
 import BarChartPage from '../components/BarChart/BarChartPage';
-import { loadStudentData } from "../actions";
+import { loadStudentData } from "../store/actions";
 
 function mapStateToProps(state){
     return{

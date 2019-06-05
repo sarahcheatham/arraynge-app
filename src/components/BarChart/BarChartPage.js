@@ -24,7 +24,8 @@ class BarChartPage extends Component{
     chartRef = React.createRef();
 
     componentDidMount(){
-        this.props.fetchStudentData();
+        this.props.loadStudentData();
+        // this.props.fetchStudentData();
         const students = this.props.studentdata.students;
         const lastStudent = students[students.length-1];
         const gradelevel = lastStudent.gradelevel;
@@ -103,7 +104,7 @@ class BarChartPage extends Component{
     }
 
     getBenchmarks(){
-        const students = this.state.students;
+        // const students = this.state.students;
         const subject = this.state.subject;
         const gradelevel = this.state.gradelevel;
         
@@ -182,7 +183,7 @@ class BarChartPage extends Component{
                 <span id="subject-input-bar">
                     <SubjectButton className="subjectB" text={subjectToShow} subjectSwitch={this.switchSubject}/>
                 </span>
-                <div class="graphContainer" style={{position: "relative", height: "100vh", width: "80vw"}}>
+                <div className="graphContainer" style={{position: "relative", height: "100vh", width: "80vw"}}>
                     <canvas
                         id="myChart"
                         ref={this.chartRef}

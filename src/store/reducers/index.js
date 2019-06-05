@@ -8,7 +8,6 @@ import {
     FETCH_CLASSDATA_SUCCESS,
     FETCH_CLASSDATA_FAILURE
 } from '../actions/index';
-// import state from '../state';
 
 const currentUserId = (state = "", action) => {
     if(action.type === "SET_USER_ID"){
@@ -39,9 +38,6 @@ const numberOfStudents = (state = 0, action) => {
 }
 
 const classdata = (state = storeState, action) => {
-    console.log("REDUCER:", action)
-    console.log("STATE:", state)
-    console.log("STORE STATE:", storeState)
     switch(action.type){
         case FETCH_CLASSDATA_BEGIN:
             return {
@@ -64,20 +60,10 @@ const classdata = (state = storeState, action) => {
             };
         default:
             return state;
-            // return {...state};
     }
 }
 
-// const initialState = {
-//     students: [],
-//     loading: false,
-//     error: null
-// };
-
 const studentdata = (state = storeState, action) => {
-    // console.log("REDUCER:", action)
-    // console.log("STATE:", state)
-    // console.log("STORE STATE:", storeState)
     switch(action.type){
         case FETCH_STUDENTDATA_BEGIN:
             return {
@@ -100,7 +86,6 @@ const studentdata = (state = storeState, action) => {
             };
         default:
             return state;
-            // return {...state};
     }
 }
 

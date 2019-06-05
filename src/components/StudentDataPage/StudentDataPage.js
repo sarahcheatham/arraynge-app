@@ -10,10 +10,11 @@ class StudentDataPage extends Component{
         super(props);
         this.state = {
             loading: false,
-            classdata: null,
+            classdata: [],
             error: null,
             numberOfStudents: "",
             data: [],
+            lastclass: {},
             gradelevel: "",
             subject: "",
             userId: ""
@@ -26,20 +27,21 @@ class StudentDataPage extends Component{
         this.setState({ loading: true })
         this.props.loadClassData();
         this.props.loadStudentData();
-        // fetch("/api/classdata")
-        // .then(res=> res.json())
-        // .then(data => {
-        //     this.setState({ data })
-        //     data.map(item=>{
-        //         this.setState({gradelevel: item.gradelevel, subject: item.subject, userId: item.userId})
-        //     })
-        // })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot){
-        const { classdata, loading, error } = this.props;
-        console.log("UPDATE:", classdata.classes)
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot){
+    //     const { lastclass } = this.props;
+    //     if(prevProps.lastclass){
+    //         console.log("props:", prevProps.lastclass)
+    //     }
+    //     // console.log("props:", lastclass)
+    //     // console.log("prevProps:", prevProps.lastclass.subject)
+    //     // console.log("props:", this.props.lastclass.subject)
+    //     // if(this.props.lastclass.loading && !prevProps.lastclass.loading){
+    //     //     console.log("SUBJECT:",this.props.lastclass.subject)
+    //     // }
+    // }
+    
 
     handleFormSubmit(studentdata){
         const blankScore = "";
@@ -81,20 +83,13 @@ class StudentDataPage extends Component{
     }
 
     handleClick(e){
-        this.props.fetchStudentData()
+        this.props.loadStudentData()
     }
     render(){
-        let whatToShow = '';
         const styles = {
             color: 'black',
             textDecoration: 'none'
         }
-        // if(this.state.numberOfStudents !== ''){
-        //     console.log()
-        //     whatToShow = <Button className="continuebutton"><Link to={'/arrayngement'} style={styles} className="continuebutton">CONTINUE</Link></Button>;
-        // } else {
-        //     whatToShow = '';
-        // }
         let studentComponents = [];
         for(let i = 0; i < this.state.numberOfStudents; i++){
             let sc = <StudentForm key={i} onFormSubmit={this.handleFormSubmit}/>
@@ -103,7 +98,7 @@ class StudentDataPage extends Component{
         return(
             <div className="studentdatacontainer">
                 <form>
-                    <h2 className="subjectheader">{this.state.subject}</h2>
+                    <h2 className="subjectheader">MATH</h2>
                     <h2 className="studentdatasubheader">ENTER STUDENT DATA</h2>
                     <FormGroup controlId='formNumberOfStudents'>
                         <ControlLabel className="numberofstudents">Please enter the number of students in your class:</ControlLabel>{' '}
@@ -119,7 +114,6 @@ class StudentDataPage extends Component{
                 </form>
                 {studentComponents}
                 <Button className="continuebutton" onClick={this.handleClick}><Link to={'/arrayngement'} style={styles} className="continuebutton">CONTINUE</Link></Button>
-                {/* {whatToShow} */}
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import WelcomePage from "../components/Welcome/WelcomePage";
-import { loadStudentData } from "../actions";
+import { loadStudentData } from "../store/actions";
 
 const mapStateToProps = state => {
     return{
@@ -14,9 +14,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadStudentData: () => dispatch(loadStudentData()) 
+        loadStudentData: () => dispatch(loadStudentData())
     }
 }
 
-const WelcomeContainer = connect(mapStateToProps)(WelcomePage)
+const WelcomeContainer = connect(mapStateToProps, mapDispatchToProps)(WelcomePage)
 export default WelcomeContainer;

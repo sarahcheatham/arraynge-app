@@ -7,10 +7,7 @@ module.exports.list = (req, res)=>{
 }
 
 module.exports.getUserStudents = (req, res) => {
-    StudentModel.find({
-        userId: req.params.userId
-    })
-    .exec()
+    StudentModel.find({ userId: req.params.userId }).exec()
     .then(students => {
         return res.json(students);
     });
