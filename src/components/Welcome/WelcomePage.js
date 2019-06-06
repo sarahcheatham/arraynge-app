@@ -12,7 +12,8 @@ class WelcomePage extends Component{
         this.state={
             welcomeMessage: "",
             allClasses: [],
-            currentClass: {}
+            currentClass: {},
+            checked: false
         };
     }
 
@@ -50,6 +51,12 @@ class WelcomePage extends Component{
             });
         });
     }
+    
+    checkItem = item =>{ 
+        const listObj = [...this.state.listObj];
+        listObj[listObj.indexOf(item)].checked = !listObj[listObj.indexOf(item)].checked;
+        this.setState({ list: listObj });  
+    };
 
     render(){
         console.log(this.state.currentClass.subject)
@@ -82,6 +89,9 @@ class WelcomePage extends Component{
             fontStyle: "normal",
             fontWeight: 300
         }
+        // const check = String.fromCharCode(0x2713);
+        // const empty = "";
+        // let checkStyle = empty;
         return(
             <div className="welcomepage">
                 <SubHeader className="greeting" text={this.state.welcomeMessage}/>
@@ -100,7 +110,7 @@ class WelcomePage extends Component{
                         {this.state.allClasses.map((item, index) => {
                             const subject = item.subject;
                             const gradelevel = item.gradelevel;
-                            return <ClassListItem key={index} className="classListItem" subject={subject} gradelevel={gradelevel}/>
+                            return <ClassListItem key={index} className="classListItem" subject={subject} gradelevel={gradelevel} onCheck={this.onCheck}/>
                         })}
                         
                     </ul>
