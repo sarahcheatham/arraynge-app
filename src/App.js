@@ -28,6 +28,7 @@ class App extends Component {
   };
 
   componentDidMount(){
+    this.props.loadUserId();
     if(this.state.authenticated){
       this.props.loadUserId();
       console.log("USER ID LOADED")

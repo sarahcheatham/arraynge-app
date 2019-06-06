@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import WelcomePage from "../components/Welcome/WelcomePage";
-import { loadClassData, loadStudentData } from "../store/actions";
+import { loadClassData, loadStudentData, loadCurrentClass } from "../store/actions";
 
 const mapStateToProps = state => {
     return{
@@ -13,6 +13,11 @@ const mapStateToProps = state => {
             loading: state.loading,
             error: state.error,
             classes: state.classes
+        },
+        currentClass: {
+            loading: state.loading,
+            error: state.error,
+            curr: state.curr
         }
     }
 }
@@ -20,7 +25,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         loadClassData: () => dispatch(loadClassData()),
-        loadStudentData: () => dispatch(loadStudentData())
+        loadStudentData: () => dispatch(loadStudentData()),
+        loadCurrentClass: id => dispatch(loadCurrentClass(id))
     }
 }
 

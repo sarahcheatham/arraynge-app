@@ -6,8 +6,38 @@ import {
     FETCH_STUDENTDATA_FAILURE,
     FETCH_CLASSDATA_BEGIN,
     FETCH_CLASSDATA_SUCCESS,
-    FETCH_CLASSDATA_FAILURE
+    FETCH_CLASSDATA_FAILURE,
+    FETCH_CURRENTCLASS_BEGIN,
+    FETCH_CURRENTCLASS_SUCCESS,
+    FETCH_CURRENTCLASS_FAILURE
+
 } from '../actions/index';
+
+const currentClass = (state = storeState, action) => {
+    switch(action.type){
+        case FETCH_CURRENTCLASS_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                error: null
+            };
+        case FETCH_CURRENTCLASS_SUCCESS:
+            return {
+                ...state,
+                loading: false, 
+                curr: action.payload.curr
+            };
+        case FETCH_CURRENTCLASS_FAILURE:
+            return {
+                ...state, 
+                loading: false,
+                error: action.payload.error,
+                curr: []
+            };
+        default:
+            return state;
+    }
+}
 
 const currentUserId = (state = "", action) => {
     if(action.type === "SET_USER_ID"){
@@ -92,7 +122,7 @@ const studentdata = (state = storeState, action) => {
 
 
 const rootReducer = combineReducers({
-    currentUserId, currentGradeLevel, currentSubject, classdata, studentdata, numberOfStudents
+    currentUserId, currentGradeLevel, currentSubject, currentClass, classdata, studentdata, numberOfStudents
 });
 
 export default rootReducer;

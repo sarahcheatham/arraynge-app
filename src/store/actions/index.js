@@ -106,6 +106,37 @@ export const createClassData = classdata => {
     }
 }
 
+export const FETCH_CURRENTCLASS_BEGIN = "FETCH_CURRENTCLASS_BEGIN";
+export const FETCH_CURRENTCLASS_SUCCESS = "FETCH_CURRENTCLASS_SUCCESS";
+export const FETCH_CURRENTCLASS_FAILURE = "FETCH_CURRENTCLASS_FAILURE";
+
+export const fetchCurrentClassBegin = () =>({
+    type: FETCH_CURRENTCLASS_BEGIN
+});
+
+export const fetchCurrentClassSuccess = curr =>({
+    type: FETCH_CURRENTCLASS_SUCCESS,
+    payload: { curr }
+});
+
+export const fetchCurrentClassFailure = error =>({
+    type: FETCH_CURRENTCLASS_FAILURE,
+    payload: { error }
+});
+
+export const loadCurrentClass = id => dispatch => {
+        dispatch(fetchClassDataBegin());
+        return fetch(`/api/classdata/${id}`)
+            .then(handleErrors)
+            .then(res => res.json())
+            .then(curr => {
+                    dispatch(fetchCurrentClassSuccess(curr));
+                    return curr;
+            })
+            .catch(error => dispatch(fetchCurrentClassFailure(error)))
+    
+}
+
 //put in types.js
 export const FETCH_STUDENTDATA_BEGIN = "FETCH_STUDENTDATA_BEGIN";
 export const FETCH_STUDENTDATA_SUCCESS = "FETCH_STUDENTDATA_SUCCESS";

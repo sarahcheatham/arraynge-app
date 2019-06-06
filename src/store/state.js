@@ -1,5 +1,10 @@
 const storeState =  {
     currentUserId: "",
+    currentClass: {
+        loading: false,
+        error: null,
+        curr: []
+    },
     // welcomeMessage: "",
     currentGradeLevel: "",
     currentSubject: "",
