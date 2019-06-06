@@ -6,7 +6,7 @@ body > #root > div {
   text-align: center;
   display: grid;
   grid-template-columns: 125px 1fr;
-  grid-template-rows: 90px 1fr;
+  grid-template-rows: 80px 1fr;
   background-color: #F9F9F9;
   /* background-color: #f2e3ea; */
 }
@@ -24,19 +24,15 @@ ul {
 .header {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   font-family: source-sans-pro, sans-serif;
   font-style: normal;
   font-weight: 200;
-  /* font-family: acumin-pro, sans-serif;
-  font-style: normal;
-  font-weight: 200; */
-  /* font-family: ivystyle-tw, sans-serif;
-  font-style: normal;
-  font-weight: 200; */
+  margin-bottom: 2%;
   font-size: 36px;
   color: #432fc5;
-  /* background-color: #EFEEE8; */
 }
 /* end Header component */
 

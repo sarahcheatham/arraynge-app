@@ -1,13 +1,23 @@
 import React from "react";
+import Checkbox from './Checkbox';
 
 const ClassListItem = (props) => {
+    const textStyle = {
+        color: '#F9586B'
+    }
+    const checkbox = {
+        float: 'right',
+        height: '15px',
+        width: '15px'
+    }
+    // <input type="checkbox" style={checkbox}/>
     return (
-        <button className="classListProps">
-            <div><span className={props.className}>YEAR:</span>{" "}<span className={props.className}>{props.year}</span></div>
-            <div><span className={props.className}>GRADE LEVEL:</span>{" "}<span className={props.className}>{props.gradelevel}</span></div>
-            <div><span className={props.className}>SUBJECT:</span>{" "}<span className={props.className}>{props.subject}</span></div>
-            <div><span className={props.className}>NUMBER OF STUDENTS:</span>{" "}<span className={props.className}>{props.numStudents}</span></div>
-        </button>
+        <div className="classListProps">
+            <div><span className={props.className}>YEAR:</span>{" "}<span style={textStyle}>{props.year}</span><Checkbox/></div>
+            <div><span className={props.className}>GRADE LEVEL:</span>{" "}<span style={textStyle}>{props.gradelevel}</span></div>
+            <div><span className={props.className}>SUBJECT:</span>{" "}<span style={textStyle}>{props.subject}</span></div>
+            <div><span className={props.className}>NUMBER OF STUDENTS:</span>{" "}<span style={textStyle}>{props.numStudents}</span></div>
+        </div>
     )
 }
 

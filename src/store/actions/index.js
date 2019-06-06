@@ -43,8 +43,27 @@ export const setCurrentUserId = userId => {
         value: userId
     }
 }
+//lastclass fetch
+export const FETCH_LASTCLASS_BEGIN = "FETCH_LASTCLASS_BEGIN";
+export const FETCH_LASTCLASS_SUCCESS = "FETCH_LASTCLASS_SUCCESS";
+export const FETCH_LASTCLASS_FAILURE = "FETCH_LASTCLASS_FAILURE";
 
-//put in types.js
+export const fetchLastClassBegin = () =>({
+    type: FETCH_LASTCLASS_BEGIN
+});
+
+export const fetchLastClassSuccess = classes =>({
+    type: FETCH_LASTCLASS_SUCCESS,
+    payload: { classes }
+});
+
+export const fetchLastClassFailure = error =>({
+    type: FETCH_LASTCLASS_FAILURE,
+    payload: { error }
+});
+
+
+//classdata fetch
 export const FETCH_CLASSDATA_BEGIN = "FETCH_CLASSDATA_BEGIN";
 export const FETCH_CLASSDATA_SUCCESS = "FETCH_CLASSSDATA_SUCCESS";
 export const FETCH_CLASSDATA_FAILURE = "FETCH_CLASSDATA_FAILURE";

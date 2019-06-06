@@ -25,6 +25,8 @@ class WelcomePage extends Component{
     // }
 
     componentDidMount(){
+        this.props.loadClassData();
+        this.props.loadStudentData();
         fetch("/api/welcome").then((res)=>{
             return res.text();
         }).then((welcomeMessage)=>{
@@ -52,9 +54,33 @@ class WelcomePage extends Component{
     render(){
         console.log(this.state.currentClass.subject)
         console.log("class:", this.state.allClasses)
-        const styles = {
-            color: '#F7F7FB',
-            textDecoration: 'none'
+        const purple = {
+            color: "#5F4B8B",
+            textDecoration: 'none',
+            fontFamily: "quasimoda, sans-serif",
+            fontStyle: "normal",
+            fontWeight: 300
+        }
+        const green = { 
+            color: "#357E85",
+            textDecoration: 'none',
+            fontFamily: "quasimoda, sans-serif",
+            fontStyle: "normal",
+            fontWeight: 300
+        }
+        const maroon = {
+            color: "#892E5D",
+            textDecoration: 'none',
+            fontFamily: "quasimoda, sans-serif",
+            fontStyle: "normal",
+            fontWeight: 300
+        }
+        const red = {
+            color: "#B0585E",
+            textDecoration: 'none',
+            fontFamily: "quasimoda, sans-serif",
+            fontStyle: "normal",
+            fontWeight: 300
         }
         return(
             <div className="welcomepage">
@@ -62,54 +88,64 @@ class WelcomePage extends Component{
                 <div className="currentClassContainer">
                     <div className="currClassProps">
                         <div id="currClassHeader">CURRENT CLASS</div>
-                        <div><span className="currClassTitle">YEAR:</span>{" "}<span className="currClassText"></span></div>
-                        <div><span className="currClassTitle">GRADE LEVEL:</span>{" "}<span className="currClassText">{this.state.currentClass.gradelevel}</span></div>
-                        <div><span className="currClassTitle">SUBJECT:</span>{" "}<span className="currClassText">{this.state.currentClass.subject}</span></div>
-                        <div><span className="currClassTitle">NUMBER OF STUDENTS:</span>{" "}<span className="currClassText"></span></div>
+                        <div className="currClassPropList"><span className="currClassTitle">YEAR:</span>{" "}<span className="currClassText"></span></div>
+                        <div className="currClassPropList"><span className="currClassTitle">GRADE LEVEL:</span>{" "}<span className="currClassText">{this.state.currentClass.gradelevel}</span></div>
+                        <div className="currClassPropList"><span className="currClassTitle">SUBJECT:</span>{" "}<span className="currClassText">{this.state.currentClass.subject}</span></div>
+                        <div className="currClassPropList"><span className="currClassTitle">NUMBER OF STUDENTS:</span>{" "}<span className="currClassText"></span></div>
                     </div>
+                </div>
+                <div className="chooseDiffClassContainer">
+                    <div className="diffClassHeader">CHOOSE A DIFFERENT CLASS:</div>
+                    <ul className="classList">
+                        {this.state.allClasses.map((item, index) => {
+                            const subject = item.subject;
+                            const gradelevel = item.gradelevel;
+                            return <ClassListItem key={index} className="classListItem" subject={subject} gradelevel={gradelevel}/>
+                        })}
+                        
+                    </ul>
+                </div> 
+                <div className="fourButtons">
+                <div className="arrayngeClassButtonContainer">
+                    <div className="subsubhead">ARRAYNGE THIS CLASS:</div>
+                    <Button className="welcomeButtons" id="arrayngeClassButton">
+                        <Link to={'/arrayngement'} style={purple}>
+                            ARRAYNGE
+                        </Link>
+                    </Button>
                 </div>
                 <div className="newClassButtonContainer">
                     <div className="subsubhead">CREATE A NEW CLASS:</div>
                     <Button className="welcomeButtons" id="newClassButton">
-                        <Link to={'/classdata'} style={styles}>
+                        <Link to={'/classdata'} style={red}>
                             + NEW CLASS
-                        </Link>
-                    </Button>
-                </div>
-                <div className="arrayngeClassButtonContainer">
-                    <div className="subsubhead">ARRAYNGE THIS CLASS:</div>
-                    <Button className="welcomeButtons" id="arrayngeClassButton">
-                        <Link to={'/arrayngement'} style={styles}>
-                            ARRAYNGE
                         </Link>
                     </Button>
                 </div>
                 <div className="editClassButtonContainer">
                     <div className="subsubhead">EDIT THIS CLASS:</div>
                     <Button className="welcomeButtons" id="editClassButton">
-                        <Link to={'/scores'} style={styles}>
+                        <Link to={'/scores'} style={green}>
                             EDIT
                         </Link>
                     </Button>
                 </div>
-                <div className="chooseDiffClassContainer">
-                    <div className="diffClassHeader">CHOOSE A DIFFERENT CLASS:</div>
-                    <ul className="classList">
-                        {this.state.allClasses.map(item => {
-                            const subject = item.subject;
-                            const gradelevel = item.gradelevel;
-                            return <ClassListItem className="classListItem" subject={subject} gradelevel={gradelevel}/>
-                        })}
-                        
-                    </ul>
-                </div> 
+                {/* <div className="newClassButtonContainer">
+                    <div className="subsubhead">CREATE A NEW CLASS:</div>
+                    <Button className="welcomeButtons" id="newClassButton">
+                        <Link to={'/classdata'} style={red}>
+                            + NEW CLASS
+                        </Link>
+                    </Button>
+                </div> */}
                 <div className="viewChartsButtonContainer">
                     <div className="subsubhead">VIEW CHARTS FOR THIS CLASS:</div>
                     <Button className="welcomeButtons" id="viewChartsButton">
-                        <Link to={'/charts'} style={styles}>
+                        <Link to={'/charts'} style={maroon}>
                             VIEW CHARTS
                         </Link>
                     </Button>
+                </div>
                 </div>
             </div>
         )

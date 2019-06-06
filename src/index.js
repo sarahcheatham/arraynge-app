@@ -5,6 +5,7 @@ import "./index.css";
 import store from "./store/store";
 import { Provider } from 'react-redux';
 
+
 const oldFetch = window.fetch;
 window.fetch = (url, settings = {}) => {
   return oldFetch(url, 

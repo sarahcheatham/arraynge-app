@@ -32,7 +32,7 @@ class App extends Component {
       this.props.loadUserId();
       console.log("USER ID LOADED")
     }
-    this.props.setCurrentUserId(null);
+    // this.props.setCurrentUserId(null);
   }
   
   handleSignUp(credentials){
