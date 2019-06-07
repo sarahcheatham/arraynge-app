@@ -8,7 +8,8 @@ module.exports.list = (req, res)=>{
 }
 module.exports.getLastClass = (req, res) => {
     ClassDataModel.find({ userId: req.user._id }).exec()
-    .then(lastClass => {
+    .then((lastClass, err) => {
+        if(err) return res.status(500).send(err);
         console.log("lastClass:", lastClass[lastClass.length - 1])
         return res.json(lastClass[lastClass.length - 1]);
     });

@@ -5,10 +5,10 @@ import Button from '@material-ui/core/Button';
 
 const SaveButton = (props) => {
     return (
-        <button variant="outlined" color="primary" size="small" style={props.style} onClick={props.show}>
-            <SaveIcon style={props.iconStyle} fontSize="small"/>
-            <span style={props.styleText}>Save</span>
-        </button>
+        <Button variant="contained" color="primary" size="small" style={props.style} onClick={props.show}>
+            <SaveIcon fontSize="small"/>
+            <span>Save</span>
+        </Button>
     )
 }
 

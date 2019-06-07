@@ -1,7 +1,9 @@
 import React, {Component} from "react";
+import ReactDOM from "react-dom";
 // import PropTypes from 'prop-types';
 import SubHeader from '../SubHeader';
 import ClassListItem from './ClassListItem';
+import SaveButton from './SaveButton';
 import { Grid, Col, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./WelcomePage.css";
@@ -35,7 +37,7 @@ class WelcomePage extends Component{
         });
         fetch(`/api/classdata/lastclass/:id`).then((res)=>{
             return res.json();
-        }).then((lastClass)=>{
+        }).then(lastClass => {
             const gradelevel = lastClass.gradelevel;
             const subject = lastClass.subject;
             const year = lastClass.year;
@@ -58,32 +60,18 @@ class WelcomePage extends Component{
 
     checkItem = item =>{
         this.setState({checked: true})
-        const itemId = this.checkedClass.current.props.itemId;
+        const itemId = item.itemId;
+        const gradelevel = item.gradelevel;
+        const subject = item.subject; 
+        const year = item.year;
+        this.setState({ itemId, gradelevel, subject, year })
+        console.log("item:", item)
         this.props.loadCurrentClass(itemId)
-        if(this.state.checked){
-            console.log("HERE")
-        }
-        // console.log("ref:", this.checkedClass.current.props.itemId)
-        
-        // const checkedItem = this.checkedClass;
-        // this.setState({ currentClass })
-        // console.log("ref:", checkedItem.current.props)
-        // console.log("item:", item)
     };
-    showButton = e => {
-        e.preventDefault()
-        console.log("state:", this.state.currentClass)
-        const newClass = this.checkedClass.current.props;
-        const itemId = this.checkedClass.current.itemId;
-        const gradelevel = this.checkedClass.current.gradelevel;
-        const subject = this.checkedClass.current.subject;
-        const year = this.checkedClass.current.year;
-        const numOfStudents = this.checkedClass.current.numOfStudents;
-        this.setState({ itemId, gradelevel, subject, year, numOfStudents })
-        console.log("newClass:", newClass)
-        // this.setState({ currentClass: newClass })
 
-
+    showButton = (e, item) => {
+        e.preventDefault();
+        console.log("showButton:", this.props.currentClass.curr)
     }
 
     render(){
@@ -120,6 +108,12 @@ class WelcomePage extends Component{
             padding: 0,
             margin: 0,
         }
+        const saveButton = {
+            width: 75,
+            alignSelf: 'flex-end',
+            fontFamily: 'quasimoda, sans-serif'
+        }
+        
         return(
             <div className="welcomepage">
                 <SubHeader className="greeting" text={this.state.welcomeMessage}/>
@@ -132,6 +126,7 @@ class WelcomePage extends Component{
                 </div>
                 <div className="chooseDiffClassContainer">
                     <div className="diffClassHeader">CHOOSE A DIFFERENT CLASS:</div>
+                    {/* {this.state.checked ? <SaveButton style={saveButton} show={this.showButton}/> : <div></div>} */}
                     <ul className="classList">
                         {this.state.allClasses.map((item, index) => {
                             const year = item.year;

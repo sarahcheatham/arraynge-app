@@ -10,7 +10,13 @@ const classDataSchema = new Schema({
     },
     subject: {
         type: String
-    }
+    },
+    year: {
+        type: String
+    },
+    // numOfStudents: {
+    //     type: String
+    // }
 })
 
 // const teacherSchema = new Schema({

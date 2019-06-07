@@ -130,6 +130,7 @@ export const loadCurrentClass = id => dispatch => {
             .then(handleErrors)
             .then(res => res.json())
             .then(curr => {
+                    // console.log("curr:", curr)
                     dispatch(fetchCurrentClassSuccess(curr));
                     return curr;
             })

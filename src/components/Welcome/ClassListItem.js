@@ -8,8 +8,29 @@ import SaveButton from './SaveButton';
 class ClassListItem extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            itemId: "",
+            year: "",
+            gradelevel: "",
+            subject: "",
+            numStudents: "",
+            
+        }
     }
-    
+    checked = item => {
+        console.log("CHECKED ITEM:",item)
+        const li = this.props;
+        const itemId = this.props.itemId;
+        const gradelevel = this.props.gradelevel;
+        const subject = this.props.subject;
+        const year = this.props.year;
+        const numStudents = this.props.numStudents;
+        console.log("li:", li)
+
+        this.props.onCheck({
+            itemId, gradelevel, subject, year, numStudents
+        })
+    }
     render(){
         const textStyle = {
             color: '#F9586B'
@@ -26,35 +47,13 @@ class ClassListItem extends Component {
             padding: 0,
             margin: 0,
         }
-        const saveButton = {
-            padding: '2%',
-            position: 'absolute',
-            left: 500,
-            height: '10px',
-            display: 'inline',
-            backgroundColor: '#E7F2F0',
-            color: '#357E85',
-            boxShadow: 'inset 1em -1em 1em -1em #357E85',
-            borderRadius: '5px'
-        }
-        const iconStyle = {
-            height: 14,
-            position: 'relative',
-            top: -6
-        }
-        const styleText = {
-            height: 14,
-            position: 'relative',
-            top: -8
-        }
         return (
-            <span className="classListProps" itemID={this.props.itemId}>
+            <li onChange={this.checked} itemId={this.props.itemId} className="classListProps">
                 <div><span className={this.props.className}>YEAR:</span>{" "}<span style={textStyle}>{this.props.year}</span><Checkbox style={checkbox} onChange={this.props.onCheck}/></div>
-                {/* <div><span className={this.props.className}>YEAR:</span>{" "}<span style={textStyle}>{this.props.year}</span><SaveButton style={saveButton} iconStyle={iconStyle} styleText={styleText} show={this.props.show}/><Checkbox style={checkbox} onChange={this.props.onCheck}/></div> */}
                 <div><span className={this.props.className}>GRADE LEVEL:</span>{" "}<span style={textStyle}>{this.props.gradelevel}</span></div>
                 <div><span className={this.props.className}>SUBJECT:</span>{" "}<span style={textStyle}>{this.props.subject}</span></div>
                 <div><span className={this.props.className}>NUMBER OF STUDENTS:</span>{" "}<span style={textStyle}>{this.props.numStudents}</span><DeleteButton style={buttonStyle}/></div>
-            </span>
+            </li>
         )
     }  
 }
