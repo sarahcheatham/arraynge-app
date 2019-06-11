@@ -222,11 +222,12 @@ class ArrayngementPage extends Component{
     }
 
     render(){
+        console.log("currentClass:", this.props.currentClass)
         let numberOfGroupsToShow = this.getNumberOfGroups(this.state.numberOfGroups);
         const benchmarkScore = this.getBenchmarkForScore(this.state.sortBy);
         const filteredStudents = this.filterBySubject(this.state.students)
         //filter students by subject
-        console.log("filteredStudents:", filteredStudents)
+        // console.log("filteredStudents:", filteredStudents)
         
         //sort students by time of year for tests
         let studentCards = null;
@@ -236,7 +237,7 @@ class ArrayngementPage extends Component{
         //assign a square to each student based on their scores compared to the benchmarks
         // studentCards.map((student, index)=>{
         studentCards = filteredStudents.map((student, index)=>{
-            console.log("student:", student.name, student.score[3].EOYscore)
+            // console.log("student:", student.name, student.score[3].EOYscore)
             let color = "";
             if(this.state.sortBy === ""){
                 color = "blankSquare"

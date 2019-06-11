@@ -9,7 +9,8 @@ const mapStateToProps = state => {
         //     error: state.error,
         //     students: state.students
         // }
-        studentdata: state.studentdata
+        studentdata: state.studentdata,
+        currentClass: state.currentClass.curr
     }
 }
 
