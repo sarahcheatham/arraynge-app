@@ -26,29 +26,10 @@ class WelcomePage extends Component{
     }
 
     componentDidMount(){
+        this.props.loadWelcomeMessage();
+        this.props.loadLastClass();
         this.props.loadClassData();
         this.props.loadStudentData();
-        fetch("/api/welcome").then((res)=>{
-            return res.text();
-        }).then((welcomeMessage)=>{
-            this.setState({
-                welcomeMessage: welcomeMessage
-            });
-        });
-        fetch(`/api/classdata/lastclass/:id`).then((res)=>{
-            return res.json();
-        }).then(lastClass => {
-            const gradelevel = lastClass.gradelevel;
-            const subject = lastClass.subject;
-            const year = lastClass.year;
-            const numOfStudents = lastClass.numOfStudents;
-            const itemId = lastClass._id;
-            console.log("lastClass:", lastClass)
-            // this.setState({
-            //     currentClass: lastClass
-            // });
-            this.setState({ gradelevel, subject, year, numOfStudents, itemId})
-        });
         fetch(`/api/classdata`).then((res)=>{
             return res.json();
         }).then((allClasses)=>{
@@ -113,15 +94,17 @@ class WelcomePage extends Component{
             alignSelf: 'flex-end',
             fontFamily: 'quasimoda, sans-serif'
         }
+
+        let classDataList = "";
         
         return(
             <div className="welcomepage">
-                <SubHeader className="greeting" text={this.state.welcomeMessage}/>
+                <SubHeader className="greeting" text={this.props.welcomeMessage}/>
                 <div className="currentClassContainer">
                     <div id="currClassHeader">CURRENT CLASS</div>
                     <div className="currClassPropList"><span className="currClassTitle">YEAR:</span>{" "}<span className="currClassText"></span></div>
-                    <div className="currClassPropList"><span className="currClassTitle">GRADE LEVEL:</span>{" "}<span className="currClassText">{this.state.gradelevel}</span></div>
-                    <div className="currClassPropList"><span className="currClassTitle">SUBJECT:</span>{" "}<span className="currClassText">{this.state.subject}</span></div>
+                    <div className="currClassPropList"><span className="currClassTitle">GRADE LEVEL:</span>{" "}<span className="currClassText">{this.props.currentClass.gradelevel}</span></div>
+                    <div className="currClassPropList"><span className="currClassTitle">SUBJECT:</span>{" "}<span className="currClassText">{this.props.currentClass.subject}</span></div>
                     <div className="currClassPropList"><span className="currClassTitle">NUMBER OF STUDENTS:</span>{" "}<span className="currClassText"></span></div>
                 </div>
                 <div className="chooseDiffClassContainer">

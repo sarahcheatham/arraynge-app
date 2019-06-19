@@ -1,11 +1,12 @@
 const storeState =  {
     currentUserId: "",
-    currentClass: {
-        loading: false,
-        error: null,
-        curr: []
-    },
-    // welcomeMessage: "",
+    currentClass: {},
+    // currentClass: {
+    //     loading: false,
+    //     error: null,
+    //     curr: []
+    // },
+    welcomeMessage: "",
     currentGradeLevel: "",
     currentSubject: "",
     numberOfStudents: 0,

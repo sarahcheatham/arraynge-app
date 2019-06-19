@@ -1,3 +1,58 @@
+
+export const loadUserId = () => {
+    return dispatch => {
+        fetch("/api/hey")
+        .then(res =>{
+            return res.text();
+        }).then(userId =>{
+            dispatch(setCurrentUserId(userId));
+        });
+    };
+}
+
+export const setCurrentUserId = userId => {
+    return {
+        type: "SET_USER_ID",
+        value: userId
+    }
+}
+
+export const loadWelcomeMessage = () => {
+    return dispatch => {
+        fetch("/api/welcome").then(res => {
+            return res.text();
+        }).then(welcomeMessage => {
+            dispatch(setWelcomeMessage(welcomeMessage))
+        });
+    }
+}
+
+export const setWelcomeMessage = welcomeMessage => {
+    return {
+        type: "SET_WELCOME_MESSAGE",
+        value: welcomeMessage
+    }
+}
+
+export const loadLastClass = () => {
+    return dispatch => {
+        fetch(`/api/classdata/lastclass/:id`)
+        .then(res => {
+            return res.json();
+        }).then(currentClass => {
+            dispatch(setCurrentClass(currentClass))
+        });
+    }
+}
+
+export const setCurrentClass = currentClass => {
+    return {
+        type: "SET_CURRENT_CLASS",
+        value: currentClass
+    }
+}
+
+
 export const setCurrentGradeLevel = gradelevel =>{
     return {
         type: "SET_GRADE_LEVEL",
@@ -25,42 +80,6 @@ export const handleErrors = response => {
     }
     return response;
 }
-
-export const loadUserId = () => {
-    return dispatch => {
-        fetch("/api/hey")
-        .then((res)=>{
-            return res.text();
-        }).then((userId)=>{
-            dispatch(setCurrentUserId(userId));
-        });
-    };
-}
-
-export const setCurrentUserId = userId => {
-    return {
-        type: "SET_USER_ID",
-        value: userId
-    }
-}
-//lastclass fetch
-export const FETCH_LASTCLASS_BEGIN = "FETCH_LASTCLASS_BEGIN";
-export const FETCH_LASTCLASS_SUCCESS = "FETCH_LASTCLASS_SUCCESS";
-export const FETCH_LASTCLASS_FAILURE = "FETCH_LASTCLASS_FAILURE";
-
-export const fetchLastClassBegin = () =>({
-    type: FETCH_LASTCLASS_BEGIN
-});
-
-export const fetchLastClassSuccess = classes =>({
-    type: FETCH_LASTCLASS_SUCCESS,
-    payload: { classes }
-});
-
-export const fetchLastClassFailure = error =>({
-    type: FETCH_LASTCLASS_FAILURE,
-    payload: { error }
-});
 
 
 //classdata fetch
@@ -106,37 +125,6 @@ export const createClassData = classdata => {
     }
 }
 
-export const FETCH_CURRENTCLASS_BEGIN = "FETCH_CURRENTCLASS_BEGIN";
-export const FETCH_CURRENTCLASS_SUCCESS = "FETCH_CURRENTCLASS_SUCCESS";
-export const FETCH_CURRENTCLASS_FAILURE = "FETCH_CURRENTCLASS_FAILURE";
-
-export const fetchCurrentClassBegin = () =>({
-    type: FETCH_CURRENTCLASS_BEGIN
-});
-
-export const fetchCurrentClassSuccess = curr =>({
-    type: FETCH_CURRENTCLASS_SUCCESS,
-    payload: { curr }
-});
-
-export const fetchCurrentClassFailure = error =>({
-    type: FETCH_CURRENTCLASS_FAILURE,
-    payload: { error }
-});
-
-export const loadCurrentClass = id => dispatch => {
-        dispatch(fetchClassDataBegin());
-        return fetch(`/api/classdata/${id}`)
-            .then(handleErrors)
-            .then(res => res.json())
-            .then(curr => {
-                    // console.log("curr:", curr)
-                    dispatch(fetchCurrentClassSuccess(curr));
-                    return curr;
-            })
-            .catch(error => dispatch(fetchCurrentClassFailure(error)))
-    
-}
 
 //put in types.js
 export const FETCH_STUDENTDATA_BEGIN = "FETCH_STUDENTDATA_BEGIN";

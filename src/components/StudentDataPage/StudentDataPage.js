@@ -27,6 +27,7 @@ class StudentDataPage extends Component{
         this.setState({ loading: true })
         this.props.loadClassData();
         this.props.loadStudentData();
+        // load lastclass into state?
     }
 
     // componentDidUpdate(prevProps, prevState, snapshot){
@@ -68,6 +69,11 @@ class StudentDataPage extends Component{
         const userId = studentdata.userId;
         const gradelevel = this.state.gradelevel;
         const subject = this.state.subject;
+
+        // var student = { userId, name, gradelevel, subject, score }
+        // this.state.lastClass.students.push(student); // add the student to the class
+        // do a fetch(PUT) to /api/classdata/:id to update the class
+
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},

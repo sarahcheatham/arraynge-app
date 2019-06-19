@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
-import Header from './components/Header';
-import TopNavbar from './components/TopNavbar';
-import SignUpSignInPage from './components/SignUpSignInPage';
+import Header from './components/App/Header';
+import TopNavbar from './components/App/TopNavbar';
+import SignUpSignInPage from './components/App/SignUpSignInPage';
 import WelcomeContainer from './containers/WelcomeContainer';
 import ScoresPageContainer from './containers/ScoresPageContainer';
 import ClassDataPageContainer from './containers/ClassDataPageContainer';
@@ -28,29 +28,30 @@ class App extends Component {
   };
 
   componentDidMount(){
-    this.props.loadUserId();
-    if(this.state.authenticated){
-      this.props.loadUserId();
-      console.log("USER ID LOADED")
-    }
+    // this.props.loadUserId();
+    // if(this.state.authenticated){
+    //   this.props.loadUserId();
+    //   console.log("USER ID LOADED")
+    // }
     // this.props.setCurrentUserId(null);
   }
   
   handleSignUp(credentials){
     const { username, password, confirmPassword } = credentials;
-    console.log(credentials)
+
     if(!username.trim() || !password.trim()){
       this.setState({
         signUpSignInError: "Must Provide All Fields"
       });
     } else {
+
       fetch("/api/users", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(credentials)
-      }).then((res)=>{
+      }).then(res => {
         return res.json();
-      }).then((data)=>{
+      }).then(data => {
         const { token } = data;
         localStorage.setItem("token", token);
         this.setState({
@@ -63,7 +64,6 @@ class App extends Component {
   }
 
   handleSignIn(credentials) {
-    console.log(credentials)
     const { username, password } = credentials;
     if (!username.trim() || !password.trim() ) {
       this.setState({
@@ -74,11 +74,11 @@ class App extends Component {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(credentials)
-      }).then((res) => {
+      }).then(res => {
         return res.json();
-      }).then((data) => {
+      }).then(data => {
         const { token } = data;
-        console.log(token)
+        // console.log(token)
         localStorage.setItem("token", token);
         this.setState({
           signUpSignInError: "",
@@ -97,6 +97,7 @@ class App extends Component {
       authenticated: false
     });
     this.props.setCurrentUserId(null);
+    this.props.setWelcomeMessage(null);
   }
 
   renderError(){

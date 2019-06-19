@@ -69,6 +69,7 @@ class ClassDataPage extends Component{
         })
         this.props.createClassData(classdata)
     }
+    
     handleContinueClick = event => {
         this.props.loadStudentData()
     }
